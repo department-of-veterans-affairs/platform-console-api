@@ -72,7 +72,11 @@ GEM
     awesome_print (1.9.2)
     bootsnap (1.9.4)
       msgpack (~> 1.0)
+    brakeman (5.2.0)
     builder (3.2.4)
+    bundler-audit (0.9.0.1)
+      bundler (>= 1.2.0, < 3)
+      thor (~> 1.0)
     capybara (3.36.0)
       addressable
       matrix
@@ -238,6 +242,8 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (~> 1.9)
+  brakeman
+  bundler-audit
   capybara
   importmap-rails (~> 1.0)
   jbuilder (~> 2.11)
