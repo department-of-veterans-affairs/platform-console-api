@@ -29,22 +29,51 @@ jobs:
             brakeman.json
           if-no-files-found: ignore
 
-publish_results:
-  name: Publish Results
-  if: always()
-  needs: [linting_and_security]
-  runs-on: ubuntu-20.04
+  tests:
+    name: Test
+    env:
+      CI: true
+      DATABASE_URL: "postgres://postgres:postgres@127.0.0.1:5432/platform_console_test?pool=4"
+      TERM: xterm-256color
+    runs-on: ubuntu-20.04
 
-  steps:
-    - uses: actions/download-artifact@v2
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 15
+        ports:
+          - 5432:5432
 
-    - uses: duderman/rubocop-annotate-action@v0.1.0
-      with:
-        path: Linting and Security Results/rubocop.json
-        if: hashFiles('Linting and Security Results/rubocop.json') != ''
+    steps:
+      - uses: actions/checkout@v2
 
-    - uses: devmasx/brakeman-linter-action@v1.0.0
-      env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        REPORT_PATH: Linting and Security Results/brakeman.json
-        if: hashFiles('Linting and Security/brakeman.json') != ''
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - run: bundle exec rake db:reset
+
+      - run: bundle exec rake test:all
+
+  publish_results:
+    name: Publish Results
+    if: always()
+    needs: [linting_and_security]
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/download-artifact@v2
+
+      - uses: duderman/rubocop-annotate-action@v0.1.0
+        with:
+          path: Linting and Security Results/rubocop.json
+          if: hashFiles('Linting and Security Results/rubocop.json') != ''
+
+      - uses: devmasx/brakeman-linter-action@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          REPORT_PATH: Linting and Security Results/brakeman.json
+          if: hashFiles('Linting and Security/brakeman.json') != ''
