@@ -111,5 +111,5 @@ jobs:
         with:
           type: simplecov
           result_path: Coverage Report/.last_run.json
-          min_coverage: 90
+          min_coverage: 85
           token: ${{ secrets.GITHUB_TOKEN }}
