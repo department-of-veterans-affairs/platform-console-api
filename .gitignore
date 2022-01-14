@@ -26,6 +26,10 @@
 !/tmp/storage/.keep
 
 /public/assets
+/public/coverage
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore test reports (junit)
+test/reports

@@ -23,6 +23,8 @@ group :development do
 end
 
 group :development, :test do
+  gem 'brakeman'          # Detects security vulnerabilities in via static analysis
+  gem 'bundler-audit'     # Provides patch-level verification for Bundled apps
   gem 'pry-awesome_print' # Auto AP in pry
   gem 'pry-rails'         # Adds pry, an interactive REPL debugger; Try show-models
   gem 'rubocop'           # Ruby Style Guide Analyzer
@@ -31,6 +33,8 @@ end
 
 group :test do
   gem 'capybara'           # Adds support for Capybara system testing and selenium driver
+  gem 'minitest-ci'        # Minitest Junit XML results for GHA
   gem 'selenium-webdriver' # Capybara system testing with Chrome
+  gem 'simplecov'          # Code coverage for Ruby
   gem 'webdrivers'         # Easy installation and use of web drivers to run system tests with browsers
 end
