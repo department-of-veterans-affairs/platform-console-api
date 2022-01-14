@@ -1,8 +1,10 @@
 FROM ruby:3.1.0-slim-buster AS base
 
-ENV RAILS_ENV=$RAILS_ENV \
-  BUNDLER_VERSION=2.3.3 \
+ARG RAILS_ENV=development \
   USER_ID=1000
+
+ENV RAILS_ENV=$RAILS_ENV \
+  BUNDLER_VERSION=2.3.3
 
 RUN groupadd --gid $USER_ID nonroot \
   && useradd --uid $USER_ID --gid nonroot --shell /bin/bash --create-home nonroot --home-dir /app
@@ -22,7 +24,7 @@ RUN gem install bundler:${BUNDLER_VERSION} --no-document
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 COPY --chown=nonroot:nonroot . .
-RUN if [ "${RAILS_ENV}" != "development" ]; then \
+RUN if [ "${RAILS_ENV}" == "production" ]; then \
   SECRET_KEY_BASE=dummyvalue rails assets:precompile; fi
 
 EXPOSE 3000
