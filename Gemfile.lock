@@ -250,6 +250,8 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.0.2)
       railties (>= 6.0.0)
+    strong_migrations (0.7.9)
+      activerecord (>= 5)
     strscan (3.0.1)
     thor (1.2.1)
     timeout (0.2.0)
@@ -301,6 +303,7 @@ DEPENDENCIES
   simplecov
   sprockets-rails (~> 3.4)
   stimulus-rails (~> 1.0)
+  strong_migrations (~> 0.7)
   turbo-rails (~> 1.0)
   webdrivers
 
