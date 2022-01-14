@@ -11,7 +11,7 @@ module Authenticatable
       )
     end
 
-    helper_method :current_user
+    helper_method :current_user if respond_to? :helper_method
 
     def authorize_session!
       store_after_login_path

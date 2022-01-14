@@ -1,5 +1,8 @@
 {
+  "addons": [
+    "heroku-redis"
+  ],
   "scripts": {
-    "postdeploy": "bundle exec rails db:schema:load db:seed"
+    "postdeploy": "DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:schema:load db:seed"
   }
 }
