@@ -2,6 +2,8 @@
 
 # Handles logging a user in and out
 class SessionsController < ApplicationController
+  layout 'pages'
+
   def new
     return create if params[:token]
     return redirect_to root_path if current_user
