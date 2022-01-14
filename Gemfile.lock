@@ -95,6 +95,16 @@ GEM
     digest (3.1.0)
     docile (1.4.0)
     erubi (1.10.0)
+    flipper (0.23.0)
+    flipper-redis (0.23.0)
+      flipper (~> 0.23.0)
+      redis (>= 2.2, < 5)
+    flipper-ui (0.23.0)
+      erubi (>= 1.0.0, < 2.0.0)
+      flipper (~> 0.23.0)
+      rack (>= 1.4, < 3)
+      rack-protection (>= 1.5.3, < 2.2.0)
+      sanitize (< 7)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.8.11)
@@ -162,6 +172,8 @@ GEM
     rack (2.2.3)
     rack-mini-profiler (2.3.3)
       rack (>= 1.2.0)
+    rack-protection (2.1.0)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (7.0.1)
@@ -212,6 +224,9 @@ GEM
       rubocop (>= 1.7.0, < 2.0)
     ruby-progressbar (1.11.0)
     rubyzip (2.3.2)
+    sanitize (6.0.0)
+      crass (~> 1.0.2)
+      nokogiri (>= 1.12.0)
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -266,6 +281,9 @@ DEPENDENCIES
   brakeman
   bundler-audit
   capybara
+  flipper (~> 0.23)
+  flipper-redis (~> 0.23)
+  flipper-ui (~> 0.23)
   importmap-rails (~> 1.0)
   jbuilder (~> 2.11)
   minitest-ci
