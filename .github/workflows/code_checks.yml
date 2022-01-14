@@ -58,6 +58,13 @@ jobs:
 
       - run: bundle exec rake test:all
 
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: Coverage Report
+          path: public/coverage
+
       - name: Upload Test Results
         uses: actions/upload-artifact@v2
         if: always()
@@ -94,3 +101,15 @@ jobs:
           comment_mode: off
           files: Test Results/*.xml
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fix up coverage report to work with coverage-check-action
+        run: sed -i 's/"line"/"covered_percent"/g' 'Coverage Report/.last_run.json'
+
+      - name: Publish Coverage Report
+        uses: devmasx/coverage-check-action@v1.2.0
+        if: hashFiles('Coverage Report/.last_run.json') != ''
+        with:
+          type: simplecov
+          result_path: Coverage Report/.last_run.json
+          min_coverage: 90
+          token: ${{ secrets.GITHUB_TOKEN }}
