@@ -1,7 +1,7 @@
 FROM ruby:3.1.0-slim-buster AS base
 
-ARG RAILS_ENV=development \
-  USER_ID=1000
+ARG RAILS_ENV=development
+ARG USER_ID=1000
 
 ENV RAILS_ENV=$RAILS_ENV \
   BUNDLER_VERSION=2.3.3
