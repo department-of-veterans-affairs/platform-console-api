@@ -1,0 +1,63 @@
+# name: Deploy K8's
+
+# on:
+#   push:
+#     branches:
+#       - master
+
+# permissions:
+#   actions: read
+#   contents: read
+#   issues: read
+#   packages: read
+#   pull-requests: read
+#   statuses: read
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     env:
+#       IMAGE_URL: {{insert image url from argo or where we host}}
+#     steps:
+#       - name: Checkout the repo
+#         uses: actions/checkout@v2
+#       - name: Build image
+#         run: |
+#           docker build . --file Dockerfile \
+#           --tag ${{ env.IMAGE_URL}}:${{ github.sha }} \
+#           --build-arg RAILS_ENV=production \
+#           --build-arg GIT_TOKEN=${{ secrets.GIT_TOKEN }} \
+#           --build-arg SECRET_KEY_BASE=CHANGEME \
+#           --build-arg AWS_REGION=${{ secrets.AWS_REGION }} \
+#           --build-arg AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
+#           --build-arg AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+
+      #We do not use digigtal ocean. This is old code from my old app. We may need it though.
+      # - name: Install doctl
+      #   uses: digitalocean/action-doctl@v2
+      #   with:
+      #     token: ${{ secrets.DO_TKEN }}
+      # - name: Log in to DO Container Registry
+      #   run: doctl registry login --expiry-seconds 600
+      # - name: Tag image
+      #   run: docker tag ${{ env.IMAGE_URL}}:${{ github.sha }} ${{ env.IMAGE_URL}}:${{ github.sha }}
+      # - name: Push image to DO Container Registry
+      #   run: docker push ${{ env.IMAGE_URL}}:${{ github.sha }}
+
+  # mirror:
+  #   # only run if the PR has the 'stage' label
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Build and push argo images to ECR
+  #       uses: kciter/aws-ecr-action@v4
+  #       with:
+  #         access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         account_id: '008577686731'
+  #         repo: dsva/platform-console
+  #         region: us-gov-west-1
+  #         tags: "${{ matrix.versions['name']}}-${{ matrix.versions['version'] }}"
+  #         dockerfile: Dockerfile
+  #         extra_build_args: "--build-arg APP_VERSION=${{ matrix.versions['version'] }} --build-arg REPO=${{ matrix.versions['repo'] }}"
