@@ -58,10 +58,18 @@ jobs:
 
       - run: bundle exec rake test:all
 
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: Test Results
+          path: test/reports/*.xml
+          if-no-files-found: ignore
+
   publish_results:
     name: Publish Results
     if: always()
-    needs: [linting_and_security]
+    needs: [linting_and_security, tests]
     runs-on: ubuntu-20.04
 
     steps:
@@ -77,3 +85,12 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           REPORT_PATH: Linting and Security Results/brakeman.json
           if: hashFiles('Linting and Security/brakeman.json') != ''
+
+      - name: Publish Test Results
+        uses: docker://ghcr.io/enricomi/publish-unit-test-result-action:v1
+        if: always()
+        with:
+          check_name: Test Results
+          comment_mode: off
+          files: Test Results/*.xml
+          github_token: ${{ secrets.GITHUB_TOKEN }}
