@@ -1,5 +1,7 @@
 {
+  "stack": "container",
   "scripts": {
     "postdeploy": "bundle exec rails db:schema:load db:seed"
   }
+
 }
