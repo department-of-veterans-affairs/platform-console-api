@@ -113,6 +113,8 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
+    minitest-ci (3.4.0)
+      minitest (>= 5.0.6)
     msgpack (1.4.2)
     net-imap (0.2.3)
       digest
@@ -247,6 +249,7 @@ DEPENDENCIES
   capybara
   importmap-rails (~> 1.0)
   jbuilder (~> 2.11)
+  minitest-ci
   pg (~> 1.1)
   pry-awesome_print
   pry-rails
