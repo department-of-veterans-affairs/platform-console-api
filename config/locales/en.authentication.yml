@@ -1,0 +1,17 @@
+en:
+  auth:
+    log_in:
+      alert: Please log in first
+
+  sessions:
+    new:
+      email: Email
+      password: Password
+      log_in: Log in
+      notice: Logged in successfully
+      alert: Invalid email or password
+    create:
+      notice: Logged in successfully
+      alert: Invalid email or password
+    destroy:
+      notice: Logged out successfully
