@@ -1,7 +1,11 @@
 FROM ruby:3.1.0-slim-buster AS base
 
 ENV RAILS_ENV=$RAILS_ENV \
-  BUNDLER_VERSION=2.3.3
+  BUNDLER_VERSION=2.3.3 \
+  USER_ID=1000
+
+RUN groupadd --gid $USER_ID nonroot \
+  && useradd --uid $USER_ID --gid nonroot --shell /bin/bash --create-home nonroot --home-dir /app
 
 WORKDIR /app
 
@@ -15,11 +19,12 @@ RUN wget -q -r -np -nH -nd -a .cer -P /usr/local/share/ca-certificates http://ai
   && rm .cer
 
 RUN gem install bundler:${BUNDLER_VERSION} --no-document
-
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
-COPY . .
+COPY --chown=nonroot:nonroot . .
 
 EXPOSE 3000
+
+USER nonroot
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
