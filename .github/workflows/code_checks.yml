@@ -1,0 +1,115 @@
+name: Code Checks
+on: [push]
+jobs:
+  linting_and_security:
+    name: Linting and Security
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Run bundle-audit (checks gems for CVE issues)
+        run:  bundle exec bundle-audit check --update
+
+      - name: Run Rubocop
+        run: bundle exec rubocop --parallel --format progress --format json --out rubocop.json
+
+      - name: Run Brakeman
+        run:  bundle exec brakeman --ensure-latest --confidence-level=2 -o brakeman.json
+
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: Linting and Security Results
+          path: |
+            rubocop.json
+            brakeman.json
+          if-no-files-found: ignore
+
+  tests:
+    name: Test
+    env:
+      CI: true
+      DATABASE_URL: "postgres://postgres:postgres@127.0.0.1:5432/platform_console_test?pool=4"
+      TERM: xterm-256color
+    runs-on: ubuntu-20.04
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 15
+        ports:
+          - 5432:5432
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - run: bundle exec rake db:reset
+
+      - run: bundle exec rake test:all
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: Coverage Report
+          path: public/coverage
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: Test Results
+          path: test/reports/*.xml
+          if-no-files-found: ignore
+
+  publish_results:
+    name: Publish Results
+    if: always()
+    needs: [linting_and_security, tests]
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/download-artifact@v2
+
+      - uses: duderman/rubocop-annotate-action@v0.1.0
+        with:
+          path: Linting and Security Results/rubocop.json
+          if: hashFiles('Linting and Security Results/rubocop.json') != ''
+
+      - uses: devmasx/brakeman-linter-action@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          REPORT_PATH: Linting and Security Results/brakeman.json
+          if: hashFiles('Linting and Security/brakeman.json') != ''
+
+      - name: Publish Test Results
+        uses: docker://ghcr.io/enricomi/publish-unit-test-result-action:v1
+        if: always()
+        with:
+          check_name: Test Results
+          comment_mode: off
+          files: Test Results/*.xml
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fix up coverage report to work with coverage-check-action
+        run: sed -i 's/"line"/"covered_percent"/g' 'Coverage Report/.last_run.json'
+
+      - name: Publish Coverage Report
+        uses: devmasx/coverage-check-action@v1.2.0
+        if: hashFiles('Coverage Report/.last_run.json') != ''
+        with:
+          type: simplecov
+          result_path: Coverage Report/.last_run.json
+          min_coverage: 90
+          token: ${{ secrets.GITHUB_TOKEN }}
