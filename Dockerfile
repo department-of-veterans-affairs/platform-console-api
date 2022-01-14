@@ -1,5 +1,10 @@
 FROM ruby:3.1.0-slim-buster AS base
 
+ENV RAILS_ENV=$RAILS_ENV \
+  BUNDLER_VERSION=2.3.3
+
+WORKDIR /app
+
 RUN apt-get update && apt-get install -y build-essential libpq-dev git wget \
   && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -9,7 +14,8 @@ RUN wget -q -r -np -nH -nd -a .cer -P /usr/local/share/ca-certificates http://ai
   && update-ca-certificates \
   && rm .cer
 
-WORKDIR /app
+RUN gem install bundler:${BUNDLER_VERSION} --no-document
+
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 COPY . .
