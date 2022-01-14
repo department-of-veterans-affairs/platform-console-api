@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  # Sidekiq
-  constraints ->(request) { AuthenticatableConstraint.new(request).current_user&.admin? } do
+  # Admin-only area
+  constraints ->(request) { Rails.env.development? || AuthenticatableConstraint.new(request).current_user&.admin? } do
+    mount Flipper::UI.app(Flipper) => '/flipper'
     mount Sidekiq::Web => '/sidekiq'
   end
 end
