@@ -35,5 +35,6 @@ group :test do
   gem 'capybara'           # Adds support for Capybara system testing and selenium driver
   gem 'minitest-ci'        # Minitest Junit XML results for GHA
   gem 'selenium-webdriver' # Capybara system testing with Chrome
+  gem 'simplecov'          # Code coverage for Ruby
   gem 'webdrivers'         # Easy installation and use of web drivers to run system tests with browsers
 end
