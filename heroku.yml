@@ -3,5 +3,3 @@ build:
     web: Dockerfile
 release:
   image: web
-  command:
-    - rails db:prepare
