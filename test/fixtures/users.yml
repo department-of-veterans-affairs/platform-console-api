@@ -1,0 +1,11 @@
+john:
+  name: John
+  email: john@example.com
+  password_digest: $2a$04$iUpp2uEoumjbCHfX3ypOcO.JMHSg4itA1sDodd.ILtU9AUYvZQOU2 # password
+  perishable_token: abc123_john
+
+jane:
+  name: Jane
+  email: jane@example.com
+  password_digest: $2a$04$iUpp2uEoumjbCHfX3ypOcO.JMHSg4itA1sDodd.ILtU9AUYvZQOU2 # password
+  perishable_token: abc123_jane

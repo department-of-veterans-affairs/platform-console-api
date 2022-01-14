@@ -6,6 +6,7 @@ ruby '~> 3.1.0'
 
 gem 'rails', '~> 7.0.1'
 
+gem 'bcrypt',   '~> 3.1' # Use ActiveModel has_secure_password
 gem 'bootsnap', '~> 1.9', require: false # Reduces boot times through caching; required in config/boot.rb
 gem 'jbuilder', '~> 2.11' # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'pg',       '~> 1.1'  # Use postgresql as the database for Active Record
