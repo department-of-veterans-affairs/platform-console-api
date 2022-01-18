@@ -6,5 +6,6 @@ build:
     RAILS_ENV: production
 run:
   web: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}
+  worker: bundle exec sidekiq
 release:
   web: rails db:migrate
