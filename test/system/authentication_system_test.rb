@@ -3,6 +3,11 @@
 require 'application_system_test_case'
 
 class AuthenticationTest < ApplicationSystemTestCase
+  def login_as(user)
+    token = users(user).perishable_token
+    visit "/login?token=#{token}"
+  end
+
   test 'log in success' do
     visit '/login'
     fill_in 'Email', with: 'john@example.com'
@@ -20,5 +25,20 @@ class AuthenticationTest < ApplicationSystemTestCase
 
     assert page.has_content? 'Invalid email or password'
     assert_equal '/login', current_path
+  end
+
+  test 'sidekiq for admins only' do
+    visit '/sidekiq'
+    assert_raises(ActionController::RoutingError) { visit '/sidekiq' }
+    assert page.has_content? 'No route'
+
+    login_as :john
+    visit '/sidekiq'
+    assert_raises(ActionController::RoutingError) { visit '/sidekiq' }
+    assert page.has_content? 'No route'
+
+    login_as :jane
+    visit '/sidekiq'
+    assert_not page.has_content? 'No route'
   end
 end
