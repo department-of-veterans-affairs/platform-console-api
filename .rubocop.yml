@@ -2,3 +2,6 @@ require: rubocop-rails
 
 AllCops:
   NewCops: disable
+
+Metrics/MethodLength:
+  Max: 15
