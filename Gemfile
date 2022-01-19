@@ -19,10 +19,11 @@ gem 'sidekiq',           '~> 6.3'  # Simple, efficient background processing for
 gem 'strong_migrations', '~> 0.7'  # Catch potentially dangerous operations in migrations
 
 # Assets
-gem 'importmap-rails', '~> 1.0' # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem 'sprockets-rails', '~> 3.4' # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem 'stimulus-rails',  '~> 1.0' # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem 'turbo-rails',     '~> 1.0' # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+gem 'importmap-rails',   '~> 1.0' # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+gem 'sprockets-rails',   '~> 3.4' # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+gem 'stimulus-rails',    '~> 1.0' # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+gem 'tailwindcss-rails', '~> 2.0' # Integrate Tailwind CSS with the asset pipeline
+gem 'turbo-rails',       '~> 1.0' # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 
 group :development do
   gem 'rack-mini-profiler' # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]

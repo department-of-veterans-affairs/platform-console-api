@@ -253,6 +253,12 @@ GEM
     strong_migrations (0.7.9)
       activerecord (>= 5)
     strscan (3.0.1)
+    tailwindcss-rails (2.0.5)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.5-arm64-darwin)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.5-x86_64-linux)
+      railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.2.0)
     turbo-rails (1.0.1)
@@ -304,6 +310,7 @@ DEPENDENCIES
   sprockets-rails (~> 3.4)
   stimulus-rails (~> 1.0)
   strong_migrations (~> 0.7)
+  tailwindcss-rails (~> 2.0)
   turbo-rails (~> 1.0)
   webdrivers
 
