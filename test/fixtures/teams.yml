@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  owner: john
+  owner_type: User
+
+two:
+  name: MyString
+  owner: john
+  owner_type: User

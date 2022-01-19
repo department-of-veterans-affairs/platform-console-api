@@ -21,5 +21,10 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+
+    def login_as(user)
+      token = users(user).perishable_token
+      visit "/login?token=#{token}"
+    end
   end
 end
