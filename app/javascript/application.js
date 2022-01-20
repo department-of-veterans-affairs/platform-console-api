@@ -22,3 +22,9 @@ document.addEventListener('click', function mobileNavToggler(e) {
   if (e.target.closest("#mobile-menu-button") === document.querySelector("#mobile-menu-button"))
     document.querySelector("#mobile-menu").classList.toggle('hidden')
 })
+
+// Close flash notification
+document.addEventListener('click', function flashNotificationDismisser(e) {
+  if (e.target.closest(".flash-notification-close") === document.querySelector(".flash-notification-close"))
+    e.target.closest(".flash-notification").classList.add('hidden')
+})
