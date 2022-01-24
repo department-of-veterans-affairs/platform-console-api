@@ -2,4 +2,5 @@
 
 class Team < ApplicationRecord
   belongs_to :owner, polymorphic: true
+  validates :name, presence: true
 end
