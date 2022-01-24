@@ -24,6 +24,21 @@ module ApplicationHelper
           target: '_blank'
         },
         {
+          name: I18n.t('navbar.datadog'),
+          path: datadog_link,
+          target: '_blank'
+        },
+        {
+          name: I18n.t('navbar.loki'),
+          path: loki_link,
+          target: '_blank'
+        },
+        {
+          name: I18n.t('navbar.sentry'),
+          path: sentry_link,
+          target: '_blank'
+        },
+        {
           name: I18n.t('navbar.support'),
           path: 'https://dsva.slack.com/archives/CBU0KDSB1',
           target: '_blank'
@@ -40,5 +55,17 @@ module ApplicationHelper
     klass = "#{model.class}Presenter".constantize
     presenter = klass.new model, self
     block_given? ? yield(presenter) : presenter
+  end
+
+  def datadog_link
+    ""
+  end
+
+  def loki_link
+    ""
+  end
+
+  def sentry_link
+    ""
   end
 end

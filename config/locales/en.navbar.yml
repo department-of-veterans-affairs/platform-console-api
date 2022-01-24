@@ -5,3 +5,7 @@ en:
       sign_out: Sign out
     support: Support
     teams: Teams
+    datadog: DataDog
+    loki: Loki
+    sentry: Sentry
+
