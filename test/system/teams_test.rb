@@ -36,6 +36,7 @@ class TeamsTest < ApplicationSystemTestCase
   test 'should destroy Team' do
     visit team_url(@team)
     click_on 'Destroy this team', match: :first
+    page.driver.browser.switch_to.alert.accept
 
     assert_text 'Team was successfully destroyed'
   end
