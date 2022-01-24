@@ -2,7 +2,7 @@
   <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate mt-4">
     <%= human_name.pluralize %>
   </h1>
-  <%%= link_to <%= new_helper(type: :path) %>, class: 'place-self-center inline-flex items-center mt-4 px-2 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' do %>
+  <%%= link_to <%= new_helper(type: :path) %>, class: 'place-self-center inline-flex items-center mt-4 px-2 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' do %>
     <span class="sr-only">New <%= human_name.downcase %></span>
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
       <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
@@ -32,12 +32,12 @@
             <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
               <tr class="<%%= cycle 'bg-white', 'bg-gray-50' %>">
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  <%%= link_to <%= singular_table_name %>.name, <%= model_resource_name(singular_table_name) %>, class: 'text-indigo-600 hover:text-indigo-900' %>
+                  <%%= link_to <%= singular_table_name %>.name, <%= model_resource_name(singular_table_name) %>, class: 'text-blue-900 hover:text-blue-800' %>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div class="flex space-x-2">
-                    <%%= link_to 'Edit', <%= "edit_#{singular_route_name}_path(#{singular_table_name})" %>, class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' %>
-                    <%%= button_to 'Destroy', <%= model_resource_name %>, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm' %>
+                    <%%= link_to 'Edit', <%= "edit_#{singular_route_name}_path(#{singular_table_name})" %>, class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
+                    <%%= button_to 'Destroy', <%= model_resource_name %>, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-red-900 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-900 sm:text-sm' %>
 		  </div>
                 </td>
               </tr>
