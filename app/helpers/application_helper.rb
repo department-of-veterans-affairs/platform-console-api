@@ -58,14 +58,14 @@ module ApplicationHelper
   end
 
   def datadog_link
-    ""
+    "https://app.datadoghq.com/apm/home"
   end
 
   def loki_link
-    ""
+    "http://grafana.vfs.va.gov/"
   end
 
   def sentry_link
-    ""
+    "http://sentry.vfs.va.gov/"
   end
 end
