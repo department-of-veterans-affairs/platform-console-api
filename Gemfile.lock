@@ -153,6 +153,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.1-x86_64-linux)
       racc (~> 1.4)
+    pagy (5.9.1)
+      activesupport
     parallel (1.21.0)
     parser (3.1.0.0)
       ast (~> 2.4.1)
@@ -295,6 +297,7 @@ DEPENDENCIES
   importmap-rails (~> 1.0)
   jbuilder (~> 2.11)
   minitest-ci
+  pagy (~> 5.9)
   pg (~> 1.1)
   pry-awesome_print
   pry-rails
