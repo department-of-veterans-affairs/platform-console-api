@@ -8,6 +8,7 @@ class TeamsController < ApplicationController
   # GET /teams or /teams.json
   def index
     @teams = Team.all
+    @pagy, @teams = pagy @teams
   end
 
   # GET /teams/1 or /teams/1.json

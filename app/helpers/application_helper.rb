@@ -2,6 +2,8 @@
 
 # For application-wide helpers
 module ApplicationHelper
+  include Pagy::Frontend
+
   # The active_link_to gem may be a better alternative if we outgrow this
   def active_link_to(name = nil, options = {}, html_options = {}, &block)
     if current_page?(options) || options == "/#{request.env['PATH_INFO'].split('/')[1].split('?')[0]}"
