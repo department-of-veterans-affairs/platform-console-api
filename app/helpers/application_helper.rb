@@ -23,21 +23,9 @@ module ApplicationHelper
           path: 'https://depo-platform-documentation.scrollhelp.site/developer-docs/index.html',
           target: '_blank'
         },
-        {
-          name: I18n.t('navbar.datadog'),
-          path: datadog_link,
-          target: '_blank'
-        },
-        {
-          name: I18n.t('navbar.loki'),
-          path: loki_link,
-          target: '_blank'
-        },
-        {
-          name: I18n.t('navbar.sentry'),
-          path: sentry_link,
-          target: '_blank'
-        },
+        { name: I18n.t('navbar.datadog'), path: datadog_link, target: '_blank' },
+        { name: I18n.t('navbar.loki'), path: loki_link, target: '_blank' },
+        { name: I18n.t('navbar.sentry'), path: sentry_link, target: '_blank' },
         {
           name: I18n.t('navbar.support'),
           path: 'https://dsva.slack.com/archives/CBU0KDSB1',
