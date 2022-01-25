@@ -8,7 +8,11 @@ class TeamsController < ApplicationController
   # GET /teams or /teams.json
   def index
     @teams = Team.all
-    @pagy, @teams = pagy @teams
+    @pagy, @teams = pagy(
+      @teams.reorder(sort_column => sort_direction),
+      items: params.fetch(:count, 25),
+      link_extra: 'data-turbo-action="advance"'
+    )
   end
 
   # GET /teams/1 or /teams/1.json
@@ -71,5 +75,13 @@ class TeamsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def team_params
     params.require(:team).permit(:name, :owner_id, :owner_type)
+  end
+
+  def sort_column
+    %w[name].include?(params[:sort]) ? params[:sort] : 'name'
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
 end
