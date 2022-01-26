@@ -9,6 +9,7 @@ on:
 
 jobs:
   prepare-build:
+    name: Prepare build for image push to ECR
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -26,6 +27,7 @@ jobs:
 
   mirror:
     runs-on: ubuntu-20.04
+    name: Push image to ECR
     needs: prepare-build
     strategy:
       matrix:
