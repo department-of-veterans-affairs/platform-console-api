@@ -1,7 +1,7 @@
 <div class="hidden sm:hidden" id="mobile-menu">
   <div class="pt-2 pb-3 space-y-1">
     <% nav_links[:main].each do |link| %>
-      <%= active_link_to link[:name], link[:path], class: 'block pl-3 pr-4 py-2 border-l-4 text-base font-medium', active_class: 'border-indigo-500 text-gray-900', inactive_class: 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', target: link[:target] %>
+      <%= active_link_to link[:name], link[:path], class: 'block pl-3 pr-4 py-2 border-l-4 text-base font-medium', active_class: 'border-blue-900 text-gray-900', inactive_class: 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', target: link[:target] %>
     <% end -%>
   </div>
 
@@ -22,7 +22,7 @@
       </div>
 
       <!-- Hidden for now -->
-      <button type="button" class="hidden ml-auto bg-white flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      <button type="button" class="hidden ml-auto bg-white flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900">
         <span class="sr-only">View notifications</span>
         <!-- Heroicon name: outline/bell -->
         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -33,7 +33,7 @@
 
     <div class="mt-3 space-y-1">
       <% nav_links[:drop].each do |link| %>
-        <%= active_link_to link[:name], link[:path], class: 'block px-4 py-2 text-base font-medium hover:bg-gray-100', active_class: 'border-indigo-500 text-gray-900', inactive_class: 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', target: link[:target] %>
+        <%= active_link_to link[:name], link[:path], class: 'block px-4 py-2 text-base font-medium hover:bg-gray-100', active_class: 'border-blue-900 text-gray-900', inactive_class: 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', target: link[:target] %>
       <% end -%>
     </div>
   </div>

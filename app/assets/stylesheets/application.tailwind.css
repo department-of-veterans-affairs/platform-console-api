@@ -27,7 +27,7 @@
 .pagy-nav .gap,
 .pagy-nav .page.prev.disabled,
 .pagy-nav .page.next.disabled {
-  @apply z-10 bg-white text-indigo-600 relative inline-flex items-center px-4 py-2;
+  @apply z-10 bg-white text-blue-900 relative inline-flex items-center px-4 py-2;
 }
 
 .pagy-nav .gap,
@@ -37,5 +37,5 @@
 }
 
 .pagy-nav .page.active {
-  @apply text-white cursor-default bg-indigo-600;
+  @apply text-white cursor-default bg-blue-900;
 }
