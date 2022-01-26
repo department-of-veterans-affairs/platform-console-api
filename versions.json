@@ -1,0 +1,9 @@
+{
+  "components": [
+    {
+      "name": "ruby",
+      "version": "3.1.0",
+      "repo": "platform-console/ruby-slim-buster"
+    }
+  ]
+}
