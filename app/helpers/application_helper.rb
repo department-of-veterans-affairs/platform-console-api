@@ -25,6 +25,9 @@ module ApplicationHelper
           path: 'https://depo-platform-documentation.scrollhelp.site/developer-docs/index.html',
           target: '_blank'
         },
+        { name: I18n.t('navbar.datadog'), path: datadog_link, target: '_blank' },
+        { name: I18n.t('navbar.loki'), path: loki_link, target: '_blank' },
+        { name: I18n.t('navbar.sentry'), path: sentry_link, target: '_blank' },
         {
           name: I18n.t('navbar.support'),
           path: 'https://dsva.slack.com/archives/CBU0KDSB1',
@@ -42,5 +45,17 @@ module ApplicationHelper
     klass = "#{model.class}Presenter".constantize
     presenter = klass.new model, self
     block_given? ? yield(presenter) : presenter
+  end
+
+  def datadog_link
+    'https://app.datadoghq.com/apm/home'
+  end
+
+  def loki_link
+    'http://grafana.vfs.va.gov/'
+  end
+
+  def sentry_link
+    'http://sentry.vfs.va.gov/'
   end
 end
