@@ -1,6 +1,8 @@
 # README
 
-The Platform Console: for creating and deploying applications on the VA Platform.
+The Platform Console API: for creating and deploying applications on the VA Platform.
+
+The intention of this project is to work out integrations with underlying VA services (e.g. K8s, SSM, AWS) which will provide API services for the Platform Console UI and Platform Console CLI. UI work contained within this project is only to aid in defining API features.
 
 ## Getting Started
 
