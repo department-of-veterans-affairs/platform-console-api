@@ -1,7 +1,7 @@
 {
   "components": [
     {
-      "name": "platform-console-ruby",
+      "name": "ruby",
       "version": "3.1.0"
     }
   ]
