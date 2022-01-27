@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Apps which are owned by a team
 class CreateApps < ActiveRecord::Migration[7.0]
   def change
     create_table :apps do |t|
