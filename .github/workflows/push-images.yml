@@ -1,4 +1,4 @@
-name: Mirror image to ECR when changes are pushed to master
+name: Push image to ECR when changes are pushed to master
 
 on:
  push:
@@ -25,7 +25,7 @@ jobs:
     outputs:
       config: ${{ steps.componentVersions.outputs.config }}
 
-  mirror:
+  push-image:
     runs-on: ubuntu-20.04
     name: Push image to ECR
     needs: prepare-build
