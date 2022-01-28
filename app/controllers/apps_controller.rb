@@ -3,7 +3,7 @@
 # Handles creating apps which are owned by a team
 class AppsController < ApplicationController
   before_action :authorize_session!
-  before_action :get_team
+  before_action :set_team
   before_action :set_app, only: %i[show edit update destroy]
 
   # GET /apps or /apps.json
@@ -63,7 +63,7 @@ class AppsController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def get_team
+  def set_team
     @team = Team.find(params[:team_id])
   end
 
