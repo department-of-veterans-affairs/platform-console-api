@@ -3,7 +3,7 @@ name: Push image to ECR when changes are pushed to master
 on:
  push:
    branches:
-     - lhattamer-test-git-sha
+     - master
  workflow_dispatch:
 
 jobs:
