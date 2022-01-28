@@ -3,7 +3,7 @@ name: Push image to ECR when changes are pushed to master
 on:
  push:
    branches:
-     - master
+     - lhattamer-test-git-sha
  workflow_dispatch:
 
 jobs:
@@ -41,5 +41,5 @@ jobs:
           account_id: '008577686731'
           repo: dsva/platform-console
           region: us-gov-west-1
-          tags: "${{ matrix.versions['name']}}-${{ matrix.versions['version'] }}"
+          tags: "${{ matrix.versions['name']}}-${{ matrix.versions['version'] }}-${{ github.sha }}"
           dockerfile: Dockerfile
