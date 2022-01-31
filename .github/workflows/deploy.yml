@@ -102,4 +102,4 @@ jobs:
           cwd: vsp-infra-application-manifests/apps/vsp-tools-backend/platform-console-api
           author_name: va-vsp-bot
           author_email: devops@va.gov
-          message: 'auto update platform-console ${{ needs.prepare-values.outputs.environments }} images'
+          message: 'auto update platform-console ${{ needs.prepare-values.outputs.environments }} image. Release Version: ${{ steps.semantic.outputs.new_release_version }}'
