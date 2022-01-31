@@ -2,6 +2,9 @@
 
 # Handles logging a user in and out
 class SessionsController < ApplicationController
+  layout 'pages'
+  before_action :set_omniauth_user, only: :create
+
   def new
     return create if params[:token]
     return redirect_to root_path if current_user
@@ -10,9 +13,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by email: params[:email]
-
-    if password_correct? || perishable_user
+    if @user.present?
       store_user_in_cookie
       redirect_to after_login_path, notice: t('.notice')
     else
@@ -27,19 +28,21 @@ class SessionsController < ApplicationController
 
   private
 
-  def password_correct?
-    @user&.authenticate params[:password]
-  end
-
-  def perishable_user
-    @user = User.find_by perishable_token: params[:token]
-  end
-
   def store_user_in_cookie
-    cookies.permanent[:user] = [@user.id, @user.password_digest[0, 29], Time.now.utc.to_i]
+    cookies.permanent[:user] = [@user.id, @user.uid, Time.now.utc.to_i]
   end
 
   def after_login_path
     session[:after_login_path] || root_path
+  end
+
+  protected
+
+  def auth_hash
+    request.env['omniauth.auth']
+  end
+
+  def set_omniauth_user
+    @user = auth_hash.present? && auth_hash['provider'].present? ? User.find_or_create_by_omniauth(auth_hash) : nil
   end
 end

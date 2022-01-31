@@ -21,5 +21,29 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+
+    def setup_omniauth_mock(user)
+      Rails.application.env_config['omniauth.auth'] = keycloak_auth(user)
+    end
+
+    def keycloak_auth(user)
+      OmniAuth.config.mock_auth[:keycloak] =
+        OmniAuth::AuthHash.new(
+          {
+            provider: 'keycloak',
+            info: {
+              email: user.email,
+              name: user.name,
+              uid: user.uid,
+              provider: user.provider
+            }
+          }
+        )
+    end
+
+    def login_as(user)
+      setup_omniauth_mock(users(user))
+      visit '/login'
+    end
   end
 end
