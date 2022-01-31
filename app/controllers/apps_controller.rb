@@ -28,7 +28,7 @@ class AppsController < ApplicationController
 
     respond_to do |format|
       if @app.save
-        format.html { redirect_to team_apps_url(@team), notice: 'App was successfully created.' }
+        format.html { redirect_to team_app_url(@team, @app), notice: 'App was successfully created.' }
         format.json { render :show, status: :created, location: @app }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class AppsController < ApplicationController
     @app.destroy
 
     respond_to do |format|
-      format.html { redirect_to team_apps_url(@team), notice: 'App was successfully destroyed.' }
+      format.html { redirect_to team_url(@team), notice: 'App was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
