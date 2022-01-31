@@ -84,7 +84,7 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: dsva/platform-console
         run: |
-          cd vsp-infra-application-manifests/apps/vsp-tools-backend/platform-console
+          cd vsp-infra-application-manifests/apps/vsp-tools-backend/platform-console-api
           # Update platform-console image
           envs=( ${{ needs.prepare-values.outputs.environments }} )
           for env in ${envs[*]};
@@ -98,7 +98,7 @@ jobs:
         with:
           branch: main
           add: '*'
-          cwd: vsp-infra-application-manifests/apps/vsp-tools-backend/platform-console
+          cwd: vsp-infra-application-manifests/apps/vsp-tools-backend/platform-console-api
           author_name: va-vsp-bot
           author_email: devops@va.gov
           message: 'auto update platform-console ${{ needs.prepare-values.outputs.environments }} images'
