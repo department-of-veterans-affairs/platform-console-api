@@ -7,7 +7,8 @@ on:
   workflow_dispatch:
     inputs:
       environments:
-        description: "Provide a space delimited list of the cluster environments you would like to update wrapped in single quotes ex. 'dev' or 'dev staging sandbox'.  Avalable options -> dev, staging, sandbox, utility, prod sandbox"
+        description: "cluster environments you would like to update wrapped in single quotes.
+		              Avalable options -> dev, staging, sandbox, utility, prod sandbox"
         required: true
 
 env:
