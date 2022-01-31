@@ -23,7 +23,7 @@ This will:
 This has been tested on macOS Monterey using Ruby 3.1 and PG 14.1.
 
 ## Semantic Releases
-This repository uses semantic releases triggered via Github Actions. When committing to the master branch, a semantic release vill be triggered via Github Actions, but the commit message must follow the syntax in the [semantic release documentation](https://github.com/semantic-release/semantic-release#how-does-it-work).
+This repository uses semantic releases triggered via Github Actions. When committing to the master branch, a semantic release will be triggered via Github Actions, but the commit message must follow the syntax in the [semantic release documentation](https://github.com/semantic-release/semantic-release#how-does-it-work).
 
 #### Examples:
 ```
