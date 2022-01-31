@@ -24,7 +24,7 @@ RUN gem install bundler:${BUNDLER_VERSION} --no-document
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 COPY --chown=nonroot:nonroot . .
-RUN if [ "${RAILS_ENV}" == "production" ]; then \
+RUN if [ "${RAILS_ENV}" -eq "production" ]; then \
   SECRET_KEY_BASE=dummyvalue rails assets:precompile; fi
 
 EXPOSE 3000
