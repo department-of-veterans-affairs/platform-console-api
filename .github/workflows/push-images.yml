@@ -41,5 +41,6 @@ jobs:
           account_id: '008577686731'
           repo: dsva/platform-console
           region: us-gov-west-1
-          tags: "${{ matrix.versions['name']}}-${{ matrix.versions['version'] }}"
+          tags: "${{ matrix.versions['name']}}-${{ matrix.versions['version'] }}-${{ github.sha }}"
           dockerfile: Dockerfile
+          extra_build_args: "--build-arg RAILS_ENV=production"
