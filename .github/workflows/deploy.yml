@@ -7,7 +7,8 @@ on:
   workflow_dispatch:
     inputs:
       environments:
-        description: "Provide a space delimited list of the cluster environments you would like to update wrapped in single quotes ex. 'dev' or 'dev staging sandbox'.  Avalable options -> dev, staging, sandbox, utility, prod sandbox"
+        description: "Cluster environments you would like to update wrapped in single quotes.
+		              Avalable options -> dev, staging, sandbox, utility, prod sandbox"
         required: true
 
 env:
@@ -101,4 +102,4 @@ jobs:
           cwd: vsp-infra-application-manifests/apps/vsp-tools-backend/platform-console-api
           author_name: va-vsp-bot
           author_email: devops@va.gov
-          message: 'auto update platform-console ${{ needs.prepare-values.outputs.environments }} images'
+          message: 'Release ${{ needs.prepare-values.outputs.environments }} for platform-console.'
