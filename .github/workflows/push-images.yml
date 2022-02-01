@@ -6,6 +6,10 @@ on:
      - master
  workflow_dispatch:
 
+ # Edit this var to point to your apps ECR repo
+ env:
+   ecrRepository: 'dsva/platform-console'
+
 jobs:
   prepare-build:
     name: Prepare build for image push to ECR
@@ -39,7 +43,7 @@ jobs:
           access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           account_id: '008577686731'
-          repo: dsva/platform-console
+          repo: $ecrRepository
           region: us-gov-west-1
           tags: "${{ matrix.versions['name']}}-${{ matrix.versions['version'] }}-${{ github.sha }}"
           dockerfile: Dockerfile
