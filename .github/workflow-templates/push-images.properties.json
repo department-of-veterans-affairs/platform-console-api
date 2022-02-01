@@ -1,0 +1,11 @@
+{
+    "name": "ECR image push",
+    "description": "Push image to ECR when changes are pushed to master",
+    "iconName": "example-icon",
+    "categories": [
+        "Ruby"
+    ],
+    "filePatterns": [
+        "^Dockerfile"
+    ]
+}

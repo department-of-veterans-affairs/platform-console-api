@@ -1,0 +1,11 @@
+{
+    "name": "Release and Update Manifests",
+    "description": "Release and Update Manifests",
+    "iconName": "example-icon",
+    "categories": [
+        "Ruby"
+    ],
+    "filePatterns": [
+        "^Dockerfile"
+    ]
+}
