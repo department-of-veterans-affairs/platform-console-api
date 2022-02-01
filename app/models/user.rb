@@ -4,8 +4,6 @@
 class User < ApplicationRecord
   has_secure_password
 
-  before_save :reset_perishable_token
-
   before_validation :downcase_email
   validates :email, uniqueness: true
   validates :name, :email, presence: true
@@ -15,9 +13,5 @@ class User < ApplicationRecord
 
   def downcase_email
     self.email = email.downcase if email?
-  end
-
-  def reset_perishable_token
-    self.perishable_token = SecureRandom.uuid
   end
 end
