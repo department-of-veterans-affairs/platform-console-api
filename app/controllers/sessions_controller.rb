@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   layout 'pages'
 
   def new
-    return create if params[:token]
+    return create if params[:uid]
     return redirect_to root_path if current_user
 
     @user = User.new
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by email: params[:email]
 
-    if password_correct? || perishable_user
+    if password_correct? || user_via_uid
       store_user_in_cookie
       redirect_to after_login_path, notice: t('.notice')
     else
@@ -33,8 +33,8 @@ class SessionsController < ApplicationController
     @user&.authenticate params[:password]
   end
 
-  def perishable_user
-    @user = User.find_by perishable_token: params[:token]
+  def user_via_uid
+    @user = User.find_by uid: params[:uid]
   end
 
   def store_user_in_cookie

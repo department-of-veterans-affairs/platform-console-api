@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_27_154702) do
+ActiveRecord::Schema.define(version: 2022_02_01_181156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,13 +36,13 @@ ActiveRecord::Schema.define(version: 2022_01_27_154702) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.string "perishable_token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["password_digest"], name: "index_users_on_password_digest"
-    t.index ["perishable_token"], name: "index_users_on_perishable_token"
+    t.index ["uid"], name: "index_users_on_uid"
   end
 
   add_foreign_key "apps", "teams"
