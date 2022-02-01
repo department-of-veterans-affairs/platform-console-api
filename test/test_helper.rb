@@ -23,8 +23,7 @@ module ActiveSupport
     # Add more helper methods to be used by all tests here...
 
     def login_as(user)
-      token = users(user).perishable_token
-      visit "/login?token=#{token}"
+      visit "/login?uid=#{users(user).uid}"
     end
   end
 end
