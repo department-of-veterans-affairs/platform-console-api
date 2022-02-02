@@ -35,7 +35,7 @@ class Dotenv
   end
 
   def trim_quotes(string)
-    string = string[0..-1] if string.start_with? "'", '"'
+    string = string[0..] if string.start_with? "'", '"'
     string = string[1...-1] if string.end_with? "'", '"'
     string
   end
@@ -45,6 +45,4 @@ class Dotenv
   end
 end
 
-if ENV['RAILS_ENV'] == 'development' || ENV['RAILS_ENV'] == 'test'
-  Dotenv.new.load %w[.env.local]
-end
+Dotenv.new.load %w[.env.local] if ENV['RAILS_ENV'] == 'development' || ENV['RAILS_ENV'] == 'test'
