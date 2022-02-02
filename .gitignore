@@ -38,5 +38,6 @@ test/reports
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
-#Ignore local env file
+# Ignore env local env file
 .env.local
+.env
