@@ -14,7 +14,8 @@
 
 <% if @teams.present? %>
   <%= form_with url: '', method: :get, class: 'mb-2 px-2 py-2', data: { turbo_frame: 'teams', turbo_action: 'advance' } do |form| %>
-    Show <%= form.select :count, options_for_select([10, 25, 50, 100], selected: @pagy.items), {}, { class: 'rounded-md text-sm focus:border-blue-900 focus:ring-0', onchange: 'this.form.requestSubmit()' } %>
+    Show <%= form.select :count, options_for_select([10, 25, 50, 100], selected: @pagy.items), {},
+      { class: 'rounded-md text-sm focus:border-blue-900 focus:ring-0', onchange: 'this.form.requestSubmit()' } %>
   <% end %>
   <%= turbo_frame_tag 'teams' do %>
     <div class="flex flex-col">
