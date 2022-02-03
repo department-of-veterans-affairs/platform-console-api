@@ -45,8 +45,9 @@ class Dotenv
   end
 end
 
-if ENV['RAILS_ENV'] == 'development'
+case ENV['RAILS_ENV']
+when 'development'
   Dotenv.new.load %w[.env .env.local]
-elsif ENV['RAILS_ENV'] == 'test'
+when 'test'
   Dotenv.new.load %w[.env.test]
 end
