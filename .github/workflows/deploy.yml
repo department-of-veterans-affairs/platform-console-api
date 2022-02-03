@@ -66,12 +66,6 @@ jobs:
           sudo add-apt-repository ppa:rmescandon/yq
           sudo apt update
           sudo apt install yq -y
-      - name: Set component versions as environment variables
-        run: |
-          for COMPONENT in $(cat versions.json | jq -r '.components | .[] | .name + "=" + (.version)')
-          do
-            echo "$COMPONENT" >> $GITHUB_ENV
-          done
       - name: Check out Manifest Repo
         uses: actions/checkout@v2
         with:
@@ -90,7 +84,7 @@ jobs:
           envs=( ${{ needs.prepare-values.outputs.environments }} )
           for env in ${envs[*]};
           do
-            yq e -i '.spec.template.spec.containers.[0].image = "008577686731.dkr.ecr.us-gov-west-1.amazonaws.com/dsva/platform-console:ruby-${{ env.ruby }}-${{ github.sha }}"' $env/deployment.yml
+            yq e -i '.spec.template.spec.containers.[0].image = "008577686731.dkr.ecr.us-gov-west-1.amazonaws.com/dsva/platform-console:platform-console-${{ github.sha }}"' $env/deployment.yml
           done
           git diff
       - name: Add and Commit file
