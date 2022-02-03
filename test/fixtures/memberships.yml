@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  memberable_id:
+  memberable_type: MyString
+
+two:
+  memberable_id:
+  memberable_type: MyString
