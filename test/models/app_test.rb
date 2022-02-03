@@ -7,13 +7,13 @@ class AppTest < ActiveSupport::TestCase
     @team = teams(:one)
   end
 
-  test "valid app" do
+  test 'valid app' do
     app = @team.apps.build(name: 'New App 1', team_id: @team.id)
     assert app.valid?
   end
 
-  test "invalid app" do
+  test 'invalid app' do
     app = @team.apps.build(name: nil, team_id: @team.id)
-    refute app.valid?
+    assert_not app.valid?
   end
 end
