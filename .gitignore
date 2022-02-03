@@ -33,3 +33,7 @@
 
 # Ignore test reports (junit)
 test/reports
+
+# Ignore Tailwind generated files
+/app/assets/builds/*
+!/app/assets/builds/.keep

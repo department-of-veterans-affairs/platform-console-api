@@ -11,7 +11,7 @@ module Authenticatable
       )
     end
 
-    helper_method :current_user
+    helper_method :current_user if respond_to? :helper_method
 
     def authorize_session!
       store_after_login_path
@@ -26,7 +26,7 @@ module Authenticatable
     def current_session
       id, password, created_at = cookies.permanent[:user]
       created_at = Time.at(created_at).utc if created_at
-      OpenStruct.new id: id, password: password, created_at: created_at # rubocop:disable Style/HashSyntax
+      OpenStruct.new id: id, password: password, created_at: created_at
     end
 
     def store_after_login_path
