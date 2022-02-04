@@ -9,6 +9,7 @@ class AppsController < ApplicationController
   # GET /apps or /apps.json
   def index
     @apps = @team.apps
+    @pagy, @apps = pagy @apps
   end
 
   # GET /apps/1 or /apps/1.json
@@ -67,7 +68,7 @@ class AppsController < ApplicationController
     @team = Team.find(params[:team_id])
   end
 
-  # Use callbacks to share common setup or constraints between actions.
+  # Find the team app
   def set_app
     @app = @team.apps.find(params[:id])
   end
