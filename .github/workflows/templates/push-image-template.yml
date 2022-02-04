@@ -28,8 +28,8 @@ jobs:
           access_key_id: ${{ secrets.aws_access_key_id }}
           secret_access_key: ${{ secrets.aws_secret_access_key }}
           account_id: '008577686731'
-          repo: dsva/${{inputs.repository}}
+          repo: dsva/${{inputs.ecr_repository}}
           region: us-gov-west-1
-          tags: "${{inputs.repository}}-${{ github.sha }}"
+          tags: "${{inputs.ecr_repository}}-${{ github.sha }}"
           dockerfile: Dockerfile
           extra_build_args: "--build-arg RAILS_ENV=production"
