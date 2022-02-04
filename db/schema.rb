@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_01_181156) do
+ActiveRecord::Schema.define(version: 2022_02_03_221449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2022_02_01_181156) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["team_id"], name: "index_apps_on_team_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.string "memberable_type", null: false
+    t.bigint "memberable_id", null: false
+    t.bigint "team_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["memberable_type", "memberable_id"], name: "index_memberships_on_memberable"
+    t.index ["team_id"], name: "index_memberships_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -36,14 +46,15 @@ ActiveRecord::Schema.define(version: 2022_02_01_181156) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
+    t.string "uid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin"
-    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["password_digest"], name: "index_users_on_password_digest"
     t.index ["uid"], name: "index_users_on_uid"
   end
 
   add_foreign_key "apps", "teams"
+  add_foreign_key "memberships", "teams"
 end

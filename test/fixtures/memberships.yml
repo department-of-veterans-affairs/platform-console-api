@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+member1:
+  team: one
+  memberable_type: Team
+  memberable: two
+
+member2:
+  team: one
+  memberable: john
+  memberable_type: User

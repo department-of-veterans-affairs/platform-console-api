@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
+# The Team Model
 class Team < ApplicationRecord
-  belongs_to :owner, polymorphic: true
   validates :name, presence: true
+  belongs_to :memberable, polymorphic: true, optional: true
+  # Belongs to owner can be removed
+  belongs_to :owner, polymorphic: true
+
+  has_many :memberships, dependent: :destroy
+  has_many :users, through: :memberships, source: :memberable, source_type: 'User'
+  has_many :teams, through: :memberships, source: :memberable, source_type: 'Team'
+  has_many :apps, dependent: :nullify
 end

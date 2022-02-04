@@ -2,12 +2,15 @@
 
 # The User Model
 class User < ApplicationRecord
+  include Memberable
   has_secure_password
 
   before_validation :downcase_email
   validates :email, uniqueness: true
   validates :name, :email, presence: true
   validates :password, length: { minimum: 8 }, if: :password
+
+  belongs_to :memberable, polymorphic: true, optional: true
 
   private
 
