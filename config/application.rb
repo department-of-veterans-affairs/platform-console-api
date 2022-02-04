@@ -23,5 +23,8 @@ module PlatformConsole
     # config.time_zone = "Central Time (US & Canada)"
     config.eager_load_paths << Rails.root.join('lib')
     require 'dotenv'
+    # config.generators do |g|
+    #   g.test_framework :minitest
+    # end
   end
 end
