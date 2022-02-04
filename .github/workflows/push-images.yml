@@ -7,30 +7,9 @@ on:
  workflow_dispatch:
 
 jobs:
-  prepare-build:
-    name: Prepare build for image push to ECR
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: Capture argo image versions
-        id: componentVersions
-        run: |
-          echo "::set-output name=config::$(jq -c .components versions.json)"
-      - name: Upload versions file
-        uses: actions/upload-artifact@v2
-        with:
-          name: versions
-          path: versions.json
-    outputs:
-      config: ${{ steps.componentVersions.outputs.config }}
-
   push-image:
     runs-on: ubuntu-20.04
     name: Push image to ECR
-    needs: prepare-build
-    strategy:
-      matrix:
-        versions: ${{ fromJson(needs.prepare-build.outputs.config) }}
     steps:
       - uses: actions/checkout@v2
       - name: Build and push argo images to ECR
@@ -41,6 +20,6 @@ jobs:
           account_id: '008577686731'
           repo: dsva/platform-console
           region: us-gov-west-1
-          tags: "${{ matrix.versions['name']}}-${{ matrix.versions['version'] }}-${{ github.sha }}"
+          tags: "platform-console-${{ github.sha }}"
           dockerfile: Dockerfile
           extra_build_args: "--build-arg RAILS_ENV=production"
