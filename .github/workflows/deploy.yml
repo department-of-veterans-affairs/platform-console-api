@@ -1,9 +1,9 @@
 job_name:
-    uses: department-of-veterans-affairs/platform-console-api/.github/workflows/templates/deploy-template.yml@master
-    with:
-      repository: 'platform-console'
-      manifests_directory: 'vsp-tools-backend/platform-console-api'
-      auto_deploy_envs: 'utility'
-    secrets:
-      aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  uses: department-of-veterans-affairs/platform-console-api/.github/workflows/templates/deploy-template.yml@master
+  with:
+    repository: 'platform-console'
+    manifests_directory: 'vsp-tools-backend/platform-console-api'
+    auto_deploy_envs: 'utility'
+  secrets:
+    aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
