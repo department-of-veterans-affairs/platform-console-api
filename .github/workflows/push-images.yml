@@ -1,4 +1,4 @@
-job_name:
+push-images:
   uses: department-of-veterans-affairs/platform-console-api/.github/workflows/templates/push-images-template.yml@master
   with:
     repository: 'platform-console'

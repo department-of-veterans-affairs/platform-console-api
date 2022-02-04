@@ -1,4 +1,4 @@
-job_name:
+deploy:
   uses: department-of-veterans-affairs/platform-console-api/.github/workflows/templates/deploy-template.yml@master
   with:
     repository: 'platform-console'
