@@ -15,9 +15,10 @@ on:
         type: string
         description: 'Root path for this app in the manifests repo e.g. vsp-tools-backend/platform-console-api'
       environments:
-       required: true # utility
+       required: true
        type: string
-       description: 'Root path for this app in the manifests repo e.g. '
+       description: "Cluster environments you would like to update wrapped in single quotes.
+                     Avalable options -> dev, staging, sandbox, utility, prod sandbox"
 
   workflow_call:
     inputs:
