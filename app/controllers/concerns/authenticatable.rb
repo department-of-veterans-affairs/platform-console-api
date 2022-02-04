@@ -26,7 +26,7 @@ module Authenticatable
     def current_session
       id, password, created_at = cookies.permanent[:user]
       created_at = Time.at(created_at).utc if created_at
-      OpenStruct.new id: id, password: password, created_at: created_at
+      OpenStruct.new id:, password:, created_at:
     end
 
     def store_after_login_path
