@@ -65,14 +65,16 @@ jobs:
       - uses: actions/checkout@v2
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
-        if: github.event.inputs.environments == ''
-        # use secrets passed into template
+        if: github.event.inputs.environments == '' # automated via merge to master
         with:
           aws-access-key-id: ${{ secrets.aws_access_key_id }}
           aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
           aws-region: "us-gov-west-1"
-        if: github.event.inputs.environments != ''
-        # use secrets from repo - this is a manual workflow_dispatch call
+
+      - uses: actions/checkout@v2
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        if: github.event.inputs.environments != ''  # this is a manual workflow_dispatch call
         with:
           aws-access-key-id: ${{ SECRETS.aws_access_key_id }}
           aws-secret-access-key: ${{ SECRETS.aws_secret_access_key }}
