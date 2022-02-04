@@ -4,21 +4,6 @@ on:
   push:
     branches:
       - master
-  workflow_dispatch:
-    inputs:
-      ecr_repository:
-        required: true
-        type: string
-        description: 'This projects ecr repo e.g. platform-console'
-      manifests_directory:
-        required: true
-        type: string
-        description: 'Root path for this app in the manifests repo e.g. vsp-tools-backend/platform-console-api'
-      environments:
-       required: true
-       type: string
-       description: "Cluster environments you would like to update wrapped in single quotes.
-                     Avalable options -> dev, staging, sandbox, utility, prod sandbox"
 
   workflow_call:
     inputs:
@@ -43,16 +28,10 @@ jobs:
     outputs:
       environments: ${{ steps.set-environments.outputs.environments }}
     steps:
-      - name: Set to auto deploy environments when not run via workflow dispatch
-        if: github.event.inputs.environments == ''
+      - name: Set to auto deploy environments on push to master
         run: |
          echo "triggered via schedule"
          echo "environments=${{inputs.auto_deploy_envs}}" >> $GITHUB_ENV
-      - name: Set to environments specified in input when run via workflow dispatch
-        if: github.event.inputs.environments != ''
-        run: |
-          echo "triggered via workflow dispatch"
-          echo "environments=${{ github.event.inputs.environments }}" >> $GITHUB_ENV
       - name: Set output
         id: set-environments
         run: |
@@ -63,21 +42,11 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
-        if: github.event.inputs.environments == '' # automated via merge to master
         with:
           aws-access-key-id: ${{ secrets.aws_access_key_id }}
           aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
-          aws-region: "us-gov-west-1"
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        if: github.event.inputs.environments != ''  # this is a manual workflow_dispatch call
-        with:
-          aws-access-key-id: ${{ SECRETS.aws_access_key_id }}
-          aws-secret-access-key: ${{ SECRETS.aws_secret_access_key }}
           aws-region: "us-gov-west-1"
 
       - name: Log into ECR
@@ -97,7 +66,7 @@ jobs:
           GITHUB_TOKEN: ${{ env.VA_VSP_BOT_GITHUB_TOKEN }}
 
       - name: Install yq if needed
-        if: steps.semantic.outputs.new_release_published == 'true' || github.event.inputs.environments != ''
+        if: steps.semantic.outputs.new_release_published == 'true'
         run: |
           sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
           sudo add-apt-repository ppa:rmescandon/yq
@@ -113,7 +82,7 @@ jobs:
           path: vsp-infra-application-manifests
 
       - name: Update image name in Manifest repo
-        if: steps.semantic.outputs.new_release_published == 'true' || github.event.inputs.environments != ''
+        if: steps.semantic.outputs.new_release_published == 'true'
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: dsva/${{inputs.ecr_repository}}
@@ -123,12 +92,13 @@ jobs:
           envs=( ${{ needs.prepare-values.outputs.environments }} )
           for env in ${envs[*]};
           do
+
             yq e -i '.spec.template.spec.containers.[0].image = "008577686731.dkr.ecr.us-gov-west-1.amazonaws.com/dsva/${{inputs.ecr_repository}}:${{inputs.ecr_repository}}-${{ github.sha }}"' $env/deployment.yml
           done
           git diff
 
       - name: Add and Commit file
-        if: steps.semantic.outputs.new_release_published == 'true' || github.event.inputs.environments != ''
+        if: steps.semantic.outputs.new_release_published == 'true'
         uses: EndBug/add-and-commit@v7
         with:
           branch: main
