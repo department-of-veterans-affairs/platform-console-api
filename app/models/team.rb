@@ -3,4 +3,5 @@
 class Team < ApplicationRecord
   belongs_to :owner, polymorphic: true
   validates :name, presence: true
+  has_many :apps, dependent: :nullify
 end
