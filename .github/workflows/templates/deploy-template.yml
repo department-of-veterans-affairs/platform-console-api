@@ -11,7 +11,7 @@ on:
         required: true #platform-console
         type: string
       manifests_directory:
-        required: true #${{inputs.manifests_directory}}
+        required: true #vsp-tools-backend/platform-console-api
         type: string
       auto_deploy_envs:
        required: true # utility
