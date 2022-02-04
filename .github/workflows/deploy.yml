@@ -1,7 +1,7 @@
 deploy:
   uses: department-of-veterans-affairs/platform-console-api/.github/workflows/templates/deploy-template.yml@master
   with:
-    repository: 'platform-console'
+    ecr_repository: 'platform-console'
     manifests_directory: 'vsp-tools-backend/platform-console-api'
     auto_deploy_envs: 'utility'
   secrets:
