@@ -28,7 +28,7 @@ jobs:
           access_key_id: ${{ secrets.aws_access_key_id }}
           secret_access_key: ${{ secrets.aws_secret_access_key }}
           account_id: '008577686731'
-          repo: dsva/${{inputs.auto_deploy_envs}}
+          repo: dsva/${{inputs.repository}}
           region: us-gov-west-1
           tags: "${{inputs.repository}}-${{ github.sha }}"
           dockerfile: Dockerfile
