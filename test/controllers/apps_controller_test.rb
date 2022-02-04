@@ -5,8 +5,7 @@ require 'test_helper'
 class AppsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user =  users(:john)
-    token = @user.perishable_token
-    post "/login?token=#{token}"
+    post "/login?uid=#{@user.uid}"
     @team = teams(:one)
     @app = apps(:one)
   end
