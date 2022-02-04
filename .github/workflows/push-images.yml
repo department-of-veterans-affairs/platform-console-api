@@ -1,25 +1,7 @@
-name: Push image to ECR when changes are pushed to master
-
-on:
- push:
-   branches:
-     - master
- workflow_dispatch:
-
-jobs:
-  push-image:
-    runs-on: ubuntu-20.04
-    name: Push image to ECR
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build and push argo images to ECR
-        uses: kciter/aws-ecr-action@v4
-        with:
-          access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          account_id: '008577686731'
-          repo: dsva/platform-console
-          region: us-gov-west-1
-          tags: "platform-console-${{ github.sha }}"
-          dockerfile: Dockerfile
-          extra_build_args: "--build-arg RAILS_ENV=production"
+job_name:
+    uses: department-of-veterans-affairs/platform-console-api/.github/workflows/templates/push-images-template.yml@master
+    with:
+      repository: 'platform-console'
+    secrets:
+      aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
