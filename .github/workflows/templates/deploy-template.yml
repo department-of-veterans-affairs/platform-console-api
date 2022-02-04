@@ -63,6 +63,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         if: github.event.inputs.environments == '' # automated via merge to master
@@ -71,7 +72,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
           aws-region: "us-gov-west-1"
 
-      - uses: actions/checkout@v2
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         if: github.event.inputs.environments != ''  # this is a manual workflow_dispatch call
