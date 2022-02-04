@@ -56,7 +56,7 @@ jobs:
       - name: Set output
         id: set-environments
         run: |
-          echo "::set-output name=environments::${{ github.event.inputs.auto_deploy_envs }}"
+          echo "::set-output name=environments::${{ env.environments }}"
   release:
     needs: [prepare-values]
     if: github.ref == 'refs/heads/master'
