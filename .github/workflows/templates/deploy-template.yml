@@ -66,13 +66,13 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         if: steps.semantic.outputs.new_release_published == 'true' && github.event.inputs.environments == ''
         # use secrets passed into template
-		with:
+        with:
           aws-access-key-id: ${{ secrets.aws_access_key_id }}
           aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
           aws-region: "us-gov-west-1"
         if: github.event.inputs.environments != ''
         # use secrets from repo - this is a manual workflow_dispatch call
-		with:
+        with:
           aws-access-key-id: ${{ SECRETS.aws_access_key_id }}
           aws-secret-access-key: ${{ SECRETS.aws_secret_access_key }}
           aws-region: "us-gov-west-1"
