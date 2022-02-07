@@ -5,7 +5,16 @@ require 'authenticatable_constraint'
 
 Rails.application.routes.draw do
   resources :teams do
-    resources :apps
+    resources :apps do
+      namespace :github do
+        resources :pull_request, only: %i[index show]
+        resources :repository, only: [:show]
+        resources :workflow, only: %i[index show]
+        resources :workflow_run, only: %i[index show] do
+          post :rerun
+        end
+      end
+    end
   end
 
   root to: redirect('/teams'), constraints: ->(request) { AuthenticatableConstraint.new(request).current_user.present? }
