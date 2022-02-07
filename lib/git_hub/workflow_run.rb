@@ -20,7 +20,8 @@ module GitHub
 
     def logs
       url = Octokit.workflow_run_logs(repo_path(@repo), @id)
-      extract_logs(url)
+      logs_zip = URI.parse(url).open
+      extract_logs(logs_zip)
     end
 
     def self.all(repo, workflow_id)
@@ -30,16 +31,17 @@ module GitHub
     private
 
     # Extracts workflow run logs into a string.
-    def extract_logs(url)
-      logs_zip = URI.parse(url).open
-      file = Zip::File.open(logs_zip)
+    def extract_logs(zip_file)
+      file = Zip::File.open(zip_file)
 
-      # Retreive latest two log file names
+      # Retreive the names of the latest two log file names since they seem to come in pairs.
+      # Ex: 1_Analyze.txt and 1_Analyze (1).txt
       file_names = file.entries.map { |entry| entry.name unless entry.name.include?('/') }
                        .compact
                        .sort
                        .last(2)
 
+      # Combine the entries of the two log files into a single string.
       log_contents = ''
       file_names.each do |name|
         log_contents += file.find_entry(name).get_input_stream.read
