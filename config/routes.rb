@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   root to: redirect('/teams'), constraints: ->(request) { AuthenticatableConstraint.new(request).current_user.present? }
   root 'pages#home', as: :unauthenticated_root
 
+  # Demo Page
+  get '/demo', to: 'pages#demo'
+
   # Session
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
