@@ -3,6 +3,7 @@
 module GitHub
   # Class representing a GitHub Repository
   class Repository
+    include GitHub
     attr_accessor :gh_info, :repo
 
     def initialize(repo)

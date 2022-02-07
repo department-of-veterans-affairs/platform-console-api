@@ -6,6 +6,7 @@ require 'open-uri'
 module GitHub
   # Class representing a GitHub WorkflowRun
   class WorkflowRun
+    include GitHub
     attr_accessor :repo, :id, :gh_info
 
     def initialize(repo, id)

@@ -3,6 +3,7 @@
 module GitHub
   # Class representing a GitHub PullRequest
   class PullRequest
+    include GitHub
     attr_accessor :gh_info, :repo, :branch_name, :pull_request_id
 
     def initialize(repo, pull_request_id)

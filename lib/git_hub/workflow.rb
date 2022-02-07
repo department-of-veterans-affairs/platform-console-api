@@ -3,6 +3,7 @@
 module GitHub
   # Class representing a GitHub Workflow
   class Workflow
+    include GitHub
     attr_accessor :gh_info, :repo, :workflow_id
 
     def initialize(repo, id)
