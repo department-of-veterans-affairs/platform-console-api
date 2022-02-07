@@ -183,6 +183,7 @@ GEM
       faraday (>= 0.9)
       sawyer (~> 0.8.0, >= 0.5.3)
     pagy (5.9.1)
+      activesupport
     parallel (1.21.0)
     parser (3.1.0.0)
       ast (~> 2.4.1)
@@ -343,6 +344,7 @@ DEPENDENCIES
   redis (~> 4.6)
   rubocop
   rubocop-rails
+  rubyzip (~> 2.3)
   selenium-webdriver
   sidekiq (~> 6.4)
   simplecov
