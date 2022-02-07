@@ -1,5 +1,8 @@
 name: Code Checks
 on: [push]
+permissions:
+  contents: read
+  checks: write
 jobs:
   linting_and_security:
     name: Linting and Security
@@ -34,6 +37,7 @@ jobs:
     env:
       CI: true
       DATABASE_URL: "postgres://postgres:postgres@127.0.0.1:5432/platform_console_test?pool=4"
+      REDIS_URL: redis://localhost:6379/0
       TERM: xterm-256color
     runs-on: ubuntu-20.04
 
@@ -46,6 +50,12 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 15
         ports:
           - 5432:5432
+
+      redis:
+        image: redis:alpine
+        ports:
+          - 6379:6379
+        options: --entrypoint redis-server
 
     steps:
       - uses: actions/checkout@v2
@@ -111,5 +121,5 @@ jobs:
         with:
           type: simplecov
           result_path: Coverage Report/.last_run.json
-          min_coverage: 90
+          min_coverage: 85
           token: ${{ secrets.GITHUB_TOKEN }}

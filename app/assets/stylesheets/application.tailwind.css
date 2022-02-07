@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.pagy-info {
+  @apply mt-6 py-2;
+}
+
+.pagy-nav {
+  @apply mt-6 flex place-content-center place-self-center inline-flex items-center mt-4 px-2 py-2 divide-gray-100 divide-x;
+}
+
+.pagy-nav .page.prev {
+  @apply rounded-l-md border border-gray-100;
+}
+
+.pagy-nav .page.next {
+  @apply rounded-r-md border border-gray-100;
+}
+
+.pagy-nav .page {
+  @apply border
+}
+
+.pagy-nav .page a,
+.pagy-nav .page.active,
+.pagy-nav .gap,
+.pagy-nav .page.prev.disabled,
+.pagy-nav .page.next.disabled {
+  @apply z-10 bg-white text-blue-900 relative inline-flex items-center px-4 py-2;
+}
+
+.pagy-nav .gap,
+.pagy-nav .page.prev.disabled,
+.pagy-nav .page.next.disabled {
+  @apply text-gray-300 cursor-default;
+}
+
+.pagy-nav .page.active {
+  @apply text-white cursor-default bg-blue-900;
+}

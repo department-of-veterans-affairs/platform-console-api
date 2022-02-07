@@ -21,5 +21,9 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+
+    def login_as(user)
+      visit "/login?uid=#{users(user).uid}"
+    end
   end
 end
