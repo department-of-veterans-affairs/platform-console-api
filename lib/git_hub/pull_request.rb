@@ -11,8 +11,8 @@ module GitHub
       @branch_name = @gh_info[:head][:ref]
     end
 
-    def self.all(_repo_slug)
-      Octokit.pull_requests("#{GITHUB_ORGANIZATION}/#{@repo}")
+    def self.all(repo)
+      Octokit.pull_requests("#{GITHUB_ORGANIZATION}/#{repo}")
     end
 
     def workflow_runs
