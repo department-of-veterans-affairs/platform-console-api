@@ -2,12 +2,11 @@
 
 one:
   id: 1
-  name: Team1
-  owner: john
-  owner_type: User
+  name: App1
+  team_id: 1
 
 two:
   id: 2
-  name: Team2
-  owner: john
-  owner_type: User
+  name: App2
+  team_id: 2
+  
