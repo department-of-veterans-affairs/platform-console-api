@@ -1,20 +1,21 @@
 name: Push image to ECR when changes are pushed to master
 
 on:
- push:
-   branches:
-     - lhattamer-gha-reusable-workflows
+  push:
+    branches:
+      - lhattamer-gha-reusable-workflows
 
- workflow_call:
-   inputs:
-     repository:
-       required: true #platform-console
-       type: string
+  workflow_call:
+    inputs:
+      ecr_repository:
+        required: true #platform-console
+        type: string
     secrets:
       aws_access_key_id: #${{ secrets.AWS_ACCESS_KEY_ID }}
         required: true
       aws_secret_access_key: #${{ secrets.AWS_SECRET_ACCESS_KEY }}
         required: true
+
 
 jobs:
   push-image:
