@@ -2,6 +2,7 @@
 
 # The User Model
 class User < ApplicationRecord
+  rolify
   has_secure_password
 
   before_validation :downcase_email
