@@ -33,7 +33,6 @@ class AuthenticationTest < ApplicationSystemTestCase
     assert page.has_content? 'No route'
 
     login_as :jane
-    users(:jane).add_role :admin
     visit '/sidekiq'
     assert_not page.has_content? 'No route'
   end

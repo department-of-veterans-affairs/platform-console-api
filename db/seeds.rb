@@ -8,8 +8,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-User.where(name: 'John Doe', email: 'user@example.com').first_or_create password: 'password',
-                                                                        uid: SecureRandom.uuid
+User.where(name: 'John Doe', email: 'user@example.com').first_or_create(
+  password: 'password', uid: SecureRandom.uuid
+)
 
 jane = User.where(name: 'Jane Doe', email: 'jane@example.com').first_or_create(
   password: 'password', uid: SecureRandom.uuid
