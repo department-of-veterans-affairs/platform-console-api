@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - lhattamer-gha-reusable-workflows
+  workflow_dispatch:
 
 jobs:
   push-images:
