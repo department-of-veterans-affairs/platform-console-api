@@ -51,15 +51,14 @@ module GitHub
                        .sort
                        .last(2)
 
-      # TODO
-      # file.entries.map { |e| e.name if e.name.include?('/') && !e.directory? }.compact.sort_by { |e| [e, e.scan(/\d+/).first] }
+      # TODO: need to find a way to fix logs
       file.entries.map { |e| e.name if e.name.include?('/') && !e.directory? }.compact
+
       # Combine the entries of the two log files into a single string.
       log_contents = ''
       file_names.each do |name|
         log_contents += file.find_entry(name).get_input_stream.read
       end
-      binding.pry
       log_contents
     end
   end
