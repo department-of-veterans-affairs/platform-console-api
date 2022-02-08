@@ -34,12 +34,27 @@ module ApplicationHelper
           target: '_blank'
         }
       ],
-      drop: [
-        { name: I18n.t('navbar.drop.sign_out'), path: '/logout' }
-      ]
+      drop: nav_links_drop
     }
   end
   # rubocop:enable Metrics/MethodLength
+
+  def nav_links_drop
+    nav_links_drop_admin + [
+      { name: I18n.t('navbar.drop.sign_out'), path: '/logout' }
+    ]
+  end
+
+  def nav_links_drop_admin
+    if current_user&.has_role? :admin
+      [
+        { name: I18n.t('navbar.drop.flipper'), path: '/flipper' },
+        { name: I18n.t('navbar.drop.sidekiq'), path: '/sidekiq' }
+      ]
+    else
+      []
+    end
+  end
 
   def present(model)
     klass = "#{model.class}Presenter".constantize
