@@ -25,7 +25,15 @@ module GitHub
       extract_logs(logs_zip)
     end
 
-    def self.all(repo, workflow_id)
+    def self.all(repo)
+      Octokit.repository_workflow_runs(repo_path(repo))
+    end
+
+    def self.all_for_branch(repo, branch)
+      Octokit.repository_workflow_runs(repo_path(repo), branch)
+    end
+
+    def self.all_for_workflow(repo, workflow_id)
       Octokit.workflow_runs(repo_path(repo), workflow_id)
     end
 

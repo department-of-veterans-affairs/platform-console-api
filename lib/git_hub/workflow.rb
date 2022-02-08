@@ -13,7 +13,7 @@ module GitHub
     end
 
     def runs
-      Octokit.workflow_runs(repo_path(@repo), @workflow_id)
+      GitHub::WorkflowRun.all_for_workflow(@repo, @workflow_id)
     end
 
     def self.all(repo)

@@ -22,7 +22,7 @@ module GitHub
     end
 
     def workflow_runs
-      Octokit.repository_workflow_runs(repo_path(@repo), @branch_name)
+      GitHub::WorkflowRun.all_for_branch(@repo, @branch_name)
     end
 
     def self.all(repo)
