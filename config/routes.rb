@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   resources :teams do
     resources :apps do
       namespace :github do
-        resources :pull_request, only: %i[index show]
-        resources :repository, only: [:show]
-        resources :workflow, only: %i[index show]
-        resources :workflow_run, only: %i[index show] do
-          post :rerun
+        resources :repository, only: [:show], param: :repo do
+          resources :pull_request, only: %i[index show]
+          resources :workflow, only: %i[index show]
+          resources :workflow_run, only: %i[index show] do
+            post :rerun
+          end
         end
       end
     end
