@@ -7,6 +7,7 @@ module GitHub
   # Class representing a GitHub WorkflowRun
   class WorkflowRun
     include GitHub
+    extend GitHub
     attr_accessor :repo, :id, :gh_info
 
     def initialize(repo, id)
@@ -50,11 +51,15 @@ module GitHub
                        .sort
                        .last(2)
 
+      # TODO
+      # file.entries.map { |e| e.name if e.name.include?('/') && !e.directory? }.compact.sort_by { |e| [e, e.scan(/\d+/).first] }
+      file.entries.map { |e| e.name if e.name.include?('/') && !e.directory? }.compact
       # Combine the entries of the two log files into a single string.
       log_contents = ''
       file_names.each do |name|
         log_contents += file.find_entry(name).get_input_stream.read
       end
+      binding.pry
       log_contents
     end
   end
