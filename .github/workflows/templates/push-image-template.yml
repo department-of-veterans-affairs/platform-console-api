@@ -1,0 +1,35 @@
+name: Push image to ECR when changes are pushed to master
+
+on:
+ push:
+   branches:
+     - master
+
+ workflow_call:
+   inputs:
+     repository:
+       required: true #platform-console
+       type: string
+    secrets:
+      aws_access_key_id: #${{ secrets.AWS_ACCESS_KEY_ID }}
+        required: true
+      aws_secret_access_key: #${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        required: true
+
+jobs:
+  push-image:
+    runs-on: ubuntu-20.04
+    name: Push image to ECR
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and push argo images to ECR
+        uses: kciter/aws-ecr-action@v4
+        with:
+          access_key_id: ${{ secrets.aws_access_key_id }}
+          secret_access_key: ${{ secrets.aws_secret_access_key }}
+          account_id: '008577686731'
+          repo: dsva/${{inputs.ecr_repository}}
+          region: us-gov-west-1
+          tags: "${{inputs.ecr_repository}}-${{ github.sha }}"
+          dockerfile: Dockerfile
+          extra_build_args: "--build-arg RAILS_ENV=production"
