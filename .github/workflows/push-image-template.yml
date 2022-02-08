@@ -1,10 +1,6 @@
 name: Push image to ECR when changes are pushed to master
 
 on:
-  push:
-    branches:
-      - lhattamer-gha-reusable-workflows
-
   workflow_call:
     inputs:
       ecr_repository:
