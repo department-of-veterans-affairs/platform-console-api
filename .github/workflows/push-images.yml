@@ -1,5 +1,5 @@
 push-images:
-  uses: department-of-veterans-affairs/platform-console-api/.github/workflows/templates/push-images-template.yml@master
+  uses: department-of-veterans-affairs/platform-console-api/.github/workflows/push-images-template.yml@lhattamer-gha-reusable-workflows
   with:
     ecr_repository: 'platform-console'
   secrets:

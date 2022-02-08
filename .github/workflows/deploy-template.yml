@@ -3,7 +3,7 @@ name: Release and Update Manifests
 on:
   push:
     branches:
-      - lhattamer-gha-reusable-workflows
+      - master
 
   workflow_call:
     inputs:
