@@ -3,12 +3,12 @@ name: Push image to ECR when changes are pushed to master
 on:
   push:
     branches:
-      - lhattamer-gha-reusable-workflows
+      - master
   workflow_dispatch:
 
 jobs:
   push-images:
-    uses: department-of-veterans-affairs/platform-console-api/.github/workflows/push-image-template.yml@lhattamer-gha-reusable-workflows
+    uses: department-of-veterans-affairs/platform-console-api/.github/workflows/push-image-template.yml@master
     with:
       ecr_repository: 'platform-console'
     secrets:
