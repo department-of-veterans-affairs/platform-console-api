@@ -20,12 +20,9 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   # Admin-only area
-  # This can be ommitted after Pundit is implemented
   constraints lambda { |request|
-                Rails.env.development? ||
-                  (AuthenticatableConstraint.new(request).current_user.present? &&
-                  AuthenticatableConstraint.new(request).current_user.has_role?(:admin))
-              } do
+    Rails.env.development? || AuthenticatableConstraint.new(request).current_user&.has_role?(:admin)
+  } do
     mount Flipper::UI.app(Flipper) => '/flipper'
     mount Sidekiq::Web => '/sidekiq'
   end
