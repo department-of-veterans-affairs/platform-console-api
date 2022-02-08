@@ -209,6 +209,7 @@ GEM
     redis (4.6.0)
     regexp_parser (2.2.0)
     rexml (3.2.5)
+    rolify (6.0.0)
     rubocop (1.25.1)
       parallel (~> 1.10)
       parser (>= 3.1.0.0)
@@ -306,6 +307,7 @@ DEPENDENCIES
   rack-mini-profiler
   rails (~> 7.0.1)
   redis (~> 4.6)
+  rolify (~> 6.0)
   rubocop
   rubocop-rails
   selenium-webdriver
