@@ -1,9 +1,10 @@
-name: Push image to ECR when changes are pushed to master
+name: Release and Update Manifests
 
 on:
   push:
     branches:
       - lhattamer-gha-reusable-workflows
+  workflow_dispatch:
 
 jobs:
   deploy:
