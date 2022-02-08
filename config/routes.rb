@@ -11,13 +11,21 @@ Rails.application.routes.draw do
   root to: redirect('/teams'), constraints: ->(request) { AuthenticatableConstraint.new(request).current_user.present? }
   root 'pages#home', as: :unauthenticated_root
 
+  # Demo Page
+  get '/demo', to: 'pages#demo'
+
   # Session
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
   # Admin-only area
-  constraints ->(request) { Rails.env.development? || AuthenticatableConstraint.new(request).current_user&.admin? } do
+  # This can be ommitted after Pundit is implemented
+  constraints lambda { |request|
+                Rails.env.development? ||
+                  (AuthenticatableConstraint.new(request).current_user.present? &&
+                  AuthenticatableConstraint.new(request).current_user.has_role?(:admin))
+              } do
     mount Flipper::UI.app(Flipper) => '/flipper'
     mount Sidekiq::Web => '/sidekiq'
   end
