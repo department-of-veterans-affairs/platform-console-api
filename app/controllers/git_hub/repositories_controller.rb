@@ -7,6 +7,15 @@ module GitHub
     # GET /git_hub/repositories/1 or /git_hub/repositories/1.json
     def show; end
 
+    def search
+      results = App.github_repo_search(params[:query])
+      respond_to do |format|
+        format.json {
+          render json: { results: results }
+        }
+      end
+    end
+
     private
 
     # Use callbacks to share common setup or constraints between actions.
