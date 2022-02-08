@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :name, :email, presence: true
   validates :password, length: { minimum: 8 }, if: :password
+  has_paper_trail
 
   private
 
