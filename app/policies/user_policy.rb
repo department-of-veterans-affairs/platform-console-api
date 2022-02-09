@@ -4,7 +4,7 @@
 class UserPolicy < ApplicationPolicy
   def permitted_attributes
     %i[
-      name email password_digest uid
+      name email password_digest uid role_ids
     ]
   end
 end
