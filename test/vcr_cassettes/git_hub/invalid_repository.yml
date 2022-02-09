@@ -13,8 +13,6 @@ http_interactions:
       - Octokit Ruby Gem 4.22.0
       Content-Type:
       - application/json
-      Authorization:
-      - token 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
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -25,27 +23,11 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Tue, 08 Feb 2022 23:47:20 GMT
+      - Wed, 09 Feb 2022 05:57:43 GMT
       Content-Type:
       - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      X-Oauth-Scopes:
-      - read:org, read:user, repo, workflow
-      X-Accepted-Oauth-Scopes:
-      - repo
       X-Github-Media-Type:
       - github.v3; format=json
-      X-Ratelimit-Limit:
-      - '5000'
-      X-Ratelimit-Remaining:
-      - '4859'
-      X-Ratelimit-Reset:
-      - '1644364547'
-      X-Ratelimit-Used:
-      - '141'
-      X-Ratelimit-Resource:
-      - core
       Access-Control-Expose-Headers:
       - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
         X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
@@ -67,10 +49,22 @@ http_interactions:
       - default-src 'none'
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '51'
+      X-Ratelimit-Reset:
+      - '1644389859'
+      X-Ratelimit-Resource:
+      - core
+      X-Ratelimit-Used:
+      - '9'
+      Content-Length:
+      - '112'
       X-Github-Request-Id:
-      - CFC2:1556:9A4568:A341A2:62030107
+      - D527:77DA:14E2796:15AC37A:620357D7
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/repos#get-a-repository"}'
-  recorded_at: Tue, 08 Feb 2022 23:47:20 GMT
+  recorded_at: Wed, 09 Feb 2022 05:57:43 GMT
 recorded_with: VCR 6.0.0
