@@ -15,7 +15,42 @@ module ApplicationHelper
     link_to name, options, html_options, &block
   end
 
+  def sort_link_to(name, column, **options)
+    direction = if params[:sort] == column.to_s
+                  params[:direction] == 'asc' ? 'desc' : 'asc'
+                else
+                  'desc'
+                end
+    link_to request.params.merge(sort: column, direction: direction), **options do
+      content_tag(:span, name) + sort_direction_icon(column)
+    end
+  end
+
   # rubocop:disable Metrics/MethodLength
+  def sort_direction_icon(column)
+    return '' unless params[:sort] == column.to_s
+
+    if params[:direction] == 'asc'
+      content_tag :div, class: 'flex' do
+        content_tag :svg, xmlms: 'http://www.w3.org/2000/svg', class: 'ml-2 h-4 w-4', 'viewBox': '0 0 20 20',
+                          fill: 'currentColor' do
+          content_tag :path, nil,
+                      d: 'M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0' \
+                         '011.414 0l4 4a1 1 0 010 1.414z'
+        end
+      end
+    else
+      content_tag :div, class: 'flex' do
+        content_tag :svg, xmlms: 'http://www.w3.org/2000/svg', class: 'ml-2 h-4 w-4', 'viewBox': '0 0 20 20',
+                          fill: 'currentColor' do
+          content_tag :path, nil,
+                      d: 'M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 ' \
+                         '01-1.414 0l-4-4a1 1 0 010-1.414z'
+        end
+      end
+    end
+  end
+
   def nav_links
     {
       main: [
