@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module GitHub
+  # Handles displaying pull request info for an app
   class PullRequestsController < ApplicationController
     before_action :set_git_hub_pull_request, only: %i[show]
 

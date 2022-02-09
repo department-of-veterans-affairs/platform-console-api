@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module GitHub
+  # Handles displaying repository info for an app
   class RepositoriesController < ApplicationController
     before_action :set_git_hub_repository, only: %i[show]
 

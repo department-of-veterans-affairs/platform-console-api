@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module GitHub
+  # Handles displaying workflow run info for an app
   class WorkflowRunsController < ApplicationController
     before_action :set_git_hub_workflow_run, only: %i[show]
 
