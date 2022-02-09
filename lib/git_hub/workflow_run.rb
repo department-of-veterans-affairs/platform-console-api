@@ -21,8 +21,7 @@ module GitHub
 
     def logs
       url = Octokit.workflow_run_logs(repo_path(@repo), @id)
-      logs_zip = URI.parse(url).open
-      extract_logs(logs_zip)
+      extract_logs(url)
     end
 
     def self.all(repo)
@@ -40,8 +39,8 @@ module GitHub
     private
 
     # Extracts workflow run logs into a hash.
-    def extract_logs(zip_file) # rubocop:disable Metrics/AbcSize
-      folder = Zip::File.open(zip_file)
+    def extract_logs(url) # rubocop:disable Metrics/AbcSize
+      folder = Zip::File.open(URI.parse(url).open)
       log_files = folder.entries.map { |entry| entry.name if entry.name.include?('/') && !entry.directory? }
                         .compact.sort_by { |name| name[/\d+/].to_i }
 
