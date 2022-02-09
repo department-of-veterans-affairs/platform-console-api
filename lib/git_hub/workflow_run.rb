@@ -39,23 +39,19 @@ module GitHub
 
     private
 
-    # Extracts workflow run logs into a string.
-    def extract_logs(zip_file)
-      file = Zip::File.open(zip_file)
+    # Extracts workflow run logs into a hash.
+    def extract_logs(zip_file) # rubocop:disable Metrics/AbcSize
+      folder = Zip::File.open(zip_file)
+      log_files = folder.entries.map { |entry| entry.name if entry.name.include?('/') && !entry.directory? }
+                        .compact.sort_by { |name| name[/\d+/].to_i }
 
-      # Retreive the names of the latest two log file names since they seem to come in pairs.
-      # Ex: 1_Analyze.txt and 1_Analyze (1).txt
-      file_names = file.entries.map { |entry| entry.name unless entry.name.include?('/') }
-                       .compact
-                       .sort
-                       .last(2)
-
-      # Combine the entries of the two log files into a single string.
-      log_contents = ''
-      file_names.each do |name|
-        log_contents += file.find_entry(name).get_input_stream.read
+      results = {}
+      log_files.each do |name|
+        folder_name = name.split('/').first
+        results[folder_name] = results[folder_name].to_s + folder.find_entry(name).get_input_stream.read
       end
-      log_contents
+
+      results
     end
   end
 end
