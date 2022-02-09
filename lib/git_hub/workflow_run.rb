@@ -48,7 +48,8 @@ module GitHub
       results = {}
       log_files.each do |name|
         folder_name = name.split('/').first
-        results[folder_name] = results[folder_name].to_s + folder.find_entry(name).get_input_stream.read
+        contents = folder.find_entry(name).get_input_stream.read
+        results[folder_name] = results[folder_name].to_s + contents
       end
 
       results
