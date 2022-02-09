@@ -3,12 +3,11 @@
 module GitHub
   # Class representing a GitHub Repository
   class Repository
-    include GitHub
     attr_accessor :gh_info, :repo
 
     def initialize(repo)
       @repo = repo
-      @gh_info = Octokit.repository(repo_path(@repo))
+      @gh_info = Octokit.repository("#{GITHUB_ORGANIZATION}/#{@repo}")
     end
 
     def issues
