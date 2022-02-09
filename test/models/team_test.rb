@@ -8,12 +8,12 @@ class TeamTest < ActiveSupport::TestCase
   end
 
   test 'valid team' do
-    @team.update_attributes(name: 'Console Services')
+    @team.update(name: 'Console Services')
     assert @team.valid?
   end
 
   test 'valid team with papertrail versions' do
-    @team.update_attributes(name: 'Console Services')
+    @team.update(name: 'Console Services')
     assert @team.valid?
     assert_not_nil @team.versions
   end
