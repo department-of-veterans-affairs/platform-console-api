@@ -47,8 +47,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_08_182516) do
     t.string "email"
     t.string "password_digest"
     t.string "uid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["password_digest"], name: "index_users_on_password_digest"
     t.index ["uid"], name: "index_users_on_uid"
@@ -65,8 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_08_182516) do
   end
 
   create_table "versions", force: :cascade do |t|
-    t.string "item_type"
-    t.string "{:null=>false}"
+    t.string "item_type", null: false
     t.bigint "item_id", null: false
     t.string "event", null: false
     t.string "whodunnit"
