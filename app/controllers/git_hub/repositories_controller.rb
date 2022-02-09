@@ -11,12 +11,12 @@ module GitHub
 
     # Use callbacks to share common setup or constraints between actions.
     def set_git_hub_repository
-      @git_hub_repository = GitHub::Repository.find(params[:id])
+      @git_hub_repository = GitHub::Repository.new(params[:repo])
     end
 
     # Only allow a list of trusted parameters through.
     def git_hub_repository_params
-      params.fetch(:git_hub_repository, {})
+      params.require(:git_hub_repository).permit(:repo)
     end
   end
 end
