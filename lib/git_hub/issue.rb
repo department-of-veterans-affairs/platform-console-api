@@ -4,6 +4,7 @@ module GitHub
   # Class representing a GitHub Issue
   class Issue
     include GitHub
+    extend GitHub
     attr_accessor :gh_info, :repo, :issue_id
 
     def initialize(repo, issue_id)
