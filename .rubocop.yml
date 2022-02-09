@@ -7,4 +7,4 @@ Metrics/MethodLength:
   Max: 15
 
 Style/HashSyntax:
-   EnforcedShorthandSyntax: either
+  EnforcedShorthandSyntax: either

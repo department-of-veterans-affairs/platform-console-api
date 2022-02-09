@@ -3,6 +3,7 @@
 # The User Model
 class User < ApplicationRecord
   include Memberable
+  rolify
   has_secure_password
 
   before_validation :downcase_email

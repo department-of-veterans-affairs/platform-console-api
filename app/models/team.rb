@@ -4,7 +4,6 @@
 class Team < ApplicationRecord
   validates :name, presence: true
   belongs_to :memberable, polymorphic: true, optional: true
-  # Belongs to owner can be removed
   belongs_to :owner, polymorphic: true
 
   has_many :memberships, dependent: :destroy
