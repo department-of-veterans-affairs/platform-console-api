@@ -2,7 +2,7 @@
 
 module GitHub
   # Handles displaying workflow info for an app
-  class WorkflowsController < ApplicationController
+  class WorkflowsController < BaseController
     before_action :set_git_hub_workflow, only: %i[show]
 
     # GET /git_hub/workflows or /git_hub/workflows.json

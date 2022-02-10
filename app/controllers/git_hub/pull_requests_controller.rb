@@ -2,7 +2,7 @@
 
 module GitHub
   # Handles displaying pull request info for an app
-  class PullRequestsController < ApplicationController
+  class PullRequestsController < BaseController
     before_action :set_git_hub_pull_request, only: %i[show]
 
     # GET /git_hub/pull_requests or /git_hub/pull_requests.json
