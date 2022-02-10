@@ -21,6 +21,9 @@ module GitHub
         workflow_run_id = GitHub::WorkflowRun.all('vets-api').workflow_runs.last.id
         workflow_run = GitHub::WorkflowRun.new('vets-api', workflow_run_id)
         assert_not_nil workflow_run.gh_info.run_number
+
+        logs = workflow_run.logs
+        assert_kind_of Hash, logs
       end
     end
 
