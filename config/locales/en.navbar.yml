@@ -2,6 +2,8 @@ en:
   navbar:
     docs: Docs
     drop:
+      flipper: Flipper
+      sidekiq: Sidekiq
       sign_out: Sign out
     support: Support
     teams: Teams
