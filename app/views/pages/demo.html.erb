@@ -1,0 +1,22 @@
+<%# 404 Template from https://tailwindui.com/components/marketing/feedback/404-pages#component-9e31dc71bccd709e04de0ed11a1328b0 %>
+<main class="min-h-full bg-cover bg-top sm:bg-top" style="background-image: url('https://images.unsplash.com/photo-1545972154-9bb223aac798?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3050&q=80&exp=8&con=-15&sat=-75');">
+  <div class="max-w-7xl mx-auto px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-48">
+    <p class="text-sm font-semibold text-black text-opacity-50 uppercase tracking-wide">Platform Console Demo Page</p>
+    <h1 class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">Platform Console Demo Page</h1>
+
+    <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20">
+      <div>
+        <h2 class="text-gray-800 text-3xl font-semibold">Stimulus Controller</h2>
+        <p class="mt-2 text-gray-600">Type your name and click Greet!</p>
+      </div>
+      <div class="flex justify-end mt-4" data-controller="hello" >
+        <input class="border-2 border-primary bg-red transition h-12 px-5 pr-16 rounded-md focus:outline-none w-full text-black text-lg " data-hello-target="name" type="text" placeholder="Type Your Name Here">
+        <button data-action="click->hello#greet" class="flex shadow w-32 block border-teal-600 border-2 rounded-full focus:outline-none focus:border-teal-600 px-4 py-2 text-teal-600 hover:bg-teal-600 hover:text-white">
+          Greet!
+        </button>
+        <span data-hello-target="output">
+        </span>
+      </div>
+    </div>
+  </div>
+</main>
