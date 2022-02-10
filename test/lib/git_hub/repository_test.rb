@@ -3,7 +3,7 @@
 require 'test_helper'
 
 module GitHub
-  class RepositoryTest < ActionDispatch::IntegrationTest
+  class RepositoryTest < ActiveSupport::TestCase
     setup do
       VCR.use_cassette('git_hub/repository') do
         @repository = GitHub::Repository.new('vets-api')

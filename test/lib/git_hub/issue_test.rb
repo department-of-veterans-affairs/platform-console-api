@@ -3,7 +3,7 @@
 require 'test_helper'
 
 module GitHub
-  class IssueTest < ActionDispatch::IntegrationTest
+  class IssueTest < ActiveSupport::TestCase
     setup do
       VCR.use_cassette('git_hub/issue') do
         @issue = GitHub::Issue.new('vets-api', '24')

@@ -3,7 +3,7 @@
 require 'test_helper'
 
 module GitHub
-  class WorkflowRunTest < ActionDispatch::IntegrationTest
+  class WorkflowRunTest < ActiveSupport::TestCase
     setup do
       VCR.use_cassette('git_hub/workflow_run') do
         @workflow_run = GitHub::WorkflowRun.new('vets-api', '1815728096')
