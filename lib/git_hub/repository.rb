@@ -8,7 +8,7 @@ module GitHub
 
     def initialize(repo)
       @repo = repo
-      @gh_info = Octokit.repository(repo_path(@repo))
+      @gh_info = Octokit.repository("#{GITHUB_ORGANIZATION}/#{@repo}")
     end
 
     def issues
