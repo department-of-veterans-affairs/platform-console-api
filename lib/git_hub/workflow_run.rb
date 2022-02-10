@@ -29,7 +29,7 @@ module GitHub
     end
 
     def self.all_for_branch(repo, branch)
-      Octokit.repository_workflow_runs("#{GITHUB_ORGANIZATION}/#{repo}", branch:)
+      Octokit.repository_workflow_runs("#{GITHUB_ORGANIZATION}/#{repo}", { branch: })
     end
 
     def self.all_for_workflow(repo, workflow_id)
