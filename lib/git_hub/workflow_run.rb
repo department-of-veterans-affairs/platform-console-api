@@ -6,21 +6,20 @@ require 'open-uri'
 module GitHub
   # Class representing a GitHub WorkflowRun
   class WorkflowRun
-    include GitHub
-    attr_accessor :repo, :id, :gh_info
+    attr_accessor :repo, :workflow_run_id, :gh_info
 
-    def initialize(repo, id)
+    def initialize(repo, workflow_run_id)
       @repo = repo
-      @id = id
-      @gh_info = Octokit.workflow_run("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      @workflow_run_id = workflow_run_id
+      @gh_info = Octokit.workflow_run("#{GITHUB_ORGANIZATION}/#{@repo}", @workflow_run_id)
     end
 
     def rerun!
-      Octokit.rerun_workflow_run("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      Octokit.rerun_workflow_run("#{GITHUB_ORGANIZATION}/#{@repo}", @workflow_run_id)
     end
 
     def logs
-      url = Octokit.workflow_run_logs("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      url = Octokit.workflow_run_logs("#{GITHUB_ORGANIZATION}/#{@repo}", @workflow_run_id)
       logs_zip = URI.parse(url).open
       extract_logs(logs_zip)
     end
@@ -29,8 +28,8 @@ module GitHub
       Octokit.repository_workflow_runs("#{GITHUB_ORGANIZATION}/#{repo}")
     end
 
-    def self.all_for_branch(repo, branch)
-      Octokit.repository_workflow_runs("#{GITHUB_ORGANIZATION}/#{repo}", branch)
+    def self.all_for_branch(repo, branch_name)
+      Octokit.repository_workflow_runs("#{GITHUB_ORGANIZATION}/#{repo}", branch: branch_name)
     end
 
     def self.all_for_workflow(repo, workflow_id)
