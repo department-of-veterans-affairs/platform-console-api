@@ -4,23 +4,20 @@ module GitHub
   # Class representing a GitHub Repository
   class Repository
     include GitHub
-    attr_accessor :gh_info, :repo
+    attr_accessor :gh_info, :repo, :workflows
 
     def initialize(repo)
       @repo = repo
       @gh_info = Octokit.repository("#{GITHUB_ORGANIZATION}/#{@repo}")
+      @workflows = GitHub::Workflow.all(@repo)
     end
 
     def issues
       GitHub::Issue.all(@repo)
     end
 
-    def pull_requests
-      GitHub::PullRequest.all(@repo)
-    end
-
-    def workflows
-      GitHub::Workflow.all(@repo)
+    def pull_requests(page = 1)
+      GitHub::PullRequest.all(@repo, page)
     end
 
     # List all workflow runs for this repository.

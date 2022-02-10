@@ -25,8 +25,8 @@ module GitHub
       GitHub::WorkflowRun.all_for_branch(@repo, @branch_name)
     end
 
-    def self.all(repo)
-      Octokit.pull_requests("#{GITHUB_ORGANIZATION}/#{repo}")
+    def self.all(repo, page = 1)
+      Octokit.pull_requests("#{GITHUB_ORGANIZATION}/#{repo}", { page: })
     end
   end
 end
