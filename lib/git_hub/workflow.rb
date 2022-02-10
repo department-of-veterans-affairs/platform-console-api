@@ -9,7 +9,7 @@ module GitHub
     def initialize(repo, id)
       @repo = repo
       @workflow_id = id
-      @gh_info = Octokit.workflow(repo_path(repo))
+      @gh_info = Octokit.workflow("#{GITHUB_ORGANIZATION}/#{@repo}")
     end
 
     def runs
@@ -17,7 +17,7 @@ module GitHub
     end
 
     def self.all(repo)
-      Octokit.workflows(repo_path(repo))
+      Octokit.workflows("#{GITHUB_ORGANIZATION}/#{repo}")
     end
   end
 end
