@@ -30,6 +30,11 @@ module GitHub
       GitHub::WorkflowRun.all_for_branch(@repo, branch_name)
     end
 
+    # List runs for a particular workflow in this repository.
+    def workflow_run(workflow_id)
+      GitHub::WorkflowRun.all_for_workflow(@repo, workflow_id)
+    end
+
     # Lists all repositories for the organization.
     def self.all
       Octokit.organization_repositories(GITHUB_ORGANIZATION)
