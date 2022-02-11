@@ -40,6 +40,7 @@ group :development, :test do
   gem 'pry-rails'         # Adds pry, an interactive REPL debugger; Try show-models
   gem 'rubocop'           # Ruby Style Guide Analyzer
   gem 'rubocop-rails'     # Add Rails specific cops to RuboCop
+  gem 'webmock'           # Stubbing and setting expectations in HTTP requests
 end
 
 group :test do
@@ -47,5 +48,6 @@ group :test do
   gem 'minitest-ci'        # Minitest Junit XML results for GHA
   gem 'selenium-webdriver' # Capybara system testing with Chrome
   gem 'simplecov'          # Code coverage for Ruby
+  gem 'vcr'                # Record/replay HTTP interactions
   gem 'webdrivers'         # Easy installation and use of web drivers to run system tests with browsers
 end
