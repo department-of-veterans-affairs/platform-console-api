@@ -20,10 +20,7 @@
 
         <%= link_to "Repository", team_app_git_hub_repository_path(@team, @app, @app.github_repo_slug), class: controller_name.include?('repositories') ? selected_css : normal_css %>
 
-        <%= link_to team_app_git_hub_repository_pull_requests_path(@team, @app, @app.github_repo_slug), class: controller_name.include?('pull_requests') ? selected_css : normal_css do %>
-            Pull Requests
-            <span class="bg-gray-100 text-gray-900 hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block">52</span>
-        <% end %>
+        <%= link_to "Pull Requests", team_app_git_hub_repository_pull_requests_path(@team, @app, @app.github_repo_slug), class: controller_name.include?('pull_requests') ? selected_css : normal_css %>
 
         <%= link_to 'Workflows', team_app_git_hub_repository_workflows_path(@team, @app, @app.github_repo_slug), class: controller_name.include?('workflow') ? selected_css : normal_css %>
 
