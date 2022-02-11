@@ -18,7 +18,7 @@ module GitHub
 
     test 'lists all runs for the workflow' do
       VCR.use_cassette('git_hub/workflow', record: :new_episodes) do
-        workflow_runs = @workflow.runs.workflow_runs
+        workflow_runs = @workflow.workflow_runs.workflow_runs
         assert_equal 13_418_388, workflow_runs.first.workflow_id
       end
     end

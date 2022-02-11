@@ -50,7 +50,7 @@ module GitHub
 
     test 'lists workflow runs for the repository' do
       VCR.use_cassette('git_hub/repository', record: :new_episodes) do
-        all_workflow_runs = @repository.all_workflow_runs.workflow_runs
+        all_workflow_runs = @repository.workflow_runs.workflow_runs
         assert_kind_of Array, all_workflow_runs
         assert_not_nil all_workflow_runs.first.run_number
       end
@@ -66,7 +66,7 @@ module GitHub
 
     test 'lists workflow runs for a given workflow in the repository' do
       VCR.use_cassette('git_hub/repository', record: :new_episodes) do
-        workflow_runs = @repository.workflow_runs('13418388').workflow_runs
+        workflow_runs = @repository.workflow_run('13418388').workflow_runs
         assert_kind_of Array, workflow_runs
         assert_equal 13_418_388, workflow_runs.first.workflow_id
       end

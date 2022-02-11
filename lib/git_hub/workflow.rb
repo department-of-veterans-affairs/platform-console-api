@@ -3,16 +3,16 @@
 module GitHub
   # Class representing a GitHub Workflow
   class Workflow
-    attr_accessor :gh_info, :repo, :workflow_id
+    attr_accessor :gh_info, :repo, :id
 
     def initialize(repo, id)
       @repo = repo
-      @workflow_id = id
-      @gh_info = Octokit.workflow("#{GITHUB_ORGANIZATION}/#{@repo}", id)
+      @id = id
+      @gh_info = Octokit.workflow("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
     end
 
-    def runs
-      GitHub::WorkflowRun.all_for_workflow(@repo, @workflow_id)
+    def workflow_runs
+      GitHub::WorkflowRun.all_for_workflow(@repo, @id)
     end
 
     def self.all(repo)

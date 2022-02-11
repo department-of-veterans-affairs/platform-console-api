@@ -2,73 +2,12 @@
   <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate mt-4">
     Workflows
   </h1>
-  <%= link_to new_git_hub_workflow_path, class: 'place-self-center inline-flex items-center mt-4 px-2 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' do %>
-    <span class="sr-only">New workflow</span>
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-      <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-    </svg>
-  <% end %>
 </div>
 
 <br>
 
-<% if @teams.present? %>
-  <div class="flex flex-col">
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-          <table class="table-fixed min-w-full divide-y divide-gray-200" id="git_hub_workflows">
-            <thead class="bg-gray-50">
-              <tr>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase w-full">
-                  Name
-                </th>
-                <th scope="col" class="relative px-6 py-3">
-                  <span class="sr-only">Edit</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @git_hub_workflows.each do |git_hub_workflow| %>
-              <tr class="<%= cycle 'bg-white', 'bg-gray-50' %>">
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  <%= link_to git_hub_workflow.name, git_hub_workflow, class: 'text-blue-900 hover:text-blue-800' %>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <div class="flex space-x-2">
-                    <%= link_to 'Edit', edit_git_hub_workflow_path(git_hub_workflow), class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
-                    <%= button_to 'Destroy', git_hub_workflow, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-red-900 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-900 sm:text-sm' %>
-                  </div>
-                </td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+<%= render 'git_hub/tabs' %>
 
-  <% if @pagy %>
-    <div class="md:flex justify-between text-center mt-6 md:mt-0">
-      <%== pagy_info @pagy %>
-      <%== pagy_nav @pagy %>
-    </div>
-  <% end %>
-<% else %>
-  <div class="text-center border-dashed border-gray-300 hover:border-gray-400 border-2 rounded-lg p-6 max-w-lg m-auto">
-    <svg width="96" height="96" fill="none" class="mx-auto mb-6 text-gray-900"><path d="M36 28.024A18.05 18.05 0 0025.022 39M59.999 28.024A18.05 18.05 0 0170.975 39" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><ellipse cx="37.5" cy="43.5" rx="4.5" ry="7.5" fill="currentColor"></ellipse><ellipse cx="58.5" cy="43.5" rx="4.5" ry="7.5" fill="currentColor"></ellipse><path d="M24.673 75.42a9.003 9.003 0 008.879 5.563m-8.88-5.562A8.973 8.973 0 0124 72c0-7.97 9-18 9-18s9 10.03 9 18a9 9 0 01-8.448 8.983m-8.88-5.562C16.919 68.817 12 58.983 12 48c0-19.882 16.118-36 36-36s36 16.118 36 36-16.118 36-36 36a35.877 35.877 0 01-14.448-3.017" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M41.997 71.75A14.94 14.94 0 0148 70.5c2.399 0 4.658.56 6.661 1.556a3 3 0 003.999-4.066 12 12 0 00-10.662-6.49 11.955 11.955 0 00-7.974 3.032c1.11 2.37 1.917 4.876 1.972 7.217z" fill="currentColor"></path></svg>
-    <h3 class="mt-2 text-sm font-medium text-gray-900">No teams</h3>
-    <p class="mt-1 text-sm text-gray-500">
-      Get started by creating a new team.
-    </p>
-    <div class="mt-6">
-      <%= link_to new_git_hub_workflow_path, class: 'inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' do %>
-        <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-        </svg>
-        New Team
-      <% end %>
-    </div>
-  </div>
+<% if @git_hub_workflows.present? %>
+  <%= render 'git_hub/workflows/dashboard', all_workflows: @git_hub_workflows, current_workflow: nil, workflow_runs: @git_hub_workflow_runs %>
 <% end %>

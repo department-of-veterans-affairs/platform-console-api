@@ -6,20 +6,20 @@ require 'open-uri'
 module GitHub
   # Class representing a GitHub WorkflowRun
   class WorkflowRun
-    attr_accessor :repo, :workflow_run_id, :gh_info
+    attr_accessor :repo, :id, :gh_info
 
-    def initialize(repo, workflow_run_id)
+    def initialize(repo, id)
       @repo = repo
-      @workflow_run_id = workflow_run_id
-      @gh_info = Octokit.workflow_run("#{GITHUB_ORGANIZATION}/#{@repo}", @workflow_run_id)
+      @id = id
+      @gh_info = Octokit.workflow_run("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
     end
 
     def rerun!
-      Octokit.rerun_workflow_run("#{GITHUB_ORGANIZATION}/#{@repo}", @workflow_run_id)
+      Octokit.rerun_workflow_run("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
     end
 
     def logs
-      url = Octokit.workflow_run_logs("#{GITHUB_ORGANIZATION}/#{@repo}", @workflow_run_id)
+      url = Octokit.workflow_run_logs("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
       logs_zip = URI.parse(url).open
       extract_logs(logs_zip)
     end
@@ -39,8 +39,8 @@ module GitHub
     private
 
     # Extracts workflow run logs into a hash.
-    def extract_logs(zip_file) # rubocop:disable Metrics/AbcSize
-      folder = Zip::File.open(zip_file)
+    def extract_logs(url) # rubocop:disable Metrics/AbcSize
+      folder = Zip::File.open(URI.parse(url).open)
       log_files = folder.entries.map { |entry| entry.name if entry.name.include?('/') && !entry.directory? }
                         .compact.sort_by { |name| name[/\d+/].to_i }
 

@@ -3,16 +3,16 @@
 module GitHub
   # Class representing a GitHub Issue
   class Issue
-    attr_accessor :gh_info, :repo, :issue_id
+    attr_accessor :gh_info, :repo, :id
 
-    def initialize(repo, issue_id)
+    def initialize(repo, id)
       @repo = repo
-      @gh_info = Octokit.issue("#{GITHUB_ORGANIZATION}/#{@repo}", issue_id)
-      @issue_id = issue_id
+      @id = id
+      @gh_info = Octokit.issue("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
     end
 
     def comments
-      Octokit.issue_comments("#{GITHUB_ORGANIZATION}/#{@repo}", @issue_id)
+      Octokit.issue_comments("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
     end
 
     def self.all(repo)

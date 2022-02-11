@@ -1,11 +1,9 @@
-<div class="mt-4">
-  <%= render @git_hub_repository %>
+<div class="flex justify-between">
+  <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate mt-4">
+    Repository: <%= @git_hub_repository.gh_info[:name] %>
+  </h1>
 </div>
 
 <br>
 
-<div class="flex space-x-4">
-  <%= link_to 'Edit this repository', edit_git_hub_repository_path(@git_hub_repository), class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' %>
-
-  <%= button_to 'Destroy this repository', @git_hub_repository, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-red-900 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-800 sm:text-sm' %>
-</div>
+<%= render 'git_hub/tabs' %>
