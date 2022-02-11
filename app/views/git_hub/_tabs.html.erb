@@ -23,6 +23,8 @@
         <%= link_to "Pull Requests", team_app_git_hub_repository_pull_requests_path(@team, @app, @app.github_repo_slug), class: controller_name.include?('pull_requests') ? selected_css : normal_css %>
 
         <%= link_to 'Workflows', team_app_git_hub_repository_workflows_path(@team, @app, @app.github_repo_slug), class: controller_name.include?('workflow') ? selected_css : normal_css %>
+        
+        <%= link_to 'Issues', team_app_git_hub_repository_issues_path(@team, @app, @app.github_repo_slug), class: controller_name.include?('issue') ? selected_css : normal_css %>
 
       </nav>
     </div>

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
           resources :pull_requests, only: %i[index show], param: :number do
             resources :workflow_runs, only: [:index]
           end
+          resources :issues, only: %i[index show], param: :number
           resources :workflows, only: %i[index show] do
             resources :workflow_runs, only: %i[index show] do
               post :rerun
