@@ -25,13 +25,9 @@ jobs:
       environments: ${{ steps.set-environments.outputs.environments }}
     steps:
       - name: Set to auto deploy environments on push to master
-        run: |
-         echo "triggered via schedule"
-         echo "environments=${{inputs.auto_deploy_envs}}" >> $GITHUB_ENV
-      - name: Set output
         id: set-environments
         run: |
-          echo "::set-output name=environments::${{ env.environments }}"
+          echo "::set-output name=environments::${{ inputs.auto_deploy_envs }}"
   release:
     needs: [prepare-values]
     if: github.ref == 'refs/heads/master'
