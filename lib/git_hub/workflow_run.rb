@@ -20,8 +20,7 @@ module GitHub
 
     def logs
       url = Octokit.workflow_run_logs("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
-      logs_zip = URI.parse(url).open
-      extract_logs(logs_zip)
+      extract_logs(url)
     end
 
     def self.all(repo)
