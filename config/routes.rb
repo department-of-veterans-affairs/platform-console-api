@@ -8,12 +8,11 @@ Rails.application.routes.draw do
     resources :apps do
       namespace :git_hub do
         resources :repositories, only: [:show], param: :repo do
-          resources :pull_requests, only: %i[index show], param: :number do
-            resources :workflow_runs, only: [:index]
-          end
+          resources :pull_requests, only: %i[index show], param: :number
           resources :workflows, only: %i[index show] do
             resources :workflow_runs, only: %i[index show] do
               post :rerun
+              resources :workflow_run_jobs, only: [:show]
             end
           end
         end

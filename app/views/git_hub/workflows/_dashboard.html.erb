@@ -9,8 +9,8 @@
             <nav class="mt-5 flex-1" aria-label="Sidebar">
               <div class="px-2 space-y-1">
                 <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
-                <% current_css = 'bg-gray-200 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md' %>
-                <% default_css = 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md' %>
+                <% current_css = 'bg-gray-200 text-gray-900 group flex items-center px-2 py-2 text-md font-medium rounded-md' %>
+                <% default_css = 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-md font-medium rounded-md' %>
                 <%= link_to "All Workflows", team_app_git_hub_repository_workflows_path(@team, @app, @app.github_repo_slug), class: current_workflow.nil? ? current_css : default_css%>
 
                 <% all_workflows[:workflows].each do |workflow|%>
@@ -54,13 +54,14 @@
                             <div class="flex items-center">
                               <div class="ml-4">
                                 <div class="text-md font-medium text-gray-900"><%= run[:name] %></div>
-                                <% if run[:event] == 'pull_request' %>
-                                  <div class="text-sm text-gray-500"><%= "#{run[:name]} ##{run[:run_number]}: Pull Request ##{run.dig(:pull_requests)}" %></div>
-                                <% elsif run[:event] == 'push'%>
-                                  <div class="text-sm text-gray-500"><%= "#{run[:name]} ##{run[:run_number]}: Commit: #{ run[:head_sha].first(7) }" %></div>
-                                <% else %>
-                                  <div class="text-sm text-gray-500"><%= "#{run[:name]} ##{run[:run_number]}"%></div>
-                                <% end %>
+                                  <% if run[:event] == 'pull_request' %>
+                                    <div class="text-sm text-gray-500"><%= "#{run[:name]} ##{run[:run_number]}: Pull Request ##{run[:pull_requests].first[:number]}" %></div>
+                                  <% elsif run[:event] == 'push'%>
+                                    <div class="text-sm text-gray-500"><%= "#{run[:name]} ##{run[:run_number]}: Commit: #{ run[:head_sha].first(7) }" %></div>
+                                  <% else %>
+                                    <div class="text-sm text-gray-500"><%= "#{run[:name]} ##{run[:run_number]}"%></div>
+                                  <% end %>
+                                <div>
                               </div>
                             </div>
                           </td>
@@ -86,6 +87,10 @@
                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                                   </svg>
+                              <% elsif run[:conclusion] == 'cancelled' %>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
                               <% else %>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
                                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />

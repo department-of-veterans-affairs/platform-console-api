@@ -6,7 +6,6 @@ module GitHub
     before_action :authorize_session!
     before_action :set_team
     before_action :set_app
-    before_action :set_git_hub_repository
     before_action :authorize_repo!
 
     private
@@ -27,10 +26,6 @@ module GitHub
     # Find the team app
     def set_app
       @app = @team.apps.find(params[:app_id])
-    end
-
-    def set_git_hub_repository
-      @git_hub_repository = GitHub::Repository.new(@app.github_repo_slug)
     end
   end
 end

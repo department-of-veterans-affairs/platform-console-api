@@ -11,13 +11,16 @@ module GitHub
     end
 
     # GET /git_hub/workflow_runs/1 or /git_hub/workflow_runs/1.json
-    def show; end
+    def show
+      @jobs = @git_hub_workflow_run.jobs
+      @current_job = params[:job] || @jobs[:jobs].first[:name]
+    end
 
     private
 
     # Use callbacks to share common setup or constraints between actions.
     def set_git_hub_workflow_run
-      @git_hub_workflow_run = GitHub::WorkflowRun.find(params[:id])
+      @git_hub_workflow_run = GitHub::WorkflowRun.new(@app.github_repo_slug, params[:id])
     end
 
     # Only allow a list of trusted parameters through.
