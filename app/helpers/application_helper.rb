@@ -15,6 +15,12 @@ module ApplicationHelper
     link_to name, options, html_options, &block
   end
 
+  # Convert markdown into html using Redcarpet
+  def markdown(text)
+    options = %i[autolink hard_wrap no_intra_emphasis fenced_code_blocks space_after_headers]
+    Markdown.new(text, *options).to_html
+  end
+
   # rubocop:disable Metrics/MethodLength
   def nav_links
     {
