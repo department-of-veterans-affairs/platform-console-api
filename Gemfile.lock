@@ -253,8 +253,8 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.0.2)
       railties (>= 6.0.0)
-    strong_migrations (0.7.9)
-      activerecord (>= 5)
+    strong_migrations (0.8.0)
+      activerecord (>= 5.2)
     strscan (3.0.1)
     tailwindcss-rails (2.0.5)
       railties (>= 6.0.0)
@@ -315,7 +315,7 @@ DEPENDENCIES
   simplecov
   sprockets-rails (~> 3.4)
   stimulus-rails (~> 1.0)
-  strong_migrations (~> 0.7)
+  strong_migrations (~> 0.8)
   tailwindcss-rails (~> 2.0)
   turbo-rails (~> 1.0)
   webdrivers
