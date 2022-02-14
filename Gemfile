@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 ruby '~> 3.1.0'
 
-gem 'rails', '~> 7.0.1'
+gem 'rails', '~> 7.0.2'
 
 gem 'bcrypt',            '~> 3.1' # Use ActiveModel has_secure_password
 gem 'bootsnap',          '~> 1.10', require: false # Reduces boot times through caching; required in config/boot.rb
@@ -20,7 +20,7 @@ gem 'puma',              '~> 5.6'  # Use the Puma web server [https://github.com
 gem 'redis',             '~> 4.6'  # Use Redis adapter to run Action Cable in production
 gem 'rolify',            '~> 6.0'  # Simple Roles library
 gem 'sidekiq',           '~> 6.4'  # Simple, efficient background processing for Ruby
-gem 'strong_migrations', '~> 0.7'  # Catch potentially dangerous operations in migrations
+gem 'strong_migrations', '~> 0.8'  # Catch potentially dangerous operations in migrations
 
 # Assets
 gem 'importmap-rails',   '~> 1.0' # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
