@@ -4,6 +4,7 @@ require 'sidekiq/web'
 require 'authenticatable_constraint'
 
 Rails.application.routes.draw do
+  resources :audits, only: [:index]
   resources :teams do
     resources :apps
   end
