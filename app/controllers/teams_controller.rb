@@ -4,10 +4,10 @@
 class TeamsController < ApplicationController
   before_action :authorize_session!
   before_action :set_team, only: %i[show edit update destroy]
+  before_action :set_teams
 
   # GET /teams or /teams.json
   def index
-    @teams = Team.all
     @pagy, @teams = pagy(
       @teams.reorder(sort_column => sort_direction),
       items: params.fetch(:count, 25),
@@ -70,6 +70,10 @@ class TeamsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_team
     @team = Team.find(params[:id])
+  end
+
+  def set_teams
+    @teams = @team ? @team.teams : current_user.teams
   end
 
   # Only allow a list of trusted parameters through.

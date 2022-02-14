@@ -10,6 +10,9 @@ class User < ApplicationRecord
   validates :name, :email, presence: true
   validates :password, length: { minimum: 8 }, if: :password
 
+  has_many :members, dependent: :destroy
+  has_many :teams, through: :members
+
   private
 
   def downcase_email
