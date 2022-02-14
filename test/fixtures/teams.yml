@@ -1,11 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: Team1
   owner: john
   owner_type: User
 
 two:
+  id: 2
   name: Team2
   owner: john
   owner_type: User

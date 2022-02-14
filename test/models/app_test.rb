@@ -8,12 +8,12 @@ class AppTest < ActiveSupport::TestCase
   end
 
   test 'valid app' do
-    app = @team.apps.build(name: 'New App 1', team: @team)
+    app = @team.apps.build(name: 'New App 1', team_id: @team.id)
     assert app.valid?
   end
 
   test 'invalid app' do
-    app = @team.apps.build(name: nil, team: @team)
+    app = @team.apps.build(name: nil, team_id: @team.id)
     assert_not app.valid?
   end
 end
