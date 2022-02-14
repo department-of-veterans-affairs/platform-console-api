@@ -1,9 +1,8 @@
-# rubocop:disable Lint/Syntax
 # frozen_string_literal: true
 
+# Displays an audits table to track changes to models, for auditing and versioning
 class AuditsController < ApplicationController
   before_action :authorize_session!
-  before_action :set_audit, only: %i[show edit update destroy]
 
   # GET /audits or /audits.json
   def index
