@@ -12,6 +12,5 @@ class MemberTest < ActiveSupport::TestCase
     member = @team.members.build(user: @user)
     assert member.valid?
     assert_equal @team.members.size, 2
-    assert_equal @team.users.size, 2
   end
 end
