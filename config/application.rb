@@ -21,7 +21,8 @@ module PlatformConsole
     # in config/environments, which are processed later.
     #
     # config.time_zone = "Central Time (US & Canada)"
-    config.eager_load_paths << Rails.root.join('lib')
+    config.autoload_paths << Rails.root.join('lib')
+
     require 'dotenv'
     # config.generators do |g|
     #   g.test_framework :minitest
