@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    uses: department-of-veterans-affairs/platform-console-api/.github/workflows/deploy-template.yml@master
+    uses: department-of-veterans-affairs/platform-console-api/.github/workflows/deploy-template.yml@lhattamer-env-var-syntax
     with:
       ecr_repository: 'platform-console'
       manifests_directory: 'vsp-tools-backend/platform-console-api'
