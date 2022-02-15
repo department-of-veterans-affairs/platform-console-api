@@ -39,3 +39,9 @@ Octokit::Client::ActionsWorkflowRuns.class_eval do
     get "#{Octokit::Repository.path repo}/actions/jobs/#{id}/logs", options
   end
 end
+
+Octokit::Client::Checks.class_eval do
+  def check_run_from_url(url, options = {})
+    get url, options
+  end
+end

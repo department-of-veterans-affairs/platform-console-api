@@ -18,7 +18,8 @@ module GitHub
       logs = begin
         Octokit.workflow_run_job_logs("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
       rescue Octokit::NotFound
-        return nil
+        check_run = Octokit.check_run_from_url(gh_info.check_run_url)
+        "#{check_run.output.title} \n #{check_run.output.summary}"
       end
       logs_to_html(logs)
     end
