@@ -8,7 +8,7 @@ module GitHub
     # GET /git_hub/pull_requests or /git_hub/pull_requests.json
     def index
       @current_page = params[:page] || 1
-      @git_hub_pull_requests = @git_hub_repository.pull_requests(@current_page)
+      @git_hub_pull_requests = GitHub::PullRequest.all(@app.github_repo_slug, @current_page)
       @next_page = @current_page + 1 unless @git_hub_pull_requests.count < 30
       @previous_page = @current_page - 1 unless @current_page == 1
     end

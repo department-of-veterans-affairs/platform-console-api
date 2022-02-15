@@ -7,4 +7,4 @@
 <br>
 
 <%= render 'git_hub/tabs' %>
-<%= render 'git_hub/workflow_runs/dashboard', workflow_run: @git_hub_workflow_run.gh_info, logs: @logs, jobs: @jobs %>
+<%= render 'git_hub/workflow_run_jobs/dashboard', workflow_run: @git_hub_workflow_run, jobs: @all_jobs, workflow_run_job: @git_hub_workflow_run_job %>

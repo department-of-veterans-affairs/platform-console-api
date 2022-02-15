@@ -9,19 +9,19 @@ Rails.application.routes.draw do
     resources :apps do
       namespace :git_hub do
         resources :repositories, only: [:show], param: :repo do
-          resources :pull_requests, only: %i[index show], param: :number do
-            resources :workflow_runs, only: [:index]
-          end
+          resources :pull_requests, only: %i[index show], param: :number
           resources :workflows, only: %i[index show] do
             resources :workflow_runs, only: %i[index show] do
-              post :rerun
+              member do
+                post :rerun
+              end
+              resources :workflow_run_jobs, only: [:show]
             end
           end
         end
       end
     end
   end
-  # rubocop:enable Metrics/BlockLength
 
   root to: redirect('/teams'), constraints: ->(request) { AuthenticatableConstraint.new(request).current_user.present? }
   root 'pages#home', as: :unauthenticated_root
@@ -42,3 +42,4 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 end
+# rubocop:enable Metrics/BlockLength
