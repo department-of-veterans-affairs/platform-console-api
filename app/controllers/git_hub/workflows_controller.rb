@@ -7,16 +7,21 @@ module GitHub
 
     # GET /git_hub/workflows or /git_hub/workflows.json
     def index
-      @git_hub_repository = GitHub::Repository.new(@app.github_repo_slug)
       @git_hub_workflows = @git_hub_repository.workflows
       @git_hub_workflow_runs = @git_hub_repository.workflow_runs
     end
 
     # GET /git_hub/workflows/1 or /git_hub/workflows/1.json
     def show
-      @git_hub_repository = GitHub::Repository.new(@app.github_repo_slug)
       @all_workflows = @git_hub_repository.workflows
       @git_hub_workflow_runs = @git_hub_workflow.workflow_runs
+    end
+
+    def new_dispatch
+      @all_workflows = @git_hub_repository.workflows
+    end
+
+    def workflow_dispatch
     end
 
     private
