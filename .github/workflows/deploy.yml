@@ -3,7 +3,7 @@ name: Release and Update Manifests
 on:
   push:
     branches:
-      - master
+      - lhattamer-env-var-syntax
   workflow_dispatch:
 
 jobs:

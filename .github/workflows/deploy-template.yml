@@ -88,8 +88,8 @@ jobs:
           cd vsp-infra-application-manifests/apps/${{inputs.manifests_directory}}
           envs=( ${{ needs.prepare-values.outputs.environments }} )
           for env in ${envs[*]}; do
-            yq e -i '.spec.template.spec.containers.[0].image = ${IMAGE_NAME}' $env/deployment.yml
-            yq e -i '.spec.template.spec.initContainers.[0].image = ${IMAGE_NAME}' $env/deployment.yml
+            yq e -i '.spec.template.spec.containers.[0].image = $IMAGE_NAME' $env/deployment.yml
+            yq e -i '.spec.template.spec.initContainers.[0].image = $IMAGE_NAME' $env/deployment.yml
           done
 
       - name: Add and Commit file
