@@ -5,15 +5,15 @@ require 'application_system_test_case'
 class AuditsTest < ApplicationSystemTestCase
   setup do
     login_as :john
-    app_one = apps(:one)
-    team_one = teams(:one)
+    apps(:one)
+    teams(:one)
 
     app = App.first
-    app.name = "App name update"
+    app.name = 'App name update'
     app.save
 
     team = Team.first
-    team.name = "Team name update"
+    team.name = 'Team name update'
     team.save
   end
 
