@@ -30,5 +30,12 @@ module GitHub
         assert_not_nil workflows.first.state
       end
     end
+
+    test 'dispatch a workflow' do
+      VCR.use_cassette('git_hub/workflow', record: :new_episodes) do
+        dispatch = GitHub::Workflow.dispatch!('platform-console', 17_929_736, 'master')
+        assert dispatch
+      end
+    end
   end
 end

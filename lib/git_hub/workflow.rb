@@ -11,12 +11,16 @@ module GitHub
       @gh_info = Octokit.workflow("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
     end
 
-    def workflow_runs
-      GitHub::WorkflowRun.all_for_workflow(@repo, @id)
+    def self.dispatch!(repo, workflow_id, ref)
+      Octokit.workflow_dispatch("#{GITHUB_ORGANIZATION}/#{repo}", workflow_id, ref)
     end
 
     def self.all(repo)
       Octokit.workflows("#{GITHUB_ORGANIZATION}/#{repo}")
+    end
+
+    def workflow_runs
+      GitHub::WorkflowRun.all_for_workflow(@repo, @id)
     end
   end
 end
