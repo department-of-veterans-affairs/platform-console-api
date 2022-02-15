@@ -178,6 +178,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.1-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.1-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.1-x86_64-linux)
       racc (~> 1.4)
     octokit (4.22.0)
@@ -296,6 +298,8 @@ GEM
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.5-arm64-darwin)
       railties (>= 6.0.0)
+    tailwindcss-rails (2.0.5-x86_64-darwin)
+      railties (>= 6.0.0)
     tailwindcss-rails (2.0.5-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.1)
@@ -326,6 +330,7 @@ PLATFORMS
   arm64-darwin-20
   arm64-darwin-21
   ruby
+  x86_64-darwin
   x86_64-linux
 
 DEPENDENCIES
