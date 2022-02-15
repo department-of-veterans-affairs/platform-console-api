@@ -25,7 +25,6 @@
     <div class="flex flex-col min-w-0 flex-1 overflow-hidden">
       <div class="flex-1 relative z-0 flex overflow-hidden">
         <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last">
-
           <% if workflow_runs[:workflow_runs].present? %>
             <div class="flex justify-between">
               <h3 class="text-2xl leading-7 text-gray-900 text-md sm:truncate mt-4 ml-4 mb-4">
@@ -53,15 +52,16 @@
                           <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
                               <div class="ml-4">
-                                <div class="text-md font-medium text-gray-900"><%= run[:name] %></div>
-                                  <% if run[:event] == 'pull_request' %>
-                                    <div class="text-sm text-gray-500"><%= "#{run[:name]} ##{run[:run_number]}: Pull Request ##{run[:pull_requests].first[:number]}" %></div>
-                                  <% elsif run[:event] == 'push'%>
-                                    <div class="text-sm text-gray-500"><%= "#{run[:name]} ##{run[:run_number]}: Commit: #{ run[:head_sha].first(7) }" %></div>
-                                  <% else %>
-                                    <div class="text-sm text-gray-500"><%= "#{run[:name]} ##{run[:run_number]}"%></div>
-                                  <% end %>
-                                <div>
+                                <% if run[:event] == 'pull_request' && run[:pull_requests].present? %>
+                                  <div class="text-md font-medium text-gray-900"><%= "Pull Request ##{run[:pull_requests].first[:number]}" %></div>
+                                  <div class="text-sm text-gray-500"><%= "#{run[:name]} ##{run[:run_number]}: Pull Request ##{run[:pull_requests].first[:number]}" %></div>
+                                <% elsif run[:event] == 'push'%>
+                                  <div class="text-md font-medium text-gray-900"><%= truncate(run[:head_commit][:message], length: 50) %></div>
+                                  <div class="text-sm text-gray-500"><%= "#{run[:name]} ##{run[:run_number]}: Commit: #{ run[:head_sha].first(7) }" %></div>
+                                <% else %>
+                                  <div class="text-md font-medium text-gray-900"><%= run[:name] %></div>
+                                  <div class="text-sm text-gray-500"><%= "#{run[:name]} ##{run[:run_number]}"%></div>
+                                <% end %>
                               </div>
                             </div>
                           </td>

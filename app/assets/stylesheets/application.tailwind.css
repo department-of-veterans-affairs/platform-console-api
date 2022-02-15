@@ -3,39 +3,60 @@
 @tailwind utilities;
 
 .pagy-info {
-  @apply mt-6 py-2;
+  @apply mt-5 py-2;
 }
 
 .pagy-nav {
-  @apply mt-6 flex place-content-center place-self-center inline-flex items-center mt-4 px-2 py-2 divide-gray-100 divide-x;
+  @apply -space-x-px mt-3 py-2 inline-flex items-center divide-gray-100 divide-x;
+}
+
+.pagy-nav .page.prev,
+.pagy-nav .page.next {
+  @apply border-gray-100
 }
 
 .pagy-nav .page.prev {
-  @apply rounded-l-md border border-gray-100;
+  @apply rounded-l-md border-l;
 }
 
 .pagy-nav .page.next {
-  @apply rounded-r-md border border-gray-100;
+  @apply rounded-r-md border-r;
 }
 
 .pagy-nav .page {
-  @apply border
+  @apply border-t border-b text-blue-900 inline-flex;
 }
 
+/* Make click areas bigger */
 .pagy-nav .page a,
-.pagy-nav .page.active,
+.pagy-nav .page .gap {
+  @apply px-4 py-2;
+}
+
+/* Subtle hover on clickable elements */
+.pagy-nav a {
+  @apply hover:bg-gray-50;
+}
+
+/* Disabled looking elements */
 .pagy-nav .gap,
 .pagy-nav .page.prev.disabled,
 .pagy-nav .page.next.disabled {
-  @apply z-10 bg-white text-blue-900 relative inline-flex items-center px-4 py-2;
+  @apply px-4 py-2 text-gray-300 cursor-default;
 }
 
-.pagy-nav .gap,
-.pagy-nav .page.prev.disabled,
-.pagy-nav .page.next.disabled {
-  @apply text-gray-300 cursor-default;
-}
-
+/* Cover up surrounding border using z-index */
 .pagy-nav .page.active {
-  @apply text-white cursor-default bg-blue-900;
+  @apply z-10 border px-4 py-2 border-blue-900 bg-blue-50 cursor-default;
+}
+
+/* Only show Prev/Next */
+.pagy-nav [class="page"],
+.pagy-nav .gap,
+.pagy-nav .page.active {
+  @apply hidden sm:inline-flex;
+}
+
+.pagy-info {
+  @apply hidden sm:inline-block;
 }

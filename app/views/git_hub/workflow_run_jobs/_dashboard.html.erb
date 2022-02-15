@@ -1,37 +1,50 @@
 <% if jobs.present? %>
-  <div class="mt-5 ml-2 text-xl font-bold text-gray-900">
+  <div class="flow-root">
+    <div class="float-left flex-shrink-0 group block">
+      <div class="flex items-center">
+        <div class="mt-5 ml-2">
+          <% if workflow_run.gh_info[:conclusion] == 'success' %>
+            <!-- Heroicon name: solid/check-circle -->
+            <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+          <% elsif workflow_run.gh_info[:conclusion] == 'failure' %>
+              <!-- Heroicon name: solid/x -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+              </svg>
+          <% elsif workflow_run.gh_info[:conclusion] == 'cancelled' %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          <% else %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
+            </svg>
+          <% end %>
+        </div>
+        <div class="mt-5 text-xl font-bold text-gray-900">
+          <% if workflow_run.gh_info[:event] == 'pull_request' %>
+            <%= "Pull Request ##{workflow_run.gh_info[:pull_requests].first[:number]}" %>
+          <% elsif workflow_run.gh_info[:event] == 'push'%>
+            <%= truncate(workflow_run.gh_info[:head_commit][:message], length: 50) %>
+          <% else %>
+            <%= workflow_run.gh_info[:name] %>
+          <% end %>
 
-    <% if workflow_run.gh_info[:conclusion] == 'success' %>
-      <!-- Heroicon name: solid/check-circle -->
-      <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-      </svg>
-    <% elsif workflow_run.gh_info[:conclusion] == 'failure' %>
-        <!-- Heroicon name: solid/x -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+          <span class="text-xl font-medium text-gray-500 mr-3"> <%= "#{workflow_run.gh_info[:name]} ##{workflow_run.gh_info[:run_number]} "%> </span>
+          -
+          <span class="text-md font-medium text-gray-500"> Branch: <code class="text-md font-medium text-blue-500" text-xl> <%= workflow_run.gh_info[:head_branch] %> </code> </span>
+        </div>
+      </div>
+    </div>
+    <div class="float-right mt-5 mr-2">
+      <%= link_to rerun_team_app_git_hub_repository_workflow_workflow_run_path(@team, @app, @app.github_repo_slug, workflow_run.gh_info[:workflow_id], workflow_run.id), method: :post, title: 'Restart Run' do %>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
         </svg>
-    <% elsif workflow_run.gh_info[:conclusion] == 'cancelled' %>
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    <% else %>
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
-      </svg>
-    <% end %>
-
-   <% if workflow_run.gh_info[:event] == 'pull_request' %>
-      <%= "#{workflow_run.gh_info[:name]} ##{workflow_run.gh_info[:run_number]}: Pull Request ##{workflow_run.gh_info[:pull_requests].first[:name]}" %>
-    <% elsif workflow_run.gh_info[:event] == 'push'%>
-      <%= truncate(workflow_run.gh_info[:head_commit][:message], length: 55) %>
-    <% else %>
-      <%= workflow_run.gh_info[:name] %>
-    <% end %>
-
-    <span class="text-xl font-medium text-gray-500 mr-3"> <%= "#{workflow_run.gh_info[:name]} ##{workflow_run.gh_info[:run_number]} "%> </span>
-    -
-    <span class="text-md font-medium text-gray-500"> Branch: <code class="text-md font-medium text-blue-500" text-xl> <%= workflow_run.gh_info[:head_branch] %> </code> </span>
+      <% end %>
+    </div>
   </div>
   </br>
   <div class="relative">
@@ -105,7 +118,7 @@
               <p class="float-left text-2xl leading-7 text-gray-900 text-md sm:truncate mt-4 ml-4 mb-4">
                 Logs
               </p>
-              <%= link_to workflow_run.logs_url, title: 'Download Logs', class: 'float-right mt-4 mr-4 mb-4' do %>
+              <%= link_to workflow_run.logs_url, title: 'Download Logs', class: 'float-right mt-4 mr-2 mb-4' do %>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>

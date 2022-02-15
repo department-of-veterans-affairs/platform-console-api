@@ -12,8 +12,8 @@ module GitHub
       @workflows = GitHub::Workflow.all(@repo)
     end
 
-    def issues
-      GitHub::Issue.all(@repo)
+    def issues(page = 1)
+      GitHub::Issue.all(@repo, page)
     end
 
     def pull_requests(page = 1)
@@ -33,6 +33,12 @@ module GitHub
     # List runs for a particular workflow in this repository.
     def workflow_run(workflow_id)
       GitHub::WorkflowRun.all_for_workflow(@repo, workflow_id)
+    end
+
+    # Returns the readme for the repository.
+    def readme
+      content = Octokit.readme("#{GITHUB_ORGANIZATION}/#{@repo}").content
+      Base64.decode64(content)
     end
 
     # Lists all repositories for the organization.

@@ -3,6 +3,7 @@
 require 'sidekiq/web'
 require 'authenticatable_constraint'
 
+# rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
   resources :teams do
     resources :apps do
@@ -11,7 +12,9 @@ Rails.application.routes.draw do
           resources :pull_requests, only: %i[index show], param: :number
           resources :workflows, only: %i[index show] do
             resources :workflow_runs, only: %i[index show] do
-              post :rerun
+              member do
+                post :rerun
+              end
               resources :workflow_run_jobs, only: [:show]
             end
           end
@@ -19,9 +22,13 @@ Rails.application.routes.draw do
       end
     end
   end
+  # rubocop:enable Metrics/BlockLength
 
   root to: redirect('/teams'), constraints: ->(request) { AuthenticatableConstraint.new(request).current_user.present? }
   root 'pages#home', as: :unauthenticated_root
+
+  # Demo Page
+  get '/demo', to: 'pages#demo'
 
   # Session
   get '/login' => 'sessions#new'
@@ -29,8 +36,11 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   # Admin-only area
-  constraints ->(request) { Rails.env.development? || AuthenticatableConstraint.new(request).current_user&.admin? } do
+  constraints lambda { |request|
+    Rails.env.development? || AuthenticatableConstraint.new(request).current_user&.has_role?(:admin)
+  } do
     mount Flipper::UI.app(Flipper) => '/flipper'
     mount Sidekiq::Web => '/sidekiq'
   end
 end
+# rubocop:enable Metrics/BlockLength
