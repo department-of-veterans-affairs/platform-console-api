@@ -133,9 +133,11 @@
             </div>
           </div>
           <div class="flex justify-between">
-            <code class="highlight">
-              <%= simple_format(@git_hub_workflow_run_job.logs) %>
-            </code>
+            <% if @git_hub_workflow_run_job.logs.present? %>
+              <code class="highlight">
+                <%= simple_format(@git_hub_workflow_run_job.logs) %>
+              </code>
+            <% end %>
           </div>
         </main>
       </div>

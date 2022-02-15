@@ -15,7 +15,11 @@ module GitHub
     end
 
     def format_logs
-      logs = Octokit.workflow_run_job_logs("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      logs = begin
+        Octokit.workflow_run_job_logs("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      rescue Octokit::NotFound
+        return nil
+      end
       logs_to_html(logs)
     end
 
