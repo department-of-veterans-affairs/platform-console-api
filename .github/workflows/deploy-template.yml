@@ -17,6 +17,8 @@ on:
         required: true
       aws_secret_access_key: #${{ secrets.AWS_SECRET_ACCESS_KEY }}
         required: true
+env:
+  IMAGE_NAME: "008577686731.dkr.ecr.us-gov-west-1.amazonaws.com/dsva/${{inputs.ecr_repository}}:${{inputs.ecr_repository}}-${{ github.sha }}"
 
 jobs:
   prepare-values:
@@ -84,11 +86,10 @@ jobs:
           ECR_REPOSITORY: dsva/${{inputs.ecr_repository}}
         run: |
           cd vsp-infra-application-manifests/apps/${{inputs.manifests_directory}}
-          image_name = "008577686731.dkr.ecr.us-gov-west-1.amazonaws.com/dsva/${{inputs.ecr_repository}}:${{inputs.ecr_repository}}-${{ github.sha }}"
           envs=( ${{ needs.prepare-values.outputs.environments }} )
           for env in ${envs[*]}; do
-            yq e -i '.spec.template.spec.containers.[0].image = ${image_name}' $env/deployment.yml
-            yq e -i '.spec.template.spec.initContainers.[0].image = ${image_name}' $env/deployment.yml
+            yq e -i '.spec.template.spec.containers.[0].image = ${IMAGE_NAME}' $env/deployment.yml
+            yq e -i '.spec.template.spec.initContainers.[0].image = ${IMAGE_NAME}' $env/deployment.yml
           done
 
       - name: Add and Commit file
