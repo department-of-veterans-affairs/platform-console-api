@@ -12,7 +12,11 @@ module GitHub
       @repo = repo
       @id = id
       @gh_info = Octokit.workflow_run("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
-      @logs_url = Octokit.workflow_run_logs("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      @logs_url = begin
+        Octokit.workflow_run_logs("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      rescue Octokit::NotFound
+        nil
+      end
     end
 
     def rerun!

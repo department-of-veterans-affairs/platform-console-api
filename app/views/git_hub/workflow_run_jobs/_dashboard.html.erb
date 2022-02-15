@@ -118,10 +118,12 @@
               <p class="float-left text-2xl leading-7 text-gray-900 text-md sm:truncate mt-4 ml-4 mb-4">
                 Logs
               </p>
-              <%= link_to workflow_run.logs_url, title: 'Download Logs', class: 'float-right mt-4 mr-2 mb-4' do %>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
+              <% if workflow_run.logs_url.present? %>
+                <%= link_to workflow_run.logs_url, title: 'Download Logs', class: 'float-right mt-4 mr-2 mb-4' do %>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                <% end %>
               <% end %>
             </div>
 
