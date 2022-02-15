@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  # rubocop:enable Metrics/BlockLength
 
   root to: redirect('/teams'), constraints: ->(request) { AuthenticatableConstraint.new(request).current_user.present? }
   root 'pages#home', as: :unauthenticated_root
