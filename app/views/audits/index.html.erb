@@ -1,0 +1,95 @@
+<div class="flex justify-between">
+  <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate mt-4">
+    Audits
+  </h1>
+</div>
+
+<br>
+
+<% if @audits.present? %>
+  <%= form_with url: '', method: :get, class: 'mb-2 px-2 py-2', data: { turbo_frame: 'audits', turbo_action: 'advance' } do |form| %>
+    Show <%= form.select :count, options_for_select([10, 25, 50, 100], selected: @pagy.items), {},
+      { class: 'rounded-md text-sm focus:border-blue-900 focus:ring-0', onchange: 'this.form.requestSubmit()' } %>
+  <% end %>
+  <%= turbo_frame_tag 'audits' do %>
+    <div class="flex flex-col">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <table class="table-fixed min-w-full divide-y divide-gray-200" id="audits">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase w-full">
+					  Item Type
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase w-full">
+					  Item Id
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase w-full">
+					  Event
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase w-full">
+					  Created At
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase w-full">
+					  Whodunnit?
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase w-full">
+					  Details
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @audits.each do |audit| %>
+                <tr class="<%= cycle 'bg-white', 'bg-gray-50' %>">
+                  <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <%= audit.item_type %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <%= audit.item_id %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <%= audit.event %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <%= audit.whodunnit %>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <%= audit.created_at %>
+                  </td>
+                  <td class="max-w-7xl text-sm font-medium text-gray-900">
+				    <% if audit.object.present? %>
+						<div data-controller="toggle" data-toggle-hidden-class="hidden">
+						  <%= button_tag "Show/Hide", data: {controller: "toggle", action: "click->toggle#toggleTargets", class: "hidden" } do %>
+							<div data-toggle-target="item" class="hidden text-left">
+							 <span style="float:left;" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Hide Details</span>
+							  <br/><br/>
+							  <span><%= audit.object %></span>
+							</div>
+					        <div data-toggle-target="item" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Details</div>
+						  <% end %>
+					    </div>
+					<% end %>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% if @pagy %>
+      <div class="flex-wrap lg:flex mt-6 lg:mt-0 justify-between space-x-4 text-center">
+        <%== pagy_info @pagy %>
+        <%== pagy_nav @pagy, size: [1,1,1,1] %>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <div class="text-center border-dashed border-gray-300 hover:border-gray-400 border-2 rounded-lg p-6 max-w-lg m-auto">
+    <svg width="96" height="96" fill="none" class="mx-auto mb-6 text-gray-900"><path d="M36 28.024A18.05 18.05 0 0025.022 39M59.999 28.024A18.05 18.05 0 0170.975 39" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><ellipse cx="37.5" cy="43.5" rx="4.5" ry="7.5" fill="currentColor"></ellipse><ellipse cx="58.5" cy="43.5" rx="4.5" ry="7.5" fill="currentColor"></ellipse><path d="M24.673 75.42a9.003 9.003 0 008.879 5.563m-8.88-5.562A8.973 8.973 0 0124 72c0-7.97 9-18 9-18s9 10.03 9 18a9 9 0 01-8.448 8.983m-8.88-5.562C16.919 68.817 12 58.983 12 48c0-19.882 16.118-36 36-36s36 16.118 36 36-16.118 36-36 36a35.877 35.877 0 01-14.448-3.017" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M41.997 71.75A14.94 14.94 0 0148 70.5c2.399 0 4.658.56 6.661 1.556a3 3 0 003.999-4.066 12 12 0 00-10.662-6.49 11.955 11.955 0 00-7.974 3.032c1.11 2.37 1.917 4.876 1.972 7.217z" fill="currentColor"></path></svg>
+    <h3 class="mt-2 text-sm font-medium text-gray-900">No Audits</h3>
+  </div>
+<% end %>
