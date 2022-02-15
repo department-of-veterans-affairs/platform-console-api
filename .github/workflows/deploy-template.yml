@@ -34,7 +34,7 @@ jobs:
           echo "::set-output name=environments::${{ env.environments }}"
   release:
     needs: [prepare-values]
-    # if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -78,7 +78,7 @@ jobs:
           path: vsp-infra-application-manifests
 
       - name: Update image name in Manifest repo
-        # if: steps.semantic.outputs.new_release_published == 'true'
+        if: steps.semantic.outputs.new_release_published == 'true'
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: dsva/${{inputs.ecr_repository}}
@@ -92,7 +92,7 @@ jobs:
           done
 
       - name: Add and Commit file
-        # if: steps.semantic.outputs.new_release_published == 'true'
+        if: steps.semantic.outputs.new_release_published == 'true'
         uses: EndBug/add-and-commit@v7
         with:
           branch: main
