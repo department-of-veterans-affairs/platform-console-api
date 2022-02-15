@@ -11,7 +11,6 @@ module GitHub
 
     private
 
-
     def set_git_hub_repository
       @git_hub_repository = GitHub::Repository.new(@app.github_repo_slug)
     end

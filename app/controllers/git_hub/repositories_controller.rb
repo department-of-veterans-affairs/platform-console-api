@@ -3,7 +3,6 @@
 module GitHub
   # Handles displaying repository info for an app
   class RepositoriesController < BaseController
-
     # GET /git_hub/repositories/1 or /git_hub/repositories/1.json
     def show; end
 

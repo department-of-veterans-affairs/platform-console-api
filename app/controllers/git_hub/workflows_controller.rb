@@ -21,7 +21,21 @@ module GitHub
       @all_workflows = @git_hub_repository.workflows
     end
 
-    def workflow_dispatch
+    def workflow_dispatch # rubocop:disable Metrics/AbcSize
+      respond_to do |format|
+        GitHub::Workflow.dispatch!(@app.github_repo_slug, params[:workflow_id], params[:ref])
+        format.html do
+          redirect_to team_app_git_hub_repository_workflow_path(@app, @team,
+                                                                @app.github_repo_slug, params[:workflow_id]),
+                      notice: 'Workflow was successfully dispatched'
+        end
+        format.json { render :show, json: true, status: :ok }
+      rescue Octokit::UnprocessableEntity => e
+        @all_workflows = @git_hub_repository.workflows
+        @error = e.message
+        format.html { render :new_dispatch, status: :unprocessable_entity }
+        format.json { render json: false, status: :unprocessable_entity }
+      end
     end
 
     private
