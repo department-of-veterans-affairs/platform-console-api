@@ -38,6 +38,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -62,7 +63,6 @@ jobs:
           GITHUB_TOKEN: ${{ env.VA_VSP_BOT_GITHUB_TOKEN }}
 
       - name: Install yq if needed
-        if: steps.semantic.outputs.new_release_published == 'true'
         run: |
           sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
           sudo add-apt-repository ppa:rmescandon/yq
@@ -84,14 +84,12 @@ jobs:
           ECR_REPOSITORY: dsva/${{inputs.ecr_repository}}
         run: |
           cd vsp-infra-application-manifests/apps/${{inputs.manifests_directory}}
-          # Update ecr image
+          image_name = "008577686731.dkr.ecr.us-gov-west-1.amazonaws.com/dsva/${{inputs.ecr_repository}}:${{inputs.ecr_repository}}-${{ github.sha }}"
           envs=( ${{ needs.prepare-values.outputs.environments }} )
-          for env in ${envs[*]};
-          do
-
-            yq e -i '.spec.template.spec.containers.[0].image = "008577686731.dkr.ecr.us-gov-west-1.amazonaws.com/dsva/${{inputs.ecr_repository}}:${{inputs.ecr_repository}}-${{ github.sha }}"' $env/deployment.yml
+          for env in ${envs[*]}; do
+            yq e -i '.spec.template.spec.containers.[0].image = ${image_name}' $env/deployment.yml
+            yq e -i '.spec.template.spec.initContainers.[0].image = ${image_name}' $env/deployment.yml
           done
-          git diff
 
       - name: Add and Commit file
         if: steps.semantic.outputs.new_release_published == 'true'
