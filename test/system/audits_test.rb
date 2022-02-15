@@ -7,13 +7,13 @@ class AuditsTest < ApplicationSystemTestCase
     login_as :john
 
     (1..3).each do |t|
-       new_app = apps(:one).dup
-       new_app.name = "App #{t}"
-       new_app.save
+      new_app = apps(:one).dup
+      new_app.name = "App #{t}"
+      new_app.save
 
-       new_team = teams(:one).dup
-       new_team.name = "Team #{t}"
-       new_team.save
+      new_team = teams(:one).dup
+      new_team.name = "Team #{t}"
+      new_team.save
     end
   end
 
