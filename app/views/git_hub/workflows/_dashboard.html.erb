@@ -24,7 +24,7 @@
                   All Workflows
                   <% end %>
                 <% all_workflows[:workflows].each do |workflow|%>
-                  <%= link_to workflow[:name], team_app_git_hub_repository_workflow_path(@team, @app, @app.github_repo_slug, workflow[:id]), class: current_workflow.present? && current_workflow[:name] == workflow[:name] ? current_css : default_css  %>
+                  <%= link_to workflow[:name], team_app_git_hub_repository_workflow_path(@team, @app, @app.github_repo_slug, workflow[:id]), class: current_workflow.present? && current_workflow[:id] == workflow[:id] ? current_css : default_css  %>
                 <% end %>
               </div>
             </nav>
