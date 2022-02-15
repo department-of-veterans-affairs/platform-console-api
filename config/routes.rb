@@ -11,7 +11,7 @@ Rails.application.routes.draw do
         resources :repositories, only: [:show], param: :repo do
           resources :pull_requests, only: %i[index show], param: :number
           resources :workflows, only: %i[index show] do
-            resources :workflow_runs, only: %i[index show] do
+            resources :workflow_runs, only: %i[index show create] do
               member do
                 post :rerun
               end
