@@ -33,6 +33,14 @@ This repository uses semantic releases triggered via Github Actions. When commit
 4. perf: remove some change
 ```
 
+## Migrations
+
+### Schema migrations:
+All schema migrations are run automatically upon a successful semantic release and deploy. The initContainers configuration in the platform-console-api k8s deployment spec will start and execute migrations before the other containers in the pod start.
+
+### Data Migrations:
+All data migrations will need to be run via a manual process. 
+
 ## Running tests
 
 To run all tests, run:
