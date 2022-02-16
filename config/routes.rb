@@ -7,7 +7,7 @@ require 'authenticatable_constraint'
 Rails.application.routes.draw do
   resources :teams do
     resources :apps do
-      namespace :git_hub do
+      namespace :github do
         resources :repositories, only: [:show], param: :repo do
           resources :pull_requests, only: %i[index show], param: :number
           resources :workflows, only: %i[index show] do
