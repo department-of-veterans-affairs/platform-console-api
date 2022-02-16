@@ -40,7 +40,7 @@ module Github
 
     test 'lists all pull_requests for a repository' do
       VCR.use_cassette('github/pull_request', record: :new_episodes) do
-        pull_requests = Github::PullRequest.all('vets-api')
+        pull_requests = Github::PullRequest.all('vets-api')[:pull_requests]
         assert_kind_of Array, pull_requests
         assert_not_nil pull_requests.first.number
       end

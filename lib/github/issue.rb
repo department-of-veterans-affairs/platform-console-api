@@ -18,7 +18,8 @@ module Github
 
     def self.all(repo, page_number = 1)
       octokit_client = Octokit::Client.new
-      response = octokit_client.list_issues("#{GITHUB_ORGANIZATION}/#{repo}", { page: page_number })
+      response = {}
+      response[:issues] = octokit_client.list_issues("#{GITHUB_ORGANIZATION}/#{repo}", { page: page_number })
 
       response[:pages] = page_links(octokit_client)
       response

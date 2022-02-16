@@ -27,7 +27,8 @@ module Github
 
     def self.all(repo, page = 1)
       octokit_client = Octokit::Client.new
-      response = octokit_client.pull_requests("#{GITHUB_ORGANIZATION}/#{repo}", page: page)
+      response = {}
+      response[:pull_requests] = octokit_client.pull_requests("#{GITHUB_ORGANIZATION}/#{repo}", page: page)
 
       response[:pages] = page_links(octokit_client)
       response

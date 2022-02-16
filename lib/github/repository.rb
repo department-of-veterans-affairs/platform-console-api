@@ -29,7 +29,7 @@ module Github
     end
 
     # List workflow runs for a branch on this repository.
-    def branch_workflow_runs(branch_name, page)
+    def branch_workflow_runs(branch_name, page = 1)
       Github::WorkflowRun.all_for_branch(@repo, branch_name, page)
     end
 
@@ -47,7 +47,8 @@ module Github
     # Lists all repositories for the organization.
     def self.all(page = 1)
       octokit_client = Octokit::Client.new
-      octokit_client.organization_repositories(GITHUB_ORGANIZATION, page: page)
+      response = {}
+      response[:repositories] = octokit_client.organization_repositories(GITHUB_ORGANIZATION, page: page)
 
       response[:pages] = page_links(octokit_client)
       response
