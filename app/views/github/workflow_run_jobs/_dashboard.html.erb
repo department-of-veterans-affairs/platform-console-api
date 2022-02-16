@@ -133,10 +133,10 @@
             </div>
           </div>
           <div class="flex justify-between">
-            <% if @git_hub_workflow_run_job.logs.present? %>
+            <% if @github_workflow_run_job.logs.present? %>
             <code class="highlight">
               <article class="prose prose-sm max-w-none prose-a:text-blue-600 hover:prose-a:text-blue-500">
-                <%= sanitize markdown(@git_hub_workflow_run_job.logs) %>
+                <%= sanitize markdown(@github_workflow_run_job.logs) %>
               </article>
             </code>
             <% end %>
