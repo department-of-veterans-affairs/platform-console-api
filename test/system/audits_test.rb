@@ -5,16 +5,16 @@ require 'application_system_test_case'
 class AuditsTest < ApplicationSystemTestCase
   setup do
     login_as :john
+    apps(:one)
+    teams(:one)
 
-    (1..3).each do |t|
-      new_app = apps(:one).dup
-      new_app.name = "App #{t}"
-      new_app.save
+    app = App.first
+    app.name = 'App name update'
+    app.save
 
-      new_team = teams(:one).dup
-      new_team.name = "Team #{t}"
-      new_team.save
-    end
+    team = Team.first
+    team.name = 'Team name update'
+    team.save
   end
 
   test 'visiting the index' do
@@ -25,7 +25,7 @@ class AuditsTest < ApplicationSystemTestCase
     assert_selector 'td', text: 'Team'
     assert_selector 'div', text: 'DETAILS'
 
-    # click_on 'DETAILS', match: :first
-    # assert_selector 'span', text: 'Hide Details'
+    click_on 'Show', match: :first
+    assert_selector 'button', text: 'Hide'
   end
 end

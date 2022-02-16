@@ -57,19 +57,15 @@
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                     <%= audit.created_at %>
                   </td>
-                  <td class="max-w-7xl text-sm font-medium text-gray-900">
-				    <% if audit.object.present? %>
-						<div data-controller="toggle" data-toggle-hidden-class="hidden">
-						  <%= button_tag "Show/Hide", data: {controller: "toggle", action: "click->toggle#toggleTargets", class: "hidden" } do %>
-							<div data-toggle-target="item" class="hidden text-left">
-							 <span style="float:left;" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Hide Details</span>
-							  <br/><br/>
-							  <span><%= audit.object %></span>
-							</div>
-					        <div data-toggle-target="item" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Details</div>
-						  <% end %>
-					    </div>
-					<% end %>
+                  <td class="px-6 py-4 max-w-7xl text-sm font-medium text-gray-900">
+                    <% if audit.object.present? %>
+                      <div data-controller="toggle">
+                        <button data-toggle-target="item" data-action="click->toggle#toggleTargets" data-toggle-target="sidebar-1" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" id="show-button">Show</button>
+                        <button data-toggle-target="item" data-action="click->toggle#toggleTargets" data-toggle-target="sidebar-1" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 hidden">Hide</button>
+                        <br/><br/>
+                        <span data-toggle-target="item" class="hidden text-left"><%= audit.object %></span>
+                      </div>
+                    <% end %>
                   </td>
                 </tr>
                 <% end %>
