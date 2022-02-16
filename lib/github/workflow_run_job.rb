@@ -10,8 +10,8 @@ module Github
     def initialize(repo, id)
       @id = id
       @repo = repo
-      @logs = format_logs
       @github = Octokit.workflow_run_job("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      @logs = format_logs
     end
 
     def format_logs
