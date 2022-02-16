@@ -134,9 +134,11 @@
           </div>
           <div class="flex justify-between">
             <% if @git_hub_workflow_run_job.logs.present? %>
-              <code class="highlight">
-                <%= simple_format(@git_hub_workflow_run_job.logs) %>
-              </code>
+            <code class="highlight">
+              <article class="prose max-w-none prose-a:text-blue-600 hover:prose-a:text-blue-500">
+                <%= sanitize markdown(@git_hub_workflow_run_job.logs) %>
+              </article>
+            </code>
             <% end %>
           </div>
         </main>
