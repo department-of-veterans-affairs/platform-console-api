@@ -5,6 +5,7 @@ if ENV['COVERAGE'] || ENV['CI']
 
   SimpleCov.start 'rails' do
     add_filter 'lib/templates'
+    add_filter 'lib/dotenv'
     coverage_dir 'public/coverage'
   end
 end
