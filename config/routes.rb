@@ -4,6 +4,7 @@ require 'sidekiq/web'
 require 'authenticatable_constraint'
 
 Rails.application.routes.draw do
+  resources :audits, only: [:index]
   resources :teams do
     resources :apps
   end
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+  get '/auth/keycloak/callback', to: 'omniauth#keycloak_openid'
 
   # Admin-only area
   constraints lambda { |request|
