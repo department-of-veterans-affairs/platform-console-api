@@ -25,7 +25,10 @@ end
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
-    parallelize(workers: :number_of_processors)
+
+    # Don't parallelize because there is an issue with simplecov
+    # See: https://github.com/simplecov-ruby/simplecov/issues/718
+    # parallelize(workers: :number_of_processors)
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
@@ -34,6 +37,36 @@ module ActiveSupport
 
     def login_as(user)
       visit "/login?uid=#{users(user).uid}"
+    end
+  end
+end
+
+# FIXME: Remove when fixed
+# https://github.com/vcr/vcr/pull/907/files
+module VCR
+  class LibraryHooks
+    # @private
+    module WebMock
+      module_function
+
+      def with_global_hook_disabled(request)
+        global_hook_disabled_requests << request
+
+        begin
+          yield
+        ensure
+          global_hook_disabled_requests.delete(request)
+        end
+      end
+
+      def global_hook_disabled?(request)
+        requests = Thread.current[:_vcr_webmock_disabled_requests]
+        requests&.include?(request)
+      end
+
+      def global_hook_disabled_requests
+        Thread.current[:_vcr_webmock_disabled_requests] ||= []
+      end
     end
   end
 end

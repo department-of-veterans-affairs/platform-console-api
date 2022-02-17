@@ -4,49 +4,25 @@ require 'test_helper'
 
 module Github
   class WorkflowsControllerTest < ActionDispatch::IntegrationTest
-    # setup do
-    #   @github_workflow = github_workflows(:one)
-    # end
+    setup do
+      @user = users(:john)
+      post "/login?uid=#{@user.uid}"
+      @team = teams(:three)
+      @app = apps(:three)
+    end
 
-    # test 'should get index' do
-    #   get github_workflows_url
-    #   assert_response :success
-    # end
-
-    # test 'should get new' do
-    #   get new_github_workflow_url
-    #   assert_response :success
-    # end
-
-    # test 'should create github_workflow' do
-    #   assert_difference('Github::Workflow.count') do
-    #     post github_workflows_url, params: { github_workflow: {} }
-    #   end
-
-    #   assert_redirected_to github_workflow_url(Github::Workflow.last)
-    # end
+    test 'should get index' do
+      VCR.use_cassette('github/workflows_controller') do
+        get team_app_github_repository_workflows_path(@team, @app, @app.github_repo_slug)
+        assert_response :success
+      end
+    end
 
     # test 'should show github_workflow' do
-    #   get github_workflow_url(@github_workflow)
-    #   assert_response :success
-    # end
-
-    # test 'should get edit' do
-    #   get edit_github_workflow_url(@github_workflow)
-    #   assert_response :success
-    # end
-
-    # test 'should update github_workflow' do
-    #   patch github_workflow_url(@github_workflow), params: { github_workflow: {} }
-    #   assert_redirected_to github_workflow_url(@github_workflow)
-    # end
-
-    # test 'should destroy github_workflow' do
-    #   assert_difference('Github::Workflow.count', -1) do
-    #     delete github_workflow_url(@github_workflow)
+    #   VCR.use_cassette('github/workflows_controller', record: :new_episodes) do
+    #     get team_app_github_repository_workflow_path(@team, @app, @app.github_repo_slug, 7_426_309)
+    #     assert_response :success
     #   end
-
-    #   assert_redirected_to github_workflows_url
     # end
   end
 end
