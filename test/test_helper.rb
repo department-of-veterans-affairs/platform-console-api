@@ -44,7 +44,7 @@ module VCR
   class LibraryHooks
     # @private
     module WebMock
-      extend self
+      module_function
 
       def with_global_hook_disabled(request)
         global_hook_disabled_requests << request
@@ -58,7 +58,7 @@ module VCR
 
       def global_hook_disabled?(request)
         requests = Thread.current[:_vcr_webmock_disabled_requests]
-        requests && requests.include?(request)
+        requests&.include?(request)
       end
 
       def global_hook_disabled_requests
