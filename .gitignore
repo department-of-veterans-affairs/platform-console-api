@@ -40,3 +40,5 @@ test/reports
 
 # Ignore env local env file
 .env.local
+
+.byebug_history

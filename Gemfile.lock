@@ -78,6 +78,7 @@ GEM
     bundler-audit (0.9.0.1)
       bundler (>= 1.2.0, < 3)
       thor (~> 1.0)
+    byebug (11.1.3)
     capybara (3.36.0)
       addressable
       matrix
@@ -338,6 +339,7 @@ DEPENDENCIES
   bootsnap (~> 1.10)
   brakeman
   bundler-audit
+  byebug (~> 11.1)
   capybara
   flipper (~> 0.23)
   flipper-redis (~> 0.23)
