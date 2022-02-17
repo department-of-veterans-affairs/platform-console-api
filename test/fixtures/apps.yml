@@ -9,4 +9,10 @@ two:
   id: 2
   name: App2
   team_id: 2
+
+three:
+  id: 3
+  name: App3
+  team_id: 3
+  github_repo_slug: 'vets-api'
   
