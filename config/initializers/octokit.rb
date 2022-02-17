@@ -39,3 +39,15 @@ Octokit::Client::ActionsWorkflowRuns.class_eval do
     get "#{Octokit::Repository.path repo}/actions/jobs/#{id}/logs", options
   end
 end
+
+Octokit::Client::Checks.class_eval do
+  # Get a Check Run for a workflow run job
+  #
+  # @param url [String] A URL to the check run on GitHub's API
+  #
+  # @return [Sawyer::Resource] Check Run information
+  # @see https://docs.github.com/en/rest/reference/checks#check-runs
+  def check_run_from_url(url, options = {})
+    get url, options
+  end
+end

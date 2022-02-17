@@ -7,7 +7,7 @@ module Github
 
     # GET /github/workflow_runs or /github/workflow_runs.json
     def index
-      @github_workflow_runs = Github::WorkflowRun.all
+      @github_workflow_runs = Github::WorkflowRun.all(@github_repository.repo)
     end
 
     # GET /github/workflow_runs/1 or /github/workflow_runs/1.json
