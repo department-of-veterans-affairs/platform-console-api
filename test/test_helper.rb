@@ -25,20 +25,10 @@ end
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
+
+    # Don't parallelize because there is an issue with simplecov
+    # See: https://github.com/simplecov-ruby/simplecov/issues/718
     # parallelize(workers: :number_of_processors)
-
-    # # Fix issue with parallelization and simplecov
-    # # See: https://github.com/simplecov-ruby/simplecov/issues/718
-    # # See: https://github.com/simplecov-ruby/simplecov/issues/718#issuecomment-538201587
-    # if ENV['COVERAGE']
-    #   parallelize_setup do |worker|
-    #     SimpleCov.command_name "#{SimpleCov.command_name}-#{worker}"
-    #   end
-
-    #   parallelize_teardown do |_worker|
-    #     SimpleCov.result
-    #   end
-    # end
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
