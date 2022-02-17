@@ -8,3 +8,7 @@ Metrics/MethodLength:
 
 Style/HashSyntax:
   EnforcedShorthandSyntax: either
+
+Lint/MissingSuper:
+  Exclude:
+    - 'lib/github/*'

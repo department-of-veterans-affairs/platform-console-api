@@ -3,12 +3,14 @@
 module Github
   # Class representing a Github Repository
   class Repository
-    include Github
-    attr_accessor :repo, :github
+    include Github::Pagination
+
+    attr_accessor :repo, :octokit_client, :github
 
     def initialize(repo)
       @repo = repo
-      @github = Octokit.repository("#{GITHUB_ORGANIZATION}/#{@repo}")
+      @octokit_client = Octokit::Client.new
+      @github = octokit_client.repository("#{GITHUB_ORGANIZATION}/#{@repo}")
     end
 
     def issues(page = 1)
@@ -24,13 +26,13 @@ module Github
     end
 
     # List all workflow runs for this repository.
-    def workflow_runs
-      Github::WorkflowRun.all(@repo)
+    def workflow_runs(page = 1)
+      Github::WorkflowRun.all(@repo, page)
     end
 
     # List workflow runs for a branch on this repository.
-    def branch_workflow_runs(branch_name)
-      Github::WorkflowRun.all_for_branch(@repo, branch_name)
+    def branch_workflow_runs(branch_name, page = 1)
+      Github::WorkflowRun.all_for_branch(@repo, branch_name, page)
     end
 
     # List runs for a particular workflow in this repository.
@@ -45,8 +47,13 @@ module Github
     end
 
     # Lists all repositories for the organization.
-    def self.all
-      Octokit.organization_repositories(GITHUB_ORGANIZATION)
+    def self.all(page = 1)
+      octokit_client = Octokit::Client.new
+      response = {}
+      response[:repositories] = octokit_client.organization_repositories(GITHUB_ORGANIZATION, page: page)
+
+      response[:pages] = page_numbers(octokit_client)
+      response
     end
   end
 end

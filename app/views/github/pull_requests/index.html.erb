@@ -19,7 +19,7 @@
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-              <% @github_pull_requests.each do |github_pull_request| %>
+              <% @github_pull_requests[:pull_requests].each do |github_pull_request| %>
               <tr>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="flex items-center">
@@ -54,10 +54,9 @@
     </div>
   </div>
 
-  <% if @pagy %>
-    <div class="md:flex justify-between text-center mt-6 md:mt-0">
-      <%== pagy_info @pagy %>
-      <%== pagy_nav @pagy %>
-    </div>
-  <% end %>
+  <%= render 'github/pagination', curr_path: team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo_slug, page: @curr_page),
+                                  first_path: team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo_slug, page: @first_page),
+                                  last_path: team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo_slug, page: @last_page),
+                                  next_path: team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo_slug, page: @next_page),
+                                  prev_path: team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo_slug, page: @prev_page) %>
 <% end %>

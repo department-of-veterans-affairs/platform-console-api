@@ -7,14 +7,24 @@ module Github
 
     # GET /github/workflows or /github/workflows.json
     def index
+      @curr_page = params.fetch(:page, 1)
       @github_workflows = @github_repository.workflows
-      @github_workflow_runs = @github_repository.workflow_runs
+      @github_workflow_runs = @github_repository.workflow_runs(params[:page] || 1).to_h
+      @next_page = @github_workflow_runs.dig(:pages, :next)
+      @prev_page = @github_workflow_runs.dig(:pages, :prev)
+      @first_page = @github_workflow_runs.dig(:pages, :first)
+      @last_page = @github_workflow_runs.dig(:pages, :last)
     end
 
     # GET /github/workflows/1 or /github/workflows/1.json
     def show
+      @curr_page = params.fetch(:page, 1)
       @all_workflows = @github_repository.workflows
-      @github_workflow_runs = @github_workflow.workflow_runs
+      @github_workflow_runs = @github_workflow.workflow_runs(params[:page] || 1).to_h
+      @next_page = @github_workflow_runs.dig(:pages, :next)
+      @prev_page = @github_workflow_runs.dig(:pages, :prev)
+      @first_page = @github_workflow_runs.dig(:pages, :first)
+      @last_page = @github_workflow_runs.dig(:pages, :last)
     end
 
     def new_dispatch
