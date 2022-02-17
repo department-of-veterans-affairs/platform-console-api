@@ -127,4 +127,18 @@
       </div>
     </div>
   </div>
+
+  <% if current_workflow.present? %>
+     <%= render 'github/pagination', curr_path: team_app_github_repository_workflow_path(@team, @app, @app.github_repo_slug, current_workflow.id, page: @curr_page),
+                                    first_path: team_app_github_repository_workflow_path(@team, @app, @app.github_repo_slug, current_workflow.id, page: @first_page),
+                                    last_path: team_app_github_repository_workflow_path(@team, @app, @app.github_repo_slug, current_workflow.id, page: @last_page),
+                                    next_path: team_app_github_repository_workflow_path(@team, @app, @app.github_repo_slug, current_workflow.id, page: @next_page),
+                                    prev_path: team_app_github_repository_workflow_path(@team, @app, @app.github_repo_slug, current_workflow.id, page: @prev_page) %>
+  <% else %>
+    <%= render 'github/pagination', curr_path: team_app_github_repository_workflows_path(@team, @app, @app.github_repo_slug, page: @curr_page),
+                                    first_path: team_app_github_repository_workflows_path(@team, @app, @app.github_repo_slug, page: @first_page),
+                                    last_path: team_app_github_repository_workflows_path(@team, @app, @app.github_repo_slug, page: @last_page),
+                                    next_path: team_app_github_repository_workflows_path(@team, @app, @app.github_repo_slug, page: @next_page),
+                                    prev_path: team_app_github_repository_workflows_path(@team, @app, @app.github_repo_slug, page: @prev_page) %>
+  <% end %>
 <% end %>

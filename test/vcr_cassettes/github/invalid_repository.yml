@@ -23,15 +23,15 @@ http_interactions:
       message: Not Found
     headers:
       Server:
-      - Github.com
+      - GitHub.com
       Date:
-      - Tue, 15 Feb 2022 14:53:49 GMT
+      - Wed, 16 Feb 2022 22:24:29 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       X-Oauth-Scopes:
-      - read:org, read:user, repo, workflow
+      - admin:repo_hook, read:org, read:user, repo, workflow
       X-Accepted-Oauth-Scopes:
       - repo
       X-Github-Media-Type:
@@ -39,18 +39,18 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4791'
+      - '4786'
       X-Ratelimit-Reset:
-      - '1644937665'
+      - '1645051067'
       X-Ratelimit-Used:
-      - '209'
+      - '214'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
-      - ETag, Link, Location, Retry-After, X-Github-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
         X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
-        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-Github-Media-Type, X-Github-SSO,
-        X-Github-Request-Id, Deprecation, Sunset
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
       Access-Control-Allow-Origin:
       - "*"
       Strict-Transport-Security:
@@ -68,9 +68,9 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - C18F:1E9B:5BA8D:5F5A4:620BBE7D
+      - E45B:3010:C91841:18E3BBD:620D799D
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/repos#get-a-repository"}'
-  recorded_at: Tue, 15 Feb 2022 14:53:49 GMT
+  recorded_at: Wed, 16 Feb 2022 22:24:29 GMT
 recorded_with: VCR 6.0.0

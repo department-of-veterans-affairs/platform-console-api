@@ -26,7 +26,7 @@ module Github
 
     test 'lists issues for the repository' do
       VCR.use_cassette('github/repository', record: :new_episodes) do
-        issues = @repository.issues
+        issues = @repository.issues[:issues]
         assert_kind_of Array, issues
         assert_not_nil issues.first.number
       end
@@ -34,7 +34,7 @@ module Github
 
     test 'lists pull requests for the repository' do
       VCR.use_cassette('github/repository', record: :new_episodes) do
-        pull_requests = @repository.pull_requests
+        pull_requests = @repository.pull_requests[:pull_requests]
         assert_kind_of Array, pull_requests
         assert_not_nil pull_requests.first.number
       end
@@ -74,7 +74,7 @@ module Github
 
     test 'lists all repositories in the organization' do
       VCR.use_cassette('github/repository', record: :new_episodes) do
-        org_repos = Github::Repository.all
+        org_repos = Github::Repository.all[:repositories]
         assert_kind_of Array, org_repos
       end
     end

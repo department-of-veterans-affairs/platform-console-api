@@ -1,0 +1,30 @@
+<div class="flex-wrap lg:flex mt-6 lg:mt-0 justify-between space-x-4 text-center">
+  <div></div>
+  <nav class="pagy-nav pagination" aria-label="pager">
+    <span class="page prev">
+      <%= link_to 'Prev', prev_path %>
+    </span>
+    <% unless  @curr_page.to_i == 1  %>
+      <span class="page">
+        <%= link_to @first_page || 1, first_path %>
+      </span>
+      <% unless @curr_page.to_i == 2 %>
+        <span class="page gap">…</span>
+      <% end %>
+    <% end %>
+    <span class="page active">
+      <%= link_to @curr_page, curr_path %>
+    </span>
+    <% unless @last_page.nil? || @last_page.to_i == @curr_page.to_i %>
+      <% unless @curr_page.to_i + 1 == @last_page.to_i %>
+        <span class="page gap">…</span>
+      <% end %>
+      <span class="page">
+        <%= link_to @last_page, last_path %>
+      </span>
+    <% end %>
+    <span class="page next">
+      <%= link_to 'Next', next_path %>
+    </span>
+  </nav>
+</div>

@@ -7,10 +7,12 @@ module Github
 
     # GET /github/pull_requests or /github/pull_requests.json
     def index
-      @current_page = params[:page] || 1
+      @curr_page = params.fetch(:page, 1)
       @github_pull_requests = Github::PullRequest.all(@app.github_repo_slug, @current_page)
-      @next_page = @current_page + 1 unless @github_pull_requests.count < 30
-      @previous_page = @current_page - 1 unless @current_page == 1
+      @last_page = @github_pull_requests.dig(:pages, :last)
+      @next_page = @curr_page.to_i + 1 unless @curr_page == @last_page
+      @prev_page = @curr_page.to_i - 1 unless @curr_page == 1
+      @first_page = 1
     end
 
     # GET /github/pull_requests/1 or /github/pull_requests/1.json

@@ -26,7 +26,7 @@ module Github
 
     test 'lists all issues for a repository' do
       VCR.use_cassette('github/issue', record: :new_episodes) do
-        issues = Github::Issue.all('vets-api')
+        issues = Github::Issue.all('vets-api')[:issues]
         assert_kind_of Array, issues
         assert_not_nil issues.first.number
       end
