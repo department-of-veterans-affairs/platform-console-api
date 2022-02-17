@@ -339,7 +339,7 @@ DEPENDENCIES
   bootsnap (~> 1.10)
   brakeman
   bundler-audit
-  byebug (~> 11.1)
+  byebug
   capybara
   flipper (~> 0.23)
   flipper-redis (~> 0.23)
