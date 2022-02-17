@@ -21,17 +21,6 @@ module Github
       assert_kind_of String, logs
     end
 
-    test 'get logs returns check-run results when logs do not exist' do
-      # mock = MiniTest::Mock.new
-      # mock.expect(:check_run_from_url, 'https://api.github.com/repos/department-of-veterans-affairs/vets-api/check-runs/5204164825')
-      VCR.use_cassette('github/workflow_run_job', record: :new_episodes) do
-        workflow_run_job = Github::WorkflowRunJob.new('vets-api', 5_204_164_825)
-        logs = workflow_run_job.logs
-        assert_kind_of String, logs
-      end
-      # mock.verify
-    end
-
     test 'lists all workflow run jobs for a workflow run' do
       VCR.use_cassette('github/workflow_run_job', record: :new_episodes) do
         all_workflow_run_jobs = Github::WorkflowRunJob.all_for_workflow_run('vets-api', 1_834_786_549).jobs
