@@ -13,9 +13,13 @@ class App < ApplicationRecord
   private
 
   def validate_github_repo
-    Github::Repository.new(github_repo_slug)
-  rescue Octokit::NotFound => e
-    errors.add(:base, e.message)
-    throw(:abort)
+    return if github_repo_slug.blank?
+
+    begin
+      Github::Repository.new(github_repo_slug)
+    rescue Octokit::NotFound => e
+      errors.add(:base, e.message)
+      throw(:abort)
+    end
   end
 end
