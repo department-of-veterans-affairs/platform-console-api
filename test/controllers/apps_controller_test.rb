@@ -5,7 +5,7 @@ require 'test_helper'
 class AppsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:john)
-    post "/login?uid=#{@user.uid}"
+    setup_omniauth_mock(@user)
     @team = teams(:one)
     @app = apps(:one)
   end

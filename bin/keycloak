@@ -1,0 +1,16 @@
+#! /usr/bin/env ruby
+
+system 'docker network inspect keycloak-network >/dev/null 2>&1 || docker network create keycloak-network'
+if `arch`.strip == 'arm64'
+  system %{docker run -p "8080:8080" --name keycloak --network keycloak-network -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=password -e KEYCLOAK_IMPORT=$(pwd)/db/seeds/keycloak-realm.json -v $(pwd)/db/seeds/keycloak-realm.json:$(pwd)/db/seeds/keycloak-realm.json wizzn/keycloak:14}
+else
+  system %{docker run -p "8080:8080" --name keycloak --network keycloak-network -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=password -e KEYCLOAK_IMPORT=$(pwd)/db/seeds/keycloak-realm.json -v $(pwd)/db/seeds/keycloak-realm.json:$(pwd)/db/seeds/keycloak-realm.json jboss/keycloak}
+end
+
+system 'docker exec -it keycloak /opt/jboss/keycloak/bin/standalone.sh \
+        -Djboss.socket.binding.port-offset=100 -Dkeycloak.migration.action=import \
+        -Dkeycloak.migration.provider=singleFile \
+        -Dkeycloak.migration.realmName=Twilight \
+        -Dkeycloak.migration.usersExportStrategy=REALM_FILE \
+        -Dkeycloak.migration.file=$(pwd)/db/seeds/keycloak-realm.json'
+
