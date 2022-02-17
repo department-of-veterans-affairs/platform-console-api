@@ -4,7 +4,9 @@ require 'rouge'
 
 module Github
   # Class representing a Github WorkflowRun
-  class WorkflowRunJob < Base
+  class WorkflowRunJob
+    include Github::Pagination
+
     attr_accessor :id, :repo, :octokit_client, :logs, :github
 
     def initialize(repo, id)
@@ -28,7 +30,7 @@ module Github
       octokit_client = Octokit::Client.new
       response = octokit_client.workflow_run_jobs("#{GITHUB_ORGANIZATION}/#{repo}", workflow_run_id, page: page)
 
-      response[:pages] = page_links(octokit_client)
+      response[:pages] = page_numbers(octokit_client)
       response
     end
 

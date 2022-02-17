@@ -2,7 +2,9 @@
 
 module Github
   # Class representing a Github PullRequest
-  class PullRequest < Base
+  class PullRequest
+    include Github::Pagination
+
     attr_accessor :id, :repo, :octokit_client, :github, :branch_name
 
     def initialize(repo, id)
@@ -30,7 +32,7 @@ module Github
       response = {}
       response[:pull_requests] = octokit_client.pull_requests("#{GITHUB_ORGANIZATION}/#{repo}", page: page)
 
-      response[:pages] = page_links(octokit_client)
+      response[:pages] = page_numbers(octokit_client)
       response
     end
   end

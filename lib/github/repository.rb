@@ -2,7 +2,9 @@
 
 module Github
   # Class representing a Github Repository
-  class Repository < Base
+  class Repository
+    include Github::Pagination
+
     attr_accessor :repo, :octokit_client, :github
 
     def initialize(repo)
@@ -50,7 +52,7 @@ module Github
       response = {}
       response[:repositories] = octokit_client.organization_repositories(GITHUB_ORGANIZATION, page: page)
 
-      response[:pages] = page_links(octokit_client)
+      response[:pages] = page_numbers(octokit_client)
       response
     end
   end

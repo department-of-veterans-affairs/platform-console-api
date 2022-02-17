@@ -2,7 +2,9 @@
 
 module Github
   # Class representing a Github Workflow
-  class Workflow < Base
+  class Workflow
+    include Github::Pagination
+
     attr_accessor :id, :repo, :octokit_client, :github
 
     def initialize(repo, id)

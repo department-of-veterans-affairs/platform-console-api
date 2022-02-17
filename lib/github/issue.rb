@@ -2,7 +2,9 @@
 
 module Github
   # Class representing a Github Issue
-  class Issue < Base
+  class Issue
+    include Github::Pagination
+
     attr_accessor :id, :repo, :octokit_client, :github
 
     def initialize(repo, id)
@@ -21,7 +23,7 @@ module Github
       response = {}
       response[:issues] = octokit_client.list_issues("#{GITHUB_ORGANIZATION}/#{repo}", { page: page_number })
 
-      response[:pages] = page_links(octokit_client)
+      response[:pages] = page_numbers(octokit_client)
       response
     end
   end

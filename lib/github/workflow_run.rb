@@ -5,7 +5,9 @@ require 'open-uri'
 
 module Github
   # Class representing a Github WorkflowRun
-  class WorkflowRun < Base
+  class WorkflowRun
+    include Github::Pagination
+
     attr_accessor :id, :repo, :octokit_client, :logs_url, :github
 
     def initialize(repo, id)
@@ -32,7 +34,7 @@ module Github
       octokit_client = Octokit::Client.new
       response = octokit_client.repository_workflow_runs("#{GITHUB_ORGANIZATION}/#{repo}", page: page)
 
-      response[:pages] = page_links(octokit_client)
+      response[:pages] = page_numbers(octokit_client)
       response
     end
 
@@ -41,7 +43,7 @@ module Github
       response = octokit_client.repository_workflow_runs("#{GITHUB_ORGANIZATION}/#{repo}", branch: branch_name,
                                                                                            page: page)
 
-      response[:pages] = page_links(octokit_client)
+      response[:pages] = page_numbers(octokit_client)
       response
     end
 
@@ -49,7 +51,7 @@ module Github
       octokit_client = Octokit::Client.new
       response = octokit_client.workflow_runs("#{GITHUB_ORGANIZATION}/#{repo}", workflow_id, page: page)
 
-      response[:pages] = page_links(octokit_client)
+      response[:pages] = page_numbers(octokit_client)
       response
     end
   end

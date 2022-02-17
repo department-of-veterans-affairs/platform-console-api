@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'github/base'
+require 'github/pagination'
 require 'github/issue'
 require 'github/pull_request'
 require 'github/repository'
