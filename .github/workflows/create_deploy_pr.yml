@@ -4,50 +4,56 @@ on:
   push:
   workflow_dispatch:
     inputs:
-      repo: 'department-of-veterans-affairs/platform-console-api'
-      file_name: deploy-template.yml
+      repo:
+        description: The Repository the PR will be created in
+        required: true
+        default: department-of-veterans-affairs/platform-console-api
+      file_name:
+        description: The file to include in the PR
+        required: true
+        default: deploy-template.yml
 
 jobs:
-create_pull_request:
-  name: Create Branch & PR
-  runs-on: ubuntu-20.04
-  steps:
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-gov-west-1
+  create_pull_request:
+    name: Create Branch & PR
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-gov-west-1
 
-    - uses: marvinpinto/action-inject-ssm-secrets@v1.1.1
-      with:
-        ssm_parameter: /dsva-vagov/platform-console-api/utility/github_access_token
-        env_variable_name: GITHUB_ACCESS_TOKEN
+      - uses: marvinpinto/action-inject-ssm-secrets@v1.1.1
+        with:
+          ssm_parameter: /dsva-vagov/platform-console-api/utility/github_access_token
+          env_variable_name: GITHUB_ACCESS_TOKEN
 
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Copy File
-      run: cp .github/workflows/${{env.INPUT_FILE_NAME}} ${{runner.temp}}
+      - name: Copy File
+        run: cp .github/workflows/${{env.INPUT_FILE_NAME}} ${{runner.temp}}
 
-    - name: Checkout Repo & Create Branch
-      uses: actions/checkout@v2
-      with:
-        token: ${{env.GITHUB_ACCESS_TOKEN}}
-        repo: ${{env.INPUT_REPO}}
-      run: |
-        git config user.name 'va-vsp-bot'
-        git config user.email 'va-vsp-bot@users.noreply.github.com'
-        mkdir -p .github/workflows
-        cp ${{runner.temp}}/${{env.INPUT_FILE_NAME}} .github/workflows
-        git add .
-        git commit -m 'Add ${{env.INPUT_FILE_NAME}} workflow'
+      - name: Checkout Repo & Create Branch
+        uses: actions/checkout@v2
+        with:
+          token: ${{env.GITHUB_ACCESS_TOKEN}}
+          repo: ${{env.INPUT_REPO}}
+        run: |
+          git config user.name 'va-vsp-bot'
+          git config user.email 'va-vsp-bot@users.noreply.github.com'
+          mkdir -p .github/workflows
+          cp ${{runner.temp}}/${{env.INPUT_FILE_NAME}} .github/workflows
+          git add .
+          git commit -m 'Add ${{env.INPUT_FILE_NAME}} workflow'
 
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3
-      with:
-        token: ${{env.GITHUB_ACCESS_TOKEN}}
-        branch: gha-add-deploy-template-workflow
-        title: Add Deploy Workflow
-        body: Adding ${{env.INPUT_FILE_NAME}} workflow to your repository to enable deployment from the Platform Console.
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{env.GITHUB_ACCESS_TOKEN}}
+          branch: gha-add-deploy-template-workflow
+          title: Add Deploy Workflow
+          body: Adding ${{env.INPUT_FILE_NAME}} workflow to your repository to enable deployment from the Platform Console.
 
 
