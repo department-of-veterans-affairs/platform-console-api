@@ -56,5 +56,3 @@ jobs:
           branch: gha-add-deploy-template-workflow
           title: Add Deploy Workflow
           body: Adding ${{env.INPUT_FILE_NAME}} workflow to your repository to enable deployment from the Platform Console.
-
-
