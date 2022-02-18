@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           token: ${{env.GITHUB_ACCESS_TOKEN}}
-          repo: ${{env.INPUT_REPO}}
+          repository: ${{env.INPUT_REPO}}
 
       - name: Create Commits
         run: |
