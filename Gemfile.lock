@@ -120,13 +120,13 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
-    flipper (0.23.1)
-    flipper-redis (0.23.1)
-      flipper (~> 0.23.1)
-      redis (>= 2.2, < 5)
-    flipper-ui (0.23.1)
+    flipper (0.24.0)
+    flipper-redis (0.24.0)
+      flipper (~> 0.24.0)
+      redis (>= 3.0, < 5)
+    flipper-ui (0.24.0)
       erubi (>= 1.0.0, < 2.0.0)
-      flipper (~> 0.23.1)
+      flipper (~> 0.24.0)
       rack (>= 1.4, < 3)
       rack-protection (>= 1.5.3, < 2.2.0)
       sanitize (< 7)
@@ -353,9 +353,9 @@ DEPENDENCIES
   brakeman
   bundler-audit
   capybara
-  flipper (~> 0.23)
-  flipper-redis (~> 0.23)
-  flipper-ui (~> 0.23)
+  flipper (~> 0.24)
+  flipper-redis (~> 0.24)
+  flipper-ui (~> 0.24)
   importmap-rails (~> 1.0)
   jbuilder (~> 2.11)
   minitest-ci
