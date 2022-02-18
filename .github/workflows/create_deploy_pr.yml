@@ -15,6 +15,9 @@ on:
 
 jobs:
   create_pull_request:
+    env:
+      INPUT_FILE_NAME: deploy-template_test.yml
+      INPUT_REPO: department-of-veterans-affairs/platform-console-api
     name: Create Branch & PR
     runs-on: ubuntu-20.04
     steps:
