@@ -1,7 +1,6 @@
 name: Create Deploy Workflow PR
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       repo:
