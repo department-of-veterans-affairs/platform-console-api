@@ -43,6 +43,7 @@ jobs:
         with:
           token: ${{env.GITHUB_ACCESS_TOKEN}}
           repository: ${{env.INPUT_REPO}}
+          ref: master
 
       - name: Create Commits
         run: |
