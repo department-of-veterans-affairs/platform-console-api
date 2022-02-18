@@ -33,6 +33,14 @@ This repository uses semantic releases triggered via Github Actions. When commit
 4. perf: remove some change
 ```
 
+## Migrations
+
+### Schema migrations:
+All schema migrations are run automatically upon a successful semantic release and deploy. The initContainers configuration in the platform-console-api k8s deployment spec will start and execute migrations before the other containers in the pod start.
+
+### Data Migrations:
+All data migrations will need to be run via a manual process. 
+
 ## Running tests
 
 To run all tests, run:
@@ -52,3 +60,22 @@ rails test test/path/to/the_test.rb:123
 ## Deployment
 
 While we await provisioning of appropriate services on the VA network, we are hosting the platform-console on Heroku. Each commit to master is automatically deployed and each pull request will generate a Review App.
+## KEYCLOAK INTEGRATION
+Create Keycloak DB:
+
+Instructions for running and initializing Keycloak locally:
+  To setup keycloak, run:
+  bin/keycloak
+
+  This will create a keycloak databse, docker image, and a docker container (Keycloak).
+  You can access keycloak at http://localhost:8080
+
+  Keycloak ADMIN credentials:
+  # Create Realms
+  username: admin
+  password: password
+
+  Keycloak SSO credentials:
+  username: keycloak_user@example.com
+  password: password
+

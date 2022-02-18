@@ -3,6 +3,7 @@
 # The App Model
 class App < ApplicationRecord
   belongs_to :team
+  has_paper_trail
   validates :name, presence: true
   before_save :validate_github_repo, if: :will_save_change_to_github_repo_slug?
 

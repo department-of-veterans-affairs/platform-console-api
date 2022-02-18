@@ -2,7 +2,7 @@
 
 class Role < ApplicationRecord
   has_many :users, through: :user_roles
-
+  has_paper_trail
   belongs_to :resource,
              polymorphic: true,
              optional: true
