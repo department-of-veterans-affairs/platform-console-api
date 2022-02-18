@@ -35,11 +35,13 @@ jobs:
       - name: Copy File
         run: cp .github/workflows/${{env.INPUT_FILE_NAME}} ${{runner.temp}}
 
-      - name: Checkout Repo & Create Branch
+      - name: Checkout Repo
         uses: actions/checkout@v2
         with:
           token: ${{env.GITHUB_ACCESS_TOKEN}}
           repo: ${{env.INPUT_REPO}}
+
+      - name: Create Commits
         run: |
           git config user.name 'va-vsp-bot'
           git config user.email 'va-vsp-bot@users.noreply.github.com'
