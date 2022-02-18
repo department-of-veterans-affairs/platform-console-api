@@ -31,13 +31,13 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Copy File
-        run: cp .github/workflows/${{env.INPUT_FILE_NAME}} ${{runner.temp}}
+        run: cp .github/workflows/${{ github.event.inputs.file_name }} ${{runner.temp}}
 
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
           token: ${{env.GITHUB_ACCESS_TOKEN}}
-          repository: ${{env.INPUT_REPO}}
+          repository: ${{ github.event.inputs.file_name }}
           ref: master
 
       - name: Create Commits
@@ -45,9 +45,9 @@ jobs:
           git config user.name 'va-vsp-bot'
           git config user.email 'va-vsp-bot@users.noreply.github.com'
           mkdir -p .github/workflows
-          cp ${{runner.temp}}/${{env.INPUT_FILE_NAME}} .github/workflows
+          cp ${{runner.temp}}/${{ github.event.inputs.file_name }} .github/workflows
           git add .
-          git commit -m 'Add ${{env.INPUT_FILE_NAME}} workflow'
+          git commit -m 'Add ${{ github.event.inputs.file_name }} workflow'
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
@@ -55,6 +55,6 @@ jobs:
           token: ${{env.GITHUB_ACCESS_TOKEN}}
           branch: gha-add-deploy-template-workflow
           title: Add Deploy Workflow
-          body: Adding ${{env.INPUT_FILE_NAME}} workflow to your repository to enable deployment from the Platform Console.
+          body: Adding ${{ github.event.inputs.file_name }} workflow to your repository to enable deployment from the Platform Console.
 
 
