@@ -7,7 +7,6 @@ on:
       repo:
         description: The Repository the PR will be created in
         required: true
-        default: department-of-veterans-affairs/platform-console-api
       file_name:
         description: The file to include in the PR
         required: true
@@ -15,9 +14,6 @@ on:
 
 jobs:
   create_pull_request:
-    env:
-      INPUT_FILE_NAME: deploy-template_test.yml
-      INPUT_REPO: department-of-veterans-affairs/platform-console-api
     name: Create Branch & PR
     runs-on: ubuntu-20.04
     steps:
