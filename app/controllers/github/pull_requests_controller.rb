@@ -21,7 +21,9 @@ module Github
     private
 
     # Use callbacks to share common setup or constraints between actions.
-    def set_github_pull_request; end
+    def set_github_pull_request
+      @github_pull_request = Github::PullRequest.new(@app.github_repo_slug, params[:number])
+    end
 
     # Only allow a list of trusted parameters through.
     def github_pull_request_params
