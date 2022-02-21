@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-json.array! @github_workflows, partial: 'github_workflows/github_workflow', as: :github_workflow
+json.array! @github_workflows[:workflows], partial: 'github/workflows/github_workflow', as: :workflow

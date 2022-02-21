@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-json.partial! 'github_repositories/github_repository', github_repository: @github_repository
+json.partial! 'github/repositories/github_repository', repository: @github_repository.github
