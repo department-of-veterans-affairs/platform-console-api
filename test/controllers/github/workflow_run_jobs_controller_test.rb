@@ -7,7 +7,6 @@ module Github
     setup do
       @user = users(:john)
       setup_omniauth_mock(@user)
-      post "/login?uid=#{@user.uid}"
       @team = teams(:three)
       @app = apps(:three)
     end

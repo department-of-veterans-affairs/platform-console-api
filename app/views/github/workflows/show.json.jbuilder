@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-json.partial! 'github_workflows/github_workflow', github_workflow: @github_workflow
+json.partial! 'github/workflows/github_workflow', workflow: @github_workflow.github
