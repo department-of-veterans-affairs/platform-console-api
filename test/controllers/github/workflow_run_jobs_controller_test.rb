@@ -6,7 +6,7 @@ module Github
   class WorkflowRunJobsControllerTest < ActionDispatch::IntegrationTest
     setup do
       @user = users(:john)
-      post "/login?uid=#{@user.uid}"
+      setup_omniauth_mock(@user)
       @team = teams(:three)
       @app = apps(:three)
     end
