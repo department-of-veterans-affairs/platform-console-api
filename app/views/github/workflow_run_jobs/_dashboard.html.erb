@@ -64,12 +64,20 @@
                 <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
                 <% current_css = 'bg-gray-200 text-gray-900 group flex items-center px-2 py-2 text-md font-medium rounded-md' %>
                 <% default_css = 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-md font-medium rounded-md' %>
-
-                <%= link_to team_app_github_repository_workflow_workflow_run_path(@team, @app, @app.github_repo_slug, workflow_run.github[:workflow_id], workflow_run.github[:id]), class: default_css do %>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                  </svg>
-                  Workflow Run
+                <% if controller_name.include?('workflow') %>
+                  <%= link_to team_app_github_repository_workflow_workflow_run_path(@team, @app, @app.github_repo_slug, workflow_run.github[:workflow_id], workflow_run.github[:id]), class: default_css do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    Workflow Run
+                  <% end %>
+                <% elsif controller_name.include?('deploy') %>
+                  <%= link_to team_app_github_repository_deploy_path(@team, @app, @app.github_repo_slug, workflow_run.github[:id]), class: default_css do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    Deploy
+                  <% end %>
                 <% end %>
                 <!-- This example requires Tailwind CSS v2.0+ -->
                 <div class="relative">
@@ -81,7 +89,12 @@
                   </div>
                 </div>
                 <% jobs[:jobs].each do |job|%>
-                  <%= link_to team_app_github_repository_workflow_workflow_run_workflow_run_job_path(@team, @app, @app.github_repo_slug, workflow_run.github[:workflow_id], workflow_run.github[:id], job[:id]), class: workflow_run_job.github[:name] == job[:name] ? current_css : default_css do %>
+                  <% if controller_name.include?('workflow') %>
+                    <% path = team_app_github_repository_workflow_workflow_run_workflow_run_job_path(@team, @app, @app.github_repo_slug, workflow_run.github[:workflow_id], workflow_run.github[:id], job[:id])%>
+                  <% elsif controller_name.include?('deploy') %>
+                    <% path = team_app_github_repository_deploy_deploy_job_path(@team, @app, @app.github_repo_slug, workflow_run.id, job[:id])%>
+                  <% end %>
+                  <%= link_to path, class: workflow_run_job.github[:name] == job[:name] ? current_css : default_css do %>
                     <% if job[:conclusion] == 'success' %>
                         <!-- Heroicon name: solid/check-circle -->
                         <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -133,10 +146,10 @@
             </div>
           </div>
           <div class="flex justify-between">
-            <% if @github_workflow_run_job.logs.present? %>
+            <% if workflow_run_job.logs.present? %>
             <code class="highlight">
               <article class="prose prose-sm max-w-none prose-a:text-blue-600 hover:prose-a:text-blue-500">
-                <%= sanitize markdown(@github_workflow_run_job.logs) %>
+                <%= sanitize markdown(workflow_run_job.logs) %>
               </article>
             </code>
             <% end %>

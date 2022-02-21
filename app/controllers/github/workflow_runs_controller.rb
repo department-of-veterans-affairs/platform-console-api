@@ -13,7 +13,6 @@ module Github
     # GET /github/workflow_runs/1 or /github/workflow_runs/1.json
     def show
       @jobs = @github_workflow_run.jobs
-      @current_job = params[:job] || @jobs[:jobs].first[:name]
     end
 
     def new

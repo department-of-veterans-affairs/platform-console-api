@@ -5,18 +5,21 @@ module Github
   class Workflow
     include Github::Pagination
 
-    attr_accessor :id, :repo, :octokit_client, :github
+    attr_accessor :id, :file_name, :repo, :octokit_client, :github
 
-    def initialize(repo, id)
-      @id = id
+    def initialize(repo, id_or_filename)
+      @id = id_or_filename if id_or_filename.is_a?(Integer)
+      @file_name = id_or_filename if id_or_filename.is_a?(String)
       @repo = repo
       @octokit_client = Octokit::Client.new
-      @github = octokit_client.workflow("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      @github = octokit_client.workflow("#{GITHUB_ORGANIZATION}/#{@repo}", id_or_filename)
+      @id ||= @github[:id]
+      @file_name ||= @github[:path]&.split('/')&.last
     end
 
-    def self.dispatch!(repo, workflow_id, ref)
+    def self.dispatch!(repo, workflow_id, ref, options = {})
       octokit_client = Octokit::Client.new
-      octokit_client.workflow_dispatch("#{GITHUB_ORGANIZATION}/#{repo}", workflow_id, ref)
+      octokit_client.workflow_dispatch("#{GITHUB_ORGANIZATION}/#{repo}", workflow_id, ref, options)
     end
 
     def self.all(repo)

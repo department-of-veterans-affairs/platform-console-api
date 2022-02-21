@@ -10,6 +10,7 @@ class App < ApplicationRecord
   def github_repository
     Github::Repository.new(github_repo_slug)
   end
+  alias repository github_repository
 
   private
 

@@ -10,6 +10,13 @@ Rails.application.routes.draw do
     resources :apps do
       namespace :github do
         resources :repositories, only: [:show], param: :repo do
+          resources :deploys, only: %i[index show new create] do
+            member do
+              post :create_deploy_pr
+              post :rerun
+            end
+            resources :deploy_jobs, only: [:show]
+          end
           resources :pull_requests, only: %i[index show], param: :number
           resources :workflows, only: %i[index show] do
             collection do

@@ -17,8 +17,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_144301) do
   create_table "apps", force: :cascade do |t|
     t.string "name"
     t.bigint "team_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "github_repo_slug"
     t.index ["team_id"], name: "index_apps_on_team_id"
   end
@@ -47,8 +47,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_144301) do
     t.string "email"
     t.string "password_digest"
     t.string "uid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["password_digest"], name: "index_users_on_password_digest"
     t.index ["uid"], name: "index_users_on_uid"
@@ -57,8 +57,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_144301) do
   create_table "users_roles", id: false, force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "role_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["role_id"], name: "index_users_roles_on_role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
     t.index ["user_id"], name: "index_users_roles_on_user_id"
