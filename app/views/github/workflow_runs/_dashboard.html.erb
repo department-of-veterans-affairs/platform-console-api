@@ -98,7 +98,7 @@
                 </div>
                 <% jobs[:jobs].each do |job|%>
                   <% if request.path.include?('workflow') %>
-                    <% path = team_app_github_repository_workflow_workflow_run_workflow_run_job_path(@team, @app, @app.github_repo_slug, workflow_run.github[:workflow_id], workflow_run.github[:id], job[:id])%>
+                    <% path = team_app_github_repository_workflow_workflow_run_workflow_run_job_path(@team, @app, @app.github_repo_slug, workflow_run[:workflow_id], workflow_run[:id], job[:id])%>
                   <% elsif request.path.include?('deploy') %>
                     <% path = team_app_github_repository_deploy_deploy_job_path(@team, @app, @app.github_repo_slug, workflow_run.id, job[:id])%>
                   <% end %>
@@ -155,7 +155,7 @@
                         <tr>
                           <td class="px-6 py-4 whitespace-nowrap">
                             <% if request.path.include?('workflow') %>
-                              <% path = team_app_github_repository_workflow_workflow_run_workflow_run_job_path(@team, @app, @app.github_repo_slug, workflow_run.github[:workflow_id], workflow_run.github[:id], job[:id])%>
+                              <% path = team_app_github_repository_workflow_workflow_run_workflow_run_job_path(@team, @app, @app.github_repo_slug, workflow_run[:workflow_id], workflow_run[:id], job[:id])%>
                             <% elsif request.path.include?('deploy') %>
                               <% path = team_app_github_repository_deploy_deploy_job_path(@team, @app, @app.github_repo_slug, workflow_run.id, job[:id])%>
                             <% end %>
