@@ -12,6 +12,9 @@ on:
       auto_deploy_envs:
        required: true # utility
        type: string
+      app_name:
+       required: true # platform-console-api
+       type: string
     secrets:
       aws_access_key_id: #${{ secrets.AWS_ACCESS_KEY_ID }}
         required: true
@@ -87,8 +90,8 @@ jobs:
           envs=( ${{ needs.prepare-values.outputs.environments }} )
           for env in ${envs[*]};
           do
-            yq e -i '(.spec.template.spec.containers[] | select(.name == "platform-console-api").image) |= "008577686731.dkr.ecr.us-gov-west-1.amazonaws.com/dsva/${{inputs.ecr_repository}}:${{inputs.ecr_repository}}-${{ github.sha }}"' $env/deployment.yml
-            yq e -i '(.spec.template.spec.initContainers[] | select(.name == "platform-console-api").image) |= "008577686731.dkr.ecr.us-gov-west-1.amazonaws.com/dsva/${{inputs.ecr_repository}}:${{inputs.ecr_repository}}-${{ github.sha }}"' $env/deployment.yml
+            yq e -i '(.spec.template.spec.containers[] | select(.name == ${{inputs.app_name}}).image) |= "008577686731.dkr.ecr.us-gov-west-1.amazonaws.com/dsva/${{inputs.ecr_repository}}:${{inputs.ecr_repository}}-${{ github.sha }}"' $env/deployment.yml
+            yq e -i '(.spec.template.spec.initContainers[] | select(.name == ${{inputs.app_name}}).image) |= "008577686731.dkr.ecr.us-gov-west-1.amazonaws.com/dsva/${{inputs.ecr_repository}}:${{inputs.ecr_repository}}-${{ github.sha }}"' $env/deployment.yml
           done
 
       - name: Add and Commit file
