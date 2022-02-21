@@ -1,8 +1,15 @@
 # frozen_string_literal: true
 
+stack = Faraday::RackBuilder.new do |builder|
+  builder.use Faraday::HttpCache, serializer: Marshal, shared_cache: false
+  builder.use Octokit::Response::RaiseError
+  builder.adapter Faraday.default_adapter
+end
+
 Octokit.configure do |config|
   config.access_token = ENV['GITHUB_ACCESS_TOKEN']
   config.per_page = 20
+  config.middleware = stack
 end
 
 Octokit::Client::ActionsWorkflowRuns.class_eval do
