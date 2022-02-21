@@ -18,11 +18,11 @@ module Github
       end
     end
 
-    # test 'should show github_pull_request' do
-    #   VCR.use_cassette('github/pull_requests_controller', record: :new_episodes) do
-    #     get team_app_github_repository_pull_request_path(@team, @app, @app.github_repo_slug, 1)
-    #     assert_response :success
-    #   end
-    # end
+    test 'should show github_pull_request' do
+      VCR.use_cassette('github/pull_requests_controller', record: :new_episodes) do
+        get team_app_github_repository_pull_request_path(@team, @app, @app.github_repo_slug, 1)
+        assert_response :success
+      end
+    end
   end
 end

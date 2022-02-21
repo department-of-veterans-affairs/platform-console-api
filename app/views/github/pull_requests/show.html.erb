@@ -1,0 +1,12 @@
+<%= render 'github/tabs' %>
+
+<div class="flow-root">
+  <div class="float-left flex-shrink-0 group block">
+    <div class="flex items-center">
+      <div class="mt-5 text-xl font-bold text-gray-900">
+        <%= @github_pull_request.github.title %>
+        <span class="text-xl font-medium text-gray-500"> #<%= @github_pull_request.github.number %></code></span>
+      </div>
+    </div>
+  </div>
+</div>
