@@ -13,6 +13,16 @@ module Github
       @github = octokit_client.repository("#{GITHUB_ORGANIZATION}/#{@repo}")
     end
 
+    # Lists all repositories for the organization.
+    def self.all(page = 1)
+      octokit_client = Octokit::Client.new
+      response = {}
+      response[:repositories] = octokit_client.organization_repositories(GITHUB_ORGANIZATION, page: page)
+
+      response[:pages] = page_numbers(octokit_client)
+      response
+    end
+
     def issues(page = 1)
       Github::Issue.all(@repo, page)
     end
@@ -46,14 +56,16 @@ module Github
       Base64.decode64(content)
     end
 
-    # Lists all repositories for the organization.
-    def self.all(page = 1)
-      octokit_client = Octokit::Client.new
-      response = {}
-      response[:repositories] = octokit_client.organization_repositories(GITHUB_ORGANIZATION, page: page)
+    def deploy_workflow
+      Github::Workflow.new(@repo, DEPLOY_WORKFLOW_FILE)
+    rescue Octokit::NotFound
+      nil
+    end
 
-      response[:pages] = page_numbers(octokit_client)
-      response
+    def dispatch_create_pr_workflow
+      inputs = { repo: "#{GITHUB_ORGANIZATION}/#{@repo}", file_name: DEPLOY_WORKFLOW_FILE }
+      Github::Workflow.dispatch!('platform-console-api', CREATE_PR_WORKFLOW_FILE,
+                                 'master', { inputs: inputs })
     end
   end
 end
