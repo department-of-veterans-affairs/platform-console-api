@@ -1,5 +1,10 @@
 <%= render 'github/tabs' %>
-<%= form_with url: workflow_dispatch_team_app_github_repository_workflows_path do |form| %>
+ <% if request.path.include?('workflow') %>
+  <% url = workflow_dispatch_team_app_github_repository_workflows_path  %>
+<% elsif request.path.include?('deploy')%>
+  <% url = team_app_github_repository_deploy_dispatch_path  %>
+<% end %>
+<%= form_with url: url do |form| %>
 
   <% if @error.present? %>
     <div class="rounded-md bg-red-50 p-4">
@@ -26,7 +31,7 @@
         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <%= form.label :workflow, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2', autofocus: true %>
           <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <%= form.select :workflow_id, options_from_collection_for_select(@all_workflows[:workflows], :id, :name), {}, { class: 'mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md'} %>
+            <%= form.select :workflow_id, options_from_collection_for_select(@all_workflows, :id, :name), {}, { class: 'mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md'} %>
           </div>
         </div>
       </div>

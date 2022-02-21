@@ -12,5 +12,5 @@ require 'github/workflow'
 module Github
   GITHUB_ORGANIZATION = 'department-of-veterans-affairs'
   CREATE_PR_WORKFLOW_FILE = 'create_deploy_pr.yml'
-  DEPLOY_WORKFLOW_FILE = 'codeql.yml'
+  DEPLOY_WORKFLOW_FILE = 'deploy-template_test.yml'
 end

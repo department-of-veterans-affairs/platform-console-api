@@ -69,7 +69,7 @@ module Github
       false
     end
 
-    def dispatch_pr_workflow
+    def dispatch_create_pr_workflow
       inputs = { repo: "#{GITHUB_ORGANIZATION}/#{@repo}", file_name: DEPLOY_WORKFLOW_FILE }
       Github::Workflow.dispatch!('platform-console-api', CREATE_PR_WORKFLOW_FILE,
                                  'connect-app-to-github-deploy', { inputs: inputs })
