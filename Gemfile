@@ -8,12 +8,15 @@ gem 'rails', '~> 7.0.2'
 
 gem 'bcrypt',            '~> 3.1' # Use ActiveModel has_secure_password
 gem 'bootsnap',          '~> 1.10', require: false # Reduces boot times through caching; required in config/boot.rb
-gem 'flipper',           '~> 0.23' # Feature flipper for ANYTHING
-gem 'flipper-redis',     '~> 0.23' # Redis adapter for Flipper
-gem 'flipper-ui',        '~> 0.23' # UI for the Flipper gem
+gem 'flipper',           '~> 0.24' # Feature flipper for ANYTHING
+gem 'flipper-redis',     '~> 0.24' # Redis adapter for Flipper
+gem 'flipper-ui',        '~> 0.24' # UI for the Flipper gem
 gem 'jbuilder',          '~> 2.11' # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'octokit',           '~> 4.22' # Ruby toolkit for the GitHub API.
-gem 'pagy',              '~> 5.9'  # Agnostic pagination in plain ruby
+gem 'omniauth-keycloak', '~> 1.4'  # Keycloack SSO Oauth Strategy
+gem 'omniauth-rails_csrf_protection'
+gem 'pagy',              '~> 5.10' # Agnostic pagination in plain ruby
+gem 'paper_trail',       '~> 12.2' # Track changes to your models, for auditing or versioning
 gem 'pg',                '~> 1.3'  # Use postgresql as the database for Active Record
 gem 'puma',              '~> 5.6'  # Use the Puma web server [https://github.com/puma/puma]
 gem 'redis',             '~> 4.6'  # Use Redis adapter to run Action Cable in production

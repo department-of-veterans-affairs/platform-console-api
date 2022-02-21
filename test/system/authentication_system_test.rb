@@ -17,7 +17,6 @@ class AuthenticationTest < ApplicationSystemTestCase
     fill_in 'Email', with: 'john@example.com'
     fill_in 'Password', with: 'bad_password'
     click_button 'Log in'
-
     assert page.has_content? 'Invalid email or password'
     assert_equal '/login', current_path
   end
