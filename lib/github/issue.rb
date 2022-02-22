@@ -10,7 +10,7 @@ module Github
     # Creates a Github::Issue object with the github response attached
     #
     # @param repo [String] A GitHub repository
-    # @param id [Integer] The ID o
+    # @param id [Integer] The ID of the Issue
     #
     # @return [Github::Issue]
     # @see https://docs.github.com/en/rest/reference/issues#get-an-issue
