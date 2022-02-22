@@ -22,11 +22,11 @@ module Github
     def rerun # rubocop:disable Metrics/AbcSize
       respond_to do |format|
         if @github_workflow_run.rerun!
-          path = team_app_github_repository_workflow_path(@team, @app, @app.github_repo_slug, params[:workflow_id])
+          path = team_app_github_repository_workflow_path(@team, @app, @app.github_repo, params[:workflow_id])
           format.html { redirect_to path, notice: 'Workflow run was sucessfully restarted' }
           format.json { render json: true }
         else
-          path = team_app_github_repository_workflow_workflow_run_path(@team, @app, @app.github_repo_slug,
+          path = team_app_github_repository_workflow_workflow_run_path(@team, @app, @app.github_repo,
                                                                        params[:workflow_id], params[:id])
           format.html { redirect_to path, notice: 'There was a problem restarting the workflow run' }
           format.json { render json: false }
@@ -38,7 +38,7 @@ module Github
 
     # Use callbacks to share common setup or constraints between actions.
     def set_github_workflow_run
-      @github_workflow_run = Github::WorkflowRun.new(@app.github_repo_slug, params[:id])
+      @github_workflow_run = Github::WorkflowRun.new(@app.github_repo, params[:id])
     end
 
     # Only allow a list of trusted parameters through.

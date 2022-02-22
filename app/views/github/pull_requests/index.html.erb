@@ -47,9 +47,9 @@
     </div>
   </div>
 
-  <%= render 'github/pagination', curr_path: team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo_slug, page: @curr_page),
-                                  first_path: team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo_slug, page: @first_page),
-                                  last_path: team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo_slug, page: @last_page),
-                                  next_path: team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo_slug, page: @next_page),
-                                  prev_path: team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo_slug, page: @prev_page) %>
+  <%= render 'github/pagination', curr_path: team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo, page: @curr_page),
+                                  first_path: team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo, page: @first_page),
+                                  last_path: team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo, page: @last_page),
+                                  next_path: team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo, page: @next_page),
+                                  prev_path: team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo, page: @prev_page) %>
 <% end %>

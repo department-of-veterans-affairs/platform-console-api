@@ -8,7 +8,7 @@ module Github
     # GET /github/pull_requests or /github/pull_requests.json
     def index
       @curr_page = params.fetch(:page, 1)
-      @github_pull_requests = Github::PullRequest.all(@app.github_repo_slug, @current_page)
+      @github_pull_requests = Github::PullRequest.all(@app.github_repo, @current_page)
       @last_page = @github_pull_requests.dig(:pages, :last)
       @next_page = @curr_page.to_i + 1 unless @curr_page == @last_page
       @prev_page = @curr_page.to_i - 1 unless @curr_page == 1
@@ -22,7 +22,7 @@ module Github
 
     # Use callbacks to share common setup or constraints between actions.
     def set_github_pull_request
-      @github_pull_request = Github::PullRequest.new(@app.github_repo_slug, params[:number])
+      @github_pull_request = Github::PullRequest.new(@app.github_repo, params[:number])
     end
 
     # Only allow a list of trusted parameters through.

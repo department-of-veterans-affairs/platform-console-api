@@ -35,10 +35,10 @@ module Github
     def workflow_dispatch # rubocop:disable Metrics/AbcSize
       params[:workflow_id] = @github_repository.deploy_workflow.id if request.path.include?('deploy')
       respond_to do |format|
-        Github::Workflow.dispatch!(@app.github_repo_slug, params[:workflow_id], params[:ref])
+        Github::Workflow.dispatch!(@app.github_repo, params[:workflow_id], params[:ref])
         format.html do
           redirect_to team_app_github_repository_workflow_path(@app, @team,
-                                                               @app.github_repo_slug, params[:workflow_id]),
+                                                               @app.github_repo, params[:workflow_id]),
                       notice: 'Workflow was successfully dispatched'
         end
         format.json { render :show, json: true, status: :ok }
@@ -53,7 +53,7 @@ module Github
 
     # Use callbacks to share common setup or constraints between actions.
     def set_github_workflow
-      @github_workflow = Github::Workflow.new(@app.github_repo_slug, params[:id])
+      @github_workflow = Github::Workflow.new(@app.github_repo, params[:id])
     rescue Octokit::NotFound
       @github_workflow = nil
     end

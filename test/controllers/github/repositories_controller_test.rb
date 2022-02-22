@@ -13,7 +13,7 @@ module Github
 
     test 'should get index' do
       VCR.use_cassette('github/repositories_controller') do
-        get team_app_github_repository_path(@team, @app, @app.github_repo_slug)
+        get team_app_github_repository_path(@team, @app, @app.github_repo)
         assert_response :success
       end
     end

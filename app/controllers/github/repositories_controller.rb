@@ -10,7 +10,7 @@ module Github
       respond_to do |format|
         if @github_repository.dispatch_create_pr_workflow
           format.html do
-            redirect_to team_app_github_repository_deploys_path(@team, @app, @app.github_repo_slug),
+            redirect_to team_app_github_repository_deploys_path(@team, @app, @app.github_repo),
                         notice: 'PR has been queued for creation.'
           end
           format.json { render json: true, status: :ok }

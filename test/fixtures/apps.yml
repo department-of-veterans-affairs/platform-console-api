@@ -4,17 +4,17 @@ one:
   id: 1
   name: App1
   team_id: 1,
-  github_repo_slug: 'repo-1'
+  github_repo: 'repo-1'
 
 two:
   id: 2
   name: App2
   team_id: 2
-  github_repo_slug: 'repo-2'
+  github_repo: 'repo-2'
 
 three:
   id: 3
   name: App3
   team_id: 3
-  github_repo_slug: 'vets-api'
-  
+  github_repo: 'vets-api'
+

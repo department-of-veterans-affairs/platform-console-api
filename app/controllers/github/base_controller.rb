@@ -12,11 +12,11 @@ module Github
     private
 
     def set_github_repository
-      @github_repository = Github::Repository.new(@app.github_repo_slug)
+      @github_repository = Github::Repository.new(@app.github_repo)
     end
 
     def authorize_repo!
-      return if params[:repo] || params[:repository_repo] == @app.github_repo_slug
+      return if params[:repo] || params[:repository_repo] == @app.github_repo
 
       respond_to do |format|
         flash[:error] = 'Unauthorized'

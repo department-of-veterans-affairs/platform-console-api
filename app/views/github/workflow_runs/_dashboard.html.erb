@@ -40,9 +40,9 @@
     </div>
     <div class="float-right mt-5 mr-2">
       <% if request.path.include?('workflow') %>
-        <% path = rerun_team_app_github_repository_workflow_workflow_run_path(@team, @app, @app.github_repo_slug, workflow_run[:workflow_id], workflow_run.id) %>
+        <% path = rerun_team_app_github_repository_workflow_workflow_run_path(@team, @app, @app.github_repo, workflow_run[:workflow_id], workflow_run.id) %>
       <% elsif controller_name.include?('deploy') %>
-        <% path = team_app_github_repository_deploy_rerun_path(@team, @app, @app.github_repo_slug, workflow_run.id) %>
+        <% path = team_app_github_repository_deploy_rerun_path(@team, @app, @app.github_repo, workflow_run.id) %>
       <% end %>
       <%= button_to path, title: 'Restart Run' do %>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -73,14 +73,14 @@
                 <% default_css = 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-md font-medium rounded-md' %>
 
                 <% if request.path.include?('workflow') %>
-                  <%= link_to team_app_github_repository_workflow_workflow_run_path(@team, @app, @app.github_repo_slug, workflow_run[:workflow_id], workflow_run[:id]), class: default_css do %>
+                  <%= link_to team_app_github_repository_workflow_workflow_run_path(@team, @app, @app.github_repo, workflow_run[:workflow_id], workflow_run[:id]), class: default_css do %>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
                     All Jobs
                   <% end %>
                 <% elsif request.path.include?('deploy') %>
-                  <%= link_to team_app_github_repository_deploy_path(@team, @app, @app.github_repo_slug, workflow_run.id), class: default_css do %>
+                  <%= link_to team_app_github_repository_deploy_path(@team, @app, @app.github_repo, workflow_run.id), class: default_css do %>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
@@ -98,9 +98,9 @@
                 </div>
                 <% jobs[:jobs].each do |job|%>
                   <% if request.path.include?('workflow') %>
-                    <% path = team_app_github_repository_workflow_workflow_run_workflow_run_job_path(@team, @app, @app.github_repo_slug, workflow_run[:workflow_id], workflow_run[:id], job[:id])%>
+                    <% path = team_app_github_repository_workflow_workflow_run_workflow_run_job_path(@team, @app, @app.github_repo, workflow_run[:workflow_id], workflow_run[:id], job[:id])%>
                   <% elsif request.path.include?('deploy') %>
-                    <% path = team_app_github_repository_deploy_deploy_job_path(@team, @app, @app.github_repo_slug, workflow_run.id, job[:id])%>
+                    <% path = team_app_github_repository_deploy_deploy_job_path(@team, @app, @app.github_repo, workflow_run.id, job[:id])%>
                   <% end %>
                   <%= link_to path, class: default_css do %>
                     <% if job[:conclusion] == 'success' %>
@@ -155,9 +155,9 @@
                         <tr>
                           <td class="px-6 py-4 whitespace-nowrap">
                             <% if request.path.include?('workflow') %>
-                              <% path = team_app_github_repository_workflow_workflow_run_workflow_run_job_path(@team, @app, @app.github_repo_slug, workflow_run[:workflow_id], workflow_run[:id], job[:id])%>
+                              <% path = team_app_github_repository_workflow_workflow_run_workflow_run_job_path(@team, @app, @app.github_repo, workflow_run[:workflow_id], workflow_run[:id], job[:id])%>
                             <% elsif request.path.include?('deploy') %>
-                              <% path = team_app_github_repository_deploy_deploy_job_path(@team, @app, @app.github_repo_slug, workflow_run.id, job[:id])%>
+                              <% path = team_app_github_repository_deploy_deploy_job_path(@team, @app, @app.github_repo, workflow_run.id, job[:id])%>
                             <% end %>
                             <%= link_to path, class: default_css do %>
                               <% if job[:conclusion] == 'success' %>
