@@ -9,7 +9,7 @@ module Github
 
     attr_accessor :id, :repo, :octokit_client, :logs, :github
 
-    # Creates an Github::WorkflowRunJob object with the github response attached
+    # Creates a Github::WorkflowRunJob object with the github response attached
     #
     # @param repo [String] A GitHub repository
     # @param id [Integer] The ID of the WorkflowRunJob

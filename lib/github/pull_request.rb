@@ -7,7 +7,7 @@ module Github
 
     attr_accessor :id, :repo, :octokit_client, :github, :branch_name
 
-    # Creates an Github::PullRequest object with the github response attached
+    # Creates a Github::PullRequest object with the github response attached
     #
     # @param repo [String] A GitHub repository
     # @param id [Integer] The ID of the Pull Request

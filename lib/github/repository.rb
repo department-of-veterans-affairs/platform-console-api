@@ -7,7 +7,7 @@ module Github
 
     attr_accessor :repo, :octokit_client, :github
 
-    # Creates an Github::Repository object with the github response attached
+    # Creates a Github::Repository object with the github response attached
     #
     # @param repo [String] A GitHub repository
     #

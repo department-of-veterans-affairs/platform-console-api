@@ -7,7 +7,7 @@ module Github
 
     attr_accessor :id, :repo, :octokit_client, :github
 
-    # Creates an Github::Issue object with the github response attached
+    # Creates a Github::Issue object with the github response attached
     #
     # @param repo [String] A GitHub repository
     # @param id [Integer] The ID o

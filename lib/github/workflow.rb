@@ -7,7 +7,7 @@ module Github
 
     attr_accessor :id, :file_name, :repo, :octokit_client, :github
 
-    # Creates an Github::Workflow object with the github response attached
+    # Creates a Github::Workflow object with the github response attached
     #
     # @param repo [String] A GitHub repository
     # @param id_or_filename [Integer, String] The ID or fil name of the Workflow
