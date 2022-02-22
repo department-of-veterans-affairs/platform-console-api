@@ -15,9 +15,6 @@ module Github
       @first_page = 1
     end
 
-    # GET /github/pull_requests/1 or /github/pull_requests/1.json
-    def show; end
-
     private
 
     # Use callbacks to share common setup or constraints between actions.

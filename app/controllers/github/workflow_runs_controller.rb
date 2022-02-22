@@ -15,10 +15,6 @@ module Github
       @jobs = @github_workflow_run.jobs
     end
 
-    def new
-      @workflows = @github_repository.workflows
-    end
-
     def rerun # rubocop:disable Metrics/AbcSize
       respond_to do |format|
         if @github_workflow_run.rerun!

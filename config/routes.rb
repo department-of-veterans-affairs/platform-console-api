@@ -20,7 +20,7 @@ Rails.application.routes.draw do
           post 'deploys/:id/rerun' => 'workflow_runs#rerun', as: :rerun_deploy
 
           post :create_deploy_pr, on: :member
-          resources :pull_requests, only: %i[index show], param: :number
+          resources :pull_requests, only: %i[index], param: :number
           resources :workflows, only: %i[index show] do
             get :new_dispatch, on: :collection
             post :workflow_dispatch, on: :collection
