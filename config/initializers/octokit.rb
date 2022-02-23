@@ -40,10 +40,15 @@ Octokit::Client::ActionsWorkflowRuns.class_eval do
   # @param repo [Integer, String, Repository, Hash] A GitHub repository
   # @param id [Integer] Id of a workflow run job
   #
-  # @return [Sawyer::Resource] Run information
+  # @return [String] Workflow Run Job Logs
   # @see https://developer.github.com/v3/actions/workflow-runs/#get-a-workflow-run
   def workflow_run_job_logs(repo, id, options = {})
-    get "#{Octokit::Repository.path repo}/actions/jobs/#{id}/logs", options
+    response = get "#{Octokit::Repository.path repo}/actions/jobs/#{id}/logs", options
+    if response.blank? && last_response&.status == 302
+      get last_response.headers['Location']
+    else
+      response
+    end
   end
 end
 
