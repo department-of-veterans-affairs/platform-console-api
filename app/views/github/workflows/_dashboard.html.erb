@@ -29,10 +29,10 @@
                     All Workflows
                     <% end %>
                   <% all_workflows[:workflows].each do |workflow|%>
-                    <%= link_to workflow[:name], team_app_github_repository_workflow_path(@team, @app, @app.github_repo, workflow[:id]), class: current_workflow.present? && current_workflow[:id] == workflow[:id] ? current_css : default_css  %>
+                    <%= link_to workflow[:name], team_app_github_repository_workflow_path(@team, @app, @app.github_repo, workflow[:id], ref: params[:ref]), class: current_workflow.present? && current_workflow[:id] == workflow[:id] ? current_css : default_css  %>
                   <% end %>
                 <% elsif request.path.include?('deploy')%>
-                  <%= link_to current_workflow[:name], team_app_github_repository_deploys_path(@team, @app, @app.github_repo), class: current_css %>
+                  <%= link_to current_workflow[:name], team_app_github_repository_deploys_path(@team, @app, @app.github_repo, ref: params[:ref]), class: current_css %>
                 <% end %>
               </div>
             </nav>
@@ -120,7 +120,7 @@
                           <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <div class="flex space-x-2">
                               <% if request.path.include?('workflow') %>
-                                <%= link_to 'View', team_app_github_repository_workflow_workflow_run_path(@team, @app, @app.github_repo, run[:workflow_id], run[:id] ), title: 'View Workflow Run', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
+                                <%= link_to 'View', team_app_github_repository_workflow_workflow_run_path(@team, @app, @app.github_repo, run[:workflow_id], run[:id], ref: params[:ref]), title: 'View Workflow Run', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
                               <% elsif request.path.include?('deploy') %>
                                 <%= link_to 'View', team_app_github_repository_deploy_path(@team, @app, @app.github_repo, run[:id] ), title: 'View Deploy', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
                               <% end %>

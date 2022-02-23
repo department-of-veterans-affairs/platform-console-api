@@ -55,8 +55,8 @@ module Github
     #
     # @return [Sawyer::Resource] Workflow Runs
     # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs
-    def workflow_runs(page = 1)
-      Github::WorkflowRun.all_for_workflow(@repo, @id, page)
+    def workflow_runs(page = 1, options = {})
+      Github::WorkflowRun.all_for_workflow(@repo, @id, page, options)
     end
   end
 end

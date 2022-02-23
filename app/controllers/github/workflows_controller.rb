@@ -7,10 +7,14 @@ module Github
     before_action :set_all_workflows, only: %i[show new_dispatch workflow_dispatch]
 
     # GET /github/workflows or /github/workflows.json
-    def index
+    def index # rubocop:disable Metrics/AbcSize
       @curr_page = params.fetch(:page, 1)
       @github_workflows = @github_repository.workflows
-      @github_workflow_runs = @github_repository.workflow_runs(params[:page] || 1).to_h
+      @github_workflow_runs = if params[:ref].present?
+                                @github_repository.branch_workflow_runs(params[:ref], params[:page] || 1).to_h
+                              else
+                                @github_repository.workflow_runs(params[:page] || 1).to_h
+                              end
       @next_page = @github_workflow_runs.dig(:pages, :next)
       @prev_page = @github_workflow_runs.dig(:pages, :prev)
       @first_page = @github_workflow_runs.dig(:pages, :first)
@@ -23,7 +27,7 @@ module Github
 
       @curr_page = params.fetch(:page, 1)
       @all_workflows = @github_repository.workflows
-      @github_workflow_runs = @github_workflow.workflow_runs(params[:page] || 1).to_h
+      @github_workflow_runs = @github_workflow.workflow_runs(params[:page] || 1, { branch: params[:ref] }).to_h
       @next_page = @github_workflow_runs.dig(:pages, :next)
       @prev_page = @github_workflow_runs.dig(:pages, :prev)
       @first_page = @github_workflow_runs.dig(:pages, :first)
