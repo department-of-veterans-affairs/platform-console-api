@@ -1,7 +1,7 @@
 name: Create Deploy Workflow PR
 
 on:
-  dispatch:
+  workflow_dispatch:
     inputs:
       repo:
         description: The Repository the PR will be created in
