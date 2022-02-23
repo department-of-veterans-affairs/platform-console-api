@@ -24,29 +24,31 @@ module Github
       @file_name ||= @github[:path]&.split('/')&.last
     end
 
-    # Dispatch a new run from a Workflow
-    #
-    # @param repo [String] A GitHub repository
-    # @param workflow_id [Integer] Page number
-    # @param ref [String, Integer] ref to dispatch workflow on
-    # @param options [Hash]
-    #
-    # @return [Boolean] If the dispatch was successful
-    # @see https://docs.github.com/en/rest/reference/actions#create-a-workflow-dispatch-event
-    def self.dispatch!(repo, workflow_id, ref, options = {})
-      octokit_client = Octokit::Client.new
-      octokit_client.workflow_dispatch("#{GITHUB_ORGANIZATION}/#{repo}", workflow_id, ref, options)
-    end
+    class << self
+      # Dispatch a new run from a Workflow
+      #
+      # @param repo [String] A GitHub repository
+      # @param workflow_id [Integer] Page number
+      # @param ref [String, Integer] ref to dispatch workflow on
+      # @param options [Hash]
+      #
+      # @return [Boolean] If the dispatch was successful
+      # @see https://docs.github.com/en/rest/reference/actions#create-a-workflow-dispatch-event
+      def dispatch!(repo, workflow_id, ref, options = {})
+        octokit_client = Octokit::Client.new
+        octokit_client.dispatch("#{GITHUB_ORGANIZATION}/#{repo}", workflow_id, ref, options)
+      end
 
-    # List all repository workflows
-    #
-    # @param repo [String] A GitHub repository
-    #
-    # @return [Sawyer::Resource] Workflows
-    # @see https://docs.github.com/en/rest/reference/actions#list-repository-workflows
-    def self.all(repo)
-      octokit_client = Octokit::Client.new
-      octokit_client.workflows("#{GITHUB_ORGANIZATION}/#{repo}")
+      # List all repository workflows
+      #
+      # @param repo [String] A GitHub repository
+      #
+      # @return [Sawyer::Resource] Workflows
+      # @see https://docs.github.com/en/rest/reference/actions#list-repository-workflows
+      def all(repo)
+        octokit_client = Octokit::Client.new
+        octokit_client.workflows("#{GITHUB_ORGANIZATION}/#{repo}")
+      end
     end
 
     # List all Workflows Runs associated to a workflow in this repo
@@ -58,5 +60,6 @@ module Github
     def workflow_runs(page = 1, options = {})
       Github::WorkflowRun.all_for_workflow(@repo, @id, page, options)
     end
+    alias deploy_runs workflow_runs
   end
 end

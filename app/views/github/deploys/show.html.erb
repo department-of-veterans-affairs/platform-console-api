@@ -1,2 +1,3 @@
 <%= render 'github/tabs' %>
-<%= render 'github/workflow_runs/dashboard', workflow_run: @github_deploy.github, jobs: @jobs %>
+
+<%= render 'github/workflows/dashboard', all_workflows: @github_deploy.github, current_workflow: @github_deploy.github, workflow_runs: @github_deploy_runs %>

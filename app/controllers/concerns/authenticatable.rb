@@ -30,7 +30,7 @@ module Authenticatable
     end
 
     def store_after_login_path
-      session[:after_login_path] = request.path
+      session[:after_login_path] = controller_name
     end
   end
 end

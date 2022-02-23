@@ -9,10 +9,7 @@ module Github
     def index
       @curr_page = params.fetch(:page, 1)
       @github_pull_requests = Github::PullRequest.all(@app.github_repo, @current_page)
-      @last_page = @github_pull_requests.dig(:pages, :last)
-      @next_page = @curr_page.to_i + 1 unless @curr_page == @last_page
-      @prev_page = @curr_page.to_i - 1 unless @curr_page == 1
-      @first_page = 1
+      set_pages
     end
 
     def show; end
@@ -27,6 +24,13 @@ module Github
     # Only allow a list of trusted parameters through.
     def github_pull_request_params
       params.require(:github_pull_request).permit(:show)
+    end
+
+    def set_pages
+      @last_page = @github_pull_requests.dig(:pages, :last)
+      @next_page = @curr_page.to_i + 1 unless @curr_page == @last_page
+      @prev_page = @curr_page.to_i - 1 unless @curr_page == 1
+      @first_page = 1
     end
   end
 end

@@ -7,6 +7,9 @@ require 'github/repository'
 require 'github/workflow_run'
 require 'github/workflow_run_job'
 require 'github/workflow'
+require 'github/deploy'
+require 'github/deploy_run'
+require 'github/deploy_run_job'
 
 # Contains classes/methods for Github API integration
 module Github

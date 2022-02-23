@@ -1,7 +1,7 @@
 <%= render 'github/tabs' %>
- <% if request.path.include?('workflow') %>
-  <% url = workflow_dispatch_team_app_github_repository_workflows_path  %>
-<% elsif request.path.include?('deploy')%>
+ <% if controller_name.include?('workflow') %>
+  <% url = dispatch_team_app_github_repository_workflows_path  %>
+<% elsif controller_name.include?('deploy')%>
   <% url = team_app_github_repository_deploy_dispatch_path  %>
 <% end %>
 <%= form_with url: url do |form| %>
