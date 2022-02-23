@@ -140,7 +140,7 @@
     </div>
   </div>
 
-  <% if controller_name.include?('deploy') %>
+  <% if request.path.include?('deploy') %>
      <%= render 'github/pagination', curr_path: team_app_github_repository_deploys_path(@team, @app, @app.github_repo, page: @curr_page),
                                     first_path: team_app_github_repository_deploys_path(@team, @app, @app.github_repo, page: @first_page),
                                     last_path: team_app_github_repository_deploys_path(@team, @app, @app.github_repo, page: @last_page),
