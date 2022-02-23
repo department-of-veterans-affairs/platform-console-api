@@ -5,6 +5,9 @@ on:
     branches:
       - master
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Code Checks"]
+    types: [completed]
 
 jobs:
   push-images:
