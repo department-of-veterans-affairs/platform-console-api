@@ -450,4 +450,73 @@ http_interactions:
         Bundle Cache","path":".github/workflows/update_bundle_cache.yml","state":"active","created_at":"2021-11-30T10:47:47.000-05:00","updated_at":"2021-11-30T10:47:47.000-05:00","url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/workflows/15804025","html_url":"https://github.com/department-of-veterans-affairs/vets-api/blob/master/.github/workflows/update_bundle_cache.yml","badge_url":"https://github.com/department-of-veterans-affairs/vets-api/workflows/Update%20Bundle%20Cache/badge.svg"},{"id":15414659,"node_id":"W_kwDOA7hKyc4A6zWD","name":"Upload
         Bundle Cache","path":".github/workflows/upload_bundle_cache.yml","state":"active","created_at":"2021-11-18T13:36:50.000-05:00","updated_at":"2021-11-18T13:36:50.000-05:00","url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/workflows/15414659","html_url":"https://github.com/department-of-veterans-affairs/vets-api/blob/master/.github/workflows/upload_bundle_cache.yml","badge_url":"https://github.com/department-of-veterans-affairs/vets-api/workflows/Upload%20Bundle%20Cache/badge.svg"}]}'
   recorded_at: Wed, 23 Feb 2022 15:58:07 GMT
+- request:
+    method: post
+    uri: https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/workflows/17929736/dispatches
+    body:
+      encoding: UTF-8
+      string: '{"ref":"master"}'
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 4.22.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - token github_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 23 Feb 2022 22:21:13 GMT
+      X-Oauth-Scopes:
+      - admin:repo_hook, read:org, read:user, repo, workflow
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4842'
+      X-Ratelimit-Reset:
+      - '1645656640'
+      X-Ratelimit-Used:
+      - '158'
+      X-Ratelimit-Resource:
+      - core
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      Vary:
+      - Accept-Encoding, Accept, X-Requested-With
+      X-Github-Request-Id:
+      - FC7E:1F86:53C2C7:A49D24:6216B358
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Wed, 23 Feb 2022 22:21:13 GMT
 recorded_with: VCR 6.0.0

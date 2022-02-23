@@ -36,7 +36,7 @@ module Github
       # @see https://docs.github.com/en/rest/reference/actions#create-a-workflow-dispatch-event
       def dispatch!(repo, workflow_id, ref, options = {})
         octokit_client = Octokit::Client.new
-        octokit_client.dispatch("#{GITHUB_ORGANIZATION}/#{repo}", workflow_id, ref, options)
+        octokit_client.workflow_dispatch("#{GITHUB_ORGANIZATION}/#{repo}", workflow_id, ref, options)
       end
 
       # List all repository workflows
