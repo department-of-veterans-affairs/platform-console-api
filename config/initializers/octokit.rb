@@ -1,7 +1,14 @@
 # frozen_string_literal: true
 
+cache_stack = Faraday::RackBuilder.new do |builder|
+  builder.use Faraday::HttpCache, serializer: Marshal, shared_cache: false, store: Rails.cache
+  builder.use Octokit::Response::RaiseError
+  builder.adapter Faraday.default_adapter
+end
+
 Octokit.configure do |config|
   config.access_token = ENV['GITHUB_ACCESS_TOKEN']
+  config.middleware = cache_stack
   config.per_page = 20
 end
 
