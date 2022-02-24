@@ -1,4 +1,8 @@
 # frozen_string_literal: true
 
-json.partial! 'github/workflow_run_jobs/github_workflow_run_job', workflow_run_job: @github_workflow_run_job.github,
-                                                                  workflow_run: @github_workflow_run.github
+json.set! :workflow_run_job do
+  @github_workflow_run_job.github.to_h.each do |k, v|
+    json.set!(k, v)
+    json.logs @github_workflow_run_job.logs
+  end
+end

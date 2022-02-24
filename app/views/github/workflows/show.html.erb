@@ -25,5 +25,5 @@
     </div>
   <% end %>
 <% else %>
-  <%= render 'github/workflows/dashboard', all_workflows: @all_workflows , current_workflow: @github_workflow.github, workflow_runs: @github_workflow_runs %>
+  <%= render 'github/workflows/dashboard', all_workflows: @all_workflows , current_workflow: @github_workflow, workflow_runs: @github_workflow_runs %>
 <% end %>

@@ -29,7 +29,7 @@
                     All Workflows
                     <% end %>
                   <% all_workflows[:workflows].each do |workflow|%>
-                    <%= link_to workflow[:name], team_app_github_repository_workflow_path(@team, @app, @app.github_repo, workflow[:id], ref: params[:ref]), class: current_workflow.present? && current_workflow[:id] == workflow[:id] ? current_css : default_css  %>
+                    <%= link_to workflow[:name], team_app_github_repository_workflow_path(@team, @app, @app.github_repo, workflow[:id], ref: params[:ref]), class: current_workflow.present? && current_workflow.id == workflow[:id] ? current_css : default_css  %>
                   <% end %>
                 <% elsif controller_name.include?('deploy')%>
                   <%= link_to all_workflows[:name], team_app_github_repository_deploy_path(@team, @app, @app.github_repo, @github_deploy.id, ref: params[:ref]), class: current_css %>
