@@ -10,6 +10,12 @@ Octokit.configure do |config|
   config.access_token = ENV['GITHUB_ACCESS_TOKEN']
   config.middleware = cache_stack
   config.per_page = 20
+  config.connection_options = {
+    request: {
+      open_timeout: 5,
+      timeout: 5
+    }
+  }
 end
 
 Octokit::Client::ActionsWorkflowRuns.class_eval do
