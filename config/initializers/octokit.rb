@@ -2,8 +2,15 @@
 
 cache_stack = Faraday::RackBuilder.new do |builder|
   builder.use Faraday::HttpCache, serializer: Marshal, shared_cache: false, store: Rails.cache
+  builder.use Octokit::Middleware::FollowRedirects
   builder.use Octokit::Response::RaiseError
   builder.adapter Faraday.default_adapter
+
+  if Rails.env.development?
+    builder.response :logger do |logger|
+      logger.filter(/(Authorization: "(token|Bearer) )(\w+)/, '\1[REMOVED]')
+    end
+  end
 end
 
 Octokit.configure do |config|
@@ -49,12 +56,7 @@ Octokit::Client::ActionsWorkflowRuns.class_eval do
   # @return [String] Workflow Run Job Logs
   # @see https://developer.github.com/v3/actions/workflow-runs/#get-a-workflow-run
   def workflow_run_job_logs(repo, id, options = {})
-    response = get "#{Octokit::Repository.path repo}/actions/jobs/#{id}/logs", options
-    if response.blank? && last_response&.status == 302
-      get last_response.headers['Location']
-    else
-      response
-    end
+    get "#{Octokit::Repository.path repo}/actions/jobs/#{id}/logs", options
   end
 end
 
