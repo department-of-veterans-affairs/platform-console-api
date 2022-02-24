@@ -27,10 +27,11 @@ module Github
 
     def workflow_dispatch # rubocop:disable Metrics/AbcSize
       respond_to do |format|
-        Github::Workflow.dispatch!(@app.github_repo, params[:workflow_id], params[:ref])
+        Github::Workflow.dispatch!(@app.github_repo, github_workflow_params[:workflow_id], github_workflow_params[:ref])
         format.html do
           redirect_to team_app_github_repository_workflow_path(@app, @team,
-                                                               @app.github_repo, params[:workflow_id]),
+                                                               @app.github_repo,
+                                                               github_workflow_params[:workflow_id]),
                       notice: 'Workflow was successfully dispatched'
         end
         format.json { render :show, json: true, status: :ok }
@@ -51,7 +52,7 @@ module Github
 
     # Only allow a list of trusted parameters through.
     def github_workflow_params
-      params.fetch(:github_workflow, {})
+      params.permit(:team_id, :app_id, :repository_repo, :ref, :workflow_id)
     end
 
     def set_pages
@@ -67,6 +68,13 @@ module Github
                               else
                                 @github_repository.workflow_runs(params[:page] || 1).to_h
                               end
+    end
+
+    def set_pages
+      @next_page = @github_workflow_runs.dig(:pages, :next)
+      @prev_page = @github_workflow_runs.dig(:pages, :prev)
+      @first_page = @github_workflow_runs.dig(:pages, :first)
+      @last_page = @github_workflow_runs.dig(:pages, :last)
     end
   end
 end
