@@ -1,5 +1,0 @@
-<%= render 'github/tabs' %>
-
-<% if @github_deploy_workflow.present? %>
-  <%= render 'github/workflows/dashboard', all_workflows: nil, current_workflow: @github_deploy_workflow.github, workflow_runs: @github_deploy_workflow_runs %>
-<% end %>
