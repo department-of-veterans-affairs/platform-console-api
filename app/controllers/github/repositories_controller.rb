@@ -25,7 +25,7 @@ module Github
 
     # Only allow a list of trusted parameters through.
     def github_repository_params
-      params.require(:github_repository).permit(:repo)
+      params.permit(:team_id, :app_id, :repo)
     end
   end
 end

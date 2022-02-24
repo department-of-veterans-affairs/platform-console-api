@@ -13,7 +13,6 @@ Rails.application.routes.draw do
           get 'deploys' => 'workflows#show', as: :deploys, defaults: { id: Github::DEPLOY_WORKFLOW_FILE }
           get 'deploys/new' => 'workflows#new_dispatch', as: :new_deploy
           post 'deploys/dispatch' => 'workflows#workflow_dispatch', as: :deploy_dispatch
-
           get 'deploys/:id' => 'workflow_runs#show', as: :deploy,
               defaults: { workflow_id: Github::DEPLOY_WORKFLOW_FILE }
           get 'deploys/:workflow_run_id/deploy_jobs/:id' => 'workflow_run_jobs#show', as: :deploy_deploy_job
