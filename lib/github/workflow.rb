@@ -19,7 +19,7 @@ module Github
       @file_name = id_or_filename if id_or_filename.is_a?(String)
       @repo = repo
       @octokit_client = Octokit::Client.new
-      @github = octokit_client.workflow("#{GITHUB_ORGANIZATION}/#{@repo}", id_or_filename).to_h
+      @github = octokit_client.workflow("#{GITHUB_ORGANIZATION}/#{@repo}", id_or_filename)
       @id ||= @github[:id]
       @file_name ||= @github[:path]&.split('/')&.last
     end
