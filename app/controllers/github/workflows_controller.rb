@@ -69,12 +69,5 @@ module Github
                                 @github_repository.workflow_runs(params[:page] || 1).to_h
                               end
     end
-
-    def set_pages
-      @next_page = @github_workflow_runs.dig(:pages, :next)
-      @prev_page = @github_workflow_runs.dig(:pages, :prev)
-      @first_page = @github_workflow_runs.dig(:pages, :first)
-      @last_page = @github_workflow_runs.dig(:pages, :last)
-    end
   end
 end
