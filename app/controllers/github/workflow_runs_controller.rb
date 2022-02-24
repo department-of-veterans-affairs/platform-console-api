@@ -18,12 +18,14 @@ module Github
     def rerun # rubocop:disable Metrics/AbcSize
       respond_to do |format|
         if @github_workflow_run.rerun!
-          path = team_app_github_repository_workflow_path(@team, @app, @app.github_repo, params[:workflow_id])
+          path = team_app_github_repository_workflow_path(@team, @app, @app.github_repo,
+                                                          github_workflow_run_params[:workflow_id])
           format.html { redirect_to path, notice: 'Workflow run was sucessfully restarted' }
           format.json { render json: true }
         else
           path = team_app_github_repository_workflow_workflow_run_path(@team, @app, @app.github_repo,
-                                                                       params[:workflow_id], params[:id])
+                                                                       github_workflow_run_params[:workflow_id],
+                                                                       github_workflow_run_params[:id])
           format.html { redirect_to path, notice: 'There was a problem restarting the workflow run' }
           format.json { render json: false }
         end
@@ -39,7 +41,7 @@ module Github
 
     # Only allow a list of trusted parameters through.
     def github_workflow_run_params
-      params.fetch(:github_workflow_run, {})
+      params.permit(:team_id, :app_id, :repository_repo, :workflow_id, :id)
     end
   end
 end
