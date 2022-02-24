@@ -5,6 +5,9 @@ on:
     branches:
       - master
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Push image to ECR when changes are pushed to master"]
+    types: [completed]
 
 jobs:
   deploy:
