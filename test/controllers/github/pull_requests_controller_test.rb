@@ -13,14 +13,14 @@ module Github
 
     test 'should get index' do
       VCR.use_cassette('github/pull_requests_controller') do
-        get team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo)
+        get team_app_pull_requests_path(@team, @app, @app.github_repo)
         assert_response :success
       end
     end
 
     test 'should get index in json format' do
       VCR.use_cassette('github/pull_requests_controller') do
-        get "#{team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo)}.json"
+        get "#{team_app_pull_requests_path(@team, @app, @app.github_repo)}.json"
         assert_response :success
         json_response = JSON.parse(response.body)
         expected_keys = %w[url id node_id html_url diff_url patch_url issue_url number state locked title user body
@@ -34,7 +34,7 @@ module Github
 
     test 'should show pull request' do
       VCR.use_cassette('github/pull_requests_controller') do
-        get team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo, 2)
+        get team_app_pull_requests_path(@team, @app, @app.github_repo, 2)
         assert_response :success
       end
     end

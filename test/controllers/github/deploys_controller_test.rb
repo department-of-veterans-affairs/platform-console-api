@@ -15,14 +15,14 @@ module Github
 
     test 'should get index' do
       VCR.use_cassette('github/deploys_controller') do
-        get team_app_github_repository_deploys_path(@team, @app, @app.github_repo)
+        get team_app_deploys_path(@team, @app, @app.github_repo)
         assert_response :success
       end
     end
 
     test 'should get index in json format' do
       VCR.use_cassette('github/deploys_controller') do
-        get "#{team_app_github_repository_deploys_path(@team, @app, @app.github_repo)}.json"
+        get "#{team_app_deploys_path(@team, @app, @app.github_repo)}.json"
         assert_response :success
         json_response = JSON.parse(response.body)
         expected_keys = %w[id node_id name path state created_at updated_at url html_url badge_url]
@@ -32,14 +32,14 @@ module Github
 
     test 'should show deploy' do
       VCR.use_cassette('github/deploys_controller', record: :new_episodes) do
-        get team_app_github_repository_deploy_path(@team, @app, @app.github_repo, 17_929_736)
+        get team_app_deploy_path(@team, @app, @app.github_repo, 17_929_736)
         assert_response :success
       end
     end
 
     test 'should show deploy in json format' do
       VCR.use_cassette('github/deploys_controller', record: :new_episodes) do
-        get "#{team_app_github_repository_deploy_path(@team, @app, @app.github_repo, 17_929_736)}.json"
+        get "#{team_app_deploy_path(@team, @app, @app.github_repo, 17_929_736)}.json"
         assert_response :success
         json_response = JSON.parse(response.body)
         expected_keys = %w[id node_id name path state created_at updated_at url html_url badge_url]

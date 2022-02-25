@@ -7,7 +7,7 @@ module Github
 
     # GET /github/workflow_runs/1 or /github/workflow_runs/1.json
     def show
-      @github_workflow_run = Github::WorkflowRun.new(@app.github_repo, params[:workflow_run_id])
+      @github_workflow_run = Github::WorkflowRun.new(@app.github_repo, @github_workflow_run_job.github.run_id)
       @all_jobs = @github_workflow_run.jobs
     end
 
