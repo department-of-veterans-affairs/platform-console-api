@@ -31,7 +31,8 @@ module Github
 
     test 'lists all workflow run jobs for a workflow run' do
       VCR.use_cassette('github/workflow_run_job', record: :new_episodes) do
-        all_workflow_run_jobs = Github::WorkflowRunJob.all_for_workflow_run('department-of-veterans-affairs/vets-api', 1_834_786_549).jobs
+        all_workflow_run_jobs = Github::WorkflowRunJob.all_for_workflow_run('department-of-veterans-affairs/vets-api',
+                                                                            1_834_786_549).jobs
         assert_kind_of Array, all_workflow_run_jobs
         assert_not_nil all_workflow_run_jobs.first.run_id
       end

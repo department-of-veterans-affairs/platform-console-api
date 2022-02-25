@@ -37,7 +37,8 @@ module Github
 
     test 'lists all workflow runs for a branch on a repository' do
       VCR.use_cassette('github/workflow_run', record: :new_episodes) do
-        branch_runs = Github::WorkflowRun.all_for_branch('department-of-veterans-affairs/vets-api', 'master').workflow_runs
+        branch_runs = Github::WorkflowRun.all_for_branch('department-of-veterans-affairs/vets-api',
+                                                         'master').workflow_runs
         assert_kind_of Array, branch_runs
         assert_not_nil branch_runs.first.workflow_id
         assert_equal 'master', branch_runs.first.head_branch
@@ -46,7 +47,8 @@ module Github
 
     test 'lists all workflow runs for a given workflow' do
       VCR.use_cassette('github/workflow_run', record: :new_episodes) do
-        workflow_runs = Github::WorkflowRun.all_for_workflow('department-of-veterans-affairs/vets-api', '13418388').workflow_runs
+        workflow_runs = Github::WorkflowRun.all_for_workflow('department-of-veterans-affairs/vets-api',
+                                                             '13418388').workflow_runs
         assert_kind_of Array, workflow_runs
         assert_equal 13_418_388, workflow_runs.first.workflow_id
       end
