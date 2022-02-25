@@ -4,40 +4,20 @@ require 'application_system_test_case'
 
 module Github
   class WorkflowsTest < ApplicationSystemTestCase
-    # setup do
-    #   @github_workflow = github_workflows(:one)
-    # end
+    setup do
+      login_as :john
+      @team = teams(:three)
+      @app = apps(:three)
+    end
 
-    # test 'visiting the index' do
-    #   visit github_workflows_url
-    #   assert_selector 'h1', text: 'Workflows'
-    # end
-
-    # test 'should create workflow' do
-    #   visit github_workflows_url
-    #   click_on 'New workflow'
-
-    #   click_on 'Create Workflow'
-
-    #   assert_text 'Workflow was successfully created'
-    #   click_on 'Back'
-    # end
-
-    # test 'should update Workflow' do
-    #   visit github_workflow_url(@github_workflow)
-    #   click_on 'Edit this workflow', match: :first
-
-    #   click_on 'Update Workflow'
-
-    #   assert_text 'Workflow was successfully updated'
-    #   click_on 'Back'
-    # end
-
-    # test 'should destroy Workflow' do
-    #   visit github_workflow_url(@github_workflow)
-    #   click_on 'Destroy this workflow', match: :first
-
-    #   assert_text 'Workflow was successfully destroyed'
-    # end
+    test 'visiting the index' do
+      VCR.use_cassette('system/github/workflows') do
+        visit team_app_github_repository_workflows_path(@team, @app, @app.github_repo)
+        assert_selector 'a.border-indigo-500.border-b-2', text: 'Workflows'
+        assert_selector 'a', text: 'Dispatch a Workflow'
+        click_on 'View', match: :first
+        assert_selector 'h3', text: 'Jobs'
+      end
+    end
   end
 end

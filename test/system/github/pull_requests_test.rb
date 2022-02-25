@@ -4,42 +4,19 @@ require 'application_system_test_case'
 
 module Github
   class PullRequestsTest < ApplicationSystemTestCase
-    # setup do
-    #   @github_pull_request = github_pull_requests(:one)
-    # end
+    setup do
+      login_as :john
+      @team = teams(:three)
+      @app = apps(:three)
+    end
 
-    # test 'visiting the index' do
-    #   visit github_pull_requests_url
-    #   assert_selector 'h1', text: 'Pull requests'
-    # end
-
-    # test 'should create pull request' do
-    #   visit github_pull_requests_url
-    #   click_on 'New pull request'
-
-    #   fill_in 'Show', with: @github_pull_request.show
-    #   click_on 'Create Pull request'
-
-    #   assert_text 'Pull request was successfully created'
-    #   click_on 'Back'
-    # end
-
-    # test 'should update Pull request' do
-    #   visit github_pull_request_url(@github_pull_request)
-    #   click_on 'Edit this pull request', match: :first
-
-    #   fill_in 'Show', with: @github_pull_request.show
-    #   click_on 'Update Pull request'
-
-    #   assert_text 'Pull request was successfully updated'
-    #   click_on 'Back'
-    # end
-
-    # test 'should destroy Pull request' do
-    #   visit github_pull_request_url(@github_pull_request)
-    #   click_on 'Destroy this pull request', match: :first
-
-    #   assert_text 'Pull request was successfully destroyed'
-    # end
+    test 'visiting the index' do
+      VCR.use_cassette('system/github/pull_requests') do
+        visit team_app_github_repository_pull_requests_url(@team, @app, @app.github_repo)
+        assert_selector 'a.border-indigo-500.border-b-2', text: 'Pull Requests'
+        click_on 'Workflow Runs', match: :first
+        assert_selector 'a', text: 'Dispatch a Workflow'
+      end
+    end
   end
 end
