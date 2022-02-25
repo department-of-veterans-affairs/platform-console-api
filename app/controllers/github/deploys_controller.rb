@@ -3,12 +3,11 @@
 module Github
   # Handles displaying deploy info for an app
   class DeploysController < BaseController
-    before_action :set_github_deploy, only: %i[show]
+    before_action :set_github_deploy, only: %i[index show]
 
     # GET /github/deploys or /github/deploys.json
     def index
       @curr_page = params.fetch(:page, 1)
-      @github_deploy = Github::Deploy.new(@app.github_repo)
       @github_deploy_runs = @github_deploy&.deploy_runs
       set_pages if @github_deploy_runs
     end
@@ -46,6 +45,8 @@ module Github
     # Use callbacks to share common setup or constraints between actions.
     def set_github_deploy
       @github_deploy = Github::Deploy.new(@app.github_repo)
+    rescue Octokit::NotFound
+      @github_deploy = nil
     end
 
     # Only allow a list of trusted parameters through.

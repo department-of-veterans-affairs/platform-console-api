@@ -15,5 +15,5 @@ require 'github/deploy_run_job'
 module Github
   GITHUB_ORGANIZATION = 'department-of-veterans-affairs'
   CREATE_PR_WORKFLOW_FILE = 'create_deploy_pr.yml'
-  DEPLOY_WORKFLOW_FILE = 'codeql.yml'
+  DEPLOY_WORKFLOW_FILE = 'codeql-test.yml'
 end
