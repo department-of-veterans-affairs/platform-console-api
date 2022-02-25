@@ -16,7 +16,7 @@ module Github
     def initialize(repo)
       @repo = repo
       @octokit_client = Octokit::Client.new
-      @github = octokit_client.repository("#{GITHUB_ORGANIZATION}/#{@repo}")
+      @github = octokit_client.repository(@repo)
     end
 
     # Get all repositories in an organization
@@ -98,7 +98,7 @@ module Github
     # @return [String] The repositories raw readme
     # @see https://docs.github.com/en/rest/reference/repos#get-a-repository-readme
     def readme
-      content = Octokit.readme("#{GITHUB_ORGANIZATION}/#{@repo}").content
+      content = Octokit.readme(@repo).content
       Base64.decode64(content)
     end
 
@@ -116,8 +116,8 @@ module Github
     #
     # @return [Boolean] If the dispatch was successful or not
     def dispatch_create_pr_workflow
-      inputs = { repo: "#{GITHUB_ORGANIZATION}/#{@repo}", file_name: DEPLOY_WORKFLOW_FILE }
-      Github::Workflow.dispatch!('platform-console-api', CREATE_PR_WORKFLOW_FILE,
+      inputs = { repo: @repo, file_name: DEPLOY_WORKFLOW_FILE }
+      Github::Workflow.dispatch!('department-of-veterans-affairs/platform-console-api', CREATE_PR_WORKFLOW_FILE,
                                  'master', { inputs: inputs })
     end
   end

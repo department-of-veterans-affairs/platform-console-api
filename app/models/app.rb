@@ -17,6 +17,13 @@ class App < ApplicationRecord
   def validate_github_repo
     return if github_repo.blank?
 
+    unless github_repo.match?(%r{\w+/\w+})
+      errors.add(:base, :invalid,
+                 message: 'Github Repository is invalid. The repository must include the full path.
+                 Ex: department-of-veterans-affairs/vets-api')
+      throw(:abort)
+    end
+
     begin
       Github::Repository.new(github_repo)
     rescue Octokit::NotFound => e

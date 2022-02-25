@@ -22,11 +22,11 @@ module Github
       @repo = repo
       @octokit_client = Octokit::Client.new
       @logs_url = begin
-        octokit_client.workflow_run_logs("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+        octokit_client.workflow_run_logs(@repo, @id)
       rescue Octokit::NotFound
         nil
       end
-      @github = @octokit_client.workflow_run("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      @github = @octokit_client.workflow_run(@repo, @id)
     end
 
     # List all Workflow Runs associated to a Repository
@@ -38,7 +38,7 @@ module Github
     # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs-for-a-repository
     def self.all(repo, page = 1)
       octokit_client = Octokit::Client.new
-      response = octokit_client.repository_workflow_runs("#{GITHUB_ORGANIZATION}/#{repo}", page: page)
+      response = octokit_client.repository_workflow_runs(repo, page: page)
 
       response[:pages] = page_numbers(octokit_client)
       response
@@ -54,8 +54,7 @@ module Github
     # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs-for-a-repository
     def self.all_for_branch(repo, branch_name, page = 1)
       octokit_client = Octokit::Client.new
-      response = octokit_client.repository_workflow_runs("#{GITHUB_ORGANIZATION}/#{repo}", branch: branch_name,
-                                                                                           page: page)
+      response = octokit_client.repository_workflow_runs(repo, branch: branch_name, page: page)
 
       response[:pages] = page_numbers(octokit_client)
       response
@@ -73,7 +72,7 @@ module Github
       def all_for_workflow(repo, workflow_id, page = 1, options = {})
         options[:page] = page
         octokit_client = Octokit::Client.new
-        response = octokit_client.workflow_runs("#{GITHUB_ORGANIZATION}/#{repo}", workflow_id, options)
+        response = octokit_client.workflow_runs(repo, workflow_id, options)
 
         response[:pages] = page_numbers(octokit_client)
         response
@@ -95,7 +94,7 @@ module Github
     # @return [Boolean] If the rerun was successful
     # @see https://docs.github.com/en/rest/reference/actions#re-run-a-workflow
     def rerun!
-      @octokit_client.rerun_workflow_run("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      @octokit_client.rerun_workflow_run(@repo, @id)
     end
   end
 end

@@ -55,7 +55,7 @@ class AppsTest < ApplicationSystemTestCase
       visit team_app_url(@team, @app)
       click_on 'Settings', match: :first
 
-      fill_in 'app_github_repo', with: 'vets-api'
+      fill_in 'app_github_repo', with: 'department-of-veterans-affairs/vets-api'
 
       click_on 'Update App'
 

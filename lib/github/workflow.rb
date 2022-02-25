@@ -19,7 +19,7 @@ module Github
       @file_name = id_or_filename if id_or_filename.is_a?(String)
       @repo = repo
       @octokit_client = Octokit::Client.new
-      @github = octokit_client.workflow("#{GITHUB_ORGANIZATION}/#{@repo}", id_or_filename)
+      @github = octokit_client.workflow(@repo, id_or_filename)
       @id ||= @github[:id]
       @file_name ||= @github[:path]&.split('/')&.last
     end
@@ -36,7 +36,7 @@ module Github
       # @see https://docs.github.com/en/rest/reference/actions#create-a-workflow-dispatch-event
       def dispatch!(repo, workflow_id, ref, options = {})
         octokit_client = Octokit::Client.new
-        octokit_client.workflow_dispatch("#{GITHUB_ORGANIZATION}/#{repo}", workflow_id, ref, options)
+        octokit_client.workflow_dispatch(repo, workflow_id, ref, options)
       end
 
       # List all repository workflows
@@ -47,7 +47,7 @@ module Github
       # @see https://docs.github.com/en/rest/reference/actions#list-repository-workflows
       def all(repo)
         octokit_client = Octokit::Client.new
-        octokit_client.workflows("#{GITHUB_ORGANIZATION}/#{repo}")
+        octokit_client.workflows(repo)
       end
     end
 

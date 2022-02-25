@@ -6,7 +6,7 @@ module Github
   class WorkflowTest < ActiveSupport::TestCase
     setup do
       VCR.use_cassette('github/workflow') do
-        @workflow = Github::Workflow.new('vets-api', '13418388')
+        @workflow = Github::Workflow.new('department-of-veterans-affairs/vets-api', '13418388')
       end
     end
 
@@ -25,7 +25,7 @@ module Github
 
     test 'lists all workflows for the given repository' do
       VCR.use_cassette('github/workflow', record: :new_episodes) do
-        workflows = Github::Workflow.all('vets-api').workflows
+        workflows = Github::Workflow.all('department-of-veterans-affairs/vets-api').workflows
         assert_kind_of Array, workflows
         assert_not_nil workflows.first.state
       end
@@ -33,7 +33,7 @@ module Github
 
     test 'dispatch a workflow' do
       VCR.use_cassette('github/workflow', record: :new_episodes) do
-        dispatch = Github::Workflow.dispatch!('platform-console-api', 17_929_736, 'master')
+        dispatch = Github::Workflow.dispatch!('department-of-veterans-affairs/platform-console-api', 17_929_736, 'master')
         assert dispatch
       end
     end

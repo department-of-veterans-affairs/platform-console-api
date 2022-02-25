@@ -18,7 +18,7 @@ module Github
       @id = id
       @repo = repo
       @octokit_client = Octokit::Client.new
-      @github = octokit_client.issue("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      @github = octokit_client.issue(@repo, @id)
     end
 
     # List all Issues associated with a repository
@@ -31,7 +31,7 @@ module Github
     def self.all(repo, page_number = 1)
       octokit_client = Octokit::Client.new
       response = {}
-      response[:issues] = octokit_client.list_issues("#{GITHUB_ORGANIZATION}/#{repo}", { page: page_number })
+      response[:issues] = octokit_client.list_issues(repo, { page: page_number })
 
       response[:pages] = page_numbers(octokit_client)
       response
@@ -42,7 +42,7 @@ module Github
     # @return [Sawyer::Resource] Comments
     # @see https://docs.github.com/en/rest/reference/issues#list-issue-comments
     def comments
-      @octokit_client.issue_comments("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      @octokit_client.issue_comments(@repo, @id)
     end
   end
 end

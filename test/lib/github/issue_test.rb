@@ -6,7 +6,7 @@ module Github
   class IssueTest < ActiveSupport::TestCase
     setup do
       VCR.use_cassette('github/issue') do
-        @issue = Github::Issue.new('vets-api', '24')
+        @issue = Github::Issue.new('department-of-veterans-affairs/vets-api', '24')
       end
     end
 
@@ -26,7 +26,7 @@ module Github
 
     test 'lists all issues for a repository' do
       VCR.use_cassette('github/issue', record: :new_episodes) do
-        issues = Github::Issue.all('vets-api')[:issues]
+        issues = Github::Issue.all('department-of-veterans-affairs/vets-api')[:issues]
         assert_kind_of Array, issues
         assert_not_nil issues.first.number
       end

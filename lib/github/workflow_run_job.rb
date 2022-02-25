@@ -20,7 +20,7 @@ module Github
       @id = id
       @repo = repo
       @octokit_client = Octokit::Client.new
-      @github = octokit_client.workflow_run_job("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      @github = octokit_client.workflow_run_job(@repo, @id)
       @logs = format_logs
     end
 
@@ -35,7 +35,7 @@ module Github
       # @see https://docs.github.com/en/rest/reference/issues#list-repository-issues
       def all_for_workflow_run(repo, workflow_run_id, page = 1)
         octokit_client = Octokit::Client.new
-        response = octokit_client.workflow_run_jobs("#{GITHUB_ORGANIZATION}/#{repo}", workflow_run_id, page: page)
+        response = octokit_client.workflow_run_jobs(repo, workflow_run_id, page: page)
 
         response[:pages] = page_numbers(octokit_client)
         response
@@ -53,7 +53,7 @@ module Github
     # @see https://docs.github.com/en/rest/reference/checks#get-a-check-run
     def format_logs
       logs = begin
-        @octokit_client.workflow_run_job_logs("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+        @octokit_client.workflow_run_job_logs(@repo, @id)
       rescue Octokit::NotFound
         begin
           check_run = Octokit.check_run_from_url(github.check_run_url)

@@ -8,7 +8,7 @@ module Github
       VCR.use_cassette('github/deploy', record: :new_episodes) do
         Github.send :remove_const, 'DEPLOY_WORKFLOW_FILE'
         Github.const_set 'DEPLOY_WORKFLOW_FILE', 'codeql.yml'
-        @deploy = Github::Deploy.new('platform-console-api')
+        @deploy = Github::Deploy.new('department-of-veterans-affairs/platform-console-api')
       end
     end
 

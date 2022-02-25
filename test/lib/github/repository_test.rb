@@ -6,7 +6,7 @@ module Github
   class RepositoryTest < ActiveSupport::TestCase
     setup do
       VCR.use_cassette('github/repository') do
-        @repository = Github::Repository.new('vets-api')
+        @repository = Github::Repository.new('department-of-veterans-affairs/vets-api')
       end
     end
 
@@ -19,7 +19,7 @@ module Github
     test 'cannot be created with an invalid repository' do
       VCR.use_cassette('github/invalid_repository') do
         assert_raises Octokit::NotFound do
-          Github::Repository.new('invalid-repository')
+          Github::Repository.new('invalid-user/invalid-repository')
         end
       end
     end

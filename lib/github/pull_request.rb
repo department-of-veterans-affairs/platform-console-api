@@ -18,7 +18,7 @@ module Github
       @repo = repo
       @id = id
       @octokit_client = Octokit::Client.new
-      @github = octokit_client.pull_request("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      @github = octokit_client.pull_request(@repo, @id)
       @branch_name = @github[:head][:ref]
     end
 
@@ -32,7 +32,7 @@ module Github
     def self.all(repo, page = 1)
       octokit_client = Octokit::Client.new
       response = {}
-      response[:pull_requests] = octokit_client.pull_requests("#{GITHUB_ORGANIZATION}/#{repo}", page: page)
+      response[:pull_requests] = octokit_client.pull_requests(repo, page: page)
 
       response[:pages] = page_numbers(octokit_client)
       response
@@ -43,7 +43,7 @@ module Github
     # @return [Sawyer::Resource] Comments
     # @see https://docs.github.com/en/rest/reference/pulls#review-comments
     def comments
-      @octokit_client.pull_request_comments("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      @octokit_client.pull_request_comments(@repo, @id)
     end
 
     # Check if a pull request is merged
@@ -51,7 +51,7 @@ module Github
     # @return [Boolean] If it has been merged
     # @see https://docs.github.com/en/rest/reference/pulls#check-if-a-pull-request-has-been-merged
     def merged?
-      @octokit_client.pull_merged?("#{GITHUB_ORGANIZATION}/#{@repo}", @id)
+      @octokit_client.pull_merged?(@repo, @id)
     end
 
     # List Workflow Runs associated with a PRs branch
