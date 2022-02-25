@@ -25,6 +25,20 @@ class AppsTest < ApplicationSystemTestCase
     assert_text 'App was successfully created'
   end
 
+  test 'should not create app with invalid repository' do
+    VCR.use_cassette('system/apps') do
+      visit team_apps_url(@team)
+      click_on 'New app'
+
+      fill_in 'Name', with: @app.name
+      fill_in 'app_github_repo', with: 'invalid-repository'
+
+      click_on 'Create App'
+
+      assert_text 'error prohibited this app from being saved'
+    end
+  end
+
   test 'should update App' do
     visit team_app_url(@team, @app)
     click_on 'Edit', match: :first
