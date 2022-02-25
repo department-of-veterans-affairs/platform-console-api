@@ -46,7 +46,7 @@
           <% if workflow_runs[:workflow_runs].present? %>
             <div class="flex justify-between">
               <h3 class="text-2xl leading-7 text-gray-900 text-md sm:truncate mt-4 ml-4 mb-4">
-                <%= number_with_delimiter(workflow_runs[:total_count], delimiter: ',') %> runs
+                <%= "#{number_with_delimiter(workflow_runs[:total_count], delimiter: ',')} #{controller_name.include?('deploy') ? 'deploys' : 'runs' }"%>
               </h3>
             </div>
             <div class="flex flex-col">

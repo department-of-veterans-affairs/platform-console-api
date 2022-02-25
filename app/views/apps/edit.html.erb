@@ -2,3 +2,7 @@
 <%= render 'github/tabs' %>
 <br>
 <%= render "form", app: @app %>
+<br>
+<div class="flex justify-end">
+  <%= button_to 'Destroy this app', [@team, @app], method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-red-900 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-800 sm:text-sm' %>
+</div>

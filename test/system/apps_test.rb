@@ -77,7 +77,7 @@ class AppsTest < ApplicationSystemTestCase
   end
 
   test 'should destroy App' do
-    visit team_app_url(@team, @app)
+    visit edit_team_app_url(@team, @app)
     accept_confirm do
       click_on 'Destroy', match: :first
     end
