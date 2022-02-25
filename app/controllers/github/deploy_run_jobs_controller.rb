@@ -7,7 +7,7 @@ module Github
 
     # GET /github/deploy_runs/1 or /github/deploy_runs/1.json
     def show
-      @github_deploy_run = Github::DeployRun.new(@app.github_repo, params[:deploy_run_id])
+      @github_deploy_run = Github::DeployRun.new(@app.github_repo, @github_deploy_run_job.github[:run_id])
       @all_jobs = @github_deploy_run.jobs
     end
 

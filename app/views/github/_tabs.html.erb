@@ -1,3 +1,7 @@
+<div class="mt-4">
+  <%= render 'apps/app', app: @app %>
+</div>
+
 <div class="flex justify-between">
   <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate mt-4">
     Repository: <%= "#{Github::GITHUB_ORGANIZATION}/#{@app.github_repo}"%>
@@ -32,13 +36,15 @@
       <% selected_css = 'border-indigo-500 text-indigo-600 whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-lg' %>
       <% normal_css = 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200 whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-lg' %>
 
-        <%= link_to "Repository", team_app_github_repository_path(@team, @app, @app.github_repo), class: controller_name.include?('repositories') ? selected_css : normal_css %>
+        <%= link_to 'Overview', team_app_path(@team, @app, ), class: controller_name.include?('app') && current_page?(action: 'show') ? selected_css : normal_css %>
 
-        <%= link_to "Pull Requests", team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo), class: controller_name.include?('pull_requests') ? selected_css : normal_css %>
+        <%= link_to 'Deploys', team_app_deploys_path(@team, @app), class: controller_name.include?('deploy') ? selected_css : normal_css %>
 
-        <%= link_to 'Workflows', team_app_github_repository_workflows_path(@team, @app, @app.github_repo), class: controller_name.include?('workflow') ? selected_css : normal_css %>
+        <%= link_to 'Workflows', team_app_workflows_path(@team, @app), class: controller_name.include?('workflow') ? selected_css : normal_css %>
 
-        <%= link_to 'Deploys', team_app_github_repository_deploys_path(@team, @app, @app.github_repo), class: controller_name.include?('deploy') ? selected_css : normal_css %>
+        <%= link_to 'Pull Requests', team_app_pull_requests_path(@team, @app), class: controller_name.include?('pull_requests') ? selected_css : normal_css %>
+
+        <%= link_to 'Settings', edit_team_app_path(@team, @app), class: controller_name.include?('app') && current_page?(action: 'edit') ? selected_css : normal_css %>
       </nav>
     </div>
   </div>

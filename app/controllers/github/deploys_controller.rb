@@ -23,12 +23,11 @@ module Github
       @github_deploy = Github::Deploy.new(@app.github_repo)
     end
 
-    def deploy_dispatch # rubocop:disable Metrics/AbcSize
+    def deploy # rubocop:disable Metrics/AbcSize
       respond_to do |format|
-        Github.deploy.dispatch!(@app.github_repo, params[:deploy_id], params[:ref])
+        Github::Deploy.dispatch!(@app.github_repo, params[:workflow_id], params[:ref])
         format.html do
-          redirect_to team_app_github_repository_deploy_path(@app, @team,
-                                                             @app.github_repo, params[:deploy_id]),
+          redirect_to team_app_deploy_path(@app, @team, params[:workflow_id]),
                       notice: 'deploy was successfully dispatched'
         end
         format.json { render :show, json: true, status: :ok }

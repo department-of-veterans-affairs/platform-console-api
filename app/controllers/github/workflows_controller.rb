@@ -29,9 +29,7 @@ module Github
       respond_to do |format|
         Github::Workflow.dispatch!(@app.github_repo, github_workflow_params[:workflow_id], github_workflow_params[:ref])
         format.html do
-          redirect_to team_app_github_repository_workflow_path(@app, @team,
-                                                               @app.github_repo,
-                                                               github_workflow_params[:workflow_id]),
+          redirect_to team_app_workflow_path(@app, @team, github_workflow_params[:workflow_id]),
                       notice: 'Workflow was successfully dispatched'
         end
         format.json { render :show, json: true, status: :ok }
@@ -64,9 +62,9 @@ module Github
 
     def set_github_workflow_runs
       @github_workflow_runs = if params[:ref].present?
-                                @github_repository.branch_workflow_runs(params[:ref], params[:page] || 1)
+                                @github_repository.branch_workflow_runs(params[:ref], params[:page] || 1).to_h
                               else
-                                @github_repository.workflow_runs(params[:page] || 1)
+                                @github_repository.workflow_runs(params[:page] || 1).to_h
                               end
     end
   end

@@ -15,19 +15,14 @@ module Github
 
     test 'should show deploy run job' do
       VCR.use_cassette('github/deploy_run_jobs_controller') do
-        get team_app_github_repository_deploy_deploy_run_deploy_run_job_path(@team, @app, @app.github_repo,
-                                                                             17_929_736,
-                                                                             1_899_531_039, 5_335_975_980)
+        get team_app_deploy_run_job_path(@team, @app, 5_335_975_980)
         assert_response :success
       end
     end
 
     test 'should show deploy run job in json format' do
       VCR.use_cassette('github/deploy_run_jobs_controller') do
-        get "#{team_app_github_repository_deploy_deploy_run_deploy_run_job_path(@team, @app, @app.github_repo,
-                                                                                17_929_736,
-                                                                                1_899_531_039,
-                                                                                5_335_975_980)}.json"
+        get "#{team_app_deploy_run_job_path(@team, @app, 5_335_975_980)}.json"
         assert_response :success
         json_response = JSON.parse(response.body)
         expected_keys = %w[id logs run_id run_url run_attempt node_id head_sha url html_url status conclusion
