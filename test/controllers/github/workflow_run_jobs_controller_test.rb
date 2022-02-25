@@ -13,14 +13,14 @@ module Github
 
     test 'should show workflow run job' do
       VCR.use_cassette('github/workflow_run_jobs_controller') do
-        get team_app_workflow_run_job_path(@team, @app, 5_204_164_825, workflow_run_id: 1_848_333_333)
+        get team_app_workflow_run_job_path(@team, @app, 5_204_164_825)
         assert_response :success
       end
     end
 
     test 'should show workflow run job in json format' do
       VCR.use_cassette('github/workflow_run_jobs_controller') do
-        get "#{team_app_workflow_run_job_path(@team, @app, 5_204_164_825, workflow_run_id: 1_848_333_333)}.json"
+        get "#{team_app_workflow_run_job_path(@team, @app, 5_204_164_825)}.json"
         assert_response :success
         json_response = JSON.parse(response.body)
         expected_keys = %w[id logs run_id run_url run_attempt node_id head_sha url html_url status conclusion

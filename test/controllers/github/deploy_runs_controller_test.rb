@@ -15,16 +15,14 @@ module Github
 
     test 'should show deploy run' do
       VCR.use_cassette('github/deploy_runs_controller', record: :new_episodes) do
-        get team_app_deploy_deploy_run_path(@team, @app, @app.github_repo, 17_929_736,
-                                            1_899_531_039)
+        get team_app_deploy_run_path(@team, @app, 1_899_531_039)
         assert_response :success
       end
     end
 
     test 'should show deploy run in json format' do
       VCR.use_cassette('github/deploy_runs_controller') do
-        get "#{team_app_deploy_deploy_run_path(@team, @app, @app.github_repo, 17_929_736,
-                                               1_899_531_039)}.json"
+        get "#{team_app_deploy_run_path(@team, @app, 1_899_531_039)}.json"
         assert_response :success
         json_response = JSON.parse(response.body)
         expected_keys = %w[id name node_id head_branch head_sha run_number event status conclusion workflow_id

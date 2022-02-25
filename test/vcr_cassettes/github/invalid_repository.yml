@@ -7,10 +7,10 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      Accept:
-      - application/vnd.github.v3+json
       User-Agent:
       - Octokit Ruby Gem 4.22.0
+      Accept:
+      - application/vnd.github.v3+json
       Content-Type:
       - application/json
       Authorization:
@@ -25,13 +25,13 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Wed, 16 Feb 2022 22:24:29 GMT
+      - Fri, 25 Feb 2022 19:26:19 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       X-Oauth-Scopes:
-      - admin:repo_hook, read:org, read:user, repo, workflow
+      - read:org, read:user, repo, workflow
       X-Accepted-Oauth-Scopes:
       - repo
       X-Github-Media-Type:
@@ -39,11 +39,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4786'
+      - '4260'
       X-Ratelimit-Reset:
-      - '1645051067'
+      - '1645817740'
       X-Ratelimit-Used:
-      - '214'
+      - '740'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -68,9 +68,9 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E45B:3010:C91841:18E3BBD:620D799D
+      - F77B:3E99:106337:280EB6:62192D5B
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/repos#get-a-repository"}'
-  recorded_at: Wed, 16 Feb 2022 22:24:29 GMT
+  recorded_at: Fri, 25 Feb 2022 19:26:19 GMT
 recorded_with: VCR 6.0.0

@@ -65,7 +65,7 @@ class AppsController < ApplicationController
     respond_to do |format|
       if @github_repository.dispatch_create_pr_workflow
         format.html do
-          redirect_to team_app_deploys_path(@team, @app, @app.github_repo),
+          redirect_to team_app_deploys_path(@team, @app),
                       notice: 'PR has been queued for creation.'
         end
         format.json { render json: true, status: :ok }

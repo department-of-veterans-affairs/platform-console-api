@@ -41,7 +41,7 @@ class AppsTest < ApplicationSystemTestCase
 
   test 'should update App' do
     visit team_app_url(@team, @app)
-    click_on 'Edit', match: :first
+    click_on 'Settings', match: :first
 
     fill_in 'Name', with: 'App1A'
 
@@ -53,7 +53,7 @@ class AppsTest < ApplicationSystemTestCase
   test 'should update app with valid github repository' do
     VCR.use_cassette('system/apps') do
       visit team_app_url(@team, @app)
-      click_on 'Edit', match: :first
+      click_on 'Settings', match: :first
 
       fill_in 'app_github_repo', with: 'vets-api'
 
@@ -66,7 +66,7 @@ class AppsTest < ApplicationSystemTestCase
   test 'should not update app with invalid github repository' do
     VCR.use_cassette('system/apps', record: :new_episodes) do
       visit team_app_url(@team, @app)
-      click_on 'Edit', match: :first
+      click_on 'Settings', match: :first
 
       fill_in 'app_github_repo', with: 'invalid-repository'
 
