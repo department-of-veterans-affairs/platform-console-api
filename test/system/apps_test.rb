@@ -36,6 +36,32 @@ class AppsTest < ApplicationSystemTestCase
     assert_text 'App was successfully updated'
   end
 
+  test 'should update app with valid github repository' do
+    VCR.use_cassette('system/apps') do
+      visit team_app_url(@team, @app)
+      click_on 'Edit', match: :first
+
+      fill_in 'app_github_repo', with: 'vets-api'
+
+      click_on 'Update App'
+
+      assert_text 'App was successfully updated'
+    end
+  end
+
+  test 'should not update app with invalid github repository' do
+    VCR.use_cassette('system/apps', record: :new_episodes) do
+      visit team_app_url(@team, @app)
+      click_on 'Edit', match: :first
+
+      fill_in 'app_github_repo', with: 'invalid-repository'
+
+      click_on 'Update App'
+
+      assert_text 'error prohibited this app from being saved'
+    end
+  end
+
   test 'should destroy App' do
     visit team_app_url(@team, @app)
     accept_confirm do
