@@ -21,6 +21,8 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.allow_http_connections_when_no_cassette = true
   config.filter_sensitive_data('github_token') { ENV['GITHUB_ACCESS_TOKEN'] }
+  # whitelist 127.0.0.1 so VCR doesn't interfere with system tests
+  config.ignore_hosts '127.0.0.1'
 end
 
 module ActiveSupport
