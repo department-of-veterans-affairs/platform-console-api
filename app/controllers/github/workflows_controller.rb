@@ -29,9 +29,7 @@ module Github
       respond_to do |format|
         Github::Workflow.dispatch!(@app.github_repo, github_workflow_params[:workflow_id], github_workflow_params[:ref])
         format.html do
-          redirect_to team_app_workflow_path(@app, @team,
-                                             @app.github_repo,
-                                             github_workflow_params[:workflow_id]),
+          redirect_to team_app_workflow_path(@app, @team, github_workflow_params[:workflow_id]),
                       notice: 'Workflow was successfully dispatched'
         end
         format.json { render :show, json: true, status: :ok }
