@@ -23,8 +23,8 @@ module Github
         get "#{team_app_github_repository_workflows_path(@team, @app, @app.github_repo)}.json"
         assert_response :success
         json_response = JSON.parse(response.body)
-        expected_keys = %w[id name state path created_at updated_at url]
-        assert(expected_keys.all? { |k| json_response.first.key? k })
+        expected_keys = %w[id node_id name path state created_at updated_at url html_url badge_url]
+        assert(expected_keys.all? { |k| json_response['workflows'].first.key? k })
       end
     end
 
@@ -40,9 +40,9 @@ module Github
         get "#{team_app_github_repository_workflow_path(@team, @app, @app.github_repo, 7_426_309)}.json"
         assert_response :success
         json_response = JSON.parse(response.body)
-        expected_keys = %w[id name state path created_at updated_at url]
-        assert(expected_keys.all? { |k| json_response.key? k })
-        assert_equal 7_426_309, json_response['id']
+        expected_keys = %w[id node_id name path state created_at updated_at url html_url badge_url]
+        assert(expected_keys.all? { |k| json_response['workflow'].key? k })
+        assert_equal 7_426_309, json_response['workflow']['id']
       end
     end
   end

@@ -32,8 +32,8 @@ module Github
     end
 
     test 'dispatch a workflow' do
-      VCR.use_cassette('github/workflow') do
-        dispatch = Github::Workflow.dispatch!('platform-console', 17_929_736, 'master')
+      VCR.use_cassette('github/workflow', record: :new_episodes) do
+        dispatch = Github::Workflow.dispatch!('platform-console-api', 17_929_736, 'master')
         assert dispatch
       end
     end

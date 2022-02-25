@@ -10,22 +10,21 @@ Rails.application.routes.draw do
     resources :apps do
       namespace :github do
         resources :repositories, only: [:show], param: :repo do
-          get 'deploys' => 'workflows#show', as: :deploys, defaults: { id: Github::DEPLOY_WORKFLOW_FILE }
-          get 'deploys/new' => 'workflows#new_dispatch', as: :new_deploy
-          post 'deploys/dispatch' => 'workflows#workflow_dispatch', as: :deploy_dispatch
-          get 'deploys/:id' => 'workflow_runs#show', as: :deploy,
-              defaults: { workflow_id: Github::DEPLOY_WORKFLOW_FILE }
-          get 'deploys/:workflow_run_id/deploy_jobs/:id' => 'workflow_run_jobs#show', as: :deploy_deploy_job
-          post 'deploys/:id/rerun' => 'workflow_runs#rerun', as: :rerun_deploy
-
           post :create_deploy_pr, on: :member
           resources :pull_requests, only: %i[index], param: :number
           resources :workflows, only: %i[index show] do
             get :new_dispatch, on: :collection
-            post :workflow_dispatch, on: :collection
+            post :dispatch, on: :collection
             resources :workflow_runs, only: %i[index show] do
               post :rerun, on: :member
               resources :workflow_run_jobs, only: [:show]
+            end
+          end
+          resources :deploys, only: %i[index show new] do
+            post :dispatch, on: :collection
+            resources :deploy_runs, only: [:show] do
+              post :rerun, on: :member
+              resources :deploy_run_jobs, only: [:show]
             end
           end
         end

@@ -3,7 +3,7 @@
 require 'rouge'
 
 module Github
-  # Class representing a Github WorkflowRun
+  # Class representing a Github WorkflowRunJob
   class WorkflowRunJob
     include Github::Pagination
 
@@ -24,20 +24,23 @@ module Github
       @logs = format_logs
     end
 
-    # List all Workflow Run Jobs associated to a Workflow Run
-    #
-    # @param repo [String] A GitHub repository
-    # @param workflow_run_id [Integer] A GitHub repository
-    # @param page [Integer] Page number
-    #
-    # @return [Sawyer::Resource] Issues
-    # @see https://docs.github.com/en/rest/reference/issues#list-repository-issues
-    def self.all_for_workflow_run(repo, workflow_run_id, page = 1)
-      octokit_client = Octokit::Client.new
-      response = octokit_client.workflow_run_jobs("#{GITHUB_ORGANIZATION}/#{repo}", workflow_run_id, page: page)
+    class << self
+      # List all Workflow Run Jobs associated to a Workflow Run
+      #
+      # @param repo [String] A GitHub repository
+      # @param workflow_run_id [Integer] A GitHub repository
+      # @param page [Integer] Page number
+      #
+      # @return [Sawyer::Resource] Issues
+      # @see https://docs.github.com/en/rest/reference/issues#list-repository-issues
+      def all_for_workflow_run(repo, workflow_run_id, page = 1)
+        octokit_client = Octokit::Client.new
+        response = octokit_client.workflow_run_jobs("#{GITHUB_ORGANIZATION}/#{repo}", workflow_run_id, page: page)
 
-      response[:pages] = page_numbers(octokit_client)
-      response
+        response[:pages] = page_numbers(octokit_client)
+        response
+      end
+      alias all_for_deploy_run all_for_workflow_run
     end
 
     # Formats the logs associated to a workflow run job.

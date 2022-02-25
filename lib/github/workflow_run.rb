@@ -61,21 +61,25 @@ module Github
       response
     end
 
-    # List all Workflows Runs associated to a workflow in this repo
-    #
-    # @param repo [String] A GitHub repository
-    # @param workflow_id [Integer] ID of Workflow
-    # @param page [Integer] Page number
-    #
-    # @return [Sawyer::Resource] Workflow Runs
-    # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs
-    def self.all_for_workflow(repo, workflow_id, page = 1, options = {})
-      options[:page] = page
-      octokit_client = Octokit::Client.new
-      response = octokit_client.workflow_runs("#{GITHUB_ORGANIZATION}/#{repo}", workflow_id, options)
+    class << self
+      # List all Workflows Runs associated to a workflow in this repo
+      #
+      # @param repo [String] A GitHub repository
+      # @param workflow_id [Integer] ID of Workflow
+      # @param page [Integer] Page number
+      #
+      # @return [Sawyer::Resource] Workflow Runs
+      # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs
+      def all_for_workflow(repo, workflow_id, page = 1, options = {})
+        options[:page] = page
+        octokit_client = Octokit::Client.new
+        response = octokit_client.workflow_runs("#{GITHUB_ORGANIZATION}/#{repo}", workflow_id, options)
 
-      response[:pages] = page_numbers(octokit_client)
-      response
+        response[:pages] = page_numbers(octokit_client)
+        response
+      end
+
+      alias all_for_deploy all_for_workflow
     end
 
     # List all Workflows Run Jobs associated to a Workflow Run

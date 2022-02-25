@@ -18,3 +18,8 @@ three:
   team_id: 3
   github_repo: 'vets-api'
 
+four:
+  id: 4
+  name: App4
+  team_id: 3
+  github_repo: 'platform-console-api'

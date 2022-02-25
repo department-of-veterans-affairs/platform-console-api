@@ -23,8 +23,12 @@ module Github
         get "#{team_app_github_repository_pull_requests_path(@team, @app, @app.github_repo)}.json"
         assert_response :success
         json_response = JSON.parse(response.body)
-        expected_keys = %w[id title number state body created_at updated_at url]
-        assert(expected_keys.all? { |k| json_response.first.key? k })
+        expected_keys = %w[url id node_id html_url diff_url patch_url issue_url number state locked title user body
+                           created_at updated_at closed_at merged_at merge_commit_sha assignee assignees
+                           requested_reviewers requested_teams labels milestone draft commits_url review_comments_url
+                           review_comment_url comments_url statuses_url head base _links author_association auto_merge
+                           active_lock_reason]
+        assert(expected_keys.all? { |k| json_response['pull_requests'].first.key? k })
       end
     end
 

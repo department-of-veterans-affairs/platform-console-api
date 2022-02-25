@@ -1,7 +1,7 @@
 
 
 <%= render 'github/tabs' %>
-<% if request.path.include?('deploy') %>
+<% if controller_name.include?('deploy') %>
   <% if @github_repository.deploy_workflow.present? %>
     <%= render 'github/workflows/dashboard', all_workflows: @github_workflows, current_workflow: @github_workflow.github, workflow_runs: @github_workflow_runs %>
   <% else %>
@@ -25,5 +25,5 @@
     </div>
   <% end %>
 <% else %>
-  <%= render 'github/workflows/dashboard', all_workflows: @all_workflows , current_workflow: @github_workflow.github, workflow_runs: @github_workflow_runs %>
+  <%= render 'github/workflows/dashboard', all_workflows: @all_workflows , current_workflow: @github_workflow, workflow_runs: @github_workflow_runs %>
 <% end %>
