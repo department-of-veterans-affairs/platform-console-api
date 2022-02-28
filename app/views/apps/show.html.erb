@@ -5,25 +5,25 @@
   <div>
     <dl class="mt-5 mb-5 grid grid-cols-1 gap-5 sm:grid-cols-5">
       <div class="px-2 py-3 bg-white shadow rounded-lg overflow-hidden sm:p-2">
-        <dd class="mt-1 text-2xl font-semibold text-gray-900">71,897</dd>
+        <dd class="mt-1 text-2xl font-semibold text-gray-900"><%= @github_stats.pull_requests.total_count %></dd>
         <dt class="text-sm font-medium text-gray-500 truncate">Open Pull Requests</dt>
       </div>
 
       <div class="px-2 py-3 bg-white shadow rounded-lg overflow-hidden sm:p-2">
-        <dd class="mt-1 text-2xl font-semibold text-gray-900">58</dd>
+        <dd class="mt-1 text-2xl font-semibold text-gray-900"><%= @github_stats.branches.total_count %></dd>
         <dt class="text-sm font-medium text-gray-500">Branches</dt>
       </div>
 
       <div class="px-2 py-3 bg-white shadow rounded-lg overflow-hidden sm:p-2">
-        <dd class="mt-1 text-2xl font-semibold text-gray-900">10</dd>
+        <dd class="mt-1 text-2xl font-semibold text-gray-900"><%= @github_stats.open_issues.total_count %></dd>
         <dt class="text-sm font-medium text-gray-500 truncate">Open Issues</dt>
       </div>
       <div class="px-2 py-3 bg-white shadow rounded-lg overflow-hidden sm:p-2">
-        <dd class="mt-1 text-2xl font-semibold text-gray-900">102</dd>
-        <dt class="text-sm font-medium text-gray-500 truncate">Tags</dt>
+        <dd class="mt-1 text-2xl font-semibold text-gray-900"><%= @github_stats.releases.total_count %></dd>
+        <dt class="text-sm font-medium text-gray-500 truncate">Releases</dt>
       </div>
       <div class="px-2 py-3 bg-white shadow rounded-lg overflow-hidden sm:p-2">
-        <dd class="mt-1 text-2xl font-semibold text-gray-900">1.1</dd>
+        <dd class="mt-1 text-xl font-semibold text-gray-900"><%= @github_stats.latest_release.name %></dd>
         <dt class="text-sm font-medium text-gray-500 truncate">Latest Release</dt>
       </div>
     </dl>
@@ -31,12 +31,7 @@
 
   <div class="grid grid-cols-2 gap-4">
     <div>
-      <h2 class="text-sm font-medium">werfweijofew</h2>
-      <h1>werfweijofew</h1>
-      <h1>werfweijofew</h1>
-      <h1>werfweijofew</h1>
-      <h1>werfweijofew</h1>
-      <h1>werfweijofew</h1>
+      <h2 class="text-sm font-medium">Stats</h2>
     </div>
 
     <!-- This example requires Tailwind CSS v2.0+ -->

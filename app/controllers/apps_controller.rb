@@ -7,6 +7,31 @@ class AppsController < ApplicationController
   before_action :set_app, only: %i[show edit update destroy]
   before_action :set_github_repository, only: :show
 
+  GithubInfoQuery = GitHub::Client.parse <<~'GRAPHQL'
+    query {
+      repo: repository(owner: "department-of-veterans-affairs", name: "vets-api") {
+        open_issues: issues(states: OPEN) {
+        totalCount
+        }
+        branches: refs(first: 0, refPrefix: "refs/heads/") {
+          totalCount
+        }
+        pull_requests: pullRequests(states:OPEN) {
+          totalCount
+        }
+        releases: releases {
+          totalCount
+        }
+        latest_release: latestRelease{
+          name
+          author {
+            login
+          }
+        }
+      }
+    }
+  GRAPHQL
+
   # GET /apps or /apps.json
   def index
     @apps = @team.apps
@@ -92,6 +117,7 @@ class AppsController < ApplicationController
   def set_github_repository
     return if @app.github_repo.blank?
 
+    @github_stats = GitHub::Client.query(GithubInfoQuery).data.repo
     @github_repository = Github::Repository.new(@app.github_repo)
   end
 

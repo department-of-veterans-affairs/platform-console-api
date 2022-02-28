@@ -137,6 +137,10 @@ GEM
       sanitize (< 7)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    graphql (1.13.10)
+    graphql-client (0.17.0)
+      activesupport (>= 3.0)
+      graphql (~> 1.10)
     hashdiff (1.0.1)
     hashie (5.0.0)
     i18n (1.10.0)
@@ -382,6 +386,7 @@ DEPENDENCIES
   flipper (~> 0.24)
   flipper-redis (~> 0.24)
   flipper-ui (~> 0.24)
+  graphql-client
   importmap-rails (~> 1.0)
   jbuilder (~> 2.11)
   minitest-ci
