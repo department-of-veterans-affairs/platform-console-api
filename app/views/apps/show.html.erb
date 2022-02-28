@@ -1,4 +1,113 @@
 <%= render 'github/shared/tabs' %>
+
+<% if @app.github_repo.present? %>
+  <!-- This example requires Tailwind CSS v2.0+ -->
+  <div>
+    <dl class="mt-5 mb-5 grid grid-cols-1 gap-5 sm:grid-cols-5">
+      <div class="px-2 py-3 bg-white shadow rounded-lg overflow-hidden sm:p-2">
+        <dd class="mt-1 text-2xl font-semibold text-gray-900">71,897</dd>
+        <dt class="text-sm font-medium text-gray-500 truncate">Open Pull Requests</dt>
+      </div>
+
+      <div class="px-2 py-3 bg-white shadow rounded-lg overflow-hidden sm:p-2">
+        <dd class="mt-1 text-2xl font-semibold text-gray-900">58</dd>
+        <dt class="text-sm font-medium text-gray-500">Branches</dt>
+      </div>
+
+      <div class="px-2 py-3 bg-white shadow rounded-lg overflow-hidden sm:p-2">
+        <dd class="mt-1 text-2xl font-semibold text-gray-900">10</dd>
+        <dt class="text-sm font-medium text-gray-500 truncate">Open Issues</dt>
+      </div>
+      <div class="px-2 py-3 bg-white shadow rounded-lg overflow-hidden sm:p-2">
+        <dd class="mt-1 text-2xl font-semibold text-gray-900">102</dd>
+        <dt class="text-sm font-medium text-gray-500 truncate">Tags</dt>
+      </div>
+      <div class="px-2 py-3 bg-white shadow rounded-lg overflow-hidden sm:p-2">
+        <dd class="mt-1 text-2xl font-semibold text-gray-900">1.1</dd>
+        <dt class="text-sm font-medium text-gray-500 truncate">Latest Release</dt>
+      </div>
+    </dl>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4">
+    <div>
+      <h2 class="text-sm font-medium">werfweijofew</h2>
+      <h1>werfweijofew</h1>
+      <h1>werfweijofew</h1>
+      <h1>werfweijofew</h1>
+      <h1>werfweijofew</h1>
+      <h1>werfweijofew</h1>
+    </div>
+
+    <!-- This example requires Tailwind CSS v2.0+ -->
+    <div class="bg-white shadow overflow-hidden sm:rounded-md">
+      <ul role="list" class="divide-y divide-gray-200">
+        <li>
+          <div>
+            <div class="px-4 py-4 sm:px-6">
+              <div class="flex items-center justify-between">
+                <p class="text-sm font-medium text-indigo-600 truncate">vets-api/v0.0.1090</p>
+                <div class="ml-2 flex-shrink-0 flex">
+                  <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Verified</p>
+                </div>
+              </div>
+              <div class="mt-2 sm:flex sm:justify-between">
+                <div class="sm:flex">
+                  <p class="flex items-center text-sm text-gray-500">
+                    <!-- Heroicon name: solid/users -->
+                    <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path d="M1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 0a8 8 0 100 16A8 8 0 008 0zm.5 4.75a.75.75 0 00-1.5 0v3.5a.75.75 0 00.471.696l2.5 1a.75.75 0 00.557-1.392L8.5 7.742V4.75z" />
+                    </svg>
+                    5 hours ago
+                  </p>
+                  <p class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">
+                    <!-- Heroicon name: solid/location-marker -->
+                    <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z" clip-rule="evenodd" />
+                    </svg>
+                    7d46a45
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="px-4 py-4 sm:px-6">
+              <div class="flex items-center justify-between">
+                <p class="text-sm font-medium text-indigo-600 truncate">vets-api/v0.0.1090</p>
+                <div class="ml-2 flex-shrink-0 flex">
+                  <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Verified</p>
+                </div>
+              </div>
+              <div class="mt-2 sm:flex sm:justify-between">
+                <div class="sm:flex">
+                  <p class="flex items-center text-sm text-gray-500">
+                    <!-- Heroicon name: solid/users -->
+                    <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path d="M1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 0a8 8 0 100 16A8 8 0 008 0zm.5 4.75a.75.75 0 00-1.5 0v3.5a.75.75 0 00.471.696l2.5 1a.75.75 0 00.557-1.392L8.5 7.742V4.75z" />
+                    </svg>
+                    5 hours ago
+                  </p>
+                  <p class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">
+                    <!-- Heroicon name: solid/location-marker -->
+                    <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z" clip-rule="evenodd" />
+                    </svg>
+                    7d46a45
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+<% end %>
+
 <br>
 <div class="flex space-x-4">
   <%= link_to 'Back to team', team_path(@team), class: 'bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' %>

@@ -5,6 +5,7 @@ class AppsController < ApplicationController
   before_action :authorize_session!
   before_action :set_team
   before_action :set_app, only: %i[show edit update destroy]
+  before_action :set_github_repository, only: :show
 
   # GET /apps or /apps.json
   def index
@@ -86,6 +87,12 @@ class AppsController < ApplicationController
   # Find the team app
   def set_app
     @app = @team.apps.find(params[:id])
+  end
+
+  def set_github_repository
+    return if @app.github_repo.blank?
+
+    @github_repository = Github::Repository.new(@app.github_repo)
   end
 
   # Only allow a list of trusted parameters through.
