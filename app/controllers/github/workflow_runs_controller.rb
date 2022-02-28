@@ -7,7 +7,7 @@ module Github
 
     # GET /github/workflow_runs or /github/workflow_runs.json
     def index
-      @github_workflow_runs = Github::WorkflowRun.all(@github_repository.repo)
+      @github_workflow_runs = Github::WorkflowRun.all(current_user.github_token, @github_repository.repo)
     end
 
     # GET /github/workflow_runs/1 or /github/workflow_runs/1.json
@@ -33,7 +33,7 @@ module Github
 
     # Use callbacks to share common setup or constraints between actions.
     def set_github_workflow_run
-      @github_workflow_run = Github::WorkflowRun.new(@app.github_repo, params[:id])
+      @github_workflow_run = Github::WorkflowRun.new(current_user.github_token, @app.github_repo, params[:id])
     end
 
     # Only allow a list of trusted parameters through.

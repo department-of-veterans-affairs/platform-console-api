@@ -55,7 +55,7 @@ Octokit::Client::ActionsWorkflowRuns.class_eval do
   # @param id [Integer] Id of a workflow run job
   #
   # @return [String] Workflow Run Job Logs
-  # @see https://developer.github.com/v3/actions/workflow-runs/#get-a-workflow-run
+  # @see https://docs.github.com/en/rest/reference/actions#workflow-runs
   def workflow_run_job_logs(repo, id, options = {})
     get "#{Octokit::Repository.path repo}/actions/jobs/#{id}/logs", options
   end

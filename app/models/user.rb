@@ -22,6 +22,16 @@ class User < ApplicationRecord
     # roles = auth_hash['extra']['raw_info']['resource_access']['account']['roles']
   end
 
+  def github_user
+    return nil if github_token.blank?
+
+    begin
+      Octokit::Client.new(access_token: github_token).user
+    rescue Octokit::Unauthorized
+      nil
+    end
+  end
+
   private
 
   def downcase_email

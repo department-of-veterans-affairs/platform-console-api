@@ -3,8 +3,8 @@
 module Github
   # Class representing a Github Deploy
   class Deploy < Workflow
-    def initialize(repo)
-      super(repo, DEPLOY_WORKFLOW_FILE)
+    def initialize(access_token, repo)
+      super(access_token, repo, DEPLOY_WORKFLOW_FILE)
     end
   end
 end
