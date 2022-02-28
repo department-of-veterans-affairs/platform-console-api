@@ -14,7 +14,8 @@ cache_stack = Faraday::RackBuilder.new do |builder|
 end
 
 Octokit.configure do |config|
-  config.access_token = ENV['GITHUB_ACCESS_TOKEN']
+  config.client_id = ENV['GITHUB_CLIENT_ID']
+  config.client_secret = ENV['GITHUB_CLIENT_SECRET']
   config.middleware = cache_stack
   config.per_page = 20
   config.connection_options = {

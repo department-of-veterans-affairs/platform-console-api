@@ -4,6 +4,7 @@
 class User < ApplicationRecord
   has_paper_trail
   has_secure_password
+  encrypts :github_token
   before_validation :downcase_email
   rolify
   validates :email, uniqueness: true
