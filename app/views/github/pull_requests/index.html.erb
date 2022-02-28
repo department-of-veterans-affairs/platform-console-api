@@ -1,4 +1,4 @@
-<%= render 'github/tabs' %>
+<%= render 'github/shared/tabs' %>
 <% if @github_pull_requests.present? %>
   <div class="flex flex-col">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <%= render 'github/pagination', curr_path: team_app_pull_requests_path(@team, @app, page: @curr_page),
+  <%= render 'github/shared/pagination', curr_path: team_app_pull_requests_path(@team, @app, page: @curr_page),
                                   first_path: team_app_pull_requests_path(@team, @app, page: @first_page),
                                   last_path: team_app_pull_requests_path(@team, @app, page: @last_page),
                                   next_path: team_app_pull_requests_path(@team, @app, page: @next_page),

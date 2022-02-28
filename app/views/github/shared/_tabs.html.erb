@@ -38,11 +38,13 @@
 
         <%= link_to 'Overview', team_app_path(@team, @app, ), class: controller_name.include?('app') && current_page?(action: 'show') ? selected_css : normal_css %>
 
-        <%= link_to 'Deploys', team_app_deploys_path(@team, @app), class: controller_name.include?('deploy') ? selected_css : normal_css %>
+        <% if @app.github_repo.present? %>
+          <%= link_to 'Deploys', team_app_deploys_path(@team, @app), class: controller_name.include?('deploy') ? selected_css : normal_css %>
 
-        <%= link_to 'Workflows', team_app_workflows_path(@team, @app), class: controller_name.include?('workflow') ? selected_css : normal_css %>
+          <%= link_to 'Workflows', team_app_workflows_path(@team, @app), class: controller_name.include?('workflow') ? selected_css : normal_css %>
 
-        <%= link_to 'Pull Requests', team_app_pull_requests_path(@team, @app), class: controller_name.include?('pull_requests') ? selected_css : normal_css %>
+          <%= link_to 'Pull Requests', team_app_pull_requests_path(@team, @app), class: controller_name.include?('pull_requests') ? selected_css : normal_css %>
+        <% end %>
 
         <%= link_to 'Settings', edit_team_app_path(@team, @app), class: controller_name.include?('app') && current_page?(action: 'edit') ? selected_css : normal_css %>
       </nav>

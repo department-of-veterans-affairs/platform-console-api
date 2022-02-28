@@ -11,6 +11,8 @@ module Github
     private
 
     def set_github_repository
+      return redirect_to edit_team_app_path(@team, @app) if @app.github_repo.blank?
+
       @github_repository = Github::Repository.new(@app.github_repo)
     end
 

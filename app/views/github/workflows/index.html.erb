@@ -1,5 +1,5 @@
-<%= render 'github/tabs' %>
+<%= render 'github/shared/tabs' %>
 
 <% if @github_workflows.present? %>
-  <%= render 'github/workflows/dashboard', all_workflows: @github_workflows, current_workflow: nil, workflow_runs: @github_workflow_runs %>
+  <%= render 'github/shared/workflows_dashboard', all_workflows: @github_workflows, current_workflow: nil, workflow_runs: @github_workflow_runs %>
 <% end %>
