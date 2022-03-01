@@ -112,16 +112,19 @@ class AppsController < ApplicationController
       }
     }
   GRAPHQL
+
+  # rubocop:disable Metrics/AbcSize
   # Set the current github repository and provide stats for the overview
   def set_github_info
     return if @app.github_repo.blank?
 
-    @github_repository = Github::Repository.new(@app.github_repo)
+    @github_repository = Github::Repository.new(current_user.github_token, @app.github_repo)
     @github_stats = GitHub::Client.query(GithubInfoQuery,
                                          variables: { owner: @github_repository.github.owner.login,
                                                       name: @github_repository.github.name }).data.repo
     @releases = @github_repository.octokit_client.releases(@app.github_repo)
   end
+  # rubocop:enable Metrics/AbcSize
 
   # Only allow a list of trusted parameters through.
   def app_params
