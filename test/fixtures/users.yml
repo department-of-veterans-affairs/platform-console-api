@@ -3,6 +3,7 @@ john:
   email: john@example.com
   password_digest: $2a$04$iUpp2uEoumjbCHfX3ypOcO.JMHSg4itA1sDodd.ILtU9AUYvZQOU2 # password
   uid: abc123_john
+  github_token: github_token
 
 jane:
   name: Jane

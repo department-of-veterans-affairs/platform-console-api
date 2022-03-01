@@ -87,6 +87,7 @@ class AppsController < ApplicationController
   # Find the team app
   def set_app
     @app = @team.apps.find(params[:id])
+    @app.current_user = current_user
   end
 
   # Query to get various stats for the app's github repository

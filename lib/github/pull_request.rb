@@ -5,7 +5,7 @@ module Github
   class PullRequest
     include Github::Pagination
 
-    attr_accessor :id, :repo, :octokit_client, :github, :branch_name
+    attr_accessor :access_token, :repo, :id, :octokit_client, :github, :branch_name
 
     # Creates a Github::PullRequest object with the github response attached
     #
@@ -14,10 +14,11 @@ module Github
     #
     # @return [Github::PullRequest]
     # @see https://docs.github.com/en/rest/reference/pulls#get-a-pull-request
-    def initialize(repo, id)
-      @repo = repo
+    def initialize(access_token, repo, id)
+      @access_token = access_token
       @id = id
-      @octokit_client = Octokit::Client.new
+      @repo = repo
+      @octokit_client = Octokit::Client.new(access_token: @access_token)
       @github = octokit_client.pull_request(@repo, @id)
       @branch_name = @github[:head][:ref]
     end
@@ -29,8 +30,8 @@ module Github
     #
     # @return [Sawyer::Resource] Pull requests
     # @see https://docs.github.com/en/rest/reference/pulls#list-pull-requests
-    def self.all(repo, page = 1)
-      octokit_client = Octokit::Client.new
+    def self.all(access_token, repo, page = 1)
+      octokit_client = Octokit::Client.new(access_token: access_token)
       response = {}
       response[:pull_requests] = octokit_client.pull_requests(repo, page: page)
 
@@ -59,7 +60,7 @@ module Github
     # @return [Sawyer::Resource] Workflow runs
     # @see https://docs.github.com/en/rest/reference/actions#list-repository-workflows
     def workflow_runs
-      Github::WorkflowRun.all_for_branch(@repo, @branch_name)
+      Github::WorkflowRun.all_for_branch(@access_token, @repo, @branch_name)
     end
   end
 end

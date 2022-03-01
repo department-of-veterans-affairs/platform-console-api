@@ -6,7 +6,7 @@ module Github
     # GET /github/pull_requests or /github/pull_requests.json
     def index
       @curr_page = params.fetch(:page, 1)
-      @github_pull_requests = Github::PullRequest.all(@app.github_repo, @current_page)
+      @github_pull_requests = Github::PullRequest.all(current_user.github_token, @app.github_repo, @current_page)
       set_pages
     end
 

@@ -28,7 +28,7 @@ module Github
 
     # Use callbacks to share common setup or constraints between actions.
     def set_github_deploy_run
-      @github_deploy_run = Github::DeployRun.new(@app.github_repo, params[:id])
+      @github_deploy_run = Github::DeployRun.new(current_user.github_token, @app.github_repo, params[:id])
     end
 
     # Only allow a list of trusted parameters through.

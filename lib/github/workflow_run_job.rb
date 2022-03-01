@@ -7,7 +7,7 @@ module Github
   class WorkflowRunJob
     include Github::Pagination
 
-    attr_accessor :id, :repo, :octokit_client, :logs, :github
+    attr_accessor :access_token, :repo, :id, :octokit_client, :logs, :github
 
     # Creates a Github::WorkflowRunJob object with the github response attached
     #
@@ -16,10 +16,11 @@ module Github
     #
     # @return [Github::WorkflowRunJob]
     # @see https://docs.github.com/en/rest/reference/actions#get-a-job-for-a-workflow-run
-    def initialize(repo, id)
+    def initialize(access_token, repo, id)
+      @access_token = access_token
       @id = id
       @repo = repo
-      @octokit_client = Octokit::Client.new
+      @octokit_client = Octokit::Client.new(access_token: @access_token)
       @github = octokit_client.workflow_run_job(@repo, @id)
       @logs = format_logs
     end
@@ -33,8 +34,8 @@ module Github
       #
       # @return [Sawyer::Resource] Issues
       # @see https://docs.github.com/en/rest/reference/issues#list-repository-issues
-      def all_for_workflow_run(repo, workflow_run_id, page = 1)
-        octokit_client = Octokit::Client.new
+      def all_for_workflow_run(access_token, repo, workflow_run_id, page = 1)
+        octokit_client = Octokit::Client.new(access_token: access_token)
         response = octokit_client.workflow_run_jobs(repo, workflow_run_id, page: page)
 
         response[:pages] = page_numbers(octokit_client)
@@ -56,7 +57,7 @@ module Github
         @octokit_client.workflow_run_job_logs(@repo, @id)
       rescue Octokit::NotFound
         begin
-          check_run = Octokit.check_run_from_url(github.check_run_url)
+          check_run = @octokit_client.check_run_from_url(github.check_run_url)
           "#{check_run.output.title} \n #{check_run.output.summary}"
         rescue Octokit::NotFound
           ''

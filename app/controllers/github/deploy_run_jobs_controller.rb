@@ -7,7 +7,8 @@ module Github
 
     # GET /github/deploy_runs/1 or /github/deploy_runs/1.json
     def show
-      @github_deploy_run = Github::DeployRun.new(@app.github_repo, @github_deploy_run_job.github[:run_id])
+      @github_deploy_run = Github::DeployRun.new(current_user.github_token, @app.github_repo,
+                                                 @github_deploy_run_job.github[:run_id])
       @all_jobs = @github_deploy_run.jobs
     end
 
@@ -15,7 +16,7 @@ module Github
 
     # Use callbacks to share common setup or constraints between actions.
     def set_github_deploy_run_job
-      @github_deploy_run_job = Github::DeployRunJob.new(@app.github_repo, params[:id])
+      @github_deploy_run_job = Github::DeployRunJob.new(current_user.github_token, @app.github_repo, params[:id])
     end
 
     # Only allow a list of trusted parameters through.

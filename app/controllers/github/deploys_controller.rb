@@ -20,7 +20,7 @@ module Github
     end
 
     def new
-      @github_deploy = Github::Deploy.new(@app.github_repo)
+      @github_deploy = Github::Deploy.new(current_user.github_token, @app.github_repo)
     end
 
     def deploy # rubocop:disable Metrics/AbcSize
@@ -43,7 +43,7 @@ module Github
 
     # Use callbacks to share common setup or constraints between actions.
     def set_github_deploy
-      @github_deploy = Github::Deploy.new(@app.github_repo)
+      @github_deploy = Github::Deploy.new(current_user.github_token, @app.github_repo)
     rescue Octokit::NotFound
       @github_deploy = nil
     end

@@ -14,7 +14,8 @@ cache_stack = Faraday::RackBuilder.new do |builder|
 end
 
 Octokit.configure do |config|
-  config.access_token = ENV['GITHUB_ACCESS_TOKEN']
+  config.client_id = ENV['GITHUB_CLIENT_ID']
+  config.client_secret = ENV['GITHUB_CLIENT_SECRET']
   config.middleware = cache_stack
   config.per_page = 20
   config.connection_options = {
@@ -54,7 +55,7 @@ Octokit::Client::ActionsWorkflowRuns.class_eval do
   # @param id [Integer] Id of a workflow run job
   #
   # @return [String] Workflow Run Job Logs
-  # @see https://developer.github.com/v3/actions/workflow-runs/#get-a-workflow-run
+  # @see https://docs.github.com/en/rest/reference/actions#workflow-runs
   def workflow_run_job_logs(repo, id, options = {})
     get "#{Octokit::Repository.path repo}/actions/jobs/#{id}/logs", options
   end

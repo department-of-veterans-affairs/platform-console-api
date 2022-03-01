@@ -2,13 +2,15 @@
 
 # The App Model
 class App < ApplicationRecord
+  attr_accessor :current_user
+
   belongs_to :team
   has_paper_trail
   validates :name, presence: true
   before_save :validate_github_repo, if: :will_save_change_to_github_repo?
 
-  def github_repository
-    Github::Repository.new(github_repo)
+  def github_repository(access_token)
+    Github::Repository.new(access_token, github_repo)
   end
   alias repository github_repository
 
@@ -25,8 +27,8 @@ class App < ApplicationRecord
     end
 
     begin
-      Github::Repository.new(github_repo)
-    rescue Octokit::NotFound => e
+      Github::Repository.new(current_user.github_token, github_repo)
+    rescue Octokit::NotFound, Octokit::Unauthorized, Octokit::Forbidden => e
       errors.add(:base, e.message)
       throw(:abort)
     end
