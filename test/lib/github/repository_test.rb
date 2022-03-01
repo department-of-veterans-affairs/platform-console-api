@@ -6,7 +6,8 @@ module Github
   class RepositoryTest < ActiveSupport::TestCase
     setup do
       VCR.use_cassette('github/repository') do
-        @repository = Github::Repository.new('department-of-veterans-affairs/vets-api')
+        @repository = Github::Repository.new(ENV['GITHUB_ACCESS_TOKEN'],
+                                             'department-of-veterans-affairs/vets-api')
       end
     end
 
@@ -19,7 +20,7 @@ module Github
     test 'cannot be created with an invalid repository' do
       VCR.use_cassette('github/invalid_repository') do
         assert_raises Octokit::NotFound do
-          Github::Repository.new('invalid-user/invalid-repository')
+          Github::Repository.new(ENV['GITHUB_ACCESS_TOKEN'], 'invalid-user/invalid-repository')
         end
       end
     end
@@ -74,7 +75,7 @@ module Github
 
     test 'lists all repositories in the organization' do
       VCR.use_cassette('github/repository', record: :new_episodes) do
-        org_repos = Github::Repository.all[:repositories]
+        org_repos = Github::Repository.all(ENV['GITHUB_ACCESS_TOKEN'])[:repositories]
         assert_kind_of Array, org_repos
       end
     end

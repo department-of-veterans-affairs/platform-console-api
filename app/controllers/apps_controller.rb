@@ -86,6 +86,7 @@ class AppsController < ApplicationController
   # Find the team app
   def set_app
     @app = @team.apps.find(params[:id])
+    @app.current_user = current_user
   end
 
   # Only allow a list of trusted parameters through.

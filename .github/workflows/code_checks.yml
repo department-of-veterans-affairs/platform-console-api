@@ -39,6 +39,7 @@ jobs:
       DATABASE_URL: "postgres://postgres:postgres@127.0.0.1:5432/platform_console_test?pool=4"
       REDIS_URL: redis://localhost:6379/0
       TERM: xterm-256color
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
     runs-on: ubuntu-20.04
 
     services:

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Github
+  # Controller handling Github Oauth callbacl=k and revoke
   class OauthController < ApplicationController
     before_action :authorize_session!
 
@@ -14,7 +15,7 @@ module Github
     end
 
     def revoke
-      Octokit.delete_app_authorization('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')
+      Octokit.delete_app_authorization(current_user.github_token)
       respond_to do |format|
         if Octokit.revoke_application_authorization(current_user.github_token)
           current_user.update(github_token: nil)

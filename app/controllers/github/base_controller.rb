@@ -7,7 +7,6 @@ module Github
     before_action :set_team
     before_action :set_app
     before_action :set_github_repository
-    before_action :set_github_user
     rescue_from Octokit::Unauthorized, with: :reauthorize_octokit
     rescue_from Octokit::Forbidden, with: :reauthorize_octokit
 
@@ -17,10 +16,6 @@ module Github
       return redirect_to edit_team_app_path(@team, @app) if @app.github_repo.blank?
 
       @github_repository = Github::Repository.new(current_user.github_token, @app.github_repo)
-    end
-
-    def set_github_user
-      @github_user = current_user.github_user
     end
 
     def set_team
