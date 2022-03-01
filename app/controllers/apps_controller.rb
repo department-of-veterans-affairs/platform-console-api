@@ -5,32 +5,7 @@ class AppsController < ApplicationController
   before_action :authorize_session!
   before_action :set_team
   before_action :set_app, only: %i[show edit update destroy]
-  before_action :set_github_repository, only: :show
-
-  GithubInfoQuery = GitHub::Client.parse <<~'GRAPHQL'
-    query {
-      repo: repository(owner: "department-of-veterans-affairs", name: "vets-api") {
-        open_issues: issues(states: OPEN) {
-        totalCount
-        }
-        branches: refs(first: 0, refPrefix: "refs/heads/") {
-          totalCount
-        }
-        pull_requests: pullRequests(states:OPEN) {
-          totalCount
-        }
-        releases: releases {
-          totalCount
-        }
-        latest_release: latestRelease{
-          name
-          author {
-            login
-          }
-        }
-      }
-    }
-  GRAPHQL
+  before_action :set_github_info, only: :show
 
   # GET /apps or /apps.json
   def index
@@ -114,11 +89,37 @@ class AppsController < ApplicationController
     @app = @team.apps.find(params[:id])
   end
 
-  def set_github_repository
+  # Query to get various stats for the app's github repository
+  GithubInfoQuery = GitHub::Client.parse <<~'GRAPHQL'
+    query($owner: String!, $name: String!) {
+      repo: repository(owner: $owner, name: $name) {
+        open_issues: issues(states: OPEN) {
+        totalCount
+        }
+        branches: refs(first: 0, refPrefix: "refs/heads/") {
+          totalCount
+        }
+        pull_requests: pullRequests(states:OPEN) {
+          totalCount
+        }
+        releases: releases {
+          totalCount
+        }
+        latest_release: latestRelease{
+          name
+        }
+      }
+    }
+  GRAPHQL
+  # Set the current github repository and provide stats for the overview
+  def set_github_info
     return if @app.github_repo.blank?
 
-    @github_stats = GitHub::Client.query(GithubInfoQuery).data.repo
     @github_repository = Github::Repository.new(@app.github_repo)
+    @github_stats = GitHub::Client.query(GithubInfoQuery,
+                                         variables: { owner: @github_repository.github.owner.login,
+                                                      name: @github_repository.github.name }).data.repo
+    @releases = @github_repository.octokit_client.releases(@app.github_repo)
   end
 
   # Only allow a list of trusted parameters through.
