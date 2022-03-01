@@ -5,6 +5,7 @@ require 'authenticatable_constraint'
 
 # rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
+  resources :users, only: %i[show edit update]
   resources :audits, only: [:index]
 
   resources :teams do
@@ -29,6 +30,9 @@ Rails.application.routes.draw do
       resources :deploy_run_jobs, only: [:show], controller: 'github/deploy_run_jobs'
     end
   end
+
+  get '/github/oauth/callback' => 'github/oauth#callback'
+  delete '/github/oauth/revoke' => 'github/oauth#revoke'
 
   root to: redirect('/teams'), constraints: ->(request) { AuthenticatableConstraint.new(request).current_user.present? }
   root 'pages#home', as: :unauthenticated_root

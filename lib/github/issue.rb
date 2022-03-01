@@ -5,7 +5,7 @@ module Github
   class Issue
     include Github::Pagination
 
-    attr_accessor :id, :repo, :octokit_client, :github
+    attr_accessor :access_token, :repo, :id, :octokit_client, :github
 
     # Creates a Github::Issue object with the github response attached
     #
@@ -14,10 +14,11 @@ module Github
     #
     # @return [Github::Issue]
     # @see https://docs.github.com/en/rest/reference/issues#get-an-issue
-    def initialize(repo, id)
+    def initialize(access_token, repo, id)
+      @access_token = access_token
       @id = id
       @repo = repo
-      @octokit_client = Octokit::Client.new
+      @octokit_client = Octokit::Client.new(access_token: @access_token)
       @github = octokit_client.issue(@repo, @id)
     end
 
@@ -28,8 +29,8 @@ module Github
     #
     # @return [Sawyer::Resource] Issues
     # @see https://docs.github.com/en/rest/reference/issues#list-repository-issues
-    def self.all(repo, page_number = 1)
-      octokit_client = Octokit::Client.new
+    def self.all(access_token, repo, page_number = 1)
+      octokit_client = Octokit::Client.new(access_token: access_token)
       response = {}
       response[:issues] = octokit_client.list_issues(repo, { page: page_number })
 

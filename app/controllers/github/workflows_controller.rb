@@ -27,7 +27,8 @@ module Github
 
     def workflow_dispatch # rubocop:disable Metrics/AbcSize
       respond_to do |format|
-        Github::Workflow.dispatch!(@app.github_repo, github_workflow_params[:workflow_id], github_workflow_params[:ref])
+        Github::Workflow.dispatch!(current_user.github_token, @app.github_repo, github_workflow_params[:workflow_id],
+                                   github_workflow_params[:ref])
         format.html do
           redirect_to team_app_workflow_path(@app, @team, github_workflow_params[:workflow_id]),
                       notice: 'Workflow was successfully dispatched'
@@ -45,7 +46,7 @@ module Github
 
     # Use callbacks to share common setup or constraints between actions.
     def set_github_workflow
-      @github_workflow = Github::Workflow.new(@app.github_repo, params[:id])
+      @github_workflow = Github::Workflow.new(current_user.github_token, @app.github_repo, params[:id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -16,4 +16,7 @@ module Github
   GITHUB_ORGANIZATION = 'department-of-veterans-affairs'
   CREATE_PR_WORKFLOW_FILE = 'create_deploy_pr.yml'
   DEPLOY_WORKFLOW_FILE = 'codeql.yml'
+  GITHUB_OAUTH_URL = "https://github.com/login/oauth/authorize?client_id=#{ENV['GITHUB_CLIENT_ID']}
+                                                               &redirect_uri=#{ENV['GITHUB_REDIRECT_URI']}
+                                                               &scope=repo".squish.delete(' ')
 end

@@ -8,7 +8,7 @@ module Github
   class WorkflowRun
     include Github::Pagination
 
-    attr_accessor :id, :repo, :octokit_client, :logs_url, :github
+    attr_accessor :access_token, :repo, :id, :octokit_client, :logs_url, :github
 
     # Creates a Github::WorkflowRun object with the github response attached
     #
@@ -17,12 +17,13 @@ module Github
     #
     # @return [Github::WorkflowRun]
     # @see https://docs.github.com/en/rest/reference/actions#get-a-workflow-run
-    def initialize(repo, id)
+    def initialize(access_token, repo, id)
+      @access_token = access_token
       @id = id
       @repo = repo
-      @octokit_client = Octokit::Client.new
+      @octokit_client = Octokit::Client.new(access_token: @access_token)
       @logs_url = begin
-        octokit_client.workflow_run_logs(@repo, @id)
+        @octokit_client.workflow_run_logs(@repo, @id)
       rescue Octokit::NotFound
         nil
       end
@@ -36,8 +37,8 @@ module Github
     #
     # @return [Sawyer::Resource] Workflow Runs
     # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs-for-a-repository
-    def self.all(repo, page = 1)
-      octokit_client = Octokit::Client.new
+    def self.all(access_token, repo, page = 1)
+      octokit_client = Octokit::Client.new(access_token: access_token)
       response = octokit_client.repository_workflow_runs(repo, page: page)
 
       response[:pages] = page_numbers(octokit_client)
@@ -52,8 +53,8 @@ module Github
     #
     # @return [Sawyer::Resource] Workflow Runs
     # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs-for-a-repository
-    def self.all_for_branch(repo, branch_name, page = 1)
-      octokit_client = Octokit::Client.new
+    def self.all_for_branch(access_token, repo, branch_name, page = 1)
+      octokit_client = Octokit::Client.new(access_token: access_token)
       response = octokit_client.repository_workflow_runs(repo, branch: branch_name, page: page)
 
       response[:pages] = page_numbers(octokit_client)
@@ -69,9 +70,9 @@ module Github
       #
       # @return [Sawyer::Resource] Workflow Runs
       # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs
-      def all_for_workflow(repo, workflow_id, page = 1, options = {})
+      def all_for_workflow(access_token, repo, workflow_id, page = 1, options = {})
         options[:page] = page
-        octokit_client = Octokit::Client.new
+        octokit_client = Octokit::Client.new(access_token: access_token)
         response = octokit_client.workflow_runs(repo, workflow_id, options)
 
         response[:pages] = page_numbers(octokit_client)
@@ -86,7 +87,7 @@ module Github
     # @return [Sawyer::Resource] Workflows Run Jobs
     # @see https://docs.github.com/en/rest/reference/actions#re-run-a-workflow
     def jobs
-      Github::WorkflowRunJob.all_for_workflow_run(@repo, @id)
+      Github::WorkflowRunJob.all_for_workflow_run(@access_token, @repo, @id)
     end
 
     # Rerun a Workflow Run

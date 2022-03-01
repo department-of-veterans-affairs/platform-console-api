@@ -5,7 +5,7 @@ module Github
   class Repository
     include Github::Pagination
 
-    attr_accessor :repo, :octokit_client, :github
+    attr_accessor :access_token, :repo, :octokit_client, :github
 
     # Creates a Github::Repository object with the github response attached
     #
@@ -13,9 +13,10 @@ module Github
     #
     # @return [Github::Repository]
     # @see https://docs.github.com/en/rest/reference/repos#get-a-repository
-    def initialize(repo)
+    def initialize(access_token, repo)
+      @acccess_token = access_token
       @repo = repo
-      @octokit_client = Octokit::Client.new
+      @octokit_client = Octokit::Client.new(access_token: @access_token)
       @github = octokit_client.repository(@repo)
     end
 
@@ -25,8 +26,8 @@ module Github
     #
     # @return [Sawyer::Resource] Repositories
     # @see https://docs.github.com/en/rest/reference/repos#list-organization-repositories
-    def self.all(page = 1)
-      octokit_client = Octokit::Client.new
+    def self.all(access_token, page = 1)
+      octokit_client = Octokit::Client.new(access_token: access_token)
       response = {}
       response[:repositories] = octokit_client.organization_repositories(GITHUB_ORGANIZATION, page: page)
 
@@ -41,7 +42,7 @@ module Github
     # @return [Sawyer::Resource] Issues
     # @see https://docs.github.com/en/rest/reference/issues#list-repository-issues
     def issues(page = 1)
-      Github::Issue.all(@repo, page)
+      Github::Issue.all(@access_token, @repo, page)
     end
 
     # List all pull requests in a repository
@@ -51,7 +52,7 @@ module Github
     # @return [Sawyer::Resource] Pull Requests
     # @see https://docs.github.com/en/rest/reference/pulls#list-pull-requests
     def pull_requests(page = 1)
-      Github::PullRequest.all(@repo, page)
+      Github::PullRequest.all(@access_token, @repo, page)
     end
 
     # List all repository workflows
@@ -59,7 +60,7 @@ module Github
     # @return [Sawyer::Resource] Workflows
     # @see https://docs.github.com/en/rest/reference/actions#list-repository-workflows
     def workflows
-      Github::Workflow.all(@repo)
+      Github::Workflow.all(@access_token, @repo)
     end
 
     # List all repository workflows runs
@@ -69,7 +70,7 @@ module Github
     # @return [Sawyer::Resource] Workflows
     # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs-for-a-repository
     def workflow_runs(page = 1)
-      Github::WorkflowRun.all(@repo, page)
+      Github::WorkflowRun.all(@access_token, @repo, page)
     end
 
     # List all repository workflows runs associated to a branch in this repo
@@ -80,7 +81,7 @@ module Github
     # @return [Sawyer::Resource] Workflows
     # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs-for-a-repository
     def branch_workflow_runs(branch_name, page = 1)
-      Github::WorkflowRun.all_for_branch(@repo, branch_name, page)
+      Github::WorkflowRun.all_for_branch(@access_token, @repo, branch_name, page)
     end
 
     # List runs for a particular workflow in this repository.
@@ -90,7 +91,7 @@ module Github
     # @return [Sawyer::Resource] Workflow runs
     # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs
     def workflow_run(workflow_id)
-      Github::WorkflowRun.all_for_workflow(@repo, workflow_id)
+      Github::WorkflowRun.all_for_workflow(@access_token, @repo, workflow_id)
     end
 
     # Get the readme for a repository
@@ -98,7 +99,7 @@ module Github
     # @return [String] The repositories raw readme
     # @see https://docs.github.com/en/rest/reference/repos#get-a-repository-readme
     def readme
-      content = Octokit.readme(@repo).content
+      content = @octokit_client.call(@repo).content
       Base64.decode64(content)
     end
 
@@ -106,7 +107,7 @@ module Github
     #
     # @return [Sawyer::Resource, nil] The deploy workflow or nil if it doesnt exist
     def deploy_workflow
-      Github::Workflow.new(@repo, DEPLOY_WORKFLOW_FILE)
+      Github::Workflow.new(@access_token, @repo, DEPLOY_WORKFLOW_FILE)
     rescue Octokit::NotFound
       nil
     end
@@ -117,7 +118,9 @@ module Github
     # @return [Boolean] If the dispatch was successful or not
     def dispatch_create_pr_workflow
       inputs = { repo: @repo, file_name: DEPLOY_WORKFLOW_FILE }
-      Github::Workflow.dispatch!('department-of-veterans-affairs/platform-console-api', CREATE_PR_WORKFLOW_FILE,
+      Github::Workflow.dispatch!(ENV['GITHUB_ACCESS_TOKEN'],
+                                 'department-of-veterans-affairs/platform-console-api',
+                                 CREATE_PR_WORKFLOW_FILE,
                                  'master', { inputs: inputs })
     end
   end
