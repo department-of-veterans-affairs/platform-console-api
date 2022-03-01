@@ -5,8 +5,8 @@ require 'application_system_test_case'
 class AppsTest < ApplicationSystemTestCase
   setup do
     login_as :john
-    @team = teams(:one)
-    @app = apps(:one)
+    @team = teams(:three)
+    @app = apps(:three)
   end
 
   test 'visiting the index' do
@@ -26,7 +26,7 @@ class AppsTest < ApplicationSystemTestCase
   end
 
   test 'should not create app with invalid repository' do
-    VCR.use_cassette('system/apps') do
+    VCR.use_cassette('system/apps', record: :new_episodes) do
       visit team_apps_url(@team)
       click_on 'New app'
 
@@ -51,7 +51,7 @@ class AppsTest < ApplicationSystemTestCase
   end
 
   test 'should update app with valid github repository' do
-    VCR.use_cassette('system/apps') do
+    VCR.use_cassette('system/apps', record: :new_episodes) do
       visit team_app_url(@team, @app)
       click_on 'Settings', match: :first
 
