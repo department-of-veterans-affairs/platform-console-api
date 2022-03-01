@@ -44,6 +44,7 @@ class AppsTest < ApplicationSystemTestCase
     click_on 'Settings', match: :first
 
     fill_in 'Name', with: 'App1A'
+    fill_in 'app_github_repo', with: ''
 
     click_on 'Update App'
 
