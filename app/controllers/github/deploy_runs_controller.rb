@@ -30,10 +30,5 @@ module Github
     def set_github_deploy_run
       @github_deploy_run = Github::DeployRun.new(current_user.github_token, @app.github_repo, params[:id])
     end
-
-    # Only allow a list of trusted parameters through.
-    def github_deploy_run_params
-      params.fetch(:github_deploy_run, {})
-    end
   end
 end
