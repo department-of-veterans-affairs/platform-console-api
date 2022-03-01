@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   end
 
   get '/github/oauth/callback' => 'github/oauth#callback'
-  get '/github/oauth/revoke' => 'github/oauth#revoke'
+  delete '/github/oauth/revoke' => 'github/oauth#revoke'
 
   root to: redirect('/teams'), constraints: ->(request) { AuthenticatableConstraint.new(request).current_user.present? }
   root 'pages#home', as: :unauthenticated_root

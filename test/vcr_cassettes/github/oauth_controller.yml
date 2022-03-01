@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://github.com/login/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: '{"code":"1b5acd1175129a747f29","client_id":"github_client_id","client_secret":"github_client_secret"}'
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.22.0
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic auth
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 01 Mar 2022 16:39:31 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding, Accept, X-Requested-With
+      - X-PJAX, X-PJAX-Container
+      Permissions-Policy:
+      - interest-cohort=()
+      Etag:
+      - W/"0f4a1527fcabadc6f24dfc4eff6db887"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Expect-Ct:
+      - max-age=2592000, report-uri="https://api.github.com/_private/browser/errors"
+      Content-Security-Policy:
+      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; child-src
+        github.com/assets-cdn/worker/ gist.github.com/assets-cdn/worker/; connect-src
+        ''self'' uploads.github.com objects-origin.githubusercontent.com www.githubstatus.com
+        collector.githubapp.com collector.github.com api.github.com github-cloud.s3.amazonaws.com
+        github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com
+        github-production-user-asset-6210df.s3.amazonaws.com cdn.optimizely.com logx.optimizely.com/v1/events
+        translator.github.com wss://alive.github.com; font-src github.githubassets.com;
+        form-action ''self'' github.com gist.github.com objects-origin.githubusercontent.com;
+        frame-ancestors ''none''; frame-src render.githubusercontent.com viewscreen.githubusercontent.com
+        notebooks.githubusercontent.com; img-src ''self'' data: github.githubassets.com
+        identicons.github.com collector.githubapp.com collector.github.com github-cloud.s3.amazonaws.com
+        secured-user-images.githubusercontent.com/ *.githubusercontent.com; manifest-src
+        ''self''; media-src github.com user-images.githubusercontent.com/; script-src
+        github.githubassets.com; style-src ''unsafe-inline'' github.githubassets.com;
+        worker-src github.com/assets-cdn/worker/ gist.github.com/assets-cdn/worker/'
+      X-Github-Request-Id:
+      - FC43:37FA:1D6DE60:3687C88:621E4C42
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"access_token","token_type":"bearer","scope":"repo"}'
+  recorded_at: Tue, 01 Mar 2022 16:39:31 GMT
+recorded_with: VCR 6.0.0

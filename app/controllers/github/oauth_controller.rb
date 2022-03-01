@@ -10,15 +10,15 @@ module Github
       respond_to do |format|
         if token.present? && current_user.update(github_token: token)
           format.html { redirect_to edit_user_path(current_user), notice: 'GitHub account successfully connected.' }
+        else
+          format.html { redirect_to edit_user_path(current_user), error: 'There was a problem adding your account' }
         end
       end
     end
 
     def revoke
-      Octokit.delete_app_authorization(current_user.github_token)
       respond_to do |format|
-        if Octokit.revoke_application_authorization(current_user.github_token)
-          current_user.update(github_token: nil)
+        if Octokit.delete_app_authorization(current_user.github_token) && current_user.update(github_token: nil)
           format.html { redirect_to edit_user_path(current_user), notice: 'GitHub account successfully removed.' }
         else
           format.html { redirect_to edit_user_path(current_user), error: 'There was a problem removing your account' }
