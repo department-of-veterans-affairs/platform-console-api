@@ -40,15 +40,17 @@ class AppsTest < ApplicationSystemTestCase
   end
 
   test 'should update App' do
-    visit team_app_url(@team, @app)
-    click_on 'Settings', match: :first
+    VCR.use_cassette('system/apps', record: :new_episodes) do
+      visit team_app_url(@team, @app)
+      click_on 'Settings', match: :first
 
-    fill_in 'Name', with: 'App1A'
-    fill_in 'app_github_repo', with: ''
+      fill_in 'Name', with: 'App1A'
+      fill_in 'app_github_repo', with: ''
 
-    click_on 'Update App'
+      click_on 'Update App'
 
-    assert_text 'App was successfully updated'
+      assert_text 'App was successfully updated'
+    end
   end
 
   test 'should update app with valid github repository' do
