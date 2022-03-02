@@ -14,6 +14,19 @@ class AppsTest < ApplicationSystemTestCase
     assert_selector 'h1', text: 'Apps'
   end
 
+  test 'should show app' do
+    VCR.use_cassette('system/apps', record: :new_episodes) do
+      visit team_app_url(@team, @app)
+      assert_selector 'a.border-indigo-500.border-b-2', text: 'Overview'
+      assert_selector 'h1', text: 'Latest Releases'
+      assert_selector 'dt', text: 'Open Pull Requests'
+      assert_selector 'dt', text: 'Branches'
+      assert_selector 'dt', text: 'Open Issues'
+      assert_selector 'dt', text: 'Tags'
+      assert_selector 'dt', text: 'Latest Release'
+    end
+  end
+
   test 'should create app' do
     visit team_apps_url(@team)
     click_on 'New app'
