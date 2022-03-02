@@ -49,4 +49,5 @@ group :test do
   gem 'selenium-webdriver' # Capybara system testing with Chrome
   gem 'simplecov'          # Code coverage for Ruby
   gem 'webdrivers'         # Easy installation and use of web drivers to run system tests with browsers
+  gem 'webmock'            # Library for stubbing and setting expectations on HTTP requests in Ruby.
 end
