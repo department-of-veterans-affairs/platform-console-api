@@ -17,7 +17,7 @@ class AppsTest < ApplicationSystemTestCase
   test 'should show app' do
     VCR.use_cassette('system/apps', record: :new_episodes) do
       visit team_app_url(@team, @app)
-      assert_selector 'a.border-indigo-500.border-b-2', text: 'Overview'
+      assert_selector 'a', text: 'Overview'
       assert_selector 'h1', text: 'Latest Releases'
       assert_selector 'dt', text: 'Open Pull Requests'
       assert_selector 'dt', text: 'Branches'
