@@ -1,7 +1,19 @@
 # frozen_string_literal: true
 
 module Github
+  # Module containing a graphQL client and queries for github
   module GraphQL
+    # Setup GraphQL
+    unless File.exist?(Rails.root.join('tmp/github_graphql_schema.json'))
+      # Download GraphQL schema
+      adapter = ::GraphQL::Client::HTTP.new('https://api.github.com/graphql') do
+        def headers(_context)
+          { 'Authorization' => "Bearer #{ENV['GITHUB_ACCESS_TOKEN']}" }
+        end
+      end
+      ::GraphQL::Client.dump_schema(adapter, 'tmp/github_graphql_schema.json')
+    end
+
     # Configure GraphQL endpoint using the basic HTTP network adapter.
     HTTP = ::GraphQL::Client::HTTP.new('https://api.github.com/graphql') do
       def headers(context)
