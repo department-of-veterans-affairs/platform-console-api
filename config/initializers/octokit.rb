@@ -26,6 +26,17 @@ Octokit.configure do |config|
   }
 end
 
+# Setup GraphQL
+unless File.exist?(Rails.root.join('tmp/github_graphql_schema.json'))
+  # Download GraphQL schema
+  adapter = GraphQL::Client::HTTP.new('https://api.github.com/graphql') do
+    def headers(_context)
+      { 'Authorization' => "Bearer #{ENV['GITHUB_ACCESS_TOKEN']}" }
+    end
+  end
+  GraphQL::Client.dump_schema(adapter, 'tmp/github_graphql_schema.json')
+end
+
 Octokit::Client::ActionsWorkflowRuns.class_eval do
   # Get a workflow run's jobs
   #

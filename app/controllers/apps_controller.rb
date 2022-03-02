@@ -90,38 +90,16 @@ class AppsController < ApplicationController
     @app.current_user = current_user
   end
 
-  # Query to get various stats for the app's github repository
-  GithubInfoQuery = GitHub::Client.parse <<~'GRAPHQL'
-    query($owner: String!, $name: String!) {
-      repo: repository(owner: $owner, name: $name) {
-        open_issues: issues(states: OPEN) {
-        totalCount
-        }
-        branches: refs(first: 0, refPrefix: "refs/heads/") {
-          totalCount
-        }
-        pull_requests: pullRequests(states:OPEN) {
-          totalCount
-        }
-        releases: releases {
-          totalCount
-        }
-        latest_release: latestRelease{
-          name
-        }
-      }
-    }
-  GRAPHQL
-
   # rubocop:disable Metrics/AbcSize
   # Set the current github repository and provide stats for the overview
   def set_github_info
     return if @app.github_repo.blank?
 
     @github_repository = Github::Repository.new(current_user.github_token, @app.github_repo)
-    @github_stats = GitHub::Client.query(GithubInfoQuery,
-                                         variables: { owner: @github_repository.github.owner.login,
-                                                      name: @github_repository.github.name }).data.repo
+    @github_stats = Github::GraphQL::Client.query(Github::GraphQL::GithubInfoQuery,
+                                                  variables: { owner: @github_repository.github.owner.login,
+                                                               name: @github_repository.github.name },
+                                                  context: { access_token: current_user.github_token }).data.repo
     @releases = @github_repository.octokit_client.releases(@app.github_repo)
   end
   # rubocop:enable Metrics/AbcSize
