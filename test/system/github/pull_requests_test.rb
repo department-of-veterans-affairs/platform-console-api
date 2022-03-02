@@ -13,7 +13,7 @@ module Github
     test 'visiting the index' do
       VCR.use_cassette('system/github/pull_requests') do
         visit team_app_pull_requests_url(@team, @app)
-        assert_selector 'a.border-indigo-500.border-b-2', text: 'Pull Requests'
+        assert_selector 'a', text: 'Pull Requests'
         click_on 'Workflow Runs', match: :first
         assert_selector 'a', text: 'Dispatch a Workflow'
       end
