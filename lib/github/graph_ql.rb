@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'graphql/client'
+require 'graphql/client/http'
 module Github
   # Module containing a graphQL client and queries for github
   module GraphQL
