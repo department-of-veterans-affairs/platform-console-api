@@ -27,5 +27,19 @@ module PlatformConsole
     # config.generators do |g|
     #   g.test_framework :minitest
     # end
+
+    config.before_initialize do
+      require 'dotenv'
+      # Setup GraphQL
+      unless File.exist?(Rails.root.join('tmp/github_graphql_schema.json'))
+        # Download GraphQL schema
+        adapter = GraphQL::Client::HTTP.new('https://api.github.com/graphql') do
+          def headers(_context)
+            { 'Authorization' => "Bearer #{ENV['GITHUB_ACCESS_TOKEN']}" }
+          end
+        end
+        GraphQL::Client.dump_schema(adapter, 'tmp/github_graphql_schema.json')
+      end
+    end
   end
 end

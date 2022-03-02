@@ -20,7 +20,7 @@ module Github
     # However, it's smart to dump this to a JSON file and load from disk
     #
     # Run it from a script or rake task
-    # GraphQL::Client.dump_schema(GitHub::HTTP, 'db/schema.json')
+    # ::GraphQL::Client.dump_schema(HTTP, 'tmp/github_graphql_schema.json')
     Schema = ::GraphQL::Client.load_schema('tmp/github_graphql_schema.json')
 
     Client = ::GraphQL::Client.new(schema: Schema, execute: HTTP)
