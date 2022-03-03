@@ -91,7 +91,7 @@ class AppsController < ApplicationController
   end
 
   # Set the current github repository and provide stats for the overview
-  def set_github_info # rubocop:disable Metrics/AbcSize
+  def set_github_info
     return if @app.github_repo.blank?
 
     @github_repository = @app.repository(current_user.github_token)

@@ -23,7 +23,7 @@ module Github
       @github_deploy = Github::Deploy.new(current_user.github_token, @app.github_repo)
     end
 
-    def deploy # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    def deploy # rubocop:disable Metrics/MethodLength
       respond_to do |format|
         Github::Deploy.dispatch!(
           current_user.github_token, @app.github_repo, github_deploy_params[:workflow_id], github_deploy_params[:ref],

@@ -40,7 +40,6 @@ module Github
         response
       end
 
-      # rubocop:disable Metrics/ParameterLists
       def create_from_new_branch(access_token, repo, branch_name, branch_from_sha, message, file_path)
         octokit_client = Octokit::Client.new(access_token: access_token)
         # Create Branch
@@ -56,7 +55,6 @@ module Github
 
         octokit_client.create_pull_request(repo, 'master', branch_name, message)
       end
-      # rubocop:enable Metrics/ParameterLists
 
       private
 

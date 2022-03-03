@@ -25,7 +25,7 @@ module Github
       @all_workflows = @github_repository.workflows
     end
 
-    def workflow_dispatch # rubocop:disable Metrics/AbcSize
+    def workflow_dispatch
       respond_to do |format|
         Github::Workflow.dispatch!(current_user.github_token, @app.github_repo, github_workflow_params[:workflow_id],
                                    github_workflow_params[:ref])
