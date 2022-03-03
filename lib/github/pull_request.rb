@@ -31,7 +31,7 @@ module Github
       #
       # @return [Sawyer::Resource] Pull requests
       # @see https://docs.github.com/en/rest/reference/pulls#list-pull-requests
-      def self.all(access_token, repo, page = 1)
+      def all(access_token, repo, page = 1)
         octokit_client = Octokit::Client.new(access_token: access_token)
         response = {}
         response[:pull_requests] = octokit_client.pull_requests(repo, page: page)
