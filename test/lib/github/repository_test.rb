@@ -6,8 +6,9 @@ module Github
   class RepositoryTest < ActiveSupport::TestCase
     setup do
       VCR.use_cassette('github/repository') do
-        @repository = Github::Repository.new(ENV['GITHUB_ACCESS_TOKEN'],
-                                             'department-of-veterans-affairs/vets-api')
+        @repository = Github::Repository.new(
+          ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/vets-api'
+        )
       end
     end
 
