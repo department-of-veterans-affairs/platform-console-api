@@ -7,12 +7,11 @@ module Github
 
     def callback
       token = Octokit.exchange_code_for_token(params[:code]).access_token
-      respond_to do |format|
-        if token.present? && current_user.update(github_token: token)
-          format.html { redirect_to edit_user_path(current_user), notice: 'GitHub account successfully connected.' }
-        else
-          format.html { redirect_to edit_user_path(current_user), error: 'There was a problem adding your account' }
-        end
+      if token.present?
+        current_user.update(github_token: token)
+        flash[:notice] = 'Successfully Connected GitHub Account'
+      else
+        flash[:alert] = 'There was a problem adding your account'
       end
     end
 
