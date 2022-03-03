@@ -5,6 +5,7 @@ class AppsController < ApplicationController
   before_action :authorize_session!
   before_action :set_team
   before_action :set_app, only: %i[show edit update destroy]
+  before_action :set_github_info, only: :show
 
   # GET /apps or /apps.json
   def index
@@ -88,6 +89,20 @@ class AppsController < ApplicationController
     @app = @team.apps.find(params[:id])
     @app.current_user = current_user
   end
+
+  # rubocop:disable Metrics/AbcSize
+  # Set the current github repository and provide stats for the overview
+  def set_github_info
+    return if @app.github_repo.blank?
+
+    @github_repository = @app.repository(current_user.github_token)
+    @github_stats = Github::GraphQL::Client.query(Github::GraphQL::GithubInfoQuery,
+                                                  variables: { owner: @github_repository.github.owner.login,
+                                                               name: @github_repository.github.name },
+                                                  context: { access_token: current_user.github_token }).data.repo
+    @releases = @github_repository.octokit_client.releases(@app.github_repo)
+  end
+  # rubocop:enable Metrics/AbcSize
 
   # Only allow a list of trusted parameters through.
   def app_params

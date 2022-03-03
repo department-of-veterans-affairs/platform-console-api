@@ -94,15 +94,6 @@ module Github
       Github::WorkflowRun.all_for_workflow(@access_token, @repo, workflow_id)
     end
 
-    # Get the readme for a repository
-    #
-    # @return [String] The repositories raw readme
-    # @see https://docs.github.com/en/rest/reference/repos#get-a-repository-readme
-    def readme
-      content = @octokit_client.call(@repo).content
-      Base64.decode64(content)
-    end
-
     # Get the deploy workflow in a repository
     #
     # @return [Sawyer::Resource, nil] The deploy workflow or nil if it doesnt exist
