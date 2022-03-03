@@ -1,11 +1,12 @@
 name: Deploy Template Demo
-on: push:
-    workflow_dispatch:
-      inputs:
-        environment:
-          description: The environment to deploy to.
-          required: true
-          default: production
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: The environment to deploy to.
+        required: true
+        default: production
 jobs:
   Deploy:
     runs-on: ubuntu-latest
