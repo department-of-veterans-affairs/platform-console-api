@@ -1,0 +1,917 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.22.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic MzkyZDU5YmNiN2UxMGY3NTUyZjI6MzhkMWIyMWZmNzQ2OTFlNzI5ZmQ2ZDJkODFiODQ4MzU3NmQxZTE5YQ==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 01 Mar 2022 19:29:43 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - W/"4cd100566f5e296697b9fdec08b503abea3adf54024984f9f41c596dc4b1996c"
+      Last-Modified:
+      - Mon, 28 Feb 2022 07:53:59 GMT
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4988'
+      X-Ratelimit-Reset:
+      - '1646166118'
+      X-Ratelimit-Used:
+      - '12'
+      X-Ratelimit-Resource:
+      - core
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - E3A3:6F12:2A653B9:2C52BB1:621E7427
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":62409417,"node_id":"MDEwOlJlcG9zaXRvcnk2MjQwOTQxNw==","name":"vets-api","full_name":"department-of-veterans-affairs/vets-api","private":false,"owner":{"login":"department-of-veterans-affairs","id":5421563,"node_id":"MDEyOk9yZ2FuaXphdGlvbjU0MjE1NjM=","avatar_url":"https://avatars.githubusercontent.com/u/5421563?v=4","gravatar_id":"","url":"https://api.github.com/users/department-of-veterans-affairs","html_url":"https://github.com/department-of-veterans-affairs","followers_url":"https://api.github.com/users/department-of-veterans-affairs/followers","following_url":"https://api.github.com/users/department-of-veterans-affairs/following{/other_user}","gists_url":"https://api.github.com/users/department-of-veterans-affairs/gists{/gist_id}","starred_url":"https://api.github.com/users/department-of-veterans-affairs/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/department-of-veterans-affairs/subscriptions","organizations_url":"https://api.github.com/users/department-of-veterans-affairs/orgs","repos_url":"https://api.github.com/users/department-of-veterans-affairs/repos","events_url":"https://api.github.com/users/department-of-veterans-affairs/events{/privacy}","received_events_url":"https://api.github.com/users/department-of-veterans-affairs/received_events","type":"Organization","site_admin":false},"html_url":"https://github.com/department-of-veterans-affairs/vets-api","description":"API
+        powering VA.gov","fork":false,"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api","forks_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/forks","keys_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/keys{/key_id}","collaborators_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/teams","hooks_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/hooks","issue_events_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/issues/events{/number}","events_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/events","assignees_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/assignees{/user}","branches_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/branches{/branch}","tags_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tags","blobs_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/git/refs{/sha}","trees_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/git/trees{/sha}","statuses_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/statuses/{sha}","languages_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/languages","stargazers_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/stargazers","contributors_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/contributors","subscribers_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/subscribers","subscription_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/subscription","commits_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/commits{/sha}","git_commits_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/git/commits{/sha}","comments_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/comments{/number}","issue_comment_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/issues/comments{/number}","contents_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/contents/{+path}","compare_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/compare/{base}...{head}","merges_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/merges","archive_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/downloads","issues_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/issues{/number}","pulls_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/pulls{/number}","milestones_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/milestones{/number}","notifications_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/labels{/name}","releases_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases{/id}","deployments_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/deployments","created_at":"2016-07-01T17:33:19Z","updated_at":"2022-02-28T07:53:59Z","pushed_at":"2022-03-01T19:20:23Z","git_url":"git://github.com/department-of-veterans-affairs/vets-api.git","ssh_url":"git@github.com:department-of-veterans-affairs/vets-api.git","clone_url":"https://github.com/department-of-veterans-affairs/vets-api.git","svn_url":"https://github.com/department-of-veterans-affairs/vets-api","homepage":"","size":348084,"stargazers_count":116,"watchers_count":116,"language":"Ruby","has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":48,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":52,"license":{"key":"other","name":"Other","spdx_id":"NOASSERTION","url":null,"node_id":"MDc6TGljZW5zZTA="},"allow_forking":true,"is_template":false,"topics":["civic-tech","gov","hacktoberfest","rails","ruby"],"visibility":"public","forks":48,"open_issues":52,"watchers":116,"default_branch":"master","temp_clone_token":null,"organization":{"login":"department-of-veterans-affairs","id":5421563,"node_id":"MDEyOk9yZ2FuaXphdGlvbjU0MjE1NjM=","avatar_url":"https://avatars.githubusercontent.com/u/5421563?v=4","gravatar_id":"","url":"https://api.github.com/users/department-of-veterans-affairs","html_url":"https://github.com/department-of-veterans-affairs","followers_url":"https://api.github.com/users/department-of-veterans-affairs/followers","following_url":"https://api.github.com/users/department-of-veterans-affairs/following{/other_user}","gists_url":"https://api.github.com/users/department-of-veterans-affairs/gists{/gist_id}","starred_url":"https://api.github.com/users/department-of-veterans-affairs/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/department-of-veterans-affairs/subscriptions","organizations_url":"https://api.github.com/users/department-of-veterans-affairs/orgs","repos_url":"https://api.github.com/users/department-of-veterans-affairs/repos","events_url":"https://api.github.com/users/department-of-veterans-affairs/events{/privacy}","received_events_url":"https://api.github.com/users/department-of-veterans-affairs/received_events","type":"Organization","site_admin":false},"network_count":48,"subscribers_count":155}'
+  recorded_at: Tue, 01 Mar 2022 19:29:43 GMT
+- request:
+    method: post
+    uri: https://api.github.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"query AppsController__GithubInfoQuery($owner: String!, $name:
+        String!) {\n  repo: repository(owner: $owner, name: $name) {\n    open_issues:
+        issues(states: OPEN) {\n      totalCount\n    }\n    branches: refs(first:
+        0, refPrefix: \"refs/heads/\") {\n      totalCount\n    }\n    pull_requests:
+        pullRequests(states: OPEN) {\n      totalCount\n    }\n    releases: releases
+        {\n      totalCount\n    }\n    latest_release: latestRelease {\n      name\n    }\n  }\n}","variables":{"owner":"department-of-veterans-affairs","name":"vets-api"},"operationName":"AppsController__GithubInfoQuery"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer github_token
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 01 Mar 2022 19:29:44 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Oauth-Scopes:
+      - read:org, read:user, repo, workflow
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Github-Media-Type:
+      - github.v4
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4995'
+      X-Ratelimit-Reset:
+      - '1646166457'
+      X-Ratelimit-Used:
+      - '5'
+      X-Ratelimit-Resource:
+      - graphql
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      Vary:
+      - Accept-Encoding, Accept, X-Requested-With
+      X-Github-Request-Id:
+      - E3A4:8378:208551D:224A6D7:621E7428
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"repo":{"open_issues":{"totalCount":21},"branches":{"totalCount":476},"pull_requests":{"totalCount":31},"releases":{"totalCount":1090},"latest_release":{"name":"vets-api/v0.0.1090"}}}}'
+  recorded_at: Tue, 01 Mar 2022 19:29:44 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases?per_page=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.22.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic MzkyZDU5YmNiN2UxMGY3NTUyZjI6MzhkMWIyMWZmNzQ2OTFlNzI5ZmQ2ZDJkODFiODQ4MzU3NmQxZTE5YQ==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 01 Mar 2022 19:29:44 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - W/"0e780c16ce244bdb6e8efaec0a022cc3aff6a421bd3bb1463a3bc75171dca9a7"
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Link:
+      - <https://api.github.com/repositories/62409417/releases?per_page=20&page=2>;
+        rel="next", <https://api.github.com/repositories/62409417/releases?per_page=20&page=55>;
+        rel="last"
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4987'
+      X-Ratelimit-Reset:
+      - '1646166118'
+      X-Ratelimit-Used:
+      - '13'
+      X-Ratelimit-Resource:
+      - core
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - E3AA:86A8:8EDB0E:96B79C:621E7428
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/60643501","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/60643501/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/60643501/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1090","id":60643501,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4DnVit","tag_name":"vets-api/v0.0.1090","target_commitish":"7d46a45c423fd722f267fb28d9b51b4774bf7535","name":"vets-api/v0.0.1090","draft":false,"prerelease":false,"created_at":"2022-02-28T16:32:04Z","published_at":"2022-02-28T20:00:55Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1090","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1090","body":"Release
+        0.0.1090 ami-0d35e6baebbe1a792 \n\n**e0770e2**  2646 mobile update maintenance
+        window service map (#9225)\n\n* add payment history to mobile maintenance
+        window service map\n\n**8b1ffd9**  2440 appointment request schema (#9226)\n\n*
+        2440: mobile appointment request schema\n\n**b9e8abc**  Fix email printing
+        on extra page (#9229)\n\n**7d46a45**  API-13467: Fix POA logic for PDF generation
+        and updating POA codes (#9193)\n\n* API-13467: Update POA submission logic:
+        require an uploaded form and signatures for both Veterans and Representative,
+        update codes in BGS only when requirements are properly met\r\n\r\n* Rearrange
+        method order for clarity\r\n\r\n* Use path variable in all of the request
+        specs\r\n\r\n* Add some tests\r\n\r\n* Linting\r\n\r\n* Fix form builder specs\r\n\r\n*
+        No need to pass in POA code to the form job, we can just reference the form
+        data on the model\r\n\r\n* Fixes\r\n\r\n* Update test cases for new logic\r\n\r\n*
+        linting\r\n\r\n* Make signatures check more granular\r\n\r\n* PR fixes\r\n\r\n*
+        Fix tests\r\n\r\nCo-authored-by: Jeffrey Wallace <jw81@users.noreply.github.com>\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/60511601","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/60511601/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/60511601/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1089","id":60511601,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4Dm1Vx","tag_name":"vets-api/v0.0.1089","target_commitish":"9f65e4f6cc13a8da6fb6ccac66e918a908d5062b","name":"vets-api/v0.0.1089","draft":false,"prerelease":false,"created_at":"2022-02-25T18:25:04Z","published_at":"2022-02-25T20:01:00Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1089","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1089","body":"Release
+        0.0.1089 ami-0fedf2aabcf9bd112 \n\n**80c75dd**  API-12658 Part3: Structure
+        and printing (#9197)\n\nAdd NODv2 pdf structure & printing\n\n**cd65db1**  36470
+        Demographic controller endpoint implementation (#9115)\n\n* 36470 Demographic
+        controller endpoint implementation\r\n\r\n* Adding rspec for demographic controller
+        changes\r\n\r\n* Addressing review comments\r\n\r\nCo-authored-by: kanchanasuriya
+        <ksuriyamoorthy@kindsys.us>\n\n**72a386a**  2322 payment history logging (#9199)\n\nhandle
+        nil from payment history upstream service\n\n**76c5f78**  2440: refactor appointments
+        requests adapter to use template pattern (#9210)\n\n* 2440: refactor appointments
+        requests adapter to use template pattern\n\n**6d9519b**  Bump aws-sdk-s3 from
+        1.112.0 to 1.113.0 (#9219)\n\n* Bump aws-sdk-s3 from 1.112.0 to 1.113.0\r\n\r\nBumps
+        [aws-sdk-s3](https://github.com/aws/aws-sdk-ruby) from 1.112.0 to 1.113.0.\r\n-
+        [Release notes](https://github.com/aws/aws-sdk-ruby/releases)\r\n- [Changelog](https://github.com/aws/aws-sdk-ruby/blob/version-3/gems/aws-sdk-s3/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/aws/aws-sdk-ruby/commits)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: aws-sdk-s3\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix issue with dependabot bundler version and Gemfile.lock\r\n\r\nCo-authored-by:
+        dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Lindsey Hattamer <lindsey.hattamer@oddball.io>\n\n**eb432aa**  Bump googleauth
+        from 1.1.1 to 1.1.2 (#9222)\n\n**a1f78d4**  Bump aws-sdk-kms from 1.54.0 to
+        1.55.0 (#9220)\n\n* Bump aws-sdk-kms from 1.54.0 to 1.55.0\r\n\r\nBumps [aws-sdk-kms](https://github.com/aws/aws-sdk-ruby)
+        from 1.54.0 to 1.55.0.\r\n- [Release notes](https://github.com/aws/aws-sdk-ruby/releases)\r\n-
+        [Changelog](https://github.com/aws/aws-sdk-ruby/blob/version-3/gems/aws-sdk-kms/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/aws/aws-sdk-ruby/compare/v1.54.0...v1.55.0)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: aws-sdk-kms\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix issue with Gemfile.lock and dependabot bundler version\r\n\r\nCo-authored-by:
+        dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Lindsey Hattamer <lindsey.hattamer@oddball.io>\n\n**5c59fb8**  upadte endpoint
+        enrollment verificaiton endpoint to use real data (#9201)\n\n**f9b782f**  Update
+        deprecated method (#9211)\n\n* update deprecated method\r\n\r\n* use request.env\n\n**7d5186a**  Bump
+        aws-sdk-sns from 1.52.0 to 1.53.0 (#9221)\n\n**cbe932d**  Unified sign in
+        force ial2 loa3 (#9145)\n\n* Update login_params and url_service to handle
+        idme and logingov verified\r\n\r\n* Add new values to redirect_urls array\r\n\r\n*
+        Handle verified logins for mhv and dslogon\r\n\r\n* Consolidate sign on urls
+        and fix tests\r\n\r\n* Consolidate signup urls and fix tests\r\n\r\n* Build
+        hash of login urls to simplify case statement. Ensure all tests pass\r\n\r\n*
+        Add logingov sign in url test\r\n\r\n* Add logingov signup test\r\n\r\n* Fix
+        rubocop issues\r\n\r\n* Fix post_url_service specs\r\n\r\n* Remove hash. Causes
+        too many saml requests\r\n\r\n* Use IDME_LOA3 for verified options instead
+        of IDME_LOA3_VETS\r\n\r\n* Add tests to url_service_spec\r\n\r\n* Add tests
+        to post_url_service_spec\r\n\r\n* Add sessions_controller specs\n\n**2081f30**  [37482]
+        Prefill 5655 form with only payments from last 30 days (#9209)\n\n* Add logic
+        to filter 5655 payments from past 30 days\r\n\r\n* Fix 5655 request form spec\n\n**9f65e4f**  API-13685
+        - ClaimsApi - Enable retries on AWS file not found errors (#9224)\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/60416367","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/60416367/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/60416367/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1088","id":60416367,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4DmeFv","tag_name":"vets-api/v0.0.1088","target_commitish":"e2ea77fa972272841f950d8d81dc08d9e6ef981f","name":"vets-api/v0.0.1088","draft":false,"prerelease":false,"created_at":"2022-02-24T18:50:23Z","published_at":"2022-02-24T20:11:05Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1088","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1088","body":"Release
+        0.0.1088 ami-02626dc051bc678d3 \n\n**c330cfc**  2623 mobile payment history
+        missing date bug fix (#9198)\n\n* catch and log nil dates for mobile payment
+        history records\n\n**2d95777**  Track all combinations of caregivers data
+        in statsd (#9187)\n\n* add record caregivers method\r\n\r\n* init metrics\r\n\r\n*
+        record_caregivers spec\r\n\r\n* use record_caregivers in controller\r\n\r\n*
+        lint\n\n**9cc3d21**  VaNotify rename module (#9183)\n\n**482b620**  RRD refactoring:
+        extract new ProcessorSelector class from Form526Submission (#9181)\n\n* refactor:
+        extract ProcessorSelector\r\n* reuse disability logic\n\n**893e89c**  API-13567
+        - ClaimsApi - Retrieve Veteran file number and provide to vbms (#9202)\n\nAPI-13567
+        - ClaimsApi - Add missed mockings\n\n**ebdb7be**  2440: appointment request
+        adapter specs (#9203)\n\n* 2440: appointment request adapter specs\n\n**802bba9**  [37202]
+        Creating OAuth Sessions table for direct OAuth authentications (#9195)\n\nCo-authored-by:
+        Trevor Bosaw <trevor.bosaw@oddball.io>\n\n**e2ea77f**  Fix error handling
+        in PoA signatures (#9175)\n\n* Fix error handling in PoA signatures\r\n\r\n*
+        Update test\r\n\r\nCo-authored-by: Austin Covrig <austin.covrig@oddball.io>\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/60271449","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/60271449/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/60271449/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1087","id":60271449,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4Dl6tZ","tag_name":"vets-api/v0.0.1087","target_commitish":"74b60234e7111ce6550bfda6b1fd28fc5d6ba62d","name":"vets-api/v0.0.1087","draft":false,"prerelease":false,"created_at":"2022-02-23T18:20:52Z","published_at":"2022-02-23T20:01:01Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1087","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1087","body":"Release
+        0.0.1087 ami-0a4ef2385c047654f \n\n**ce47433**  Bump nokogiri from 1.13.1
+        to 1.13.3 (#9179)\n\n* Bump nokogiri from 1.13.1 to 1.13.3\r\n\r\nBumps [nokogiri](https://github.com/sparklemotion/nokogiri)
+        from 1.13.1 to 1.13.3.\r\n- [Release notes](https://github.com/sparklemotion/nokogiri/releases)\r\n-
+        [Changelog](https://github.com/sparklemotion/nokogiri/blob/v1.13.3/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/sparklemotion/nokogiri/compare/v1.13.1...v1.13.3)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: nokogiri\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        Updating gem version\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Travis Hilton <travis.hilton@oddball.io>\n\n**6e37bd0**  2275 adding user
+        v1 tests (#9185)\n\n* added logic for SM get signature preferences\r\n\r\n*
+        added v1 tests\r\n\r\n* lint fixes\n\n**2555755**  API-12658 nod v2 form data
+        (#9155)\n\n* Add new v2 form data and spec\r\n\r\n* Add new factory\r\n\r\n*
+        Update nod model for v2\r\n\r\n* Make small refactor to v1 form data to use
+        representative attribute instead of veteran_representative\r\n\r\n* Modify
+        board review option on factory\r\n\r\n* Remove solved TODO\r\n\r\n* Fix rep
+        name method\r\n\r\n* Add tests for new v2 methods on nod model\r\n\r\n* Rubocop\n\n**efccccd**  LGY
+        Document Upload (#9169)\n\n* lgy doc upload\r\n\r\n* adding specs\r\n\r\n*
+        adding fixture\n\n**26a87ca**  2322 payment history logging (#9186)\n\n* track
+        payment history index success and failure\n\n**655665a**  Fix issue text box
+        height (#9190)\n\n**36aae07**  [31136] Add new endpoint to fetch medical copays
+        by id (#9176)\n\n* Add new method to filter copays by id\r\n\r\n* Add new
+        route to fetch copay by id\r\n\r\n* Document new route with swagger\r\n\r\n*
+        Add tests for new get copay by id route\r\n\r\nCo-authored-by: Travis Hilton
+        <53486698+thilton-oddball@users.noreply.github.com>\n\n**4cfa9ae**  RRD: event
+        email: reorder columns for easier pasting into spreadsheet (#9182)\n\n**cfe5d35**  Skip
+        RRD logic when restarting EVSS submission of Form 526 (#9165)\n\n**83d4eeb**  Bump
+        pg from 1.3.2 to 1.3.3 (#9196)\n\n* Bump pg from 1.3.2 to 1.3.3\r\n\r\nBumps
+        [pg](https://github.com/ged/ruby-pg) from 1.3.2 to 1.3.3.\r\n- [Release notes](https://github.com/ged/ruby-pg/releases)\r\n-
+        [Changelog](https://github.com/ged/ruby-pg/blob/master/History.rdoc)\r\n-
+        [Commits](https://github.com/ged/ruby-pg/compare/v1.3.2...v1.3.3)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: pg\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix bundler version with Gemfile.lock\r\n\r\nCo-authored-by: dependabot[bot]
+        <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by: Lindsey
+        Hattamer <lindsey.hattamer@oddball.io>\n\n**387aa83**  Bump faraday from 0.17.4
+        to 0.17.5 (#9178)\n\n* Bump faraday from 0.17.4 to 0.17.5\r\n\r\nBumps [faraday](https://github.com/lostisland/faraday)
+        from 0.17.4 to 0.17.5.\r\n- [Release notes](https://github.com/lostisland/faraday/releases)\r\n-
+        [Changelog](https://github.com/lostisland/faraday/blob/main/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/lostisland/faraday/compare/v0.17.4...v0.17.5)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: faraday\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        Updating gem version\r\n\r\n* update cassettes to use new faraday version\r\n\r\nCo-authored-by:
+        dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Travis Hilton <travis.hilton@oddball.io>\r\nCo-authored-by: Lindsey Hattamer
+        <lindsey.hattamer@oddball.io>\n\n**4217905**  2440: add appointment requests
+        to appointments index (#9166)\n\n* 2440: add appointment requests to appointments
+        index\n\n**2134625**  API-12658 Part 2: nod v2 model data refine (#9191)\n\n*
+        Update model, fields, and data methods\r\n\r\n* Update HLR v2 data and structure
+        to accept change to appellant birth_date\r\n\r\n* Move timezone object to
+        veteran\n\n**f9ba3e1**  updates for backend flag on vets inbox (#9077)\n\n*
+        updates for backend flag\r\n\r\nCo-authored-by: AFSMWYGOIQLNTH5 <diondre.rashad.lewis@accenturefederal.com>\r\nCo-authored-by:
+        cesar.santiago <cesar.santiago@accenturefederal.com>\r\nCo-authored-by: nbuckafs
+        <nathaniel.buck@accenturefederal.com>\r\nCo-authored-by: Nathaniel Buck <nathaniel.buck@gmail.com>\n\n**74b6023**  Added
+        feature toggle for AB test (#9124)\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/60077683","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/60077683/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/60077683/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1086","id":60077683,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4DlLZz","tag_name":"vets-api/v0.0.1086","target_commitish":"74b2169bae50e33987ec63dd7bc86431e5670fe4","name":"vets-api/v0.0.1086","draft":false,"prerelease":false,"created_at":"2022-02-21T18:28:27Z","published_at":"2022-02-21T20:00:55Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1086","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1086","body":"Release
+        0.0.1086 ami-0df6090cd22cde8ec \n\n**1bb943a**  Cache find bank name bgs call
+        (#9099)\n\n* add bank name model\r\n\r\n* add bank name to redis yml\r\n\r\n*
+        working on get bank name\r\n\r\n* working on get bank name specs\r\n\r\n*
+        add bank name fact\r\n\r\n* cached bank name spec\r\n\r\n* cache miss spec\r\n\r\n*
+        validate bank name presence\r\n\r\n* use get bank name in bgs get_ch33_dd_eft_info\r\n\r\n*
+        lint\r\n\r\n* rerun tests\n\n**de7a8be**  Added COE denial date for the Denied
+        Status page (#9159)\n\n* added date\r\n\r\n* added date to spec\r\n\r\n* removed
+        whitespace\r\n\r\n* adjusted spec\r\n\r\n* deep sigh\n\n**55594f1**  Allow
+        at home video appointments to be cached when no facility (#9131)\n\n* Allow
+        at home video appointments to be returned when no corresponding facilities\n\n**8e0f9ba**  Bump
+        pdf-reader from 2.9.1 to 2.9.2 (#9170)\n\n* Bump pdf-reader from 2.9.1 to
+        2.9.2\r\n\r\nBumps [pdf-reader](https://github.com/yob/pdf-reader) from 2.9.1
+        to 2.9.2.\r\n- [Release notes](https://github.com/yob/pdf-reader/releases)\r\n-
+        [Changelog](https://github.com/yob/pdf-reader/blob/main/CHANGELOG)\r\n- [Commits](https://github.com/yob/pdf-reader/commits)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: pdf-reader\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix issues with Gemfile.lock and dependabot bundler\r\n\r\nCo-authored-by:
+        dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Lindsey Hattamer <lindsey.hattamer@oddball.io>\n\n**031405b**  Bump pact from
+        1.61.0 to 1.62.0 (#9172)\n\n* Bump pact from 1.61.0 to 1.62.0\r\n\r\nBumps
+        [pact](https://github.com/pact-foundation/pact-ruby) from 1.61.0 to 1.62.0.\r\n-
+        [Release notes](https://github.com/pact-foundation/pact-ruby/releases)\r\n-
+        [Changelog](https://github.com/pact-foundation/pact-ruby/blob/master/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/pact-foundation/pact-ruby/compare/v1.61.0...v1.62.0)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: pact\r\n  dependency-type: direct:development\r\n  update-type:
+        version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix Gemfile.lock issue with dependabot bundler version\r\n\r\nCo-authored-by:
+        dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Lindsey Hattamer <lindsey.hattamer@oddball.io>\n\n**675bf6c**  Bump pact-mock_service
+        from 3.9.1 to 3.10.0 (#9171)\n\n* Bump pact-mock_service from 3.9.1 to 3.10.0\r\n\r\nBumps
+        [pact-mock_service](https://github.com/bethesque/pact-mock_service) from 3.9.1
+        to 3.10.0.\r\n- [Release notes](https://github.com/bethesque/pact-mock_service/releases)\r\n-
+        [Changelog](https://github.com/pact-foundation/pact-mock_service/blob/master/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/bethesque/pact-mock_service/compare/v3.9.1...v3.10.0)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: pact-mock_service\r\n  dependency-type: direct:development\r\n  update-type:
+        version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix issue with dependabot bundler version\r\n\r\nCo-authored-by: dependabot[bot]
+        <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by: Lindsey
+        Hattamer <lindsey.hattamer@oddball.io>\n\n**98d0873**  2275 update mobile
+        user for logingov (#9164)\n\n* added logic for SM get signature preferences\r\n\r\n*
+        versioned user endpoint, updated docs and tests\r\n\r\n* lint fixes\r\n\r\n*
+        removed some overkill tests to lower loc\r\n\r\n* removed spec to lower loc,
+        will add back in another pr\r\n\r\n* updated login.gov multifactor test\n\n**f821d09**  Bump
+        json_schemer from 0.2.18 to 0.2.19 (#9173)\n\n* Bump json_schemer from 0.2.18
+        to 0.2.19\r\n\r\nBumps [json_schemer](https://github.com/davishmcclurg/json_schemer)
+        from 0.2.18 to 0.2.19.\r\n- [Release notes](https://github.com/davishmcclurg/json_schemer/releases)\r\n-
+        [Commits](https://github.com/davishmcclurg/json_schemer/compare/v0.2.18...v0.2.19)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: json_schemer\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix issue with dependabot bundler version\r\n\r\nCo-authored-by: dependabot[bot]
+        <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by: Lindsey
+        Hattamer <lindsey.hattamer@oddball.io>\n\n**75e99ad**  35935 - Add Sentry
+        logging for down VBMS  (#9167)\n\n* Add sentry logging for VBMS error\r\n\r\n*
+        Add tests for sentry logging and refactor VCR cassettes\n\n**93068ba**  Added
+        reference number to coe status (#9168)\n\n* added reference number to coe
+        status\r\n\r\n* I forgot about whitespace\r\n\r\n* fixed specs\r\n\r\n* whitespace
+        again\r\n\r\n* fixed spec titles\n\n**74b2169**  [API-13174] - ClaimsApi -
+        Handle failure to find Veteran ''FileNumber'' (#9160)\n\n* API-13174 - ClaimsApi
+        - Handle failure to find Veteran ''FileNumber''\r\n\r\n* API-13174 - appease
+        rubocop\r\n\r\n* Simplify error message\r\n\r\nCo-authored-by: Dan Hinze <hinzed1127@gmail.com>\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59937080","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59937080/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/59937080/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1085","id":59937080,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4DkpE4","tag_name":"vets-api/v0.0.1085","target_commitish":"6d614e4326895badc7288b11bcac676373dc068e","name":"vets-api/v0.0.1085","draft":false,"prerelease":false,"created_at":"2022-02-18T18:06:06Z","published_at":"2022-02-18T20:00:58Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1085","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1085","body":"Release
+        0.0.1085 ami-05cf732719537f85c \n\n**cebcd41**  Filter by effectiveDateTime
+        instead of issued. Update spec and mocks accordingly. (#9143)\n\n**109b893**  36847
+        pre check-in started client and service layer (#9150)\n\n**fe04d1a**  Module
+        for new and existing VaNotify functionality (#9147)\n\n**e234c1f**  Revert
+        \"34690 bypass ssl verification in staging for test purposes (#9018)\" (#9066)\n\nThis
+        reverts commit 64efd3c99223762cce2c3d9958eb1783cc6f8430.\r\n\r\nCo-authored-by:
+        Kevin Musiorski <1021154+RudyOnRails@users.noreply.github.com>\n\n**2a84317**  RRD:
+        event email: reformat data for easier pasting into spreadsheet (#9161)\n\n*
+        format data for easier pasting into spreadsheet\r\n* update test\n\n**3148d82**  sets
+        force_authn to false on staging SAML requests (#9057)\n\nCo-authored-by: Joe
+        Niquette <71290526+joeniquette@users.noreply.github.com>\n\n**a1cfdb8**  2440:
+        add appointment requests adapter (#9144)\n\n* 2440: add appointment requests
+        adapter\n\n**6d614e4**  Copy existing VaNotify service from top level into
+        module (#9162)\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59845921","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59845921/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/59845921/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1084","id":59845921,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4DkS0h","tag_name":"vets-api/v0.0.1084","target_commitish":"0f3594f3c9d05eb29b0998fb30d0843a9f6d0bed","name":"vets-api/v0.0.1084","draft":false,"prerelease":false,"created_at":"2022-02-17T18:48:16Z","published_at":"2022-02-17T20:15:14Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1084","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1084","body":"Release
+        0.0.1084 ami-0c40418c5a5888417 \n\n**491ae4d**  Simplify presentation of BP
+        readings in RRD hypertension PDF. Adds caveats to PDF. (#9120)\n\n* Add newline
+        after timestamp.\r\n\r\n* From BP readings remove unit and round to nearest
+        integer\r\n\r\n* Add correct size for rating schedule link\r\n\r\n* Update
+        copy in about section\n\n**72995b1**  Bump rails_semantic_logger from 4.9.0
+        to 4.10.0 (#9130)\n\n* Bump rails_semantic_logger from 4.9.0 to 4.10.0\r\n\r\nBumps
+        [rails_semantic_logger](https://logger.rocketjob.io) from 4.9.0 to 4.10.0.\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: rails_semantic_logger\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix out of sync Gemfile.lock\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Lindsey Hattamer <lindsey.hattamer@oddball.io>\n\n**9701313**  Bump pg from
+        1.3.1 to 1.3.2 (#9135)\n\n* Bump pg from 1.3.1 to 1.3.2\r\n\r\nBumps [pg](https://github.com/ged/ruby-pg)
+        from 1.3.1 to 1.3.2.\r\n- [Release notes](https://github.com/ged/ruby-pg/releases)\r\n-
+        [Changelog](https://github.com/ged/ruby-pg/blob/master/History.rdoc)\r\n-
+        [Commits](https://github.com/ged/ruby-pg/compare/v1.3.1...v1.3.2)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: pg\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix out of sync Gemfile.lock with bundler versions\r\n\r\nCo-authored-by:
+        dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Lindsey Hattamer <lindsey.hattamer@oddball.io>\n\n**5855285**  Bump pundit
+        from 2.1.1 to 2.2.0 (#9127)\n\n* Bump pundit from 2.1.1 to 2.2.0\r\n\r\nBumps
+        [pundit](https://github.com/varvet/pundit) from 2.1.1 to 2.2.0.\r\n- [Release
+        notes](https://github.com/varvet/pundit/releases)\r\n- [Changelog](https://github.com/varvet/pundit/blob/main/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/varvet/pundit/compare/v2.1.1...v2.2.0)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: pundit\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        Updating gem version\r\n\r\n* fix breaking change\r\n\r\n* Bump pundit from
+        2.1.1 to 2.2.0\r\n\r\nBumps [pundit](https://github.com/varvet/pundit) from
+        2.1.1 to 2.2.0.\r\n- [Release notes](https://github.com/varvet/pundit/releases)\r\n-
+        [Changelog](https://github.com/varvet/pundit/blob/main/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/varvet/pundit/compare/v2.1.1...v2.2.0)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: pundit\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        Updating gem version\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Travis Hilton <travis.hilton@oddball.io>\r\nCo-authored-by: Lindsey Hattamer
+        <lindsey.hattamer@oddball.io>\n\n**be971cd**  33582 profile bad address (#9140)\n\n*
+        Add bad_address attr to profile address model\r\n\r\n* Add specs to verify
+        bad_address is returned\r\n\r\n* Update swagger docs\r\n\r\n* Fixed linting
+        error: update Hash#has_key? to Hash#key?\r\n\r\n* Update contact_information
+        swagger doc\r\n\r\n* Fix failing swagger spec ''supports getting the user
+        data''\r\n\r\n* Remove puts line from spec\n\n**aeb29bf**  Mobile maintenance
+        windows non graphed service bugfix (#9146)\n\n* added logic for SM get signature
+        preferences\r\n\r\n* added window with service outside our graph\n\n**5afc057**  2440:
+        handle empty appointments responses (#9148)\n\n**16013fb**  updating lgy app
+        (#9149)\n\nCo-authored-by: Amanda Leaders <50034602+alsleaders@users.noreply.github.com>\n\n**769f91b**  fixes
+        a bug when a user''s payment history is an empty list (#9151)\n\n**11aa44c**  API-13230:
+        Align validation endpoints with submission validations for claims v1 (#9112)\n\n*
+        API-13230: Make validation paths for 526#submit and 526#validate identical\r\n\r\n*
+        Make validation paths for POA#submit and POA#validate identical\r\n\r\n* Linting\r\n\r\n*
+        Make validation paths for ITF#submit and ITF#validate identical\r\n\r\n* Fix
+        test\n\n**b6e8070**  Expand error logging for disability ratings. (#9154)\n\n**0f3594f**  Bump
+        ox gem from 2.14.6 to 2.14.9 (#9152)\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59742743","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59742743/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/59742743/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1083","id":59742743,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4Dj5oX","tag_name":"vets-api/v0.0.1083","target_commitish":"2c595aa5eeda693023de53e0d94fd762bb773254","name":"vets-api/v0.0.1083","draft":false,"prerelease":false,"created_at":"2022-02-16T19:00:33Z","published_at":"2022-02-16T20:44:28Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1083","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1083","body":"Release
+        0.0.1083 ami-02003102ea98b9ac0 \n\n**4c8352f**  2500 mobile payment history
+        date filter (#9114)\n\n* added date filter for payments, defaulting to the
+        most current year that has payments\r\n\r\n* included available years in payment
+        history metadata\r\n\r\nCo-authored-by: Alastair Dawson <alastair.j.dawson@gmail.com>\n\n**5e4096f**  Bump
+        aws-sdk-s3 from 1.111.3 to 1.112.0 (#9032)\n\n* Bump aws-sdk-s3 from 1.111.3
+        to 1.112.0\r\n\r\nBumps [aws-sdk-s3](https://github.com/aws/aws-sdk-ruby)
+        from 1.111.3 to 1.112.0.\r\n- [Release notes](https://github.com/aws/aws-sdk-ruby/releases)\r\n-
+        [Changelog](https://github.com/aws/aws-sdk-ruby/blob/version-3/gems/aws-sdk-s3/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/aws/aws-sdk-ruby/commits)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: aws-sdk-s3\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        out of sync Gemfile.lock\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Lindsey Hattamer <lindsey.hattamer@oddball.io>\n\n**7f9ca37**  Bump aws-sdk-kms
+        from 1.53.0 to 1.54.0 (#9030)\n\n* Bump aws-sdk-kms from 1.53.0 to 1.54.0\r\n\r\nBumps
+        [aws-sdk-kms](https://github.com/aws/aws-sdk-ruby) from 1.53.0 to 1.54.0.\r\n-
+        [Release notes](https://github.com/aws/aws-sdk-ruby/releases)\r\n- [Changelog](https://github.com/aws/aws-sdk-ruby/blob/version-3/gems/aws-sdk-kms/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/aws/aws-sdk-ruby/compare/v1.53.0...v1.54.0)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: aws-sdk-kms\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        out of sync Gemfile.lock\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Lindsey Hattamer <lindsey.hattamer@oddball.io>\n\n**9585802**  Bump aws-sdk-sns
+        from 1.50.0 to 1.52.0 (#9103)\n\n* Bump aws-sdk-sns from 1.50.0 to 1.52.0\r\n\r\nBumps
+        [aws-sdk-sns](https://github.com/aws/aws-sdk-ruby) from 1.50.0 to 1.52.0.\r\n-
+        [Release notes](https://github.com/aws/aws-sdk-ruby/releases)\r\n- [Changelog](https://github.com/aws/aws-sdk-ruby/blob/version-3/gems/aws-sdk-sns/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/aws/aws-sdk-ruby/compare/v1.50.0...v1.52.0)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: aws-sdk-sns\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        out of sync Gemfile.lock\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Lindsey Hattamer <lindsey.hattamer@oddball.io>\n\n**be826ba**  changed ineligibile
+        to denied (#9125)\n\n* changed ineligibile to denied\r\n\r\n* updated spec
+        to denied\n\n**9c8f3f9**  update pdf-reader to 2.9.1 (#9126)\n\nCo-authored-by:
+        Lindsey Hattamer <lindsey.hattamer@oddball.io>\n\n**0c911c6**  Bump rswag-ui
+        from 2.4.0 to 2.5.1 (#9128)\n\n* Bump rswag-ui from 2.4.0 to 2.5.1\r\n\r\nBumps
+        [rswag-ui](https://github.com/rswag/rswag) from 2.4.0 to 2.5.1.\r\n- [Release
+        notes](https://github.com/rswag/rswag/releases)\r\n- [Changelog](https://github.com/rswag/rswag/blob/master/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/rswag/rswag/compare/2.4.0...2.5.1)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: rswag-ui\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        Updating gem version\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Travis Hilton <travis.hilton@oddball.io>\n\n**52a5c29**  Bump config from
+        3.1.1 to 4.0.0 (#9109)\n\n* Bump config from 3.1.1 to 4.0.0\r\n\r\nBumps [config](https://github.com/rubyconfig/config)
+        from 3.1.1 to 4.0.0.\r\n- [Release notes](https://github.com/rubyconfig/config/releases)\r\n-
+        [Changelog](https://github.com/rubyconfig/config/blob/master/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/rubyconfig/config/compare/3.1.1...4.0.0)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: config\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-major\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix out of sync Gemfile.lock\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Lindsey Hattamer <lindsey.hattamer@oddball.io>\r\nCo-authored-by: Travis Hilton
+        <travis.hilton@oddball.io>\n\n**aa99990**  Bump rswag-specs from 2.4.0 to
+        2.5.1 (#9132)\n\n* Bump rswag-specs from 2.4.0 to 2.5.1\r\n\r\nBumps [rswag-specs](https://github.com/rswag/rswag)
+        from 2.4.0 to 2.5.1.\r\n- [Release notes](https://github.com/rswag/rswag/releases)\r\n-
+        [Changelog](https://github.com/rswag/rswag/blob/master/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/rswag/rswag/compare/2.4.0...2.5.1)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: rswag-specs\r\n  dependency-type: direct:development\r\n  update-type:
+        version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix out of sync Gemfile.lock\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Lindsey Hattamer <lindsey.hattamer@oddball.io>\n\n**00b5fb4**  API-9833: Bring
+        \"get claim by ID\" v2 endpoint to parity with v1 (#9102)\n\n* Update mapping
+        for BGS claims v2\r\n\r\n* Forgot the controller\r\n\r\n* Update requested_decision
+        logic\r\n\r\n* Cleanup\r\n\r\n* Add contentions list\r\n\r\n* Add POA to claim
+        detail\r\n\r\n* Remove events timeline property for the time being\r\n\r\n*
+        Forgot a mention of ''events''\r\n\r\n* Add supporting documents\r\n\r\n*
+        Linting\r\n\r\n* Handle potentiially nil date_filed values\r\n\r\n* Alphabetize
+        the claim blueprint (reflects actual output)\r\n\r\n* Make test value match
+        expected response format\r\n\r\n* Remove unhelpful property\r\n\r\n* Update
+        v2 claim schema\r\n\r\n* Linting\r\n\r\n* Remove breakpoint comments\r\n\r\n*
+        Update schema descriptions, add missing ''required'' fields\r\n\r\n* Swagger
+        updates\r\n\r\n* Remove ''required'' property from v2 response schemas\r\n\r\n*
+        Update swagger\r\n\r\nCo-authored-by: Jeffrey Wallace <jw81@users.noreply.github.com>\n\n**a671c63**  Exposing
+        the distance from a facility to the FE (#9091)\n\n* Exposing the distance
+        from a facility to the FE\n\n**a454538**  2440: modify appointments, appointments
+        proxy, and adapters in prepar (#9121)\n\n* 2440: modify appointments, appointments
+        proxy, and adapters in preparation for appointment requests\n\n**c64c2a3**  Bump
+        googleauth from 1.1.0 to 1.1.1 (#9136)\n\n* Bump googleauth from 1.1.0 to
+        1.1.1\r\n\r\nBumps [googleauth](https://github.com/googleapis/google-auth-library-ruby)
+        from 1.1.0 to 1.1.1.\r\n- [Release notes](https://github.com/googleapis/google-auth-library-ruby/releases)\r\n-
+        [Changelog](https://github.com/googleapis/google-auth-library-ruby/blob/main/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/googleapis/google-auth-library-ruby/compare/googleauth/v1.1.0...googleauth/v1.1.1)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: googleauth\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix out of sync Gemfile.lock\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Lindsey Hattamer <lindsey.hattamer@oddball.io>\n\n**d5a8729**  Sync master
+        branch to k8s via GHA (#9134)\n\n* test dispatch\r\n\r\n* put master/k8s branches
+        back\r\n\r\n* Revert \"Merge branch ''lhattamer-branch-sync'' of https://github.com/department-of-veterans-affairs/vets-api
+        into lhattamer-branch-sync\"\r\n\r\nThis reverts commit b0dd913f8e0e8d61593b93e920c2741de8802e66,
+        reversing\r\nchanges made to c4450591b972f74ef96572794f44f6ea66dce47b.\r\n\r\n*
+        remove test commit\r\n\r\nCo-authored-by: VA VSP Bot <70344339+va-vsp-bot@users.noreply.github.com>\n\n**1c4879f**  Bump
+        strong_migrations from 0.7.9 to 0.8.0 (#9141)\n\n* Bump strong_migrations
+        from 0.7.9 to 0.8.0\r\n\r\nBumps [strong_migrations](https://github.com/ankane/strong_migrations)
+        from 0.7.9 to 0.8.0.\r\n- [Release notes](https://github.com/ankane/strong_migrations/releases)\r\n-
+        [Changelog](https://github.com/ankane/strong_migrations/blob/master/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/ankane/strong_migrations/compare/v0.7.9...v0.8.0)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: strong_migrations\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix Gemfile.lock out of sync w/ bundler versions\r\n\r\nCo-authored-by: dependabot[bot]
+        <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by: Lindsey
+        Hattamer <lindsey.hattamer@oddball.io>\n\n**660d4bd**  API-12125 Fixup appellant
+        and HLR class (#9119)\n\n* Fixup appellant class and spec\r\n\r\n* Fixup HLR
+        class and spec\r\n\r\n* Fixup form data\r\n\r\n* Fixup form fields and structure\r\n\r\n*
+        Update pdf fixtures\r\n\r\n* Remove unused form data methods\r\n\r\n* Fixup
+        appellant\r\n\r\n* Refactor handling of data transformations from appellant
+        class to form data\n\n**2c595aa**  Include effectiveDateTime in HypertensionObservationData
+        output. Display that in HypertensionPdfGenerator over issued. (#9118)\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59639289","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59639289/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/59639289/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1082","id":59639289,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4DjgX5","tag_name":"vets-api/v0.0.1082","target_commitish":"cbe98e1615a856f9d4528b96ca8fe0df509b3b2f","name":"vets-api/v0.0.1082","draft":false,"prerelease":false,"created_at":"2022-02-15T15:56:06Z","published_at":"2022-02-15T20:00:58Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1082","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1082","body":"Release
+        0.0.1082 ami-051ce497b4bfe560d \n\n**5723fbd**  [36577] Login.gov Inbound
+        SSOe (#9104)\n\n* first draft logingov inbound\r\n\r\n* makes implementation
+        non-breaking & adds unit specs\r\n\r\n* rubocop fixes\n\n**de17b42**  Expand
+        disability error logging to investigate disability rating errors (#9089)\n\n*
+        Expand disability error logging to investigate disability rating errors\n\n**ee14b1b**  Show
+        message when no active medications were found. Preserve header in either scenario
+        (with/out meds). (#9110)\n\n**cbe98e1**  Submit COE Application to LGY (#9064)\n\n*
+        added files\r\n\r\n* added put in service\r\n\r\n* linter fixes\r\n\r\n* one
+        more linter error\r\n\r\n* updated tag name and added error handling\r\n\r\n*
+        removing excess changes\r\n\r\n* added payload\r\n\r\n* updating service and
+        spec\r\n\r\n* updating lgy coe claim\r\n\r\n* removing unused claim model\r\n\r\n*
+        updating coe model\r\n\r\n* updating coe model\r\n\r\n* started...\r\nSavedClaim::CoeClaim\r\n  #send_to_lgy\r\n    makes
+        the correct call\r\n\r\n* data transform\r\n\r\n* updating coe model\r\n\r\n*
+        removing non working spec\r\n\r\n* updating specs\r\n\r\n* rubocop\r\n\r\nCo-authored-by:
+        Kathleen Crawford <kcrawford@governmentcio.com>\r\nCo-authored-by: Kevin Musiorski
+        <kevin.musiorski@gcio.com>\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59548067","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59548067/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/59548067/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1081","id":59548067,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4DjKGj","tag_name":"vets-api/v0.0.1081","target_commitish":"ea23d2832139c8ecb268c598d0aba5448cabcf43","name":"vets-api/v0.0.1081","draft":false,"prerelease":false,"created_at":"2022-02-14T18:58:39Z","published_at":"2022-02-14T20:35:44Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1081","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1081","body":"Release
+        0.0.1081 ami-004ac09d7cd78fc86 \n\n**3b2256d**  Bump puma from 5.6.0 to 5.6.1
+        (#8968)\n\n* Bump puma from 5.6.0 to 5.6.1\r\n\r\nBumps [puma](https://github.com/puma/puma)
+        from 5.6.0 to 5.6.1.\r\n- [Release notes](https://github.com/puma/puma/releases)\r\n-
+        [Changelog](https://github.com/puma/puma/blob/master/History.md)\r\n- [Commits](https://github.com/puma/puma/compare/v5.6.0...v5.6.1)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: puma\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix Gemfile.lock\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Riley Anderson <5150r.d.anderson@gmail.com>\n\n**553b3c3**  Bump puma from
+        5.6.1 to 5.6.2 (#9108)\n\nBumps [puma](https://github.com/puma/puma) from
+        5.6.1 to 5.6.2.\r\n- [Release notes](https://github.com/puma/puma/releases)\r\n-
+        [Changelog](https://github.com/puma/puma/blob/master/History.md)\r\n- [Commits](https://github.com/puma/puma/compare/v5.6.1...v5.6.2)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: puma\r\n  dependency-type: direct:production\r\n...\r\n\r\nSigned-off-by:
+        dependabot[bot] <support@github.com>\r\n\r\nCo-authored-by: dependabot[bot]
+        <49699333+dependabot[bot]@users.noreply.github.com>\n\n**d3176d8**  Api 36090/email
+        notification for failed 526 submissions (#9100)\n\n* Added Form526SubmissionFailedEmailJob
+        worker\r\n\r\n* Added Settings#vanotify#services#va_gov#template_id#form526_submission_failed_email\r\n\r\n*
+        Updated StatsD with Form526SubmissionFailedEmailJob\r\n\r\n* Added Form526Submission#send_form526_submission_failed_email
+        and updated specs\r\n\r\nCo-authored-by: Csaba Nemeth <cnemeth@users.noreply.github.com>\n\n**2d69c48**  Fixup
+        claimant requirements and handling (#9105)\n\n**ff6a10d**  2066 fix whitespace
+        removal for message drafts (#9097)\n\n* added logic for SM get signature preferences\r\n\r\n*
+        update message drafts so the body maintains whitespace from request\r\n\r\n*
+        lint fix\r\n\r\n* added accessor and updated client\n\n**ea23d28**  Add @yoomlam''s
+        note about test environment settings. (#9111)\n","mentions_count":1},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59370735","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59370735/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/59370735/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1080","id":59370735,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4Diezv","tag_name":"vets-api/v0.0.1080","target_commitish":"2f2edc4132d4e0ce52296401a67b25c19015c2bc","name":"vets-api/v0.0.1080","draft":false,"prerelease":false,"created_at":"2022-02-11T21:31:01Z","published_at":"2022-02-11T21:55:40Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1080","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1080","body":"Release
+        0.0.1080 ami-016c5cfb99b32c179 \n\n**24d2503**  Add login.gov accounts to
+        TUD (#8721)\n\n* add new mfa_code column and new index to tud_accounts table\r\n\r\n*
+        validate uniqueness of email and id_type combo\r\n\r\n* find_or_initialize_by
+        tud account by email + id_type\r\n\r\n* add mfa_code to tud_account serializer\r\n\r\n*
+        gitignore test_users.csv file\r\n\r\n* update test_user_dashboard_tud_accounts
+        table\r\n\r\n* update TudAccount model - validatations\r\n\r\n* update TudAccount
+        serializer\r\n\r\n* update rake task to create/update tud accounts\r\n\r\n*
+        make methods private\r\n\r\n* update conditional\r\n\r\n* update tests\r\n\r\n*
+        refactor how tud accounts are reset on checkin\r\n\r\n* delete unecessary
+        tests (tud accounts are no longer updated with changed user attributes)\r\n\r\n*
+        don''t delete idme_uuid and logingov_uuid from each row when creating new
+        tud accounts\r\n\r\n* fix rubocop issues\r\n\r\n* merge conflicts\r\n\r\n*
+        delete migration files - they were moved to another branch/PR\r\n\r\n* unskip
+        tud tests\n\n**2f2edc4**  Update Rails to 6.1.4.6 (#9107)\n\nhttps://rubyonrails.org/2022/2/11/Rails-7-0-2-2-6-1-4-6-6-0-4-6-and-5-2-6-2-have-been-released\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59363552","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59363552/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/59363552/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1079","id":59363552,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4DidDg","tag_name":"vets-api/v0.0.1079","target_commitish":"95d32c18cfda388a990ef96cdbd74f7d2c5e0b4d","name":"vets-api/v0.0.1079","draft":false,"prerelease":false,"created_at":"2022-02-11T18:17:19Z","published_at":"2022-02-11T20:01:02Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1079","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1079","body":"Release
+        0.0.1079 ami-0f328c10152354fd6 \n\n**4192d7c**  update enrollment action to
+        retrieve data from vets-service (#9084)\n\n**c8ff0f8**  Create tud GitHub
+        oauth proxy (#8983)\n\n* create new tud github oauth proxy route\r\n\r\n*
+        create new tud github oauth proxy controller with index action\r\n\r\n* remove
+        require_jwt before_action from ApplicationController\r\n\r\n* add require_jwt
+        before_action to TudAccountsController\r\n\r\n* Add tests for TudGithubOAuthProxyController\r\n\r\n*
+        Remove unneeded test setup\r\n\r\n* Rubocop fixes\r\n\r\n* Fix test description\r\n\r\n*
+        Update request\r\n\r\n* Add error handling\r\n\r\n* Fix typo\r\n\r\n* Rubocop
+        fixes\r\n\r\nCo-authored-by: Darius Dzien <dariusz.dzien@adhocteam.us>\n\n**2dc013a**  Add
+        yoom@navapbc.com for Flipper access (#9087)\n\nCo-authored-by: Yoom Lam <you@example.com>\n\n**59caae0**  skip
+        tud tests for now so PR with schema changes to tud_accounts table can get
+        approved (#9090)\n\n**8111856**  Api 13169 va forms new drupal user (#9086)\n\n*
+        Logging for the action_mailer\r\n\r\n* Adding Processing column to daily report\r\n\r\n*
+        Lint adjustments\r\n\r\n* Lint adjustments\r\n\r\n* Adding form tag \"526\"
+        to 21-526EZ\r\n\r\n* Update to report_unsuccessful_submissions.rb so columns
+        always sum to 100\r\n\r\n* use Drupal user from settings\n\n**37660d8**  2361
+        2432 immunization group manufacturer lh - Specs (#9052)\n\nRemove spec files
+        that are no longer required due to vaccine cdc job being removed.\n\n**fda3ca5**  2361
+        2432 Remove Mobile Vaccine Table (#8969)\n\n* Add migration to remove vaccine
+        group name as it is now received through LH\n\n**b4b80e4**  skip tud sidekiq
+        test temporarily (#9095)\n\n**cfb44b7**  Add Enrollment Verification Feature
+        Flag (#9075)\n\nAdd Enrollment Verification Feature Flag\r\n\r\nCo-authored-by:
+        nbuckafs <nathaniel.buck@accenturefederal.com>\n\n**d2572ce**  Updating vets-json-schema
+        from 20.19.0 to 20.19.1 (#9098)\n\n**542c311**  Dgi updates eligibility (#9094)\n\n*
+        Updates service for eligibility\r\n\r\n* Removes debugging code\r\n\r\n* fixes
+        rubocop offenses\r\n\r\n* Intermediate commit failing request specs\r\n\r\n*
+        Updates eligibility serialier and vcr recordings\r\n\r\n* fixes rubocop offenses\r\n\r\n*
+        reverts claim letter recording\r\n\r\n* reverts letters service spec\r\n\r\n*
+        reverts letters service spec\r\n\r\n* use time helper for specs\r\n\r\n* updates
+        date in recording\r\n\r\n* Updates service date\r\n\r\n* fixes rubocop offense\r\n\r\n*
+        Fixes extra char in yml file\r\n\r\n* Update travel_to method in tests\r\n\r\n*
+        Removess debugging code in controller\r\n\r\nCo-authored-by: s-caso <sebastian.caso@accenturefederal.com>\n\n**95117da**  API-13368
+        - ClaimsApi - Allow Sidekiq to retry VBMS::FilenumberDoesNotExist errors (#9088)\n\n**1f4f8ec**  Appointment
+        (Additional details/ comments) not being transferred to HSRM (#9056)\n\n*
+        added comment field in v2 appointments controller params\n\n**2f0f842**  Wire
+        up long email handling for supplemental claims (#9078)\n\n**b6e4d5c**  API-12654
+        Add new v2 methods to nod model (#9074)\n\n* Add new v2 methods to nod model\r\n\r\n*
+        Update fixture files to use new folder system\n\n**67674d8**  Remove non veteran
+        claimant class (#9093)\n\n**95d32c1**  Update test_user_dashboard_tud_accounts
+        table (#9069)\n\n* create migration\r\n\r\n* update schema.rb\r\n\r\n* Update
+        schema version\r\n\r\nCo-authored-by: Darius Dzien <dariusz.dzien@adhocteam.us>\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59271928","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59271928/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/59271928/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1078","id":59271928,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4DiGr4","tag_name":"vets-api/v0.0.1078","target_commitish":"cbe8ca72c0523e58f623abd8e01f502b9bf137d5","name":"vets-api/v0.0.1078","draft":false,"prerelease":false,"created_at":"2022-02-10T18:51:09Z","published_at":"2022-02-10T20:17:03Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1078","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1078","body":"Release
+        0.0.1078 ami-060620d45cd85eb14 \n\n**59c1ee9**  Enable invalid status spec
+        for SC (#9079)\n\n**ff50143**  Add workflow_dispatch to build (#9080)\n\n**e98ea00**  DisabilityCompensationJob:
+        reformat failure email using HTML (#9039)\n\n* reformat failure email using
+        html\r\n* use Settings.vsp_environment instead of Rails.env\n\n**ce66381**  36044
+        Demographics endpoint for Checkin (#9041)\n\n* 36044 Demographics endpoint
+        for Checkin\r\n\r\n* Modifying permitted_params method\r\n\r\nCo-authored-by:
+        kanchanasuriya <ksuriyamoorthy@kindsys.us>\n\n**43cfd5f**  36610 fix check_in
+        statsd metric (#9085)\n\n**172c166**  Api 13273 - reorganize fixtures (#9076)\n\n**07bd51b**  Updates
+        service for eligibility (#9042)\n\n* Updates service for eligibility\r\n\r\n*
+        Removes debugging code\r\n\r\n* fixes rubocop offenses\r\n\r\n* Intermediate
+        commit failing request specs\r\n\r\n* Updates eligibility serialier and vcr
+        recordings\r\n\r\n* fixes rubocop offenses\r\n\r\n* reverts claim letter recording\r\n\r\n*
+        reverts letters service spec\r\n\r\n* reverts letters service spec\n\n**3f4f8f6**  Only
+        run HLRStatusUpdateBatch once across workers (#9082)\n\n**b68d365**  2361
+        2432 get mobile immunizations manufacturer and group name from LH data - Business
+        Logic (#9051)\n\n* get mobile immunizations manufacturer and group name from
+        LH data\n\n**deaa787**  remove mobile vaccine job (#9054)\n\n**252d5e1**  Revert
+        \"Updates service for eligibility (#9042)\" (#9092)\n\nThis reverts commit
+        07bd51b5963e6ad1d98d413089d41ade1f03ac7d.\n\n**cbe8ca7**  API-13066 - ClaimsApi
+        - Add CCG support for V2 (#9034)\n\nAPI-13066 - Define audience override in
+        V2 to support CCG\r\n\r\nAPI-13066 - ClaimsApi - Add spec for V2 claims index
+        CCG flow\r\n\r\nAPI-13066 - ClaimsApi - Add spec for V2 claims show CCG flow\r\n\r\nAPI-13066
+        - ClaimsApi - Add spec for V2 POA show CCG flow\r\n\r\nAPI-13066 - ClaimsApi
+        - Add spec for V2 POA appoint-individual CCG flow\r\n\r\nAPI-13066 - ClaimsApi
+        - Add spec for V2 POA appoint-organization CCG flow\r\n\r\nAPI-13066 - ClaimsApi
+        - Add spec for V2 GET ITF CCG flow\r\n\r\nAPI-13066 - ClaimsApi - Add spec
+        for V2 POST ITF CCG flow\r\n\r\nAPI-13066 - ClaimsApi - Add spec for V2 Veteran
+        Identifier CCG flow\r\n\r\nAPI-13066 - ClaimsApi - new specs cleanup\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59170302","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59170302/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/59170302/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1077","id":59170302,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4Dht3-","tag_name":"vets-api/v0.0.1077","target_commitish":"9de59da16c36ad9aaa381ab698419368991001b4","name":"vets-api/v0.0.1077","draft":false,"prerelease":false,"created_at":"2022-02-09T18:57:23Z","published_at":"2022-02-09T20:19:16Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1077","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1077","body":"Release
+        0.0.1077 ami-0fab6234a8da70d23 \n\n**4beced1**  API-13206 Mitigate PG:InFailedSqlTransaction
+        errors (#9058)\n\n* Remove unnecessary transaction & add current appeal status
+        to notification\n\n**3086748**  Add feature flag (#9065)\n\n* Add feature
+        flag\r\n\r\n* remove file\n\n**1136979**  Change FastTrack module name to
+        RapidReadyForDecision (#9048)\n\n* Change FastTrack module name to RapidReadyForDecision\r\n\r\n*
+        Address line length issues\r\n\r\n* Update require statements in specs\r\n\r\n*
+        Move VCR cassettes\n\n**181afa4**  36610 fix check_in statsd metric (#9070)\n\n**e499ac2**  API-13104
+        Part3: Update appellant hlr data and structure (#9040)\n\n* Update hlr v2
+        form data\r\n\r\n* Try another refactor of whiteout\r\n\r\n* Newly generated
+        pdfs\r\n\r\n* Place methods in form data for interfacing with structure\r\n\r\n*
+        Update minimal pdf fixture\r\n\r\n* Refactor to use delegate for form data
+        methods\r\n\r\n* Removed non veteran claimant spec because it is failing on
+        the pr\n\n**678c981**  (toggle) added new feature toggles for Check In Experience
+        (#9072)\n\n**981db7d**  AL 32455 document upload (#8979)\n\n* added 28-1880
+        form id\r\n\r\n* added lgy doc uploader\r\n\r\n* added lgy saved claim\r\n\r\n*
+        added specs\r\n\r\n* added end of file line\r\n\r\n* added sentry tag\r\n\r\n*
+        friday afternoon Gemfile\r\n\r\n* Update Gemfile.lock\r\n\r\nRemoved Rollback\n\n**6fd419f**  Update
+        list of Claim Submissions Email Recipients (#9015)\n\n**563f93b**  Pretty
+        print appeal totals in weekly email (#9049)\n\n**9de59da**  Refactor HypertensionPdfGenerator
+        (#9027)\n\n* Refactor HypertensionPdfGenerator: define private methods, remove
+        some abstractions, use instance variable over passing reference, moves static
+        content into constants, removes two unused methods\r\n\r\n* Before, it only
+        checked if there was more than 1 medication. Now, it checks if there are any
+        medications (>=1).\r\n\r\n* Use instance variable syntax to reference pdf\r\n\r\n*
+        Removes attr_accessor designations. Currently, there''s no apparent reason
+        to expose these and should only be made accessible until necessary. In its
+        current state the class is designed to produce a finished pdf from the #generate
+        method.\r\n\r\n* Remove explicit returns of @pdf from methods. Return values
+        are not needed\r\n\r\n* Fix typo of variable name\n","mentions_count":1},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59050165","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/59050165/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/59050165/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1076","id":59050165,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4DhQi1","tag_name":"vets-api/v0.0.1076","target_commitish":"53db8ed5d7a8b2eab2552f1edd7081ade7ae5d36","name":"vets-api/v0.0.1076","draft":false,"prerelease":false,"created_at":"2022-02-08T17:44:52Z","published_at":"2022-02-08T20:00:57Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1076","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1076","body":"Release
+        0.0.1076 ami-0311d7b1d4bfd7371 \n\n**2e09144**  31504 Add yard documentation
+        for check-in module (#9021)\n\n* 31504 add yard documentation\n\n**b0f0813**  Cancel
+        appointment makes a call to new_appointment, should call updated_appointment
+        (#9055)\n\n* replaced calls to new_appointment with updated_appointment in
+        update call in appointments_controller\n\n**b3da7d6**  2327 remove duplicate
+        vaccines (#9046)\n\n* added logic for SM get signature preferences\r\n\r\n*
+        catch and remove duplicate vaccines\r\n\r\n* lint fix\r\n\r\n* removed v1
+        cassette, updated original, simplified logic\r\n\r\n* lint fix\n\n**f9d21a9**  Update
+        RRD emails to use recipients from Settings config (#9047)\n\n**53db8ed**  2365
+        payment history api endpoint (#9022)\n\n* included payment history controller
+        and frame for serializer\r\n\r\n* updated payment history controller\r\n\r\n*
+        created payment history shared adapter\r\n\r\n* updated vet payment history
+        serializer to use payment shared adapter\r\n\r\n* updated serializer with
+        type and attribute; included response in controller render\r\n\r\n* corrected
+        serializer\r\n\r\n* created payment history model\r\n\r\n* created rspec and
+        updated controller with payment processing\r\n\r\n* included caching in payment
+        history controller\r\n\r\n* created request spec and cleaning up code\r\n\r\n*
+        fixed history controller and rspec\r\n\r\n* added pagination functionality
+        WIP\r\n\r\n* change method field to paymentMethod to avoid serializer error\r\n\r\n*
+        renamed ''method'' attribute to ''paymentMethod''\r\n\r\n* updated schema
+        to include metadata\r\n\r\n* updated doc to include metadata\r\n\r\n* updated
+        rspec and fixed rubocop errors\r\n\r\n* removed comment\r\n\r\n* removed unused
+        library\r\n\r\n* renamed payment adapter and added new line (for rubocop fix)\r\n\r\n*
+        refactor profile payment_history parsing with a new payment history adapter
+        to sit between the response and the serializer so that the new adapter can
+        be reused in the mobile api (which has payments but not return payments)\r\n\r\n*
+        rename iteration var p to payment to be more clear\r\n\r\n* add return payments
+        spec\r\n\r\n* added payment type to schema refactored adapter file name, added
+        more rests\r\n\r\n* make mobile payment adapter a sub class of vets-api''s\r\n\r\n*
+        add invalid params case to payment history spec\r\n\r\nCo-authored-by: Alastair
+        Dawson <alastair.j.dawson@gmail.com>\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/58934458","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/58934458/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/58934458/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1075","id":58934458,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4Dg0S6","tag_name":"vets-api/v0.0.1075","target_commitish":"278d922d3edb92a846cb2c4ac269408cf9967da5","name":"vets-api/v0.0.1075","draft":false,"prerelease":false,"created_at":"2022-02-07T18:46:57Z","published_at":"2022-02-07T20:07:03Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1075","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1075","body":"Release
+        0.0.1075 ami-09f74975de9b92f78 \n\n**3805a94**  Api-13104 Part 1: Add appellant
+        class and spec (#9026)\n\n* Add appellant class and spec\r\n\r\n* Fix email
+        address in fixture\r\n\r\n* Fixup handling of appellant type from string to
+        symbol\r\n\r\n* Fixup international number spec\r\n\r\n* Fix address to use
+        empty hash instead of empty string\n\n**f8c489d**  Onsite notifications controller
+        and swagger docs (#8992)\n\n* add onsite notifications table\r\n\r\n* add
+        onsite notif stub\r\n\r\n* add presence validations\r\n\r\n* add template
+        ids to settings\r\n\r\n* template id inclusion validation\r\n\r\n* lint\r\n\r\n*
+        rename v1 notifications to onsite notifications\r\n\r\n* working on create
+        route\r\n\r\n* fix auth specs\r\n\r\n* add onsite notification serializer\r\n\r\n*
+        add invalid params spec\r\n\r\n* onsite notif factory\r\n\r\n* onsite notification
+        for user spec\r\n\r\n* onsite notif index method\r\n\r\n* add onsite notif
+        update spec\r\n\r\n* add update error spec\r\n\r\n* add spec for params permit\r\n\r\n*
+        add jwt swagger\r\n\r\n* add auth error to swagger\r\n\r\n* add onsite notif
+        body\r\n\r\n* add onsite notif 200 response\r\n\r\n* fix header parameter
+        swagger\r\n\r\n* update auth token description\r\n\r\n* add onsite notific
+        200 swagger spec\r\n\r\n* add 401 error for onsite notif index swagger\r\n\r\n*
+        add onsite notif index 200 response\r\n\r\n* add onsite notif index 200 spec\r\n\r\n*
+        working on onsite notif update swagger\r\n\r\n* return 404 if trying to fetch
+        another users onsite notif\r\n\r\n* add 404 response to update\r\n\r\n* add
+        200 response to onsite notif\r\n\r\n* adjust description\r\n\r\n* add onsite
+        notif specs\r\n\r\n* lint\r\n\r\n* add spec for valid error on onsite create\r\n\r\n*
+        add validation error spec for onsite patch\r\n\r\n* rerun tests\r\n\r\n* update
+        spec message\r\n\r\n* fix patch 401 swagger spec\n\n**835f14b**  API-13104
+        Part 2: HLR appellant methods (#9029)\n\n* Update hlr model\r\n\r\n* Refactor
+        status updated to submitted email methods\r\n\r\n* Remove refactored email
+        handling and return it to only handle veteran as originally\n\n**d813afc**  add
+        submit enrollment verification end point and service method (#9025)\n\n**c8cd19b**  Removing
+        GIBCT sandbox feature flag. (#9045)\n\n**88b214a**  Updating find VA forms
+        feature flag names (#9038)\n\n**1e894a8**  Hypertension RRD: improve error
+        handling: add AccountNotFoundError (#9024)\n\n* use AccountNotFoundError\r\n*
+        extend from StandardError instead of RuntimeError\r\n* use find_by instead
+        of where\r\n* return nil when Account.find_by is called in test\n\n**d8ff209**  API-12653
+        - Add NOD v2 form fields (#9035)\n\n**278d922**  2365 payment history refactor
+        (#9037)\n\nWe are adding an adapter to sit between the BGS payment service''s
+        response and the serializer. The mobile api then subclasses the adapter as
+        we include fields (id and date) that the core API does not. The mobile API
+        will also only display payments while the core API displays payments and return
+        payments. I added a use case to the controller specs (plus a vcr cassette)
+        for when there are both payments and return payments.\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/58720462","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/58720462/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/58720462/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1074","id":58720462,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4DgADO","tag_name":"vets-api/v0.0.1074","target_commitish":"95d307abe3ab8b72b6e55d283317765f1ffc47cb","name":"vets-api/v0.0.1074","draft":false,"prerelease":false,"created_at":"2022-02-04T18:21:01Z","published_at":"2022-02-04T20:01:12Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1074","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1074","body":"Release
+        0.0.1074 ami-0dbd32986307e3a3c \n\n**d1ec33a**  API-12216 Connected Apps response
+        filtering (#9028)\n\n**ed3770d**  add feautre toggle for gender field (#9033)\n\n**95d307a**  Check
+        if mailer.log file exists before setting (#9036)\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/58634396","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/58634396/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/58634396/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1073","id":58634396,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4DfrCc","tag_name":"vets-api/v0.0.1073","target_commitish":"343652d8d053c92ff66d964a90c1fd37a939f0c9","name":"vets-api/v0.0.1073","draft":false,"prerelease":false,"created_at":"2022-02-03T18:03:09Z","published_at":"2022-02-03T20:01:11Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1073","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1073","body":"Release
+        0.0.1073 ami-03cf3ff5c98dd5fbb \n\n**a9d6e84**  API-9832: Bring \"get claims\"
+        v2 endpoint to parity with v1 (#8995)\n\n* API-9832: Bring get all claims
+        v2 to parity w/ v1\r\n\r\n* Add request spec\r\n\r\n* Update rswag tests and
+        schema\r\n\r\n* Appease rubocop\r\n\r\n* Forgot to commit a linter change\r\n\r\n*
+        Handle nil case\r\n\r\n* Remove binding.pry statement\n\n**00fb029**  Refactor
+        HypertensionSpecialIssueManager to be more rubyist (#8987)\n\n* refactor to
+        be more rubyist\r\n* make most methods private\n\n**c22268b**  [33352] sets
+        authentication SAML `force_authn` to false (#9016)\n\n* sets url_service instanciation
+        for upleveling to not force authn\r\n\r\n* defaults SAML calls to ISAM to
+        set force_authn to false\n\n**2c7efb7**  Add verified email to settings (#9013)\n\n**999a600**  Revert
+        \"[33352] sets authentication SAML `force_authn` to false (#9016)\" (#9017)\n\nThis
+        reverts commit c22268bff10688e41df7e9c27ce26fe41d20cb82.\n\n**77a801a**  API-12689
+        - Add NOD email notifications (#8964)\n\n**42f6795**  sets force_authn to
+        false for non-staging & non-production envs (#9019)\n\n**c468071**  API-13005
+        : Benefits Intake - Add logging to bulk reports endpoint to help troubleshooting
+        429s (#8998)\n\n**e44bad2**  Bump rubocop from 1.25.0 to 1.25.1 (#9023)\n\n*
+        Bump rubocop from 1.25.0 to 1.25.1\r\n\r\nBumps [rubocop](https://github.com/rubocop/rubocop)
+        from 1.25.0 to 1.25.1.\r\n- [Release notes](https://github.com/rubocop/rubocop/releases)\r\n-
+        [Changelog](https://github.com/rubocop/rubocop/blob/master/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/rubocop/rubocop/compare/v1.25.0...v1.25.1)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: rubocop\r\n  dependency-type: direct:development\r\n  update-type:
+        version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        Updating rubocop version\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Travis Hilton <travis.hilton@oddball.io>\n\n**64efd3c**  34690 bypass ssl
+        verification in staging for test purposes (#9018)\n\n**343652d**  Api 12952
+        GUID report update (#8997)\n\n* Logging for the action_mailer\r\n\r\n* Adding
+        Processing column to daily report\r\n\r\n* Lint adjustments\r\n\r\n* Lint
+        adjustments\r\n\r\n* Adding form tag \"526\" to 21-526EZ\r\n\r\n* Update to
+        report_unsuccessful_submissions.rb so columns always sum to 100\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/58546454","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/58546454/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/58546454/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1072","id":58546454,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4DfVkW","tag_name":"vets-api/v0.0.1072","target_commitish":"7a2bca52f802e5dec0d8b78d1225b893e9a1d221","name":"vets-api/v0.0.1072","draft":false,"prerelease":false,"created_at":"2022-02-02T17:29:08Z","published_at":"2022-02-02T20:01:08Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1072","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1072","body":"Release
+        0.0.1072 ami-0be3f7a112e26b2eb \n\n**7b87ecf**  Delete branch when closing
+        stale PR (#9003)\n\n**a4831ee**  34690 carma mulesoft updates (#9006)\n\n*
+        34690 log info since staging is prod env\r\n\r\n* 34690 update mulesoft base
+        path\n\n**fdf9a65**  Move tracking to include lighthouse call (#9000)\n\nCo-authored-by:
+        Tasha Ibrahim <natasha.joyce.ibrahim@gmail.com>\n\n**5a7aa84**  2452: only
+        retry specs in CI environment (#9001)\n\n**41adfb1**  update vets-json-schema
+        gem (#9004)\n\n**28b3717**  Bump redis from 4.5.1 to 4.6.0 (#9010)\n\n* Bump
+        redis from 4.5.1 to 4.6.0\r\n\r\nBumps [redis](https://github.com/redis/redis-rb)
+        from 4.5.1 to 4.6.0.\r\n- [Release notes](https://github.com/redis/redis-rb/releases)\r\n-
+        [Changelog](https://github.com/redis/redis-rb/blob/master/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/redis/redis-rb/compare/v4.5.1...v4.6.0)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: redis\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix Gemfile.lock\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Riley Anderson <riley.anderson@oddball.io>\n\n**95a35f0**  Remove VAOS homepage
+        refresh toggle flag (#9008)\n\n**3e64730**  Bump ruby-saml from 1.13.0 to
+        1.14.0 (#9009)\n\n* Bump ruby-saml from 1.13.0 to 1.14.0\r\n\r\nBumps [ruby-saml](https://github.com/onelogin/ruby-saml)
+        from 1.13.0 to 1.14.0.\r\n- [Release notes](https://github.com/onelogin/ruby-saml/releases)\r\n-
+        [Changelog](https://github.com/onelogin/ruby-saml/blob/master/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/onelogin/ruby-saml/compare/v1.13.0...v1.14.0)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: ruby-saml\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix Gemfile.lock\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Riley Anderson <riley.anderson@oddball.io>\n\n**7348439**  Bump bootsnap from
+        1.10.2 to 1.10.3 (#9011)\n\n* Bump bootsnap from 1.10.2 to 1.10.3\r\n\r\nBumps
+        [bootsnap](https://github.com/Shopify/bootsnap) from 1.10.2 to 1.10.3.\r\n-
+        [Release notes](https://github.com/Shopify/bootsnap/releases)\r\n- [Changelog](https://github.com/Shopify/bootsnap/blob/main/CHANGELOG.md)\r\n-
+        [Commits](https://github.com/Shopify/bootsnap/compare/v1.10.2...v1.10.3)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: bootsnap\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix Gemfile.lock\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Riley Anderson <riley.anderson@oddball.io>\n\n**028d391**  Changing the example
+        to better reflect the results (#8959)\n\nCo-authored-by: mviterna <mark.viterna@va.gov>\n\n**d6ffeaa**  RRD
+        failure emails: make emailed stacktrace more readable (#9012)\n\n* add new
+        lines between stacktrace lines\r\n* adjust test to look for many newlines\r\nCo-authored-by:
+        Yoom Lam <you@example.com>\n\n**9b8e513**  refactor submit claim to handle
+        new params from front end (#8861)\n\n* refactor submit claim to handle new
+        params from front end\r\n\r\n* update submit claim to expect updated params
+        from front end\r\n\r\n* rubocop fix\r\n\r\n* refactor submit claims to modify
+        param keys wthout OliveBranch\r\n\r\n* rubocop fixes\r\n\r\n* update spec
+        to convert hash to params\n\n**d1c76bd**  Update claims_api docs verbage (#8978)\n\nCo-authored-by:
+        Austin Covrig <austin.covrig@oddball.io>\n\n**7a2bca5**  Alphabetize mobile
+        openapi endpoints (#9014)\n"},{"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/58461822","assets_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases/58461822/assets","upload_url":"https://uploads.github.com/repos/department-of-veterans-affairs/vets-api/releases/58461822/assets{?name,label}","html_url":"https://github.com/department-of-veterans-affairs/vets-api/releases/tag/vets-api/v0.0.1071","id":58461822,"author":{"login":"va-bot","id":16944030,"node_id":"MDQ6VXNlcjE2OTQ0MDMw","avatar_url":"https://avatars.githubusercontent.com/u/16944030?v=4","gravatar_id":"","url":"https://api.github.com/users/va-bot","html_url":"https://github.com/va-bot","followers_url":"https://api.github.com/users/va-bot/followers","following_url":"https://api.github.com/users/va-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-bot/subscriptions","organizations_url":"https://api.github.com/users/va-bot/orgs","repos_url":"https://api.github.com/users/va-bot/repos","events_url":"https://api.github.com/users/va-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-bot/received_events","type":"User","site_admin":false},"node_id":"RE_kwDOA7hKyc4DfA5-","tag_name":"vets-api/v0.0.1071","target_commitish":"3c7c0493e03fa199fdbd0f7f7339c0fd1b6e3f1c","name":"vets-api/v0.0.1071","draft":false,"prerelease":false,"created_at":"2022-02-01T17:58:41Z","published_at":"2022-02-01T20:01:05Z","assets":[],"tarball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tarball/vets-api/v0.0.1071","zipball_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/zipball/vets-api/v0.0.1071","body":"Release
+        0.0.1071 ami-0b6f68447765f5b2f \n\n**efa9835**  API-12254 - ClaimsApi - Return
+        404 when active POA not found (#8989)\n\n**9ea7364**  API-12254 - ClaimsApi
+        - Update test user representative poa codes (#8990)\n\n**bf38139**  Update
+        HLRv1 sunset date (#8994)\n\n**90ab8ca**  [32270] Mpi attributes (#8585)\n\n*
+        adds identity sourcing for user attributes\r\n\r\n* fixes most ssoe_user_spec
+        tests\r\n\r\n* fixes user class factory attributes\r\n\r\n* updates user address
+        method and adds user model identity-attributes specs\r\n\r\n* spec updates\r\n\r\n*
+        fixes specs and adds address2 from user_identity\r\n\r\n* removes log line\r\n\r\n*
+        cleans up lack of mpi-sourced street2 attribute\r\n\r\n* further spec updates\r\n\r\n*
+        updates questionnaire response spec address from string to hash\r\n\r\n* syntax
+        fix\r\n\r\n* syntax fix\r\n\r\n* restores user''s vha_facility hash for medical_copays
+        VBS service spec\r\n\r\n* adds nil street2 attributes for mpi_profiles\n\n**ae6c7cf**  Fixing
+        an issue with how we handle Params (#8980)\n\n* Adding support for the Radius
+        parameter (#8908)\r\n\r\nCleaning up a ton of old unused VCR cassettes\r\nSplitting
+        the statsd notifications up for each lighthouse client\r\n\r\n* Fixing some
+        failing tests\r\n\r\nwww.example.com vs localhost\r\n\r\nFixing an issue with
+        how we handle Params\r\n\r\nThe front end is currently passing `bbox` and
+        `radius`, this hasn''t\r\nbeen an issue since we don''t pass `radius` to lighthouse\r\n\r\nThis
+        is now causing an issue since lighthouse errors out.\r\n\r\nWe are now limiting
+        what combinations of params we send to lighthouse\n\n**3c7c049**  Bump pg
+        from 1.3.0 to 1.3.1 (#8996)\n\n* Bump pg from 1.3.0 to 1.3.1\r\n\r\nBumps
+        [pg](https://github.com/ged/ruby-pg) from 1.3.0 to 1.3.1.\r\n- [Release notes](https://github.com/ged/ruby-pg/releases)\r\n-
+        [Changelog](https://github.com/ged/ruby-pg/blob/master/History.rdoc)\r\n-
+        [Commits](https://github.com/ged/ruby-pg/compare/v1.3.0...v1.3.1)\r\n\r\n---\r\nupdated-dependencies:\r\n-
+        dependency-name: pg\r\n  dependency-type: direct:production\r\n  update-type:
+        version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n*
+        fix Gemfile.lock\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by:
+        Riley Anderson <riley.anderson@oddball.io>\n"}]'
+  recorded_at: Tue, 01 Mar 2022 19:29:44 GMT
+recorded_with: VCR 6.0.0

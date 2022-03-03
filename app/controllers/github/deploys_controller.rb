@@ -25,9 +25,11 @@ module Github
 
     def deploy # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       respond_to do |format|
-        Github::Deploy.dispatch!(current_user.github_token, @app.github_repo,
-                                 github_deploy_params[:workflow_id], github_deploy_params[:ref],
-                                 { inputs: github_deploy_params[:inputs] })
+        Github::Deploy.dispatch!(
+          current_user.github_token, @app.github_repo, github_deploy_params[:workflow_id], github_deploy_params[:ref],
+          { inputs: github_deploy_params[:inputs] }
+        )
+
         format.html do
           redirect_to team_app_deploy_path(@app, @team, github_deploy_params[:workflow_id]),
                       notice: 'deploy was successfully dispatched'

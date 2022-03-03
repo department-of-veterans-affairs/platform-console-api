@@ -5,13 +5,26 @@ require 'application_system_test_case'
 class AppsTest < ApplicationSystemTestCase
   setup do
     login_as :john
-    @team = teams(:one)
-    @app = apps(:one)
+    @team = teams(:three)
+    @app = apps(:three)
   end
 
   test 'visiting the index' do
     visit team_apps_url(@team)
     assert_selector 'h1', text: 'Apps'
+  end
+
+  test 'should show app' do
+    VCR.use_cassette('system/apps', record: :new_episodes) do
+      visit team_app_url(@team, @app)
+      assert_selector 'a', text: 'Overview'
+      assert_selector 'h1', text: 'Latest Releases'
+      assert_selector 'dt', text: 'Open Pull Requests'
+      assert_selector 'dt', text: 'Branches'
+      assert_selector 'dt', text: 'Open Issues'
+      assert_selector 'dt', text: 'Tags'
+      assert_selector 'dt', text: 'Latest Release'
+    end
   end
 
   test 'should create app' do
@@ -26,7 +39,7 @@ class AppsTest < ApplicationSystemTestCase
   end
 
   test 'should not create app with invalid repository' do
-    VCR.use_cassette('system/apps') do
+    VCR.use_cassette('system/apps', record: :new_episodes) do
       visit team_apps_url(@team)
       click_on 'New app'
 
@@ -40,18 +53,21 @@ class AppsTest < ApplicationSystemTestCase
   end
 
   test 'should update App' do
-    visit team_app_url(@team, @app)
-    click_on 'Settings', match: :first
+    VCR.use_cassette('system/apps', record: :new_episodes) do
+      visit team_app_url(@team, @app)
+      click_on 'Settings', match: :first
 
-    fill_in 'Name', with: 'App1A'
+      fill_in 'Name', with: 'App1A'
+      fill_in 'app_github_repo', with: ''
 
-    click_on 'Update App'
+      click_on 'Update App'
 
-    assert_text 'App was successfully updated'
+      assert_text 'App was successfully updated'
+    end
   end
 
   test 'should update app with valid github repository' do
-    VCR.use_cassette('system/apps') do
+    VCR.use_cassette('system/apps', record: :new_episodes) do
       visit team_app_url(@team, @app)
       click_on 'Settings', match: :first
 
@@ -68,7 +84,15 @@ class AppsTest < ApplicationSystemTestCase
       visit team_app_url(@team, @app)
       click_on 'Settings', match: :first
 
+      # invalid format
       fill_in 'app_github_repo', with: 'invalid-repository'
+
+      click_on 'Update App'
+
+      assert_text 'error prohibited this app from being saved'
+
+      # valid format, invalid owner and repository
+      fill_in 'app_github_repo', with: 'invalid-user/invalid-repository'
 
       click_on 'Update App'
 
