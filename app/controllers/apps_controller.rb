@@ -95,7 +95,7 @@ class AppsController < ApplicationController
   def set_github_info
     return if @app.github_repo.blank?
 
-    @github_repository = Github::Repository.new(current_user.github_token, @app.github_repo)
+    @github_repository = @app.repository(current_user.github_token)
     @github_stats = Github::GraphQL::Client.query(Github::GraphQL::GithubInfoQuery,
                                                   variables: { owner: @github_repository.github.owner.login,
                                                                name: @github_repository.github.name },

@@ -84,7 +84,15 @@ class AppsTest < ApplicationSystemTestCase
       visit team_app_url(@team, @app)
       click_on 'Settings', match: :first
 
+      # invalid format
       fill_in 'app_github_repo', with: 'invalid-repository'
+
+      click_on 'Update App'
+
+      assert_text 'error prohibited this app from being saved'
+
+      # valid format, invalid owner and repository
+      fill_in 'app_github_repo', with: 'invalid-user/invalid-repository'
 
       click_on 'Update App'
 
