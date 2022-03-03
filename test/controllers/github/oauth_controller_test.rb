@@ -15,7 +15,7 @@ module Github
       VCR.use_cassette('github/oauth_controller') do
         assert_nil @user.github_token
         get github_oauth_callback_path(code: '1b5acd1175129a747f29')
-        assert_response :found
+        assert_response :success
         @user.reload
         assert @user.github_token.present?
       end
