@@ -385,11 +385,11 @@ DEPENDENCIES
   brakeman
   bundler-audit
   capybara
-  faraday-http-cache (~> 2.2.0)
+  faraday-http-cache (~> 2.2)
   flipper (~> 0.24)
   flipper-redis (~> 0.24)
   flipper-ui (~> 0.24)
-  graphql-client
+  graphql-client (~> 0.17)
   importmap-rails (~> 1.0)
   jbuilder (~> 2.11)
   minitest-ci

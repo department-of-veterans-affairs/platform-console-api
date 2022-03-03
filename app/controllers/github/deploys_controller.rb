@@ -23,18 +23,24 @@ module Github
       @github_deploy = Github::Deploy.new(current_user.github_token, @app.github_repo)
     end
 
-    def deploy
+    def deploy # rubocop:disable Metrics/MethodLength
       respond_to do |format|
-        Github::Deploy.dispatch!(@app.github_repo, github_deploy_params[:workflow_id], github_deploy_params[:ref])
+        Github::Deploy.dispatch!(
+          current_user.github_token, @app.github_repo, github_deploy_params[:workflow_id], github_deploy_params[:ref],
+          { inputs: github_deploy_params[:inputs] }
+        )
+
         format.html do
           redirect_to team_app_deploy_path(@app, @team, github_deploy_params[:workflow_id]),
                       notice: 'deploy was successfully dispatched'
         end
         format.json { render :show, json: true, status: :ok }
       rescue Octokit::UnprocessableEntity => e
-        @all_deploys = @github_repository.deploys
         @error = e.message
-        format.html { render :new_dispatch, status: :unprocessable_entity }
+        format.html do
+          redirect_to team_app_deploy_path(@app, @team, github_deploy_params[:workflow_id]),
+                      alert: @error
+        end
         format.json { render json: false, status: :unprocessable_entity }
       end
     end
@@ -50,7 +56,7 @@ module Github
 
     # Only allow a list of trusted parameters through.
     def github_deploy_params
-      params.permit(:ref, :workflow_id)
+      params.permit(:ref, :workflow_id, inputs: [:environment])
     end
 
     def set_pages

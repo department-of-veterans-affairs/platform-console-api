@@ -4,6 +4,7 @@ module Github
   # Class representing a Github Repository
   class Repository
     include Github::Pagination
+    include Github::Inspect
 
     attr_accessor :access_token, :repo, :octokit_client, :github
 
@@ -106,13 +107,14 @@ module Github
     # Dispatches a workflow on platform-console-api that will create a new PR on
     # the repository with the new deploy workflow file.
     #
-    # @return [Boolean] If the dispatch was successful or not
-    def dispatch_create_pr_workflow
-      inputs = { repo: @repo, file_name: DEPLOY_WORKFLOW_FILE }
-      Github::Workflow.dispatch!(ENV['GITHUB_ACCESS_TOKEN'],
-                                 'department-of-veterans-affairs/platform-console-api',
-                                 CREATE_PR_WORKFLOW_FILE,
-                                 'master', { inputs: inputs })
+    # @return [Pull Request] The newly created pull request
+    def create_deploy_workflow_pr
+      branch_name = 'gha-add-deploy-template-workflow'
+      default_branch_sha = octokit_client.ref(@repo, "heads/#{@github.default_branch}").object.sha
+      message = "Add #{DEPLOY_WORKFLOW_FILE} workflow file"
+      Github::PullRequest.create_from_new_branch(
+        @access_token, @repo, branch_name, default_branch_sha, message, ".github/workflows/#{DEPLOY_WORKFLOW_FILE}"
+      )
     end
   end
 end
