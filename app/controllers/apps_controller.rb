@@ -4,7 +4,7 @@
 class AppsController < ApplicationController
   before_action :authorize_session!
   before_action :set_team
-  before_action :set_app, only: %i[show edit update destroy]
+  before_action :set_app, only: %i[show edit update destroy create_deploy_pr]
 
   # GET /apps or /apps.json
   def index
@@ -63,10 +63,10 @@ class AppsController < ApplicationController
 
   def create_deploy_pr
     respond_to do |format|
-      if @github_repository.dispatch_create_pr_workflow
+      if @app.repository(current_user.github_token).create_deploy_workflow_pr
         format.html do
           redirect_to team_app_deploys_path(@team, @app),
-                      notice: 'PR has been queued for creation.'
+                      notice: 'PR has been created'
         end
         format.json { render json: true, status: :ok }
       else
