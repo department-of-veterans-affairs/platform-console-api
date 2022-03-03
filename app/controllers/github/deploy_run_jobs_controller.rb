@@ -18,10 +18,5 @@ module Github
     def set_github_deploy_run_job
       @github_deploy_run_job = Github::DeployRunJob.new(current_user.github_token, @app.github_repo, params[:id])
     end
-
-    # Only allow a list of trusted parameters through.
-    def github_deploy_run_params
-      params.fetch(:github_deploy_run_job, {})
-    end
   end
 end

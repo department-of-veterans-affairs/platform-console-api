@@ -14,7 +14,7 @@ module Github
     # @return [Github::Repository]
     # @see https://docs.github.com/en/rest/reference/repos#get-a-repository
     def initialize(access_token, repo)
-      @acccess_token = access_token
+      @access_token = access_token
       @repo = repo
       @octokit_client = Octokit::Client.new(access_token: @access_token)
       @github = octokit_client.repository(@repo)
