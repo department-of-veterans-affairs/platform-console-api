@@ -90,7 +90,6 @@ class AppsController < ApplicationController
     @app.current_user = current_user
   end
 
-  # rubocop:disable Metrics/AbcSize
   # Set the current github repository and provide stats for the overview
   def set_github_info
     return if @app.github_repo.blank?
@@ -102,7 +101,6 @@ class AppsController < ApplicationController
                                                   context: { access_token: current_user.github_token }).data.repo
     @releases = @github_repository.octokit_client.releases(@app.github_repo)
   end
-  # rubocop:enable Metrics/AbcSize
 
   # Only allow a list of trusted parameters through.
   def app_params
