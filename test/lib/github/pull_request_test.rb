@@ -6,9 +6,9 @@ module Github
   class PullRequestTest < ActiveSupport::TestCase
     setup do
       VCR.use_cassette('github/pull_request') do
-        @pull_request = Github::PullRequest.new(ENV['GITHUB_ACCESS_TOKEN'],
-                                                'department-of-veterans-affairs/platform-console-api',
-                                                '10')
+        @pull_request = Github::PullRequest.new(
+          ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/platform-console-api', '10'
+        )
       end
     end
 
@@ -42,8 +42,10 @@ module Github
 
     test 'lists all pull_requests for a repository' do
       VCR.use_cassette('github/pull_request', record: :new_episodes) do
-        pull_requests = Github::PullRequest.all(ENV['GITHUB_ACCESS_TOKEN'],
-                                                'department-of-veterans-affairs/vets-api')[:pull_requests]
+        pull_requests = Github::PullRequest.all(
+          ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/vets-api'
+        )[:pull_requests]
+
         assert_kind_of Array, pull_requests
         assert_not_nil pull_requests.first.number
       end

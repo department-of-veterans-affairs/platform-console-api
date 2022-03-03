@@ -6,8 +6,9 @@ module Github
   class WorkflowRunTest < ActiveSupport::TestCase
     setup do
       VCR.use_cassette('github/workflow_run') do
-        @workflow_run = Github::WorkflowRun.new(ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/vets-api',
-                                                '1815728096')
+        @workflow_run = Github::WorkflowRun.new(
+          ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/vets-api', '1815728096'
+        )
       end
     end
 
@@ -19,12 +20,15 @@ module Github
 
     test 'extracting logs' do
       VCR.use_cassette('github/workflow_run_logs') do
-        workflow_run_id = Github::WorkflowRun.all(ENV['GITHUB_ACCESS_TOKEN'],
-                                                  'department-of-veterans-affairs/vets-api').workflow_runs.last.id
-        workflow_run = Github::WorkflowRun.new(ENV['GITHUB_ACCESS_TOKEN'],
-                                               'department-of-veterans-affairs/vets-api', workflow_run_id)
-        assert_not_nil workflow_run.github.run_number
+        workflow_run_id = Github::WorkflowRun.all(
+          ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/vets-api'
+        ).workflow_runs.last.id
 
+        workflow_run = Github::WorkflowRun.new(
+          ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/vets-api', workflow_run_id
+        )
+
+        assert_not_nil workflow_run.github.run_number
         logs_url = workflow_run.logs_url
         assert_kind_of String, logs_url
       end
@@ -32,8 +36,10 @@ module Github
 
     test 'lists all workflow runs for a repository' do
       VCR.use_cassette('github/workflow_run', record: :new_episodes) do
-        all_workflow_runs = Github::WorkflowRun.all(ENV['GITHUB_ACCESS_TOKEN'],
-                                                    'department-of-veterans-affairs/vets-api').workflow_runs
+        all_workflow_runs = Github::WorkflowRun.all(
+          ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/vets-api'
+        ).workflow_runs
+
         assert_kind_of Array, all_workflow_runs
         assert_not_nil all_workflow_runs.first.workflow_id
       end
@@ -41,9 +47,10 @@ module Github
 
     test 'lists all workflow runs for a branch on a repository' do
       VCR.use_cassette('github/workflow_run', record: :new_episodes) do
-        branch_runs = Github::WorkflowRun.all_for_branch(ENV['GITHUB_ACCESS_TOKEN'],
-                                                         'department-of-veterans-affairs/vets-api',
-                                                         'master').workflow_runs
+        branch_runs = Github::WorkflowRun.all_for_branch(
+          ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/vets-api', 'master'
+        ).workflow_runs
+
         assert_kind_of Array, branch_runs
         assert_not_nil branch_runs.first.workflow_id
         assert_equal 'master', branch_runs.first.head_branch
@@ -52,9 +59,9 @@ module Github
 
     test 'lists all workflow runs for a given workflow' do
       VCR.use_cassette('github/workflow_run', record: :new_episodes) do
-        workflow_runs = Github::WorkflowRun.all_for_workflow(ENV['GITHUB_ACCESS_TOKEN'],
-                                                             'department-of-veterans-affairs/vets-api',
-                                                             '13418388').workflow_runs
+        workflow_runs = Github::WorkflowRun.all_for_workflow(
+          ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/vets-api', '13418388'
+        ).workflow_runs
         assert_kind_of Array, workflow_runs
         assert_equal 13_418_388, workflow_runs.first.workflow_id
       end
