@@ -5,7 +5,7 @@ class AppsController < ApplicationController
   before_action :authorize_session!
   before_action :set_team
   before_action :set_app, only: %i[show edit update destroy]
-  before_action :set_github_info, only: :show
+  before_action :set_github_info, :set_github_stats, only: :show
 
   # GET /apps or /apps.json
   def index
@@ -90,16 +90,24 @@ class AppsController < ApplicationController
     @app.current_user = current_user
   end
 
-  # Set the current github repository and provide stats for the overview
+  # Set the current github repository and get the latest releases for it
   def set_github_info
     return if @app.github_repo.blank?
 
     @github_repository = @app.repository(current_user.github_token)
-    @github_stats = Github::GraphQL::Client.query(Github::GraphQL::GithubInfoQuery,
-                                                  variables: { owner: @github_repository.github.owner.login,
-                                                               name: @github_repository.github.name },
-                                                  context: { access_token: current_user.github_token }).data.repo
     @releases = @github_repository.octokit_client.releases(@app.github_repo)
+  end
+
+  # Set various github stats for the overview
+  def set_github_stats
+    return if @app.github_repo.blank?
+
+    variables = { owner: @github_repository.github.owner.login, name: @github_repository.github.name }
+    context = { access_token: current_user.github_token }
+
+    @github_stats = Github::GraphQL::Client.query(
+      Github::GraphQL::GithubInfoQuery, variables: variables, context: context
+    ).data.repo
   end
 
   # Only allow a list of trusted parameters through.
