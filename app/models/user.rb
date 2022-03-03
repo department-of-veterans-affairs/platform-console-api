@@ -9,16 +9,20 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :name, :email, presence: true
 
-  def self.from_omniauth(auth_hash)
+  def self.from_omniauth(auth_hash, _keycloak_hash)
     User.find_or_initialize_by(uid: auth_hash['uid']) do |u|
       u.name = auth_hash['info']['name']
       u.email = auth_hash['info']['email']
       u.password = SecureRandom.uuid
       u.save!
+      # teams = auth_hash['extra']['raw_info']['groups']
+      # teams.each do |team|
+      #   team = Team.find_or_create_by(name: team, owner: u, owner_type: "User")
+      # end
     end
-    # Authorize user and ensure keycloak is the provider
-    # teams = auth_hash['extra']['raw_info']['groups']
-    # roles = auth_hash['extra']['raw_info']['resource_access']['account']['roles']
+
+    # Use keycloak_hash for roles
+    # realm_roles = keycloak_hash['extra']['raw_info']['resource_access']['account']['roles']
   end
 
   private
