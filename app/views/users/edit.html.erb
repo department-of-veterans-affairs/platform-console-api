@@ -3,8 +3,3 @@
 </h1>
 
 <%= render "form", user: @user %>
-<% if @github_user.present? %>
-  <div class="flex justify-end mt-4">
-    <%= button_to 'Remove GitHub account', github_oauth_revoke_path, method: :delete, class: 'inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-red-900 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-800 sm:text-sm' %>
-  </div>
-<% end %>
