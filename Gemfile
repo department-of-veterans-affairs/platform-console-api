@@ -55,6 +55,6 @@ group :test do
   gem 'minitest-ci'        # Minitest Junit XML results for GHA
   gem 'selenium-webdriver' # Capybara system testing with Chrome
   gem 'simplecov'          # Code coverage for Ruby
-  gem 'vcr'                # Record/replay HTTP interactions
+  gem 'vcr',               github: 'vcr/vcr' #Edge version for Ruby 3.1 support. Record/replay HTTP interactions
   gem 'webdrivers'         # Easy installation and use of web drivers to run system tests with browsers
 end
