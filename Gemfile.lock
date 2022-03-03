@@ -383,7 +383,7 @@ DEPENDENCIES
   bundler-audit
   byebug
   capybara
-  faraday-http-cache
+  faraday-http-cache (~> 2.2.0)
   flipper (~> 0.24)
   flipper-redis (~> 0.24)
   flipper-ui (~> 0.24)
