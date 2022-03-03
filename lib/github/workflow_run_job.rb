@@ -6,6 +6,7 @@ module Github
   # Class representing a Github WorkflowRunJob
   class WorkflowRunJob
     include Github::Pagination
+    include Github::Inspect
 
     attr_accessor :access_token, :repo, :id, :octokit_client, :logs, :github
 

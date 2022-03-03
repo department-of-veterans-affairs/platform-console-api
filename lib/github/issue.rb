@@ -4,6 +4,7 @@ module Github
   # Class representing a Github Issue
   class Issue
     include Github::Pagination
+    include Github::Inspect
 
     attr_accessor :access_token, :repo, :id, :octokit_client, :github
 

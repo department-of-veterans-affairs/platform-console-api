@@ -7,6 +7,7 @@ module Github
   # Class representing a Github WorkflowRun
   class WorkflowRun
     include Github::Pagination
+    include Github::Inspect
 
     attr_accessor :access_token, :repo, :id, :octokit_client, :logs_url, :github
 

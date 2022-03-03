@@ -1,6 +1,5 @@
 name: Deploy Template Demo
 on:
-  push:
   workflow_dispatch:
     inputs:
       environment:

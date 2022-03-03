@@ -4,6 +4,7 @@ module Github
   # Class representing a Github Workflow
   class Workflow
     include Github::Pagination
+    include Github::Inspect
 
     attr_accessor :access_token, :repo, :id, :file_name, :octokit_client, :github
 

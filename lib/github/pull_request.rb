@@ -62,5 +62,39 @@ module Github
     def workflow_runs
       Github::WorkflowRun.all_for_branch(@access_token, @repo, @branch_name)
     end
+
+    def self.create_from_new_branch(access_token, repo, branch_name, branch_from_sha, message, file_path)
+      octokit_client = Octokit::Client.new(access_token: User.last.github_token)
+
+      # Create Branch
+      branch = create_pr_branch(octokit_client, repo, branch_name, branch_from_sha)
+
+      # Create File
+      return unless branch
+      file = create_pr_file(octokit_client, repo, file_path, message, branch_name)
+
+      # Create PR
+      return unless file
+      octokit_client.create_pull_request(repo, 'master', branch_name, message)
+    end
+
+    def self.create_pr_branch(octokit_client, repo, branch_name, branch_from_sha)
+      begin
+        octokit_client.create_ref(repo, "heads/#{branch_name}", branch_from_sha)
+        true
+      rescue
+        false
+      end
+    end
+
+    def self.create_pr_file(octokit_client, repo, file_path, message, branch_name)
+      file_contents = File.open(file_path).read
+      begin
+        octokit_client.create_contents(repo, file_path, message, file_contents, {branch: branch_name})
+        true
+      rescue
+        false
+      end
+    end
   end
 end
