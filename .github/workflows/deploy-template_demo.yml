@@ -1,0 +1,15 @@
+name: Deploy Template Demo
+on: push:
+    workflow_dispatch:
+      inputs:
+        environment:
+          description: The environment to deploy to.
+          required: true
+          default: production
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🙌 Deploying ${{ github.repository } to ${{ github.event.inputs.environment }} from ${{ github.ref }}! 🙌"
+      - run: sleep 5 & job=$!; while kill -0 $job 2>/dev/null; do for s in / - \\ \|; do printf "\r$s"; sleep .1; done; done
+      - run: echo "🎉 ${{ github.repository } was successfully deployed to ${{ github.event.inputs.environment }}! 🎉"
