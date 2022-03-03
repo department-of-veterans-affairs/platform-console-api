@@ -8,6 +8,8 @@ module Github
       login_as :john
       @team = teams(:three)
       @app = apps(:four)
+      Github.send :remove_const, 'DEPLOY_WORKFLOW_FILE'
+      Github.const_set 'DEPLOY_WORKFLOW_FILE', 'codeql.yml'
     end
 
     test 'visiting the index' do
