@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :teams do
     resources :apps do
-      post :create_deploy_pr, on: :member
+      resources :deploy_pull_requests, only: %i[create], controller: 'github/deploy_pull_requests'
       resources :pull_requests, only: %i[index], controller: 'github/pull_requests'
       resources :workflows, only: %i[index show], controller: 'github/workflows' do
         get :new_dispatch, on: :collection
