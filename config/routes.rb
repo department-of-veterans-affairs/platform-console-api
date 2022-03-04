@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       resources :workflow_run_jobs, only: [:show], controller: 'github/workflow_run_jobs'
 
       resources :deploys, only: %i[index show new], controller: 'github/deploys' do
-        post :deploy, on: :collection
+        post :create, on: :collection
       end
       resources :deploy_runs, only: [:show], controller: 'github/deploy_runs' do
         post :rerun, on: :member
