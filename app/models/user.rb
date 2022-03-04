@@ -9,20 +9,35 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :name, :email, presence: true
 
+  has_many :team_members, dependent: :destroy
+  has_many :teams, through: :team_members
+
   def self.from_omniauth(auth_hash)
-    User.find_or_initialize_by(uid: auth_hash['uid']) do |u|
-      u.name = auth_hash['info']['name']
-      u.email = auth_hash['info']['email']
-      u.password = SecureRandom.uuid
-      u.save!
-    end
-    # Authorize user and ensure keycloak is the provider
-    # teams = auth_hash['extra']['raw_info']['groups']
+    user = User.find_or_initialize_by(uid: auth_hash['uid'])
+    user.name = auth_hash['info']['name']
+    user.email = auth_hash['info']['email']
+    user.password = SecureRandom.uuid
+    user.save!
+
+    return user if auth_hash['extra'].blank? || auth_hash['extra']['raw_info'].blank?
+    build_team_members(user, auth_hash['extra']['raw_info']['groups'])
     # roles = auth_hash['extra']['raw_info']['resource_access']['account']['roles']
+
+    return user
   end
 
-  has_many :members, dependent: :destroy
-  has_many :teams, through: :members
+  def self.build_team_members(user, team_names)
+    return if team_names.blank?
+    team_names.each do |team_name|
+      team = Team.find_or_initialize_by(name: team_name)
+      if team.new_record?
+        team.owner = user
+        team.owner_type = "User"
+        team.save!
+      end
+      team.team_members.find_or_create_by!(user: user)
+    end
+  end
 
   private
 

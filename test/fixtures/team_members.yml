@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-team_one_member:
+john_team_one_member:
   user: john
   team: one
 
-team_two_member:
-  user: john
-  team: two
+jane_team_one_member:
+  user: jane
+  team: one

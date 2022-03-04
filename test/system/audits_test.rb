@@ -22,7 +22,6 @@ class AuditsTest < ApplicationSystemTestCase
     assert_selector 'h1', text: 'Audits'
     assert_selector 'th', text: 'ITEM TYPE'
     assert_selector 'td', text: 'App'
-    assert_selector 'td', text: 'Team'
     assert_selector 'div', text: 'DETAILS'
 
     click_on 'Show', match: :first

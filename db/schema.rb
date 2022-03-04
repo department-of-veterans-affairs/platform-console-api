@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_15_144301) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_04_152441) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,15 +22,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_144301) do
     t.index ["team_id"], name: "index_apps_on_team_id"
   end
 
-  create_table "members", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "team_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_members_on_team_id"
-    t.index ["user_id"], name: "index_members_on_user_id"
-  end
-
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -39,6 +30,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_144301) do
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
+  end
+
+  create_table "team_members", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_team_members_on_team_id"
+    t.index ["user_id"], name: "index_team_members_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -83,6 +83,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_144301) do
   end
 
   add_foreign_key "apps", "teams"
-  add_foreign_key "members", "teams"
-  add_foreign_key "members", "users"
 end

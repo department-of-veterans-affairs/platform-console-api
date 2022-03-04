@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class Member < ApplicationRecord
+# The Team Member Model
+class TeamMember < ApplicationRecord
   belongs_to :user
   belongs_to :team
 end
