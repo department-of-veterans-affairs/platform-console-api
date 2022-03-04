@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <%= render 'github/shared/pagination', curr_path: team_app_pull_requests_path(@team, @app, page: @curr_page),
+  <%= render 'github/shared/pagination', curr_path: team_app_pull_requests_path(@team, @app, page: @current_page),
                                   first_path: team_app_pull_requests_path(@team, @app, page: @first_page),
                                   last_path: team_app_pull_requests_path(@team, @app, page: @last_page),
                                   next_path: team_app_pull_requests_path(@team, @app, page: @next_page),

@@ -8,14 +8,14 @@ module Github
 
     # GET /github/workflows or /github/workflows.json
     def index
-      @curr_page = params.fetch(:page, 1)
+      @current_page = params.fetch(:page, 1)
       @github_workflows = @github_repository.workflows
       set_pages
     end
 
     # GET /github/workflows/1 or /github/workflows/1.json
     def show
-      @curr_page = params.fetch(:page, 1)
+      @current_page = params.fetch(:page, 1)
       @all_workflows = @github_repository.workflows
       @github_workflow_runs = @github_workflow.workflow_runs(params[:page] || 1, { branch: params[:ref] }).to_h
       set_pages

@@ -7,14 +7,14 @@ module Github
 
     # GET /github/deploys or /github/deploys.json
     def index
-      @curr_page = params.fetch(:page, 1)
+      @current_page = params.fetch(:page, 1)
       @github_deploy_runs = @github_deploy&.deploy_runs(params[:page] || 1)&.to_h
       set_pages if @github_deploy_runs
     end
 
     # GET /github/deploys/1 or /github/deploys/1.json
     def show
-      @curr_page = params.fetch(:page, 1)
+      @current_page = params.fetch(:page, 1)
       @github_deploy_runs = @github_deploy.deploy_runs(params[:page] || 1).to_h
       set_pages
     end

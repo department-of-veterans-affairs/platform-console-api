@@ -141,20 +141,20 @@
   </div>
 
   <% if controller_name.include?('deploy') %>
-     <%= render 'github/shared/pagination', curr_path: team_app_deploys_path(@team, @app,  page: @curr_page),
+     <%= render 'github/shared/pagination', curr_path: team_app_deploys_path(@team, @app,  page: @current_page),
                                     first_path: team_app_deploys_path(@team, @app,  page: @first_page),
                                     last_path: team_app_deploys_path(@team, @app,  page: @last_page),
                                     next_path: team_app_deploys_path(@team, @app,  page: @next_page),
                                     prev_path: team_app_deploys_path(@team, @app,  page: @prev_page) %>
 
   <% elsif current_workflow.present? %>
-     <%= render 'github/shared/pagination', curr_path: team_app_workflow_path(@team, @app,  current_workflow.id, page: @curr_page),
+     <%= render 'github/shared/pagination', curr_path: team_app_workflow_path(@team, @app,  current_workflow.id, page: @current_page),
                                     first_path: team_app_workflow_path(@team, @app,  current_workflow.id, page: @first_page),
                                     last_path: team_app_workflow_path(@team, @app,  current_workflow.id, page: @last_page),
                                     next_path: team_app_workflow_path(@team, @app,  current_workflow.id, page: @next_page),
                                     prev_path: team_app_workflow_path(@team, @app,  current_workflow.id, page: @prev_page) %>
   <% else %>
-    <%= render 'github/shared/pagination', curr_path: team_app_workflows_path(@team, @app, page: @curr_page),
+    <%= render 'github/shared/pagination', curr_path: team_app_workflows_path(@team, @app, page: @current_page),
                                     first_path: team_app_workflows_path(@team, @app, page: @first_page),
                                     last_path: team_app_workflows_path(@team, @app, page: @last_page),
                                     next_path: team_app_workflows_path(@team, @app, page: @next_page),
