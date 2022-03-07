@@ -3,7 +3,8 @@
 module Github
   # Handles displaying workflow run info for an app
   class WorkflowRunsController < BaseController
-    before_action :set_github_workflow_run, only: %i[show rerun]
+    before_action :set_github_workflow_run, only: %i[show update]
+    before_action :set_all_workflows, only: %i[new create]
 
     # GET /github/workflow_runs or /github/workflow_runs.json
     def index
@@ -15,7 +16,27 @@ module Github
       @jobs = @github_workflow_run.jobs
     end
 
-    def rerun
+    def new; end
+
+    def create
+      respond_to do |format|
+        Github::Workflow.dispatch!(
+          current_user.github_token, @app.github_repo, github_workflow_run_params[:workflow_id],
+          github_workflow_run_params[:ref]
+        )
+        format.html do
+          redirect_to team_app_workflow_path(@app, @team, github_workflow_run_params[:workflow_id]),
+                      notice: 'Workflow was successfully dispatched'
+        end
+        format.json { render :show, json: true, status: :ok }
+      rescue Octokit::UnprocessableEntity => e
+        @error = e.message
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: false, status: :unprocessable_entity }
+      end
+    end
+
+    def update
       respond_to do |format|
         if @github_workflow_run.rerun!
           path = team_app_workflow_path(@team, @app, github_workflow_run_params[:workflow_id])
@@ -38,7 +59,15 @@ module Github
 
     # Only allow a list of trusted parameters through.
     def github_workflow_run_params
-      params.permit(:team_id, :app_id, :repository_repo, :workflow_id, :id)
+      params.permit(:team_id, :app_id, :repository_repo, :workflow_id, :id, :ref)
+    end
+
+    def set_all_workflows
+      @all_workflows = if request.path.include?('deploy')
+                         [@github_repository.deploy_workflow.github]
+                       else
+                         @github_repository.workflows[:workflows]
+                       end
     end
   end
 end

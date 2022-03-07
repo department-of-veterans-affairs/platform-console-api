@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="float-right mt-5 mr-2">
-      <%= link_to rerun_team_app_workflow_run_path(@team, @app, workflow_run.id), method: :post, title: 'Restart Run' do %>
+      <%= button_to team_app_workflow_run_path(@team, @app, workflow_run.id), method: :patch, title: 'Restart Run' do %>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
         </svg>
@@ -64,14 +64,14 @@
                 <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
                 <% current_css = 'bg-gray-200 text-gray-900 group flex items-center px-2 py-2 text-md font-medium rounded-md' %>
                 <% default_css = 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-md font-medium rounded-md' %>
-                <% if controller_name.include?('workflow') %>
+                <% if request.path.include?('workflow') %>
                   <%= link_to team_app_workflow_run_path(@team, @app, workflow_run_job.github[:run_id]), class: default_css do %>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
                     All Jobs
                   <% end %>
-                <% elsif controller_name.include?('deploy') %>
+                <% elsif request.path.include?('deploy') %>
                   <%= link_to team_app_deploy_run_path(@team, @app, workflow_run_job.github[:run_id]), class: default_css do %>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -89,9 +89,9 @@
                   </div>
                 </div>
                 <% jobs[:jobs].each do |job|%>
-                  <% if controller_name.include?('workflow') %>
+                  <% if request.path.include?('workflow') %>
                     <% path = team_app_workflow_run_job_path(@team, @app, job[:id] )%>
-                  <% elsif controller_name.include?('deploy') %>
+                  <% elsif request.path.include?('deploy') %>
                     <% path = team_app_deploy_run_job_path(@team, @app, job[:id] )%>
                   <% end %>
                   <%= link_to path, class: workflow_run_job.github[:name] == job[:name] ? current_css : default_css do %>
