@@ -76,7 +76,7 @@ module ArgoCd
       https.verify_mode = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
 
       request = Net::HTTP::Post.new(uri.request_uri)
-      request.body = '{"username":"test_user", "password": "password"}' # TODO: store in env vars/param store
+      request.body = {"username": ENV["ARGO_USER"], "password": ENV["ARGO_PWD"]}.to_json
       # Tweak headers, removing this will default to application/x-www-form-urlencoded
       request['Content-Type'] = 'application/json'
 
