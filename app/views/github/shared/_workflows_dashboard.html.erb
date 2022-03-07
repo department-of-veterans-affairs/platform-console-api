@@ -1,12 +1,12 @@
 <% if all_workflows.present? || current_workflow.present? %>
-  <div class="h-full flex">
+  <div class="h-full flex mt-2">
     <!-- Static sidebar for desktop -->
     <div class="hidden lg:flex lg:flex-shrink-0">
       <div class="flex flex-col w-64">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white">
-          <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-            <nav class="mt-5 flex-1" aria-label="Sidebar">
+          <div class="flex-1 flex flex-col pb-4 overflow-y-auto">
+            <nav class="mt-2 flex-1" aria-label="Sidebar">
               <div class="px-2 space-y-1">
                 <% if controller_name.include?('workflow') %>
                   <%= link_to 'Dispatch a Workflow', new_dispatch_team_app_workflows_path(@team, @app), title: 'Dispatch Workflow', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-5' %>

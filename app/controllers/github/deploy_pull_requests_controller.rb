@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Github
-  # Handles displaying deploy run job info for an app
+  # Handles creation of pull requests to add a Workflow file.
   class DeployPullRequestsController < BaseController
     before_action :authorize_session!
 
