@@ -7,8 +7,8 @@ module Github
     before_action :set_team
     before_action :set_app
     before_action :set_github_repository
-    rescue_from Octokit::Unauthorized, with: :reauthorize_github
-    rescue_from Octokit::Forbidden, with: :reauthorize_github
+    rescue_from Octokit::Unauthorized, with: :unauthorized
+    rescue_from Octokit::Forbidden, with: :unauthorized
 
     private
 
@@ -27,10 +27,9 @@ module Github
       @app = @team.apps.find(params[:app_id])
     end
 
-    def reauthorize_github(e)
-      referer = Rails.application.routes.recognize_path(request.referrer)
+    def unauthorized(exception)
       respond_to do |format|
-        format.html { render "#{referer[:controller]}/#{referer[:action]}", error: e.message }
+        format.html { redirect_to request.referer, alert: exception.message }
       end
     end
   end
