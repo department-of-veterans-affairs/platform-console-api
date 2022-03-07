@@ -13,7 +13,7 @@ module Github
         redirect_to team_app_deploy_path(@team, @app, deploy_workflow.id)
       end
       @curr_page = params.fetch(:page, 1)
-      @github_workflows = @github_repository.workflows
+      @github_workflows = @github_repository.workflows[:workflows]
       set_pages
     end
 
