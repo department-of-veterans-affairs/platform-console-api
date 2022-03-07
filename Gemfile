@@ -8,13 +8,16 @@ gem 'rails', '~> 7.0.2'
 
 gem 'bcrypt',            '~> 3.1' # Use ActiveModel has_secure_password
 gem 'bootsnap',          '~> 1.10', require: false # Reduces boot times through caching; required in config/boot.rb
+gem 'faraday',           '~> 1.10' # HTTP client library using over Net::HTTP
+gem 'faraday-net_http',  '~> 1.0'  # Faraday adapter for the Net::HTTP library
 gem 'flipper',           '~> 0.24' # Feature flipper for ANYTHING
 gem 'flipper-redis',     '~> 0.24' # Redis adapter for Flipper
 gem 'flipper-ui',        '~> 0.24' # UI for the Flipper gem
 gem 'jbuilder',          '~> 2.11' # Build JSON APIs with ease [https://github.com/rails/jbuilder]
+gem 'net-http'
 gem 'omniauth-keycloak', '~> 1.4'  # Keycloack SSO Oauth Strategy
 gem 'omniauth-rails_csrf_protection'
-gem 'pagy',              '~> 5.10' # Agnostic pagination in plain ruby
+gem 'pagy', '~> 5.10' # Agnostic pagination in plain ruby
 gem 'paper_trail',       '~> 12.2' # Track changes to your models, for auditing or versioning
 gem 'pg',                '~> 1.3'  # Use postgresql as the database for Active Record
 gem 'puma',              '~> 5.6'  # Use the Puma web server [https://github.com/puma/puma]
@@ -29,6 +32,7 @@ gem 'sprockets-rails',   '~> 3.4' # The original asset pipeline for Rails [https
 gem 'stimulus-rails',    '~> 1.0' # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'tailwindcss-rails', '~> 2.0' # Integrate Tailwind CSS with the asset pipeline
 gem 'turbo-rails',       '~> 1.0' # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+gem 'webmock'                     # Stubbing and setting expectations in HTTP requests
 
 group :development do
   gem 'rack-mini-profiler' # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -48,5 +52,6 @@ group :test do
   gem 'minitest-ci'        # Minitest Junit XML results for GHA
   gem 'selenium-webdriver' # Capybara system testing with Chrome
   gem 'simplecov'          # Code coverage for Ruby
+  gem 'vcr',               github: 'vcr/vcr' # Edge version for Ruby 3.1 support. Record/replay HTTP interactions
   gem 'webdrivers'         # Easy installation and use of web drivers to run system tests with browsers
 end

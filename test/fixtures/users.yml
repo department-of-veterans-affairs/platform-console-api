@@ -10,3 +10,11 @@ jane:
   password_digest: $2a$04$iUpp2uEoumjbCHfX3ypOcO.JMHSg4itA1sDodd.ILtU9AUYvZQOU2 # password
   uid: abc123_jane
   roles: admin
+
+jack:
+  id: 3
+  name: Jack
+  email: jack@example.com
+  password_digest: $2a$04$iUpp2uEoumjbCHfX3ypOcO.JMHSg4itA1sDodd.ILtU9AUYvZQOU2 # password
+  uid: abc123_jack
+

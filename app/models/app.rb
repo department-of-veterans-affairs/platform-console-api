@@ -2,6 +2,7 @@
 
 class App < ApplicationRecord
   belongs_to :team
+  has_many :deployments, dependent: :nullify
   has_paper_trail
   validates :name, presence: true
 end
