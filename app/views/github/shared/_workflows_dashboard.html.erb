@@ -5,7 +5,7 @@
       <div class="flex flex-col w-64">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div class="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white">
-          <div class="flex-1 flex flex-col pb-4 overflow-y-auto">
+          <div class="flex-1 flex flex-col pb-4">
             <nav class="mt-2 flex-1" aria-label="Sidebar">
               <div class="px-2 space-y-1">
                 <% if controller_name.include?('workflow') %>
@@ -40,9 +40,9 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-col min-w-0 flex-1 overflow-hidden">
-      <div class="flex-1 relative z-0 flex overflow-hidden">
-        <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last">
+    <div class="flex flex-col min-w-0 flex-1 ">
+      <div class="flex-1 relative z-0 flex ">
+        <main class="flex-1 relative z-0 focus:outline-none xl:order-last">
           <% if workflow_runs[:workflow_runs].present? %>
             <div class="flex justify-between">
               <h3 class="text-2xl leading-7 text-gray-900 text-md sm:truncate mt-4 ml-4 mb-4">
@@ -50,9 +50,9 @@
               </h3>
             </div>
             <div class="flex flex-col">
-              <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="-my-2 sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                  <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                  <div class="shadow  border-b border-gray-200 sm:rounded-lg">
                     <table class="min-w-full divide-y divide-gray-200">
                       <thead class="bg-gray-50">
                         <tr>
