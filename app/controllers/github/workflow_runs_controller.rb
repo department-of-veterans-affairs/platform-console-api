@@ -15,6 +15,27 @@ module Github
       @jobs = @github_workflow_run.jobs
     end
 
+    def new
+      @all_workflows = @github_repository.workflows
+    end
+
+    def create
+      @all_workflows = @github_repository.workflows
+      respond_to do |format|
+        Github::Workflow.dispatch!(current_user.github_token, @app.github_repo, github_workflow_run_params[:workflow_id],
+          github_workflow_run_params[:ref])
+        format.html do
+          redirect_to team_app_workflow_path(@app, @team, github_workflow_run_params[:workflow_id]),
+                      notice: 'Workflow was successfully dispatched'
+        end
+        format.json { render :show, json: true, status: :ok }
+      rescue Octokit::UnprocessableEntity => e
+        @error = e.message
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: false, status: :unprocessable_entity }
+      end
+    end
+
     def rerun
       respond_to do |format|
         if @github_workflow_run.rerun!
@@ -38,7 +59,7 @@ module Github
 
     # Only allow a list of trusted parameters through.
     def github_workflow_run_params
-      params.permit(:team_id, :app_id, :repository_repo, :workflow_id, :id)
+      params.permit(:team_id, :app_id, :repository_repo, :workflow_id, :id, :ref)
     end
   end
 end

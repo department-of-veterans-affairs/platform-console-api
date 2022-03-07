@@ -1,5 +1,5 @@
 <%= render 'github/shared/tabs' %>
-<%= form_with url: workflow_dispatch_team_app_workflows_path do |form| %>
+<%= form_with url: team_app_workflow_runs_path do |form| %>
   <% if @error.present? %>
     <div class="rounded-md bg-red-50 p-4">
       <div class="flex">

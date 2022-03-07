@@ -12,11 +12,8 @@ Rails.application.routes.draw do
     resources :apps do
       post :create_deploy_pr, on: :member
       resources :pull_requests, only: %i[index], controller: 'github/pull_requests'
-      resources :workflows, only: %i[index show], controller: 'github/workflows' do
-        get :new_dispatch, on: :collection
-        post :workflow_dispatch, on: :collection
-      end
-      resources :workflow_runs, only: %i[index show], controller: 'github/workflow_runs' do
+      resources :workflows, only: %i[index show], controller: 'github/workflows'
+      resources :workflow_runs, controller: 'github/workflow_runs' do
         post :rerun, on: :member
       end
       resources :workflow_run_jobs, only: [:show], controller: 'github/workflow_run_jobs'
@@ -28,6 +25,9 @@ Rails.application.routes.draw do
         post :rerun, on: :member
       end
       resources :deploy_run_jobs, only: [:show], controller: 'github/deploy_run_jobs'
+
+      get 'deploys' => 'github/workflows#index'
+      get 'deploys/:id' => 'github/workflows#show'
     end
   end
 

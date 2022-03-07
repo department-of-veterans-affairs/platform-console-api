@@ -9,7 +9,7 @@
             <nav class="mt-5 flex-1" aria-label="Sidebar">
               <div class="px-2 space-y-1">
                 <% if controller_name.include?('workflow') %>
-                  <%= link_to 'Dispatch a Workflow', new_dispatch_team_app_workflows_path(@team, @app), title: 'Dispatch Workflow', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-5' %>
+                  <%= link_to 'Dispatch a Workflow', new_team_app_workflow_run_path(@team, @app), title: 'Dispatch Workflow', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-5' %>
                 <% elsif controller_name.include?('deploy') %>
                    <%= link_to 'New Deploy', new_team_app_deploy_path(@team, @app), title: 'New Deploy', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-5' %>
                 <% end %>

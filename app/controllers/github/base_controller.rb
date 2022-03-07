@@ -27,9 +27,10 @@ module Github
       @app = @team.apps.find(params[:app_id])
     end
 
-    def reauthorize_github
+    def reauthorize_github(e)
+      referer = Rails.application.routes.recognize_path(request.referrer)
       respond_to do |format|
-        format.html { redirect_to edit_user_url(current_user), alert: 'Reauthorization with GitHub required.' }
+        format.html { render "#{referer[:controller]}/#{referer[:action]}", error: e.message }
       end
     end
   end
