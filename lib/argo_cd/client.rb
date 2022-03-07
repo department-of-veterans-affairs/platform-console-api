@@ -35,7 +35,7 @@ module ArgoCd
     end
 
     def current_deploy
-      # TODO
+      # TODO - dig in after first iteration
     end
 
     private
@@ -44,9 +44,9 @@ module ArgoCd
       return unless connected_app.blank? || token_expired?(connected_app)
 
       token_response = token_generation
-      unless token_response.successful? # error with token generation
-        token_response # return here and don't proceed.
-      end
+      return if token_response.successful? # error with token generation
+
+      token_response # return here and don't proceed.
     end
 
     def base_path
@@ -72,13 +72,9 @@ module ArgoCd
     def token_generation
       uri = URI("#{base_path}/api/v1/session")
       https = Net::HTTP.new(uri.host, uri.port)
-      # https.use_ssl = true
       https.verify_mode = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
 
-      request = Net::HTTP::Post.new(uri.request_uri)
-      request.body = {"username": ENV["ARGO_USER"], "password": ENV["ARGO_PWD"]}.to_json
-      # Tweak headers, removing this will default to application/x-www-form-urlencoded
-      request['Content-Type'] = 'application/json'
+      request = build_request(uri)
 
       r = https.request(request)
       response = Response.new(response: r)
@@ -86,6 +82,13 @@ module ArgoCd
       save_token(response) if response.successful?
 
       response
+    end
+
+    def build_request(uri)
+      request = Net::HTTP::Post.new(uri.request_uri)
+      request.body = { "username": ENV['ARGO_USER'], "password": ENV['ARGO_PWD'] }.to_json
+      request['Content-Type'] = 'application/json'
+      request
     end
 
     def save_token(response)
