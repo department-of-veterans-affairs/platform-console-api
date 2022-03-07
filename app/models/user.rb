@@ -2,6 +2,7 @@
 
 # The User Model
 class User < ApplicationRecord
+  has_many :connected_apps, dependent: :nullify
   has_paper_trail
   has_secure_password
   before_validation :downcase_email

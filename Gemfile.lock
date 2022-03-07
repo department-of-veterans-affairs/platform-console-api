@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/vcr/vcr.git
+  revision: 7ac8292c289ca98dcb4254b59e1ee29e2205d8b3
+  specs:
+    vcr (6.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -93,11 +99,13 @@ GEM
     coderay (1.1.3)
     concurrent-ruby (1.1.9)
     connection_pool (2.2.5)
+    crack (0.4.5)
+      rexml
     crass (1.0.6)
     digest (3.1.0)
     docile (1.4.0)
     erubi (1.10.0)
-    faraday (1.9.3)
+    faraday (1.10.0)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -132,6 +140,7 @@ GEM
       sanitize (< 7)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    hashdiff (1.0.1)
     hashie (5.0.0)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
@@ -164,6 +173,9 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
+    net-http (0.2.0)
+      net-protocol
+      uri
     net-imap (0.2.3)
       digest
       net-protocol
@@ -184,6 +196,8 @@ GEM
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     nokogiri (1.13.3-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.3-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.3-x86_64-linux)
       racc (~> 1.4)
@@ -320,6 +334,8 @@ GEM
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.7-arm64-darwin)
       railties (>= 6.0.0)
+    tailwindcss-rails (2.0.7-x86_64-darwin)
+      railties (>= 6.0.0)
     tailwindcss-rails (2.0.7-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.1)
@@ -330,10 +346,15 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.1.0)
+    uri (0.11.0)
     webdrivers (5.0.0)
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (~> 4.0)
+    webmock (3.14.0)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -345,6 +366,7 @@ PLATFORMS
   arm64-darwin-20
   arm64-darwin-21
   ruby
+  x86_64-darwin
   x86_64-linux
 
 DEPENDENCIES
@@ -353,12 +375,15 @@ DEPENDENCIES
   brakeman
   bundler-audit
   capybara
+  faraday (~> 1.10)
+  faraday-net_http (~> 1.0)
   flipper (~> 0.24)
   flipper-redis (~> 0.24)
   flipper-ui (~> 0.24)
   importmap-rails (~> 1.0)
   jbuilder (~> 2.11)
   minitest-ci
+  net-http
   omniauth-keycloak (~> 1.4)
   omniauth-rails_csrf_protection
   pagy (~> 5.10)
@@ -381,7 +406,9 @@ DEPENDENCIES
   strong_migrations (~> 0.8)
   tailwindcss-rails (~> 2.0)
   turbo-rails (~> 1.0)
+  vcr!
   webdrivers
+  webmock
 
 RUBY VERSION
    ruby 3.1.0p0
