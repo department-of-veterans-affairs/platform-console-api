@@ -18,7 +18,6 @@ class DeploymentsController < ApplicationController
   def show
     argo_client = ArgoCd::Client.new(@app.id, @deployment.name, @current_user.id)
     @response = argo_client.app_info
-    Rails.logger.debug "!!!!!!!#{@response.body}"
   end
 
   # GET /apps/new
