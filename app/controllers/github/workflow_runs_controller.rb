@@ -19,11 +19,10 @@ module Github
     def new; end
 
     def create
-      @all_workflows = @github_repository.workflows
       respond_to do |format|
         Github::Workflow.dispatch!(
-          current_user.github_token, @app.github_repo,
-          github_workflow_run_params[:workflow_id], github_workflow_run_params[:ref]
+          current_user.github_token, @app.github_repo, github_workflow_run_params[:workflow_id],
+          github_workflow_run_params[:ref]
         )
         format.html do
           redirect_to team_app_workflow_path(@app, @team, github_workflow_run_params[:workflow_id]),
