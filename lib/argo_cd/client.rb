@@ -35,7 +35,7 @@ module ArgoCd
     end
 
     def current_deploy
-      # TODO - dig in after first iteration
+      # TODO: - dig in after first iteration
     end
 
     private
