@@ -5,7 +5,7 @@ require 'argo_cd/client'
 # Handles creating deployments which are owned by an app
 class DeploymentsController < ApplicationController
   before_action :authorize_session!
-  before_action :set_app
+  before_action :set_app, :set_team
   before_action :set_deployment, only: %i[show edit update destroy]
 
   # GET /apps or /apps.json
@@ -35,7 +35,7 @@ class DeploymentsController < ApplicationController
     respond_to do |format|
       if @app.save
         format.html do
-          redirect_to app_deployment_url(@app, @deployment), notice: 'Deployment was successfully created.'
+          redirect_to team_app_deployment_url(@team, @app, @deployment), notice: 'Deployment was successfully created.'
         end
         format.json { render :show, status: :created, location: @deployment }
       else
@@ -50,7 +50,7 @@ class DeploymentsController < ApplicationController
     respond_to do |format|
       if @deployment.update(deployment_params)
         format.html do
-          redirect_to app_deployment_url(@app, @deployment), notice: 'Deployment was successfully updated.'
+          redirect_to team_app_deployment_url(@team, @app, @deployment), notice: 'Deployment was successfully updated.'
         end
         format.json { render :show, status: :ok, location: @deployment }
       else
@@ -65,7 +65,7 @@ class DeploymentsController < ApplicationController
     @deployment.destroy
 
     respond_to do |format|
-      format.html { redirect_to app_deployments_url(@app), notice: 'Deployment was successfully destroyed.' }
+      format.html { redirect_to team_app_deployments_url(@team, @app), notice: 'Deployment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -73,6 +73,10 @@ class DeploymentsController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
+  def set_team
+    @team = Team.find(params[:team_id])
+  end
+
   def set_app
     @app = App.find(params[:app_id])
   end

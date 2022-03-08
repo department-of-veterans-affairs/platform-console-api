@@ -2,7 +2,7 @@
   <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate mt-4">
     Deployments
   </h1>
-  <%= link_to new_app_deployment_path(@app), class: 'place-self-center inline-flex items-center mt-4 px-2 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' do %>
+  <%= link_to new_team_app_deployment_path(@team, @app), class: 'place-self-center inline-flex items-center mt-4 px-2 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' do %>
     <span class="sr-only">New deployment</span>
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
       <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
@@ -37,12 +37,12 @@
                 <% @deployments.each do |deployment| %>
                 <tr class="<%= cycle 'bg-white', 'bg-gray-50' %>">
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    <%= link_to deployment.name, app_deployment_path(@app, deployment), data: { turbo_frame: '_top' }, class: 'text-blue-900 hover:text-blue-800' %>
+                    <%= link_to deployment.name, team_app_deployment_path(@team, @app, deployment), data: { turbo_frame: '_top' }, class: 'text-blue-900 hover:text-blue-800' %>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <div class="flex space-x-2">
-                      <%= link_to 'Edit', edit_app_deployment_path(@app, deployment), data: { turbo_frame: '_top' }, class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
-                    <%= button_to 'Destroy', [@app, deployment], method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-red-900 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-900 sm:text-sm' %>
+                      <%= link_to 'Edit', edit_team_app_deployment_path(@team, @app, deployment), data: { turbo_frame: '_top' }, class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
+                    <%= button_to 'Destroy', [@team, @app, deployment], method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-red-900 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-900 sm:text-sm' %>
                     </div>
                   </td>
                 </tr>
@@ -69,7 +69,7 @@
       Get started by creating a new team.
     </p>
     <div class="mt-6">
-      <%= link_to new_app_deployment_path(@app), class: 'inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' do %>
+      <%= link_to new_team_app_deployment_path(@team, @app), class: 'inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' do %>
         <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
         </svg>
