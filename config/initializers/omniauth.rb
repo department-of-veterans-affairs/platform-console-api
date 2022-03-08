@@ -9,3 +9,4 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 end
 
 OmniAuth.config.allowed_request_methods = %i[post get]
+OmniAuth.config.logger = Rails.logger

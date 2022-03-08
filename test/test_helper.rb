@@ -22,17 +22,12 @@ module ActiveSupport
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
-
     WebMock.disable_net_connect!(allow_localhost: true)
-    WebMock.stub_request(:get, "http://test.host/auth/realms/Twilight/.well-known/openid-configuration").
-            to_return(status: 200, body: File.read(Rails.root.join('test/fixtures/files/keycloak_config.json')) , headers: {})
-
-    WebMock.stub_request(:get, "http://test.host/auth/realms/example-realm/protocol/openid-connect/certs").
-      to_return(status: 200, body: {"keys": []}.to_json, headers: {})
 
     # Add more helper methods to be used by all tests here...
 
     def setup_omniauth_mock(user)
+      stub_keycloak_requests
       OmniAuth.config.test_mode = true
       request = ActionDispatch::TestRequest.create
       request.env['omniauth.auth'] = keycloak_auth(user)
@@ -55,6 +50,14 @@ module ActiveSupport
 
     def login_as(user)
       visit "/login?request.omniauth[uid]=#{users(user).uid}"
+    end
+
+    def stub_keycloak_requests
+      WebMock.stub_request(:get, 'http://test.host/auth/realms/Twilight/.well-known/openid-configuration')
+             .to_return(status: 200, body: File.read(Rails.root.join('test/fixtures/files/keycloak_config.json')))
+
+      WebMock.stub_request(:get, 'http://test.host/auth/realms/example-realm/protocol/openid-connect/certs')
+             .to_return(status: 200, body: { "keys": [] }.to_json)
     end
   end
 end
