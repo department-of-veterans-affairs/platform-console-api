@@ -10,7 +10,7 @@ if ENV['COVERAGE'] || ENV['CI']
   end
 end
 
-ENV['RAILS_ENV'] = 'test'
+ENV['RAILS_ENV'] ||= 'test'
 ENV['KEYCLOAK_SITE_URL'] = 'http://test.host/auth/keycloak/callback'
 require_relative '../config/environment'
 require 'rails/test_help'
