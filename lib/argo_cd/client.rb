@@ -58,7 +58,7 @@ module ArgoCd
     end
 
     def connected_app
-      @connected_app ||= ConnectedApp.where(user_id: current_user_id, app_id: app_id).first
+      @connected_app ||= ConnectedApp.find_by(user_id: current_user_id, app_id: app_id)
     end
 
     def jwt_token
