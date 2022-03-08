@@ -12,6 +12,7 @@ end
 
 ENV['RAILS_ENV'] ||= 'test'
 ENV['KEYCLOAK_SITE_URL'] = 'http://test.host/auth/keycloak/callback'
+ENV['KEYCLOAK_REALM'] = 'example-realm'
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'webmock/minitest'
@@ -59,7 +60,7 @@ module ActiveSupport
     end
 
     def stub_keycloak_requests
-      WebMock.stub_request(:get, 'http://test.host/auth/realms/Twilight/.well-known/openid-configuration')
+      WebMock.stub_request(:get, 'http://test.host/auth/realms/example-realm/.well-known/openid-configuration')
              .to_return(status: 200, body: File.read(Rails.root.join('test/fixtures/files/keycloak_config.json')))
 
       WebMock.stub_request(:get, 'http://test.host/auth/realms/example-realm/protocol/openid-connect/certs')
