@@ -4,7 +4,7 @@
 class AppsController < ApplicationController
   before_action :authorize_session!
   before_action :set_team
-  before_action :set_app, only: %i[show edit update destroy create_deploy_pr]
+  before_action :set_app, only: %i[show edit update destroy]
   before_action :set_github_info, :set_github_stats, only: :show
 
   # GET /apps or /apps.json
@@ -59,21 +59,6 @@ class AppsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to team_url(@team), notice: 'App was successfully destroyed.' }
       format.json { head :no_content }
-    end
-  end
-
-  def create_deploy_pr
-    respond_to do |format|
-      if @app.repository(current_user.github_token).create_deploy_workflow_pr
-        format.html do
-          redirect_to team_app_deploys_path(@team, @app),
-                      notice: 'PR has been created'
-        end
-        format.json { render json: true, status: :ok }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: false, status: :unprocessable_entity }
-      end
     end
   end
 

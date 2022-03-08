@@ -12,14 +12,14 @@ module Github
         deploy_workflow = @github_repository.deploy_workflow
         redirect_to team_app_deploy_path(@team, @app, deploy_workflow.id)
       end
-      @curr_page = params.fetch(:page, 1)
+      @current_page = params.fetch(:page, 1)
       @github_workflows = @github_repository.workflows[:workflows]
       set_pages
     end
 
     # GET /github/workflows/1 or /github/workflows/1.json
     def show
-      @curr_page = params.fetch(:page, 1)
+      @current_page = params.fetch(:page, 1)
       @all_workflows = if request.path.include?('deploy')
                          [@github_repository.deploy_workflow]
                        else

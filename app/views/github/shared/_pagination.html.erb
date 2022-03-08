@@ -4,19 +4,19 @@
     <span class="page prev">
       <%= link_to 'Prev', prev_path %>
     </span>
-    <% unless  @curr_page.to_i == 1  %>
+    <% unless  @current_page.to_i == 1  %>
       <span class="page">
         <%= link_to @first_page || 1, first_path %>
       </span>
-      <% unless @curr_page.to_i == 2 %>
+      <% unless @current_page.to_i == 2 %>
         <span class="page gap">…</span>
       <% end %>
     <% end %>
     <span class="page active">
-      <%= link_to @curr_page, curr_path %>
+      <%= link_to @current_page, curr_path %>
     </span>
-    <% unless @last_page.nil? || @last_page.to_i == @curr_page.to_i %>
-      <% unless @curr_page.to_i + 1 == @last_page.to_i %>
+    <% unless @last_page.nil? || @last_page.to_i == @current_page.to_i %>
+      <% unless @current_page.to_i + 1 == @last_page.to_i %>
         <span class="page gap">…</span>
       <% end %>
       <span class="page">
