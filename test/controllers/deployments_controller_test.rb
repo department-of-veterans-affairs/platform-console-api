@@ -29,8 +29,10 @@ class DeploymentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show deployment' do
-    get app_deployment_url(@app, @deployment)
-    assert_response :success
+    VCR.use_cassette('system/success', record: :new_episodes) do
+      get app_deployment_url(@app, @deployment)
+      assert_response :success
+    end
   end
 
   test 'should get edit' do
