@@ -62,7 +62,7 @@ module ArgoCd
     end
 
     def jwt_token
-      Rails.env.test? ? nil : (connected_app&.token || nil)
+     (connected_app&.token || nil)
     end
 
     def token_expired?(connected_app)
@@ -95,7 +95,7 @@ module ArgoCd
       token = response.token
       connected_app = ConnectedApp.first_or_create(user_id: current_user_id, app_id: app_id)
       connected_app.token = token
-      connected_app.save! unless Rails.env.test?
+      connected_app.save!
     end
   end
 end
