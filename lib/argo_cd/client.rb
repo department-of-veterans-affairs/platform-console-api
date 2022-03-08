@@ -62,7 +62,7 @@ module ArgoCd
     end
 
     def jwt_token
-     (connected_app&.token || nil)
+      (connected_app&.token || nil)
     end
 
     def token_expired?(connected_app)
