@@ -23,7 +23,10 @@ module ActiveSupport
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
-    WebMock.disable_net_connect!(allow_localhost: true)
+    WebMock.disable_net_connect!({
+      allow_localhost: true,
+      allow: 'chromedriver.storage.googleapis.com' # Needed for GitHub runners
+    })
 
     # Add more helper methods to be used by all tests here...
 
