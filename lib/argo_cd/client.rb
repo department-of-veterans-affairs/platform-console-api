@@ -46,11 +46,9 @@ module ArgoCd
     private
 
     def base_path
-      if Rails.env.development? || Rails.env.test?
-        'https://localhost:8080'
-      else
-        'https://argocd.vfs.va.gov/api/v1'
-      end
+      return 'https://localhost:8080' unless Rails.env.production?
+      
+      ENV['ARGO_API_BASE_PATH']
     end
 
     def connected_app
