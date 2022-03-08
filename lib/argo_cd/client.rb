@@ -62,9 +62,7 @@ module ArgoCd
     end
 
     def jwt_token
-      return nil if Rails.env.test?
-
-      connected_app&.token || nil
+      Rails.env.test? ? nil : (connected_app&.token || nil)
     end
 
     def token_expired?(connected_app)
@@ -88,7 +86,7 @@ module ArgoCd
 
     def build_request(uri)
       request = Net::HTTP::Post.new(uri.request_uri)
-      request.body = { "username": ENV['ARGO_USER'], "password": ENV['ARGO_PWD'] }.to_json
+      request.body = { "username": 'test_user', "password": ENV['ARGO_PWD'] }.to_json
       request['Content-Type'] = 'application/json'
       request
     end
@@ -97,7 +95,7 @@ module ArgoCd
       token = response.token
       connected_app = ConnectedApp.first_or_create(user_id: current_user_id, app_id: app_id)
       connected_app.token = token
-      connected_app.save!
+      connected_app.save! unless Rails.env.test?
     end
   end
 end

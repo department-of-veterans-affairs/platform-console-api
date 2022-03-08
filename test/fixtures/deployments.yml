@@ -5,5 +5,5 @@ one:
   name: guestbook
 
 two:
-  app_id: 2
-  name: pghero
+  app_id: 3
+  name: guestbook

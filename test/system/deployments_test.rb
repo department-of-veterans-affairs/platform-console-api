@@ -10,6 +10,9 @@ class DeploymentsTest < ApplicationSystemTestCase
     @app = apps(:two)
     @deployment = deployments(:one)
     @connected_app = connected_apps(:one)
+
+    @app_two = apps(:three)
+    @deployment_two = deployments(:two)
   end
 
   test 'visiting the index' do
@@ -17,7 +20,7 @@ class DeploymentsTest < ApplicationSystemTestCase
     assert_selector 'h1', text: 'Deployments'
   end
 
-  test 'should show app' do
+  test 'should show app with existing connected_app record' do
     VCR.use_cassette('system/success', record: :new_episodes) do
       visit app_deployment_url(@app, @deployment)
       assert_selector 'h3', text: 'Argo Deployment Stats'
@@ -26,6 +29,26 @@ class DeploymentsTest < ApplicationSystemTestCase
       assert_selector 'dt', text: 'Current Commit Info'
       assert_selector 'dd', text: 'Status: Synced'
       assert_selector 'dt', text: 'Previous Commit Info'
+    end
+  end
+
+  test 'should show app and generate a token' do
+    VCR.use_cassette('system/success_generate_token', record: :new_episodes) do
+      visit app_deployment_url(@app_two, @deployment_two)
+      assert_selector 'h3', text: 'Argo Deployment Stats'
+      assert_selector 'dt', text: 'App Health'
+      assert_selector 'dd', text: 'Healthy'
+      assert_selector 'dt', text: 'Current Commit Info'
+      assert_selector 'dd', text: 'Status: Synced'
+      assert_selector 'dt', text: 'Previous Commit Info'
+    end
+  end
+
+  test 'should show app and show error with bad authentication' do
+    VCR.use_cassette('system/unsuccess_generate_token', record: :new_episodes) do
+      visit app_deployment_url(@app_two, @deployment_two)
+      assert_selector 'dt', text: '401 - no session information'
+      assert_selector 'dd', text: 'Error: Something went wrong with the Argo API call, please try again'
     end
   end
 
