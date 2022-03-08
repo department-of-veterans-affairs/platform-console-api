@@ -27,6 +27,11 @@ FileUtils.chdir APP_ROOT do
     FileUtils.touch "tmp/caching-dev.txt"
   end
 
+  puts "\n== Creating .env.local file =="
+  unless File.exist?(".env.local")
+    FileUtils.cp ".env.example", ".env.local"
+  end
+
   puts "\n== Preparing database =="
   system! "bin/rails db:prepare"
 

@@ -5,6 +5,9 @@ on:
     branches:
       - master
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Push image to ECR when changes are pushed to master"]
+    types: [completed]
 
 jobs:
   deploy:
@@ -13,7 +16,6 @@ jobs:
       ecr_repository: 'platform-console'
       manifests_directory: 'vsp-tools-backend/platform-console-api'
       auto_deploy_envs: 'utility'
-      app_name: 'platform-console-api'
     secrets:
       aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
       aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
