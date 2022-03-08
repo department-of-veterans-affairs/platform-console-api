@@ -62,6 +62,8 @@ module ArgoCd
     end
 
     def jwt_token
+      return nil if Rails.env.test?
+
       connected_app&.token || nil
     end
 
