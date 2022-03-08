@@ -33,7 +33,7 @@ class DeploymentsTest < ApplicationSystemTestCase
   end
 
   test 'should show app and generate a token' do
-    VCR.use_cassette('system/success_generate_token', record: :new_episodes) do
+    VCR.use_cassette('system/successful_generate_token', record: :new_episodes) do
       visit app_deployment_url(@app_two, @deployment_two)
       assert_selector 'h3', text: 'Argo Deployment Stats'
       assert_selector 'dt', text: 'App Health'
@@ -45,15 +45,15 @@ class DeploymentsTest < ApplicationSystemTestCase
   end
 
   test 'should show app and show error with bad authentication' do
-    VCR.use_cassette('system/unsuccess_generate_token', record: :new_episodes) do
+    VCR.use_cassette('system/unsuccessful_token_generation', record: :new_episodes) do
       visit app_deployment_url(@app_two, @deployment_two)
-      assert_selector 'dt', text: '401 - no session information'
+      assert_selector 'dt', text: '401 - Invalid username or password'
       assert_selector 'dd', text: 'Error: Something went wrong with the Argo API call, please try again'
     end
   end
 
   test 'should show error when bad jwt' do
-    VCR.use_cassette('system/deployments_401') do
+    VCR.use_cassette('system/deployments_401', record: :new_episodes) do
       visit app_deployment_url(@app, @deployment)
       assert_selector 'dt', text: '401 - no session information'
       assert_selector 'dd', text: 'Error: Something went wrong with the Argo API call, please try again'
@@ -87,7 +87,7 @@ class DeploymentsTest < ApplicationSystemTestCase
   end
 
   test 'should destroy Deployment' do
-    VCR.use_cassette('system/success') do
+    VCR.use_cassette('system/deployments_401') do
       visit app_deployment_url(@app, @deployment)
       click_on 'Destroy this deployment', match: :first
       page.driver.browser.switch_to.alert.accept

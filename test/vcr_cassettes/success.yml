@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:8080/api/v1/session
+    body:
+      encoding: UTF-8
+      string: '{"username":"test_user","password":"password"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Grpc-Metadata-Content-Type:
+      - application/grpc
+      Set-Cookie:
+      - argocd.token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDY4NTQ4MjQsImp0aSI6ImU0ZDQ3NWZkLTgzZjMtNGI0OC1hNzE4LWJiNTI3YzZkZjhhNCIsImlhdCI6MTY0Njc2ODQyNCwiaXNzIjoiYXJnb2NkIiwibmJmIjoxNjQ2NzY4NDI0LCJzdWIiOiJ0ZXN0X3VzZXI6bG9naW4ifQ.T4xw1_c4JPWlFllrmcxAzguYwQUseJa7-jsry736UCc;
+        path=/; SameSite=lax; httpOnly
+      Date:
+      - Tue, 08 Mar 2022 19:40:24 GMT
+      Content-Length:
+      - '275'
+    body:
+      encoding: UTF-8
+      string: '{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDY4NTQ4MjQsImp0aSI6ImU0ZDQ3NWZkLTgzZjMtNGI0OC1hNzE4LWJiNTI3YzZkZjhhNCIsImlhdCI6MTY0Njc2ODQyNCwiaXNzIjoiYXJnb2NkIiwibmJmIjoxNjQ2NzY4NDI0LCJzdWIiOiJ0ZXN0X3VzZXI6bG9naW4ifQ.T4xw1_c4JPWlFllrmcxAzguYwQUseJa7-jsry736UCc"}'
+  recorded_at: Tue, 08 Mar 2022 19:40:24 GMT
+recorded_with: VCR 6.0.0

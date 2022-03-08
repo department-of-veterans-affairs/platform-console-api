@@ -16,14 +16,19 @@ module ArgoCd
     def app_info
       uri = URI("#{base_path}/api/v1/applications?name=#{deployment_name}")
 
-      generate_token
+      if connected_app.blank? || token_expired?(connected_app)
+        token_response = generate_token
+        return token_response unless token_response.successful?
+      end
 
+      get_app_info(uri)
+    end
+
+    def get_app_info(uri)
       https = Net::HTTP.new(uri.host, uri.port)
       https.verify_mode = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
       response = https.get(uri.path, request_headers)
 
-      # may need this for prod... but not local
-      # response = Net::HTTP.get_response(URI.parse(response['location']))
       Response.new(response: response)
     end
 
@@ -40,15 +45,6 @@ module ArgoCd
 
     private
 
-    def generate_token
-      return unless connected_app.blank? || token_expired?(connected_app)
-
-      token_response = token_generation
-      return if token_response.successful? # error with token generation
-
-      token_response # return here and don't proceed.
-    end
-
     def base_path
       if Rails.env.development? || Rails.env.test?
         'https://localhost:8080'
@@ -62,14 +58,14 @@ module ArgoCd
     end
 
     def jwt_token
-      (connected_app&.token || nil)
+      connected_app.token
     end
 
     def token_expired?(connected_app)
       connected_app.updated_at + 24.hours < DateTime.now # token has expired
     end
 
-    def token_generation
+    def generate_token
       uri = URI("#{base_path}/api/v1/session")
       https = Net::HTTP.new(uri.host, uri.port)
       https.verify_mode = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
@@ -86,14 +82,14 @@ module ArgoCd
 
     def build_request(uri)
       request = Net::HTTP::Post.new(uri.request_uri)
-      request.body = { "username": 'test_user', "password": ENV['ARGO_PWD'] }.to_json
+      request.body = { "username": ENV['ARGO_USER'], "password": ENV['ARGO_PWD'] }.to_json
       request['Content-Type'] = 'application/json'
       request
     end
 
     def save_token(response)
       token = response.token
-      connected_app = ConnectedApp.first_or_create(user_id: current_user_id, app_id: app_id)
+      connected_app = ConnectedApp.find_or_create_by(user_id: current_user_id, app_id: app_id)
       connected_app.token = token
       connected_app.save!
     end
