@@ -87,7 +87,7 @@ class DeploymentsTest < ApplicationSystemTestCase
   end
 
   test 'should destroy Deployment' do
-    VCR.use_cassette('system/deployments_401') do
+    VCR.use_cassette('system/success') do
       visit app_deployment_url(@app, @deployment)
       click_on 'Destroy this deployment', match: :first
       page.driver.browser.switch_to.alert.accept
