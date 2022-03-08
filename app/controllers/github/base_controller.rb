@@ -7,8 +7,8 @@ module Github
     before_action :set_team
     before_action :set_app
     before_action :set_github_repository
-    rescue_from Octokit::Unauthorized, with: :reauthorize_github
-    rescue_from Octokit::Forbidden, with: :reauthorize_github
+    rescue_from Octokit::Unauthorized, with: :unauthorized
+    rescue_from Octokit::Forbidden, with: :unauthorized
 
     private
 
@@ -27,9 +27,9 @@ module Github
       @app = @team.apps.find(params[:app_id])
     end
 
-    def reauthorize_github
+    def unauthorized(exception)
       respond_to do |format|
-        format.html { redirect_to edit_user_url(current_user), alert: 'Reauthorization with GitHub required.' }
+        format.html { redirect_to request.referer, alert: exception.message }
       end
     end
   end
