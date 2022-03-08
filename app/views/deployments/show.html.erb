@@ -70,9 +70,9 @@
 <div class="flex space-x-4">
 	  <%= link_to 'Back to App', team_app_path(@app.team, @app), class: 'bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' %>
 
-  <%= link_to 'Edit this deployment', edit_app_deployment_path(@app, @deployment), class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' %>
+  <%= link_to 'Edit this deployment', edit_team_app_deployment_path(@team, @app, @deployment), class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' %>
 
-  <%= button_to 'Destroy this deployment', [@app, @deployment], method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-red-900 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-800 sm:text-sm' %>
+  <%= button_to 'Destroy this deployment', [@team, @app, @deployment], method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-red-900 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-800 sm:text-sm' %>
 </div>
 
 
