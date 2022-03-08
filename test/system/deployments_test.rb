@@ -18,9 +18,9 @@ class DeploymentsTest < ApplicationSystemTestCase
   end
 
   test 'should show app' do
-    VCR.use_cassette('system/success') do
+    VCR.use_cassette('system/success', record: :new_episodes) do
       visit app_deployment_url(@app, @deployment)
-      assert_selector 'h3', text: 'Argo Info'
+      assert_selector 'h3', text: 'Argo Deployment Stats'
       assert_selector 'dt', text: 'App Health'
       assert_selector 'dd', text: 'Healthy'
       assert_selector 'dt', text: 'Current Commit Info'
