@@ -22,7 +22,7 @@ class User < ApplicationRecord
     # roles = auth_hash['extra']['raw_info']['resource_access']['account']['roles']
   end
 
-  def token_invalid?
+  def argo_token_invalid?
     begin
       decoded_token = JWT.decode(argo_token, nil, false)
     rescue StandardError
