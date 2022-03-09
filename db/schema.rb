@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_15_144301) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_09_153801) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_144301) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_apps_on_team_id"
+  end
+
+  create_table "deployments", force: :cascade do |t|
+    t.string "name"
+    t.bigint "app_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["app_id"], name: "index_deployments_on_app_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -46,8 +54,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_144301) do
     t.string "email"
     t.string "password_digest"
     t.string "uid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "argo_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["password_digest"], name: "index_users_on_password_digest"
     t.index ["uid"], name: "index_users_on_uid"
@@ -56,8 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_144301) do
   create_table "users_roles", id: false, force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "role_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["role_id"], name: "index_users_roles_on_role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
     t.index ["user_id"], name: "index_users_roles_on_user_id"
@@ -74,4 +83,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_144301) do
   end
 
   add_foreign_key "apps", "teams"
+  add_foreign_key "deployments", "apps"
 end

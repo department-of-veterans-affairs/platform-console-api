@@ -5,13 +5,19 @@ require 'application_system_test_case'
 class AppsTest < ApplicationSystemTestCase
   setup do
     login_as :john
-    @team = teams(:one)
-    @app = apps(:one)
+    @team = teams(:two)
+    @app = apps(:two)
+    @deployment = deployments(:two)
   end
 
   test 'visiting the index' do
     visit team_apps_url(@team)
     assert_selector 'h1', text: 'Apps'
+  end
+
+  test 'should show app and generate a token' do
+    visit team_app_url(@team, @app)
+    assert_selector 'h3', text: "App: #{@app.name}"
   end
 
   test 'should create app' do
