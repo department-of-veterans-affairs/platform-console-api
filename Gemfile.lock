@@ -375,8 +375,6 @@ DEPENDENCIES
   brakeman
   bundler-audit
   capybara
-  faraday (~> 1.10)
-  faraday-net_http (~> 1.0)
   flipper (~> 0.24)
   flipper-redis (~> 0.24)
   flipper-ui (~> 0.24)
