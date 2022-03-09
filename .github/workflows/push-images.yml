@@ -11,7 +11,7 @@ on:
 
 jobs:
   push-images:
-    uses: department-of-veterans-affairs/platform-console-api/.github/workflows/push-image-template.yml@master
+    uses: department-of-veterans-affairs/platform-console-api/.github/workflows/push-image-template.yml@rails-master-key-docker
     with:
       ecr_repository: 'platform-console'
     secrets:
