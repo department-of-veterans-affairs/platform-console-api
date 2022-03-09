@@ -382,6 +382,7 @@ DEPENDENCIES
   flipper-ui (~> 0.24)
   importmap-rails (~> 1.0)
   jbuilder (~> 2.11)
+  jwt (~> 2.3)
   minitest-ci
   net-http
   omniauth-keycloak (~> 1.4)

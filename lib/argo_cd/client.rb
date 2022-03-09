@@ -60,7 +60,16 @@ module ArgoCd
     end
 
     def token_expired?(connected_app)
-      connected_app.updated_at + 24.hours < DateTime.now # token has expired
+      token = connected_app.token
+      decoded_token = JWT.decode(token, nil, false)
+      decoded_token_info = decoded_token[0]
+
+      if decoded_token_info.keys.include?('exp')
+        expiration = Time.zone.at(decoded_token_info['exp'])
+        (expiration + 24.hours) < DateTime.now # token has expired
+      else
+        false
+      end
     end
 
     def generate_token

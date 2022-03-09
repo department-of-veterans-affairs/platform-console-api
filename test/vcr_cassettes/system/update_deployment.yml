@@ -74,4 +74,39 @@ http_interactions:
         created","hookPhase":"Running","syncPhase":"Sync"},{"group":"apps","version":"v1","kind":"Deployment","namespace":"default","name":"guestbook-ui","status":"Synced","message":"deployment.apps/guestbook-ui
         created","hookPhase":"Running","syncPhase":"Sync"}],"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"}},"startedAt":"2022-02-24T21:20:55Z","finishedAt":"2022-02-24T21:20:55Z"},"sourceType":"Directory","summary":{"images":["gcr.io/heptio-images/ks-guestbook-demo:0.2"]}}}]}'
   recorded_at: Tue, 08 Mar 2022 16:28:02 GMT
+- request:
+    method: post
+    uri: http://localhost:8080/api/v1/session
+    body:
+      encoding: UTF-8
+      string: '{"username":"test_user","password":"password"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Grpc-Metadata-Content-Type:
+      - application/grpc
+      Set-Cookie:
+      - argocd.token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDY4NjExMzUsImp0aSI6IjM4ZjMyYTQ0LTU2MjctNDEwNy1iNzQ4LTUzYThhZjhkNmE3NyIsImlhdCI6MTY0Njc3NDczNSwiaXNzIjoiYXJnb2NkIiwibmJmIjoxNjQ2Nzc0NzM1LCJzdWIiOiJ0ZXN0X3VzZXI6bG9naW4ifQ._AcdjAdBKjfbxh2OvE_kMWUpuLHb3LxGB0dc_6FOJDA;
+        path=/; SameSite=lax; httpOnly
+      Date:
+      - Tue, 08 Mar 2022 21:25:35 GMT
+      Content-Length:
+      - '275'
+    body:
+      encoding: UTF-8
+      string: '{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDY4NjExMzUsImp0aSI6IjM4ZjMyYTQ0LTU2MjctNDEwNy1iNzQ4LTUzYThhZjhkNmE3NyIsImlhdCI6MTY0Njc3NDczNSwiaXNzIjoiYXJnb2NkIiwibmJmIjoxNjQ2Nzc0NzM1LCJzdWIiOiJ0ZXN0X3VzZXI6bG9naW4ifQ._AcdjAdBKjfbxh2OvE_kMWUpuLHb3LxGB0dc_6FOJDA"}'
+  recorded_at: Tue, 08 Mar 2022 21:25:35 GMT
 recorded_with: VCR 6.0.0

@@ -14,6 +14,7 @@ gem 'flipper',           '~> 0.24' # Feature flipper for ANYTHING
 gem 'flipper-redis',     '~> 0.24' # Redis adapter for Flipper
 gem 'flipper-ui',        '~> 0.24' # UI for the Flipper gem
 gem 'jbuilder',          '~> 2.11' # Build JSON APIs with ease [https://github.com/rails/jbuilder]
+gem 'jwt',               '~> 2.3'  # Ruby implementation of the JWT standard
 gem 'net-http'
 gem 'omniauth-keycloak', '~> 1.4'  # Keycloack SSO Oauth Strategy
 gem 'omniauth-rails_csrf_protection'
