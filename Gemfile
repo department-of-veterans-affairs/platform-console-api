@@ -8,6 +8,8 @@ gem 'rails', '~> 7.0.2'
 
 gem 'bcrypt',            '~> 3.1' # Use ActiveModel has_secure_password
 gem 'bootsnap',          '~> 1.10', require: false # Reduces boot times through caching; required in config/boot.rb
+gem 'faraday',           '~> 1.10' # HTTP client library using over Net::HTTP
+gem 'faraday-net_http',  '~> 1.0'  # Faraday adapter for the Net::HTTP library
 gem 'flipper',           '~> 0.24' # Feature flipper for ANYTHING
 gem 'flipper-redis',     '~> 0.24' # Redis adapter for Flipper
 gem 'flipper-ui',        '~> 0.24' # UI for the Flipper gem
