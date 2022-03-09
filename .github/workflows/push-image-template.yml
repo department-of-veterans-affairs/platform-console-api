@@ -31,4 +31,4 @@ jobs:
           region: us-gov-west-1
           tags: "${{inputs.ecr_repository}}-${{ github.sha }}"
           dockerfile: Dockerfile
-          extra_build_args: "--build-arg RAILS_ENV=production"
+          extra_build_args: "--build-arg RAILS_ENV=production --build-arg RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}"
