@@ -61,7 +61,7 @@ module Github
       def create_pr_branch(octokit_client, repo, branch_name, branch_from_sha)
         octokit_client.create_ref(repo, "heads/#{branch_name}", branch_from_sha)
         true
-      rescue StandardError
+      rescue Octokit::UnprocessableEntity
         false
       end
 
@@ -70,7 +70,7 @@ module Github
         begin
           octokit_client.create_contents(repo, file_path, message, file_contents, { branch: branch_name })
           true
-        rescue StandardError
+        rescue Octokit::UnprocessableEntity
           false
         end
       end
