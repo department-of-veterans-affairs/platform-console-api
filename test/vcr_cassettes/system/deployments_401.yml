@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8080/api/v1/applications
+    uri: http://localhost:8080/api/v1/applications?name=guestbook
     body:
       encoding: US-ASCII
       string: ''
     headers:
       Authorization:
-      - Bearer asdfjasdjkfkjasdfkjsdajkf
+      - Bearer adjsfajskdfjkasdfjklasfjkld
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -17,6 +17,8 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Host:
+      - localhost:8080
   response:
     status:
       code: 401
@@ -25,46 +27,11 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 07 Mar 2022 16:05:20 GMT
+      - Wed, 09 Mar 2022 16:14:30 GMT
       Content-Length:
       - '79'
     body:
       encoding: UTF-8
       string: '{"error":"no session information","code":16,"message":"no session information"}'
-  recorded_at: Mon, 07 Mar 2022 16:05:20 GMT
-- request:
-    method: post
-    uri: http://localhost:8080/api/v1/session
-    body:
-      encoding: UTF-8
-      string: '{"username":"test_user","password":"password"}'
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-      Content-Type:
-      - application/json
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json
-      Grpc-Metadata-Content-Type:
-      - application/grpc
-      Set-Cookie:
-      - argocd.token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDY4NjExMzMsImp0aSI6ImE0NTk2NWVmLWNjZjUtNDgzYS1iMGM5LWU1Mjc5ZjU3YjMxMCIsImlhdCI6MTY0Njc3NDczMywiaXNzIjoiYXJnb2NkIiwibmJmIjoxNjQ2Nzc0NzMzLCJzdWIiOiJ0ZXN0X3VzZXI6bG9naW4ifQ.6rz9gQUPhgEkS0DxncP2WdXXvVe_Yd6FxuqXMrxPXjQ;
-        path=/; SameSite=lax; httpOnly
-      Date:
-      - Tue, 08 Mar 2022 21:25:33 GMT
-      Content-Length:
-      - '275'
-    body:
-      encoding: UTF-8
-      string: '{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDY4NjExMzMsImp0aSI6ImE0NTk2NWVmLWNjZjUtNDgzYS1iMGM5LWU1Mjc5ZjU3YjMxMCIsImlhdCI6MTY0Njc3NDczMywiaXNzIjoiYXJnb2NkIiwibmJmIjoxNjQ2Nzc0NzMzLCJzdWIiOiJ0ZXN0X3VzZXI6bG9naW4ifQ.6rz9gQUPhgEkS0DxncP2WdXXvVe_Yd6FxuqXMrxPXjQ"}'
-  recorded_at: Tue, 08 Mar 2022 21:25:33 GMT
+  recorded_at: Wed, 09 Mar 2022 16:14:30 GMT
 recorded_with: VCR 6.0.0

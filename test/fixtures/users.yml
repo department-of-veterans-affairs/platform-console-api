@@ -3,6 +3,7 @@ john:
   email: john@example.com
   password_digest: $2a$04$iUpp2uEoumjbCHfX3ypOcO.JMHSg4itA1sDodd.ILtU9AUYvZQOU2 # password
   uid: abc123_john
+  argo_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3MzUzYmJkYi1kYTA1LTQxYjAtOGY5MC0zMzUxZDRhNDE3YjEiLCJpYXQiOjE2NDY3NzQ1NTksImlzcyI6ImFyZ29jZCIsIm5iZiI6MTY0Njc3NDU1OSwic3ViIjoidGVzdF91c2VyOmFwaUtleSJ9.kekkvIzuNOU2FC2dgFLUHyrbI8aScrQxE7Dz5GzoG20
 
 jane:
   name: Jane
@@ -10,6 +11,7 @@ jane:
   password_digest: $2a$04$iUpp2uEoumjbCHfX3ypOcO.JMHSg4itA1sDodd.ILtU9AUYvZQOU2 # password
   uid: abc123_jane
   roles: admin
+  argo_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3MzUzYmJkYi1kYTA1LTQxYjAtOGY5MC0zMzUxZDRhNDE3YjEiLCJpYXQiOjE2NDY3NzQ1NTksImlzcyI6ImFyZ29jZCIsIm5iZiI6MTY0Njc3NDU1OSwic3ViIjoidGVzdF91c2VyOmFwaUtleSJ9.kekkvIzuNOU2FC2dgFLUHyrbI8aScrQxE7Dz5GzoG20
 
 jack:
   id: 3
@@ -17,4 +19,4 @@ jack:
   email: jack@example.com
   password_digest: $2a$04$iUpp2uEoumjbCHfX3ypOcO.JMHSg4itA1sDodd.ILtU9AUYvZQOU2 # password
   uid: abc123_jack
-
+  argo_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3MzUzYmJkYi1kYTA1LTQxYjAtOGY5MC0zMzUxZDRhNDE3YjEiLCJpYXQiOjE2NDY3NzQ1NTksImlzcyI6ImFyZ29jZCIsIm5iZiI6MTY0Njc3NDU1OSwic3ViIjoidGVzdF91c2VyOmFwaUtleSJ9.kekkvIzuNOU2FC2dgFLUHyrbI8aScrQxE7Dz5GzoG20

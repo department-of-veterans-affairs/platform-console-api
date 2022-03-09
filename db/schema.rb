@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_03_142232) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_09_153801) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,14 +20,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_03_142232) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_apps_on_team_id"
-  end
-
-  create_table "connected_apps", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "app_id"
-    t.string "token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "deployments", force: :cascade do |t|
@@ -64,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_03_142232) do
     t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "argo_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["password_digest"], name: "index_users_on_password_digest"
     t.index ["uid"], name: "index_users_on_uid"

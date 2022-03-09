@@ -2,7 +2,7 @@
 
 # The User Model
 class User < ApplicationRecord
-  has_many :connected_apps, dependent: :nullify
+  encrypts :argo_token
   has_paper_trail
   has_secure_password
   before_validation :downcase_email
@@ -20,6 +20,23 @@ class User < ApplicationRecord
     # Authorize user and ensure keycloak is the provider
     # teams = auth_hash['extra']['raw_info']['groups']
     # roles = auth_hash['extra']['raw_info']['resource_access']['account']['roles']
+  end
+
+  def token_invalid?
+    begin
+      decoded_token = JWT.decode(argo_token, nil, false)
+    rescue StandardError
+      return true
+    end
+
+    decoded_token_info = decoded_token[0]
+
+    if decoded_token_info.keys.include?('exp')
+      expiration = Time.zone.at(decoded_token_info['exp'])
+      (expiration + 24.hours) < DateTime.now # token has expired
+    else
+      false
+    end
   end
 
   private

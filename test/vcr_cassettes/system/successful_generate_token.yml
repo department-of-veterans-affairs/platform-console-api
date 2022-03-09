@@ -72,4 +72,43 @@ http_interactions:
         created","hookPhase":"Running","syncPhase":"Sync"},{"group":"apps","version":"v1","kind":"Deployment","namespace":"default","name":"guestbook-ui","status":"Synced","message":"deployment.apps/guestbook-ui
         created","hookPhase":"Running","syncPhase":"Sync"}],"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"}},"startedAt":"2022-02-24T21:20:55Z","finishedAt":"2022-02-24T21:20:55Z"},"sourceType":"Directory","summary":{"images":["gcr.io/heptio-images/ks-guestbook-demo:0.2"]}}}]}'
   recorded_at: Tue, 08 Mar 2022 19:11:16 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/api/v1/applications?name=guestbook
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDY4NTMwNzYsImp0aSI6ImMyMWE5ODFhLTA4OTYtNDM4YS1hNGFhLWMyN2UxOThjMTY5NyIsImlhdCI6MTY0Njc2NjY3NiwiaXNzIjoiYXJnb2NkIiwibmJmIjoxNjQ2NzY2Njc2LCJzdWIiOiJ0ZXN0X3VzZXI6bG9naW4ifQ.pT3I_tq_krW1VyOgueXDbgHdfM_JHcZhF00pocHrB6o
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Grpc-Metadata-Content-Type:
+      - application/grpc
+      Date:
+      - Wed, 09 Mar 2022 16:21:20 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"resourceVersion":"541265"},"items":[{"metadata":{"name":"guestbook","namespace":"argocd","uid":"47d5848c-10bc-45f4-b4a6-9d8ad3efa13c","resourceVersion":"541265","generation":1987,"creationTimestamp":"2022-02-24T21:20:01Z","managedFields":[{"manager":"argocd-server","operation":"Update","apiVersion":"argoproj.io/v1alpha1","time":"2022-02-24T21:20:55Z","fieldsType":"FieldsV1","fieldsV1":{"f:spec":{".":{},"f:destination":{".":{},"f:namespace":{},"f:server":{}},"f:project":{},"f:source":{".":{},"f:path":{},"f:repoURL":{},"f:targetRevision":{}}},"f:status":{".":{},"f:health":{},"f:summary":{},"f:sync":{".":{},"f:comparedTo":{".":{},"f:destination":{},"f:source":{}}}}}},{"manager":"argocd-application-controller","operation":"Update","apiVersion":"argoproj.io/v1alpha1","time":"2022-03-05T23:27:35Z","fieldsType":"FieldsV1","fieldsV1":{"f:status":{"f:health":{"f:status":{}},"f:history":{},"f:operationState":{".":{},"f:finishedAt":{},"f:message":{},"f:operation":{".":{},"f:initiatedBy":{".":{},"f:username":{}},"f:retry":{},"f:sync":{".":{},"f:revision":{},"f:syncStrategy":{".":{},"f:hook":{}}}},"f:phase":{},"f:startedAt":{},"f:syncResult":{".":{},"f:resources":{},"f:revision":{},"f:source":{".":{},"f:path":{},"f:repoURL":{},"f:targetRevision":{}}}},"f:reconciledAt":{},"f:resources":{},"f:sourceType":{},"f:summary":{"f:images":{}},"f:sync":{"f:comparedTo":{"f:destination":{"f:namespace":{},"f:server":{}},"f:source":{"f:path":{},"f:repoURL":{},"f:targetRevision":{}}},"f:revision":{},"f:status":{}}}}}]},"spec":{"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"destination":{"server":"https://kubernetes.default.svc","namespace":"default"},"project":"default"},"status":{"resources":[{"version":"v1","kind":"Service","namespace":"default","name":"guestbook-ui","status":"Synced","health":{"status":"Healthy"}},{"group":"apps","version":"v1","kind":"Deployment","namespace":"default","name":"guestbook-ui","status":"Synced","health":{"status":"Healthy"}}],"sync":{"status":"Synced","comparedTo":{"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"destination":{"server":"https://kubernetes.default.svc","namespace":"default"}},"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba"},"health":{"status":"Healthy"},"history":[{"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","deployedAt":"2022-02-24T21:20:55Z","id":0,"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"deployStartedAt":"2022-02-24T21:20:55Z"}],"reconciledAt":"2022-03-09T16:17:47Z","operationState":{"operation":{"sync":{"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","syncStrategy":{"hook":{}}},"initiatedBy":{"username":"admin"},"retry":{}},"phase":"Succeeded","message":"successfully
+        synced (all tasks run)","syncResult":{"resources":[{"group":"","version":"v1","kind":"Service","namespace":"default","name":"guestbook-ui","status":"Synced","message":"service/guestbook-ui
+        created","hookPhase":"Running","syncPhase":"Sync"},{"group":"apps","version":"v1","kind":"Deployment","namespace":"default","name":"guestbook-ui","status":"Synced","message":"deployment.apps/guestbook-ui
+        created","hookPhase":"Running","syncPhase":"Sync"}],"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"}},"startedAt":"2022-02-24T21:20:55Z","finishedAt":"2022-02-24T21:20:55Z"},"sourceType":"Directory","summary":{"images":["gcr.io/heptio-images/ks-guestbook-demo:0.2"]}}}]}'
+  recorded_at: Wed, 09 Mar 2022 16:21:20 GMT
 recorded_with: VCR 6.0.0
