@@ -31,7 +31,6 @@ gem 'sprockets-rails',   '~> 3.4' # The original asset pipeline for Rails [https
 gem 'stimulus-rails',    '~> 1.0' # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'tailwindcss-rails', '~> 2.0' # Integrate Tailwind CSS with the asset pipeline
 gem 'turbo-rails',       '~> 1.0' # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem 'webmock'                     # Stubbing and setting expectations in HTTP requests
 
 group :development do
   gem 'rack-mini-profiler' # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -52,5 +51,6 @@ group :test do
   gem 'selenium-webdriver' # Capybara system testing with Chrome
   gem 'simplecov'          # Code coverage for Ruby
   gem 'vcr',               github: 'vcr/vcr' # Edge version for Ruby 3.1 support. Record/replay HTTP interactions
+  gem 'webmock'            # Stubbing and setting expectations in HTTP requests
   gem 'webdrivers'         # Easy installation and use of web drivers to run system tests with browsers
 end
