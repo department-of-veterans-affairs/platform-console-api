@@ -21,8 +21,6 @@ jobs:
     name: Push image to ECR
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: rails-master-key-docker
       - name: Build and push argo images to ECR
         uses: kciter/aws-ecr-action@v4
         with:
