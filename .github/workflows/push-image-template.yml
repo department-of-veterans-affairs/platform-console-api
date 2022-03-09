@@ -11,6 +11,8 @@ on:
         required: true
       aws_secret_access_key: #${{ secrets.AWS_SECRET_ACCESS_KEY }}
         required: true
+      rails_master_key: #${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        required: true
 
 
 jobs:
