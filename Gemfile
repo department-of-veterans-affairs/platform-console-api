@@ -16,7 +16,7 @@ gem 'jwt',               '~> 2.3'  # Ruby implementation of the JWT standard
 gem 'net-http'
 gem 'omniauth-keycloak', '~> 1.4'  # Keycloack SSO Oauth Strategy
 gem 'omniauth-rails_csrf_protection'
-gem 'pagy', '~> 5.10' # Agnostic pagination in plain ruby
+gem 'pagy',               '~> 5.10' # Agnostic pagination in plain ruby
 gem 'paper_trail',       '~> 12.2' # Track changes to your models, for auditing or versioning
 gem 'pg',                '~> 1.3'  # Use postgresql as the database for Active Record
 gem 'puma',              '~> 5.6'  # Use the Puma web server [https://github.com/puma/puma]
