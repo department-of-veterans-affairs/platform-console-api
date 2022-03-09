@@ -1,0 +1,409 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/department-of-veterans-affairs/platform-console-api
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.22.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token github_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 09 Mar 2022 22:07:23 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - W/"9485e987ecf3d4934d7abd0d6a0d24a21db122d640ff780e816a5bd737f8501c"
+      Last-Modified:
+      - Wed, 09 Feb 2022 17:46:38 GMT
+      X-Oauth-Scopes:
+      - read:org, read:user, repo, workflow
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4783'
+      X-Ratelimit-Reset:
+      - '1646864684'
+      X-Ratelimit-Used:
+      - '217'
+      X-Ratelimit-Resource:
+      - core
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - EA37:3EB2:A00298:A5F721:6229251B
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":447769607,"node_id":"R_kgDOGrBsBw","name":"platform-console-api","full_name":"department-of-veterans-affairs/platform-console-api","private":false,"owner":{"login":"department-of-veterans-affairs","id":5421563,"node_id":"MDEyOk9yZ2FuaXphdGlvbjU0MjE1NjM=","avatar_url":"https://avatars.githubusercontent.com/u/5421563?v=4","gravatar_id":"","url":"https://api.github.com/users/department-of-veterans-affairs","html_url":"https://github.com/department-of-veterans-affairs","followers_url":"https://api.github.com/users/department-of-veterans-affairs/followers","following_url":"https://api.github.com/users/department-of-veterans-affairs/following{/other_user}","gists_url":"https://api.github.com/users/department-of-veterans-affairs/gists{/gist_id}","starred_url":"https://api.github.com/users/department-of-veterans-affairs/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/department-of-veterans-affairs/subscriptions","organizations_url":"https://api.github.com/users/department-of-veterans-affairs/orgs","repos_url":"https://api.github.com/users/department-of-veterans-affairs/repos","events_url":"https://api.github.com/users/department-of-veterans-affairs/events{/privacy}","received_events_url":"https://api.github.com/users/department-of-veterans-affairs/received_events","type":"Organization","site_admin":false},"html_url":"https://github.com/department-of-veterans-affairs/platform-console-api","description":null,"fork":false,"url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api","forks_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/forks","keys_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/keys{/key_id}","collaborators_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/teams","hooks_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/hooks","issue_events_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/issues/events{/number}","events_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/events","assignees_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/assignees{/user}","branches_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/branches{/branch}","tags_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/tags","blobs_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/refs{/sha}","trees_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/trees{/sha}","statuses_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/statuses/{sha}","languages_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/languages","stargazers_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/stargazers","contributors_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/contributors","subscribers_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/subscribers","subscription_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/subscription","commits_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/commits{/sha}","git_commits_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/commits{/sha}","comments_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/comments{/number}","issue_comment_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/issues/comments{/number}","contents_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/contents/{+path}","compare_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/compare/{base}...{head}","merges_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/merges","archive_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/downloads","issues_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/issues{/number}","pulls_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/pulls{/number}","milestones_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/milestones{/number}","notifications_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/labels{/name}","releases_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/releases{/id}","deployments_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/deployments","created_at":"2022-01-13T22:21:19Z","updated_at":"2022-02-09T17:46:38Z","pushed_at":"2022-03-09T22:07:14Z","git_url":"git://github.com/department-of-veterans-affairs/platform-console-api.git","ssh_url":"git@github.com:department-of-veterans-affairs/platform-console-api.git","clone_url":"https://github.com/department-of-veterans-affairs/platform-console-api.git","svn_url":"https://github.com/department-of-veterans-affairs/platform-console-api","homepage":null,"size":2227,"stargazers_count":0,"watchers_count":0,"language":"Ruby","has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":0,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":12,"license":{"key":"other","name":"Other","spdx_id":"NOASSERTION","url":null,"node_id":"MDc6TGljZW5zZTA="},"allow_forking":true,"is_template":false,"topics":[],"visibility":"public","forks":0,"open_issues":12,"watchers":0,"default_branch":"master","permissions":{"admin":true,"maintain":true,"push":true,"triage":true,"pull":true},"temp_clone_token":"","allow_squash_merge":true,"allow_merge_commit":true,"allow_rebase_merge":true,"allow_auto_merge":false,"delete_branch_on_merge":true,"allow_update_branch":false,"organization":{"login":"department-of-veterans-affairs","id":5421563,"node_id":"MDEyOk9yZ2FuaXphdGlvbjU0MjE1NjM=","avatar_url":"https://avatars.githubusercontent.com/u/5421563?v=4","gravatar_id":"","url":"https://api.github.com/users/department-of-veterans-affairs","html_url":"https://github.com/department-of-veterans-affairs","followers_url":"https://api.github.com/users/department-of-veterans-affairs/followers","following_url":"https://api.github.com/users/department-of-veterans-affairs/following{/other_user}","gists_url":"https://api.github.com/users/department-of-veterans-affairs/gists{/gist_id}","starred_url":"https://api.github.com/users/department-of-veterans-affairs/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/department-of-veterans-affairs/subscriptions","organizations_url":"https://api.github.com/users/department-of-veterans-affairs/orgs","repos_url":"https://api.github.com/users/department-of-veterans-affairs/repos","events_url":"https://api.github.com/users/department-of-veterans-affairs/events{/privacy}","received_events_url":"https://api.github.com/users/department-of-veterans-affairs/received_events","type":"Organization","site_admin":false},"security_and_analysis":{"advanced_security":{"status":"disabled"},"secret_scanning":{"status":"enabled"},"secret_scanning_push_protection":{"status":"disabled"}},"network_count":0,"subscribers_count":7}'
+  recorded_at: Wed, 09 Mar 2022 22:07:23 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/refs/heads/master
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.22.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token github_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 09 Mar 2022 22:07:23 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - W/"c3d099156e1db5dea1fece4571c2f0bf46cd8167cfcfb7540c750fc482147d31"
+      Last-Modified:
+      - Wed, 09 Mar 2022 22:05:27 GMT
+      X-Poll-Interval:
+      - '300'
+      X-Oauth-Scopes:
+      - read:org, read:user, repo, workflow
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4782'
+      X-Ratelimit-Reset:
+      - '1646864684'
+      X-Ratelimit-Used:
+      - '218'
+      X-Ratelimit-Resource:
+      - core
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - EA38:5F62:A4C903:AABE3C:6229251B
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ref":"refs/heads/master","node_id":"REF_kwDOGrBsB7FyZWZzL2hlYWRzL21hc3Rlcg","url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/refs/heads/master","object":{"sha":"05390eed1ea7d55a57740ee4f3e879f323354be7","type":"commit","url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/commits/05390eed1ea7d55a57740ee4f3e879f323354be7"}}'
+  recorded_at: Wed, 09 Mar 2022 22:07:23 GMT
+- request:
+    method: post
+    uri: https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/refs
+    body:
+      encoding: UTF-8
+      string: '{"ref":"refs/heads/gha-add-deploy-template-workflow","sha":"05390eed1ea7d55a57740ee4f3e879f323354be7"}'
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.22.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token github_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 09 Mar 2022 22:07:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '496'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - '"55837228b2277a46f69f95e6beff073e27b2484dad07e1f9cde588a185beb6e8"'
+      X-Oauth-Scopes:
+      - read:org, read:user, repo, workflow
+      X-Accepted-Oauth-Scopes:
+      - repo
+      Location:
+      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/refs/heads/gha-add-deploy-template-workflow
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4781'
+      X-Ratelimit-Reset:
+      - '1646864684'
+      X-Ratelimit-Used:
+      - '219'
+      X-Ratelimit-Resource:
+      - core
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - EA39:14F9:52D9C0:57DEC4:6229251B
+    body:
+      encoding: UTF-8
+      string: '{"ref":"refs/heads/gha-add-deploy-template-workflow","node_id":"REF_kwDOGrBsB9oAK3JlZnMvaGVhZHMvZ2hhLWFkZC1kZXBsb3ktdGVtcGxhdGUtd29ya2Zsb3c","url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/refs/heads/gha-add-deploy-template-workflow","object":{"sha":"05390eed1ea7d55a57740ee4f3e879f323354be7","type":"commit","url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/commits/05390eed1ea7d55a57740ee4f3e879f323354be7"}}'
+  recorded_at: Wed, 09 Mar 2022 22:07:24 GMT
+- request:
+    method: put
+    uri: https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/contents/.github/workflows/deploy-template_demo.yml
+    body:
+      encoding: UTF-8
+      string: '{"branch":"gha-add-deploy-template-workflow","content":"bmFtZTogRGVwbG95IFRlbXBsYXRlIERlbW8Kb246CiAgd29ya2Zsb3dfZGlzcGF0Y2g6CiAgICBpbnB1dHM6CiAgICAgIGVudmlyb25tZW50OgogICAgICAgIGRlc2NyaXB0aW9uOiBUaGUgZW52aXJvbm1lbnQgdG8gZGVwbG95IHRvLgogICAgICAgIHJlcXVpcmVkOiB0cnVlCiAgICAgICAgZGVmYXVsdDogcHJvZHVjdGlvbgpqb2JzOgogIERlcGxveToKICAgIHJ1bnMtb246IHVidW50dS1sYXRlc3QKICAgIHN0ZXBzOgogICAgICAtIG5hbWU6IFNldHVwIGRlcGxveQogICAgICAgIHJ1bjogZWNobyAi8J+ZjCBEZXBsb3lpbmcgJHt7IGdpdGh1Yi5yZXBvc2l0b3J5IH19IHRvICR7eyBnaXRodWIuZXZlbnQuaW5wdXRzLmVudmlyb25tZW50IH19IGZyb20gJHt7IGdpdGh1Yi5yZWYgfX0hIPCfmYwiCiAgICAgIC0gbmFtZTogRGVwbG95CiAgICAgICAgcnVuOiBzbGVlcCAxMHMKICAgICAgLSBuYW1lOiBSZXN1bHRzCiAgICAgICAgcnVuOiBlY2hvICLwn46JICR7eyBnaXRodWIucmVwb3NpdG9yeSB9fSB3YXMgc3VjY2Vzc2Z1bGx5IGRlcGxveWVkIHRvICR7eyBnaXRodWIuZXZlbnQuaW5wdXRzLmVudmlyb25tZW50IH19ISDwn46JIgo=","message":"Add
+        deploy-template_demo.yml workflow file"}'
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.22.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token github_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 09 Mar 2022 22:07:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2657'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - '"7731bc19cf52669878da68c58cf39e2e50fd378c6b978950dc7dfe5a069cad47"'
+      X-Oauth-Scopes:
+      - read:org, read:user, repo, workflow
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4780'
+      X-Ratelimit-Reset:
+      - '1646864684'
+      X-Ratelimit-Used:
+      - '220'
+      X-Ratelimit-Resource:
+      - core
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - EA3A:4FEA:53F8E3:5905DE:6229251C
+    body:
+      encoding: UTF-8
+      string: '{"content":{"name":"deploy-template_demo.yml","path":".github/workflows/deploy-template_demo.yml","sha":"14e1a6bc283e128c4773457c5c6e76e78b20cb01","size":587,"url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/contents/.github/workflows/deploy-template_demo.yml?ref=gha-add-deploy-template-workflow","html_url":"https://github.com/department-of-veterans-affairs/platform-console-api/blob/gha-add-deploy-template-workflow/.github/workflows/deploy-template_demo.yml","git_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/blobs/14e1a6bc283e128c4773457c5c6e76e78b20cb01","download_url":"https://raw.githubusercontent.com/department-of-veterans-affairs/platform-console-api/gha-add-deploy-template-workflow/.github/workflows/deploy-template_demo.yml","type":"file","_links":{"self":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/contents/.github/workflows/deploy-template_demo.yml?ref=gha-add-deploy-template-workflow","git":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/blobs/14e1a6bc283e128c4773457c5c6e76e78b20cb01","html":"https://github.com/department-of-veterans-affairs/platform-console-api/blob/gha-add-deploy-template-workflow/.github/workflows/deploy-template_demo.yml"}},"commit":{"sha":"ae691c95376fb161575ee1d19b7383979f12d974","node_id":"C_kwDOGrBsB9oAKGFlNjkxYzk1Mzc2ZmIxNjE1NzVlZTFkMTliNzM4Mzk3OWYxMmQ5NzQ","url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/commits/ae691c95376fb161575ee1d19b7383979f12d974","html_url":"https://github.com/department-of-veterans-affairs/platform-console-api/commit/ae691c95376fb161575ee1d19b7383979f12d974","author":{"name":"VA
+        VSP Bot","email":"70344339+va-vsp-bot@users.noreply.github.com","date":"2022-03-09T22:07:24Z"},"committer":{"name":"VA
+        VSP Bot","email":"70344339+va-vsp-bot@users.noreply.github.com","date":"2022-03-09T22:07:24Z"},"tree":{"sha":"32631f5e723ec35a351db287ce7e40d7c30f2dfc","url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/trees/32631f5e723ec35a351db287ce7e40d7c30f2dfc"},"message":"Add
+        deploy-template_demo.yml workflow file","parents":[{"sha":"05390eed1ea7d55a57740ee4f3e879f323354be7","url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/commits/05390eed1ea7d55a57740ee4f3e879f323354be7","html_url":"https://github.com/department-of-veterans-affairs/platform-console-api/commit/05390eed1ea7d55a57740ee4f3e879f323354be7"}],"verification":{"verified":false,"reason":"unsigned","signature":null,"payload":null}}}'
+  recorded_at: Wed, 09 Mar 2022 22:07:24 GMT
+- request:
+    method: post
+    uri: https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/pulls
+    body:
+      encoding: UTF-8
+      string: '{"base":"master","head":"gha-add-deploy-template-workflow","title":"Add
+        deploy-template_demo.yml workflow file"}'
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.22.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token github_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 09 Mar 2022 22:07:26 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '19670'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - '"b1039a99ad69ffaab354b0aaa8c342b3e68d7c3706c75f6d3798eeb5d8e3f7d6"'
+      X-Oauth-Scopes:
+      - read:org, read:user, repo, workflow
+      X-Accepted-Oauth-Scopes:
+      - ''
+      Location:
+      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/pulls/160
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4779'
+      X-Ratelimit-Reset:
+      - '1646864684'
+      X-Ratelimit-Used:
+      - '221'
+      X-Ratelimit-Resource:
+      - core
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - EA3B:522C:8DA128:93230F:6229251D
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/pulls/160","id":875778034,"node_id":"PR_kwDOGrBsB840M0_y","html_url":"https://github.com/department-of-veterans-affairs/platform-console-api/pull/160","diff_url":"https://github.com/department-of-veterans-affairs/platform-console-api/pull/160.diff","patch_url":"https://github.com/department-of-veterans-affairs/platform-console-api/pull/160.patch","issue_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/issues/160","number":160,"state":"open","locked":false,"title":"Add
+        deploy-template_demo.yml workflow file","user":{"login":"va-vsp-bot","id":70344339,"node_id":"MDQ6VXNlcjcwMzQ0MzM5","avatar_url":"https://avatars.githubusercontent.com/u/70344339?v=4","gravatar_id":"","url":"https://api.github.com/users/va-vsp-bot","html_url":"https://github.com/va-vsp-bot","followers_url":"https://api.github.com/users/va-vsp-bot/followers","following_url":"https://api.github.com/users/va-vsp-bot/following{/other_user}","gists_url":"https://api.github.com/users/va-vsp-bot/gists{/gist_id}","starred_url":"https://api.github.com/users/va-vsp-bot/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/va-vsp-bot/subscriptions","organizations_url":"https://api.github.com/users/va-vsp-bot/orgs","repos_url":"https://api.github.com/users/va-vsp-bot/repos","events_url":"https://api.github.com/users/va-vsp-bot/events{/privacy}","received_events_url":"https://api.github.com/users/va-vsp-bot/received_events","type":"User","site_admin":false},"body":null,"created_at":"2022-03-09T22:07:25Z","updated_at":"2022-03-09T22:07:25Z","closed_at":null,"merged_at":null,"merge_commit_sha":null,"assignee":null,"assignees":[],"requested_reviewers":[],"requested_teams":[],"labels":[],"milestone":null,"draft":false,"commits_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/pulls/160/commits","review_comments_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/pulls/160/comments","review_comment_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/pulls/comments{/number}","comments_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/issues/160/comments","statuses_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/statuses/ae691c95376fb161575ee1d19b7383979f12d974","head":{"label":"department-of-veterans-affairs:gha-add-deploy-template-workflow","ref":"gha-add-deploy-template-workflow","sha":"ae691c95376fb161575ee1d19b7383979f12d974","user":{"login":"department-of-veterans-affairs","id":5421563,"node_id":"MDEyOk9yZ2FuaXphdGlvbjU0MjE1NjM=","avatar_url":"https://avatars.githubusercontent.com/u/5421563?v=4","gravatar_id":"","url":"https://api.github.com/users/department-of-veterans-affairs","html_url":"https://github.com/department-of-veterans-affairs","followers_url":"https://api.github.com/users/department-of-veterans-affairs/followers","following_url":"https://api.github.com/users/department-of-veterans-affairs/following{/other_user}","gists_url":"https://api.github.com/users/department-of-veterans-affairs/gists{/gist_id}","starred_url":"https://api.github.com/users/department-of-veterans-affairs/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/department-of-veterans-affairs/subscriptions","organizations_url":"https://api.github.com/users/department-of-veterans-affairs/orgs","repos_url":"https://api.github.com/users/department-of-veterans-affairs/repos","events_url":"https://api.github.com/users/department-of-veterans-affairs/events{/privacy}","received_events_url":"https://api.github.com/users/department-of-veterans-affairs/received_events","type":"Organization","site_admin":false},"repo":{"id":447769607,"node_id":"R_kgDOGrBsBw","name":"platform-console-api","full_name":"department-of-veterans-affairs/platform-console-api","private":false,"owner":{"login":"department-of-veterans-affairs","id":5421563,"node_id":"MDEyOk9yZ2FuaXphdGlvbjU0MjE1NjM=","avatar_url":"https://avatars.githubusercontent.com/u/5421563?v=4","gravatar_id":"","url":"https://api.github.com/users/department-of-veterans-affairs","html_url":"https://github.com/department-of-veterans-affairs","followers_url":"https://api.github.com/users/department-of-veterans-affairs/followers","following_url":"https://api.github.com/users/department-of-veterans-affairs/following{/other_user}","gists_url":"https://api.github.com/users/department-of-veterans-affairs/gists{/gist_id}","starred_url":"https://api.github.com/users/department-of-veterans-affairs/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/department-of-veterans-affairs/subscriptions","organizations_url":"https://api.github.com/users/department-of-veterans-affairs/orgs","repos_url":"https://api.github.com/users/department-of-veterans-affairs/repos","events_url":"https://api.github.com/users/department-of-veterans-affairs/events{/privacy}","received_events_url":"https://api.github.com/users/department-of-veterans-affairs/received_events","type":"Organization","site_admin":false},"html_url":"https://github.com/department-of-veterans-affairs/platform-console-api","description":null,"fork":false,"url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api","forks_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/forks","keys_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/keys{/key_id}","collaborators_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/teams","hooks_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/hooks","issue_events_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/issues/events{/number}","events_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/events","assignees_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/assignees{/user}","branches_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/branches{/branch}","tags_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/tags","blobs_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/refs{/sha}","trees_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/trees{/sha}","statuses_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/statuses/{sha}","languages_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/languages","stargazers_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/stargazers","contributors_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/contributors","subscribers_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/subscribers","subscription_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/subscription","commits_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/commits{/sha}","git_commits_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/commits{/sha}","comments_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/comments{/number}","issue_comment_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/issues/comments{/number}","contents_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/contents/{+path}","compare_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/compare/{base}...{head}","merges_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/merges","archive_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/downloads","issues_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/issues{/number}","pulls_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/pulls{/number}","milestones_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/milestones{/number}","notifications_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/labels{/name}","releases_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/releases{/id}","deployments_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/deployments","created_at":"2022-01-13T22:21:19Z","updated_at":"2022-02-09T17:46:38Z","pushed_at":"2022-03-09T22:07:24Z","git_url":"git://github.com/department-of-veterans-affairs/platform-console-api.git","ssh_url":"git@github.com:department-of-veterans-affairs/platform-console-api.git","clone_url":"https://github.com/department-of-veterans-affairs/platform-console-api.git","svn_url":"https://github.com/department-of-veterans-affairs/platform-console-api","homepage":null,"size":2227,"stargazers_count":0,"watchers_count":0,"language":"Ruby","has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":0,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":13,"license":{"key":"other","name":"Other","spdx_id":"NOASSERTION","url":null,"node_id":"MDc6TGljZW5zZTA="},"allow_forking":true,"is_template":false,"topics":[],"visibility":"public","forks":0,"open_issues":13,"watchers":0,"default_branch":"master"}},"base":{"label":"department-of-veterans-affairs:master","ref":"master","sha":"05390eed1ea7d55a57740ee4f3e879f323354be7","user":{"login":"department-of-veterans-affairs","id":5421563,"node_id":"MDEyOk9yZ2FuaXphdGlvbjU0MjE1NjM=","avatar_url":"https://avatars.githubusercontent.com/u/5421563?v=4","gravatar_id":"","url":"https://api.github.com/users/department-of-veterans-affairs","html_url":"https://github.com/department-of-veterans-affairs","followers_url":"https://api.github.com/users/department-of-veterans-affairs/followers","following_url":"https://api.github.com/users/department-of-veterans-affairs/following{/other_user}","gists_url":"https://api.github.com/users/department-of-veterans-affairs/gists{/gist_id}","starred_url":"https://api.github.com/users/department-of-veterans-affairs/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/department-of-veterans-affairs/subscriptions","organizations_url":"https://api.github.com/users/department-of-veterans-affairs/orgs","repos_url":"https://api.github.com/users/department-of-veterans-affairs/repos","events_url":"https://api.github.com/users/department-of-veterans-affairs/events{/privacy}","received_events_url":"https://api.github.com/users/department-of-veterans-affairs/received_events","type":"Organization","site_admin":false},"repo":{"id":447769607,"node_id":"R_kgDOGrBsBw","name":"platform-console-api","full_name":"department-of-veterans-affairs/platform-console-api","private":false,"owner":{"login":"department-of-veterans-affairs","id":5421563,"node_id":"MDEyOk9yZ2FuaXphdGlvbjU0MjE1NjM=","avatar_url":"https://avatars.githubusercontent.com/u/5421563?v=4","gravatar_id":"","url":"https://api.github.com/users/department-of-veterans-affairs","html_url":"https://github.com/department-of-veterans-affairs","followers_url":"https://api.github.com/users/department-of-veterans-affairs/followers","following_url":"https://api.github.com/users/department-of-veterans-affairs/following{/other_user}","gists_url":"https://api.github.com/users/department-of-veterans-affairs/gists{/gist_id}","starred_url":"https://api.github.com/users/department-of-veterans-affairs/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/department-of-veterans-affairs/subscriptions","organizations_url":"https://api.github.com/users/department-of-veterans-affairs/orgs","repos_url":"https://api.github.com/users/department-of-veterans-affairs/repos","events_url":"https://api.github.com/users/department-of-veterans-affairs/events{/privacy}","received_events_url":"https://api.github.com/users/department-of-veterans-affairs/received_events","type":"Organization","site_admin":false},"html_url":"https://github.com/department-of-veterans-affairs/platform-console-api","description":null,"fork":false,"url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api","forks_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/forks","keys_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/keys{/key_id}","collaborators_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/teams","hooks_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/hooks","issue_events_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/issues/events{/number}","events_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/events","assignees_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/assignees{/user}","branches_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/branches{/branch}","tags_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/tags","blobs_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/refs{/sha}","trees_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/trees{/sha}","statuses_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/statuses/{sha}","languages_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/languages","stargazers_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/stargazers","contributors_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/contributors","subscribers_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/subscribers","subscription_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/subscription","commits_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/commits{/sha}","git_commits_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/commits{/sha}","comments_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/comments{/number}","issue_comment_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/issues/comments{/number}","contents_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/contents/{+path}","compare_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/compare/{base}...{head}","merges_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/merges","archive_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/downloads","issues_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/issues{/number}","pulls_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/pulls{/number}","milestones_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/milestones{/number}","notifications_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/labels{/name}","releases_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/releases{/id}","deployments_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/deployments","created_at":"2022-01-13T22:21:19Z","updated_at":"2022-02-09T17:46:38Z","pushed_at":"2022-03-09T22:07:24Z","git_url":"git://github.com/department-of-veterans-affairs/platform-console-api.git","ssh_url":"git@github.com:department-of-veterans-affairs/platform-console-api.git","clone_url":"https://github.com/department-of-veterans-affairs/platform-console-api.git","svn_url":"https://github.com/department-of-veterans-affairs/platform-console-api","homepage":null,"size":2227,"stargazers_count":0,"watchers_count":0,"language":"Ruby","has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":0,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":13,"license":{"key":"other","name":"Other","spdx_id":"NOASSERTION","url":null,"node_id":"MDc6TGljZW5zZTA="},"allow_forking":true,"is_template":false,"topics":[],"visibility":"public","forks":0,"open_issues":13,"watchers":0,"default_branch":"master"}},"_links":{"self":{"href":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/pulls/160"},"html":{"href":"https://github.com/department-of-veterans-affairs/platform-console-api/pull/160"},"issue":{"href":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/issues/160"},"comments":{"href":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/issues/160/comments"},"review_comments":{"href":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/pulls/160/comments"},"review_comment":{"href":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/pulls/comments{/number}"},"commits":{"href":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/pulls/160/commits"},"statuses":{"href":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/statuses/ae691c95376fb161575ee1d19b7383979f12d974"}},"author_association":"MEMBER","auto_merge":null,"active_lock_reason":null,"merged":false,"mergeable":null,"rebaseable":null,"mergeable_state":"unknown","merged_by":null,"comments":0,"review_comments":0,"maintainer_can_modify":false,"commits":1,"additions":18,"deletions":0,"changed_files":1}'
+  recorded_at: Wed, 09 Mar 2022 22:07:26 GMT
+recorded_with: VCR 6.0.0
