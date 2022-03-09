@@ -32,7 +32,6 @@ module ApplicationHelper
     end
   end
 
-  # rubocop:disable Metrics/MethodLength
   def sort_direction_icon(column)
     return '' unless params[:sort] == column.to_s
 
@@ -78,7 +77,6 @@ module ApplicationHelper
       drop: nav_links_drop
     }
   end
-  # rubocop:enable Metrics/MethodLength
 
   def nav_links_drop
     nav_links_drop_admin + [

@@ -10,11 +10,12 @@ module Github
     def index
       if request.path.include?('deploy')
         deploy_workflow = @github_repository.deploy_workflow
-        redirect_to team_app_deploy_path(@team, @app, deploy_workflow.id)
+        redirect_to team_app_deploy_path(@team, @app, deploy_workflow.id) if deploy_workflow
+      else
+        @current_page = params.fetch(:page, 1)
+        @github_workflows = @github_repository.workflows[:workflows]
+        set_pages
       end
-      @current_page = params.fetch(:page, 1)
-      @github_workflows = @github_repository.workflows[:workflows]
-      set_pages
     end
 
     # GET /github/workflows/1 or /github/workflows/1.json
@@ -27,27 +28,6 @@ module Github
                        end
       @github_workflow_runs = @github_workflow.workflow_runs(params[:page] || 1, { branch: params[:ref] }).to_h
       set_pages
-    end
-
-    def new_dispatch
-      @all_workflows = @github_repository.workflows
-    end
-
-    def workflow_dispatch
-      respond_to do |format|
-        Github::Workflow.dispatch!(current_user.github_token, @app.github_repo, github_workflow_params[:workflow_id],
-                                   github_workflow_params[:ref])
-        format.html do
-          redirect_to team_app_workflow_path(@app, @team, github_workflow_params[:workflow_id]),
-                      notice: 'Workflow was successfully dispatched'
-        end
-        format.json { render :show, json: true, status: :ok }
-      rescue Octokit::UnprocessableEntity => e
-        @all_workflows = @github_repository.workflows
-        @error = e.message
-        format.html { render :new_dispatch, status: :unprocessable_entity }
-        format.json { render json: false, status: :unprocessable_entity }
-      end
     end
 
     private
