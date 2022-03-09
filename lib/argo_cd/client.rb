@@ -72,7 +72,7 @@ module ArgoCd
 
     def build_request(uri)
       request = Net::HTTP::Post.new(uri.request_uri)
-      request.body = { "username": 'asdfjaskdfksfdajlk', "password": ENV['ARGO_PWD'] }.to_json
+      request.body = { "username": ENV['ARGO_USER'], "password": ENV['ARGO_PWD'] }.to_json
       request['Content-Type'] = 'application/json'
       request
     end
