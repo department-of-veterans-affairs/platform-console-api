@@ -1,5 +1,11 @@
 <%= render 'github/shared/tabs' %>
-<%= form_with url: team_app_workflow_runs_path do |form| %>
+<%  if request.path.include?('deploy')
+      path = team_app_deploy_runs_path
+    else
+      path = team_app_workflow_runs_path
+    end
+%>
+<%= form_with url: path do |form| %>
   <% if @error.present? %>
     <div class="rounded-md bg-red-50 p-4">
       <div class="flex">
@@ -38,6 +44,17 @@
           </div>
         </div>
       </div>
+      <% if request.path.include?('deploy') %>
+        <div class="space-y-6 sm:space-y-5">
+          <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+            <%= form.label :environment, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2', autofocus: true %>
+            <div class="mt-1 sm:mt-0 sm:col-span-2">
+
+              <%= form.text_field 'inputs[environment]', class: 'max-w-lg block w-full shadow-sm focus:ring-blue-900 focus:border-blue-900 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
       <div class="pt-5">
         <div class="flex justify-end">
           <%= link_to 'Cancel', team_app_workflows_path, class: 'bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' %>

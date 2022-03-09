@@ -3,8 +3,6 @@
 module Github
   # Handles creation of pull requests to add a Workflow file.
   class DeployPullRequestsController < BaseController
-    before_action :authorize_session!
-
     def create
       respond_to do |format|
         if @app.repository(current_user.github_token).create_deploy_workflow_pr
