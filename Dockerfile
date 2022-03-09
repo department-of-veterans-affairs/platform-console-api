@@ -27,7 +27,7 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle install
 COPY --chown=nonroot:nonroot . .
 RUN if [ "${RAILS_ENV}" = "production" ]; then \
-  RAILS_MASTER_KEY=$RAILS_MASTER_KEY SECRET_KEY_BASE=dummyvalue rails assets:precompile; fi
+  SECRET_KEY_BASE=dummyvalue rails assets:precompile; fi
 
 EXPOSE 3000
 
