@@ -16,7 +16,7 @@ module ArgoCd
     def app_info
       uri = URI("#{base_path}/api/v1/applications?name=#{deployment_name}")
 
-      if current_user.token_invalid?
+      if current_user.argo_token_invalid?
         token_response = generate_token
         return token_response unless token_response.successful?
       end
