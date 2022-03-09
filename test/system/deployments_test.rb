@@ -61,6 +61,18 @@ class DeploymentsTest < ApplicationSystemTestCase
     end
   end
 
+  test 'should get another token when token decoding is invalid' do
+    VCR.use_cassette('system/success_token_invalid', record: :new_episodes) do
+      visit team_app_deployment_url(@team, @app, @deployment)
+      assert_selector 'h3', text: 'Argo Deployment Stats'
+      assert_selector 'dt', text: 'App Health'
+      assert_selector 'dd', text: 'Healthy'
+      assert_selector 'dt', text: 'Current Commit Info'
+      assert_selector 'dd', text: 'Status: Synced'
+      assert_selector 'dt', text: 'Previous Commit Info'
+    end
+  end
+
   test 'should create deployment' do
     VCR.use_cassette('system/success') do
       visit team_app_deployments_url(@team, @app)

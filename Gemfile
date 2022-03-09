@@ -51,6 +51,6 @@ group :test do
   gem 'selenium-webdriver' # Capybara system testing with Chrome
   gem 'simplecov'          # Code coverage for Ruby
   gem 'vcr',               github: 'vcr/vcr' # Edge version for Ruby 3.1 support. Record/replay HTTP interactions
-  gem 'webmock'            # Stubbing and setting expectations in HTTP requests
   gem 'webdrivers'         # Easy installation and use of web drivers to run system tests with browsers
+  gem 'webmock'            # Stubbing and setting expectations in HTTP requests
 end

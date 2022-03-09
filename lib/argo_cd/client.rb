@@ -16,7 +16,7 @@ module ArgoCd
     def app_info
       uri = URI("#{base_path}/api/v1/applications?name=#{deployment_name}")
 
-      if connected_app.blank? || token_expired?(connected_app)
+      if connected_app.blank? || connected_app.token_invalid?
         token_response = generate_token
         return token_response unless token_response.successful?
       end
@@ -34,7 +34,7 @@ module ArgoCd
 
     def request_headers
       {
-        'Authorization' => "Bearer #{jwt_token}",
+        'Authorization' => "Bearer #{jwt}",
         'Content-Type' => 'application/json'
       }
     end
@@ -55,21 +55,8 @@ module ArgoCd
       @connected_app ||= ConnectedApp.find_by(user_id: current_user_id, app_id: app_id)
     end
 
-    def jwt_token
+    def jwt
       connected_app.token
-    end
-
-    def token_expired?(connected_app)
-      token = connected_app.token
-      decoded_token = JWT.decode(token, nil, false)
-      decoded_token_info = decoded_token[0]
-
-      if decoded_token_info.keys.include?('exp')
-        expiration = Time.zone.at(decoded_token_info['exp'])
-        (expiration + 24.hours) < DateTime.now # token has expired
-      else
-        false
-      end
     end
 
     def generate_token
