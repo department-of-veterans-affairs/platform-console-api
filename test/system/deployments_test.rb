@@ -10,7 +10,6 @@ class DeploymentsTest < ApplicationSystemTestCase
     @team = teams(:two)
     @app = apps(:two)
     @deployment = deployments(:one)
-    @connected_app = connected_apps(:one)
 
     @app_two = apps(:three)
     @deployment_two = deployments(:two)
@@ -21,7 +20,7 @@ class DeploymentsTest < ApplicationSystemTestCase
     assert_selector 'h1', text: 'Deployments'
   end
 
-  test 'should show app with existing connected_app record' do
+  test 'should show app with existing record' do
     VCR.use_cassette('system/success', record: :new_episodes) do
       visit team_app_deployment_url(@team, @app, @deployment)
       assert_selector 'h3', text: 'Argo Deployment Stats'

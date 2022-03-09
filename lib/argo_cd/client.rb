@@ -5,18 +5,18 @@ require_relative 'response'
 module ArgoCd
   # Client class for interacting with ArgoAPI
   class Client
-    attr_accessor :app_id, :deployment_name, :current_user_id
+    attr_accessor :app_id, :deployment_name, :current_user
 
     def initialize(app_id, deployment_name, current_user_id)
       @app_id = app_id
       @deployment_name = deployment_name
-      @current_user_id = current_user_id
+      @current_user = User.find(current_user_id)
     end
 
     def app_info
       uri = URI("#{base_path}/api/v1/applications?name=#{deployment_name}")
 
-      if connected_app.blank? || connected_app.token_invalid?
+      if current_user.token_invalid?
         token_response = generate_token
         return token_response unless token_response.successful?
       end
@@ -27,7 +27,7 @@ module ArgoCd
     def get_app_info(uri)
       https = Net::HTTP.new(uri.host, uri.port)
       https.verify_mode = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
-      response = https.get(uri.path, request_headers)
+      response = https.get(uri, request_headers)
 
       Response.new(response: response)
     end
@@ -51,12 +51,8 @@ module ArgoCd
       ENV['ARGO_API_BASE_PATH']
     end
 
-    def connected_app
-      @connected_app ||= ConnectedApp.find_by(user_id: current_user_id, app_id: app_id)
-    end
-
     def jwt
-      connected_app.token
+      current_user.argo_token
     end
 
     def generate_token
@@ -76,16 +72,15 @@ module ArgoCd
 
     def build_request(uri)
       request = Net::HTTP::Post.new(uri.request_uri)
-      request.body = { "username": ENV['ARGO_USER'], "password": ENV['ARGO_PWD'] }.to_json
+      request.body = { "username": 'asdfjaskdfksfdajlk', "password": ENV['ARGO_PWD'] }.to_json
       request['Content-Type'] = 'application/json'
       request
     end
 
     def save_token(response)
       token = response.token
-      connected_app = ConnectedApp.find_or_create_by(user_id: current_user_id, app_id: app_id)
-      connected_app.token = token
-      connected_app.save!
+      current_user.argo_token = token
+      current_user.save!
     end
   end
 end

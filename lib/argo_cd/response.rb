@@ -19,7 +19,7 @@ module ArgoCd
     end
 
     def app_info
-      @app_info ||= body['items'][0]['status']
+      body['items'][0]['status']
     end
 
     def app_health
@@ -31,7 +31,7 @@ module ArgoCd
     end
 
     def current_git_info
-      @current_git_info ||= app_info['sync']
+      app_info['sync']
     end
 
     def current_git_status
@@ -43,7 +43,7 @@ module ArgoCd
     end
 
     def previous_git_info
-      @previous_git_info ||= app_info['history'][0]
+      app_info['history'][0]
     end
 
     def previous_git_revision
