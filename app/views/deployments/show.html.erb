@@ -13,39 +13,39 @@
   <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
     <dl class="sm:divide-y sm:divide-gray-200">
       <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-				<dt class="text-sm font-medium text-gray-500">
-				  App Health
-				</dt>
-				<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-				  <%= @response.app_health %><br/>
-					Message: <%= @response.app_health_message || "none"%>
-				</dd>
+		<dt class="text-sm font-medium text-gray-500">
+			App Health
+		</dt>
+		<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+			<%= @response.app_health %><br/>
+			Message: <%= @response.app_health_message || "none"%>
+		</dd>
       </div>
     </dl>
   </div>
   <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
     <dl class="sm:divide-y sm:divide-gray-200">
       <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-				<dt class="text-sm font-medium text-gray-500">
-				  Current Commit Info
-				</dt>
-				<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-					Status: <%= @response.current_git_status %><br/>
-					Git Revision: <%= @response.current_git_revision %>
-				</dd>
+		<dt class="text-sm font-medium text-gray-500">
+			Current Commit Info
+		</dt>
+		<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+			Status: <%= @response.current_git_status %><br/>
+			Git Revision: <%= @response.current_git_revision %>
+		</dd>
       </div>
     </dl>
   </div>
   <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
     <dl class="sm:divide-y sm:divide-gray-200">
       <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-				<dt class="text-sm font-medium text-gray-500">
-				  Previous Commit Info
-				</dt>
-				<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-					Deployed at: <%= @response.previous_git_deployed_at %><br/>
-					Git Revision: <%= @response.previous_git_revision %>
-				</dd>
+		<dt class="text-sm font-medium text-gray-500">
+			Previous Commit Info
+		</dt>
+		<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+			Deployed at: <%= @response.previous_git_deployed_at %><br/>
+			Git Revision: <%= @response.previous_git_revision %>
+		</dd>
       </div>
     </dl>
   </div>
@@ -53,12 +53,12 @@
 	  <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
 	    <dl class="sm:divide-y sm:divide-gray-200">
 	      <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-					<dt class="text-sm font-medium text-gray-500">
-						<%= @response.status %> - <%= @response.error_message %>
-					</dt>
-					<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-						Error: Something went wrong with the Argo API call, please try again
-					</dd>
+			<dt class="text-sm font-medium text-gray-500">
+				<%= @response.status %> - <%= @response.error_message %>
+			</dt>
+			<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+				Error: Something went wrong with the Argo API call, please try again
+			</dd>
 	      </div>
 	    </dl>
 	  </div>
