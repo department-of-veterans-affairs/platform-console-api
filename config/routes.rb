@@ -6,7 +6,11 @@ require 'authenticatable_constraint'
 Rails.application.routes.draw do
   resources :audits, only: [:index]
   resources :teams do
-    resources :apps
+    resources :apps do
+      collection do
+        get 'slack'
+      end
+    end
   end
 
   root to: redirect('/teams'), constraints: ->(request) { AuthenticatableConstraint.new(request).current_user.present? }
@@ -20,6 +24,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/auth/keycloak/callback', to: 'omniauth#keycloak_openid'
+  get '/slack' => 'apps#slack'
 
   # Admin-only area
   constraints lambda { |request|

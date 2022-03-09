@@ -3,7 +3,7 @@
 # Handles creating apps which are owned by a team
 class AppsController < ApplicationController
   before_action :authorize_session!
-  before_action :set_team
+  before_action :set_team, except: :slack
   before_action :set_app, only: %i[show edit update destroy]
 
   # GET /apps or /apps.json
@@ -58,6 +58,13 @@ class AppsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to team_url(@team), notice: 'App was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def slack
+    if params[:app][:name]
+      client = Slack::Web::Client.new
+      client.chat_postMessage(channel: '#console-support', text: params[:app][:name], as_user: true)
     end
   end
 

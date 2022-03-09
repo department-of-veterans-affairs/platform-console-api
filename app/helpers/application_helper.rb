@@ -63,11 +63,7 @@ module ApplicationHelper
         { name: I18n.t('navbar.datadog'), path: datadog_link, target: '_blank' },
         { name: I18n.t('navbar.loki'), path: loki_link, target: '_blank' },
         { name: I18n.t('navbar.sentry'), path: sentry_link, target: '_blank' },
-        {
-          name: I18n.t('navbar.support'),
-          path: 'https://dsva.slack.com/archives/CBU0KDSB1',
-          target: '_blank'
-        }
+        { name: I18n.t('navbar.support'), path: slack_path}
       ],
       drop: nav_links_drop
     }
