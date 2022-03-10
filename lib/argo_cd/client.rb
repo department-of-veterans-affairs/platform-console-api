@@ -29,6 +29,10 @@ module ArgoCd
       https.verify_mode = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
       response = https.get(uri, request_headers)
 
+      if Rails.env.production?
+        response = Net::HTTP.get_response(URI.parse(response['location']))
+      end
+
       Response.new(response: response)
     end
 
@@ -63,6 +67,11 @@ module ArgoCd
       request = build_request(uri)
 
       r = https.request(request)
+
+      if Rails.env.production?
+        r = Net::HTTP.get_response(URI.parse(r['location']))
+      end
+
       response = Response.new(response: r)
 
       save_token(response) if response.successful?
