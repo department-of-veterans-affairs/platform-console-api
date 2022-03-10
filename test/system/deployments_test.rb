@@ -109,4 +109,3 @@ class DeploymentsTest < ApplicationSystemTestCase
     end
   end
 end
-

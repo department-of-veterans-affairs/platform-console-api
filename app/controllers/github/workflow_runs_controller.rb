@@ -18,7 +18,7 @@ module Github
 
     def new; end
 
-    def create
+    def create # rubocop:disable Metrics/MethodLength
       respond_to do |format|
         options = {}
         options[:inputs] = { inputs: github_workflow_run_params[:inputs] } if github_workflow_run_params[:inputs]
