@@ -11,10 +11,12 @@ class UsersTest < ApplicationSystemTestCase
   end
 
   test 'should update User' do
-    visit edit_user_url(@user)
+    VCR.use_cassette('system/users', record: :new_episodes) do
+      visit edit_user_url(@user)
 
-    click_on 'Update User'
+      click_on 'Update User'
 
-    assert_text 'User was successfully updated'
+      assert_text 'User was successfully updated'
+    end
   end
 end

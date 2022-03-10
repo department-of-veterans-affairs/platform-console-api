@@ -15,6 +15,7 @@ ENV['KEYCLOAK_SITE_URL'] = 'http://www.example.com/auth/keycloak/callback'
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'vcr'
+require 'webmock/minitest'
 
 VCR.configure do |config|
   config.cassette_library_dir = 'test/vcr_cassettes'
@@ -23,7 +24,10 @@ VCR.configure do |config|
   config.filter_sensitive_data('github_client_id') { ENV['GITHUB_CLIENT_ID'] }
   config.filter_sensitive_data('github_client_secret') { ENV['GITHUB_CLIENT_SECRET'] }
   # whitelist 127.0.0.1 so VCR doesn't interfere with system tests
-  config.ignore_hosts '127.0.0.1'
+  config.ignore_hosts '127.0.0.1', 'chromedriver.storage.googleapis.com'
+  config.ignore_request do |request|
+    request.uri.include?('example.com')
+  end
 end
 
 module ActiveSupport
