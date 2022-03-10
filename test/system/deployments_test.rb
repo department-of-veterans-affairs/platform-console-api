@@ -9,7 +9,6 @@ class DeploymentsTest < ApplicationSystemTestCase
     login_as :jack
     @team = teams(:two)
     @app = apps(:two)
-    @app.current_user = @user
     @deployment = deployments(:one)
 
     @app_two = apps(:three)
@@ -82,7 +81,6 @@ class DeploymentsTest < ApplicationSystemTestCase
       click_on 'Create Deployment'
 
       assert_text 'Deployment was successfully created'
-      click_on 'Back'
     end
   end
 
@@ -95,7 +93,6 @@ class DeploymentsTest < ApplicationSystemTestCase
       click_on 'Update Deployment'
 
       assert_text 'Deployment was successfully updated'
-      click_on 'Back'
     end
   end
 
