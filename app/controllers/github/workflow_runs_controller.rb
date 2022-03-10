@@ -28,10 +28,10 @@ module Github
         )
         format.html do
           if request.path.include?('deploy')
-            redirect_to team_app_deploy_path(@app, @team, github_workflow_run_params[:workflow_id]),
+            redirect_to team_app_deploy_path(@team, @app, github_workflow_run_params[:workflow_id]),
                         notice: 'Deploy was successfully dispatched'
           else
-            redirect_to team_app_workflow_path(@app, @team, github_workflow_run_params[:workflow_id]),
+            redirect_to team_app_workflow_path(@team, @app, github_workflow_run_params[:workflow_id]),
                         notice: 'Workflow was successfully dispatched'
           end
         end
