@@ -25,7 +25,7 @@
         </div>
         <div class="mt-5 text-xl font-bold text-gray-900">
           <% if workflow_run.github[:event] == 'pull_request' %>
-            <%= "Pull Request ##{workflow_run.github[:pull_requests].first[:number]}" %>
+            <%= "Pull Request ##{workflow_run.github[:pull_requests]&.first&.fetch(:number, nil)}" %>
           <% elsif workflow_run.github[:event] == 'push'%>
             <%= truncate(workflow_run.github[:head_commit][:message], length: 50) %>
           <% else %>

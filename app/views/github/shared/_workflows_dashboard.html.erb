@@ -72,7 +72,7 @@
                               <div class="ml-4">
                                 <% if run[:event] == 'pull_request' && run[:pull_requests].present? %>
                                   <div class="text-md font-medium text-gray-900"><%= "Pull Request ##{run[:pull_requests].first[:number]}" %></div>
-                                  <div class="text-sm text-gray-500"><%= "#{run[:name]} ##{run[:run_number]}: Pull Request ##{run[:pull_requests].first[:number]}" %></div>
+                                  <div class="text-sm text-gray-500"><%= "#{run[:name]} ##{run[:run_number]}: Pull Request ##{run[:pull_requests]&.first[:number]}" %></div>
                                 <% elsif run[:event] == 'push'%>
                                   <div class="text-md font-medium text-gray-900"><%= truncate(run[:head_commit][:message], length: 50) %></div>
                                   <div class="text-sm text-gray-500"><%= "#{run[:name]} ##{run[:run_number]}: Commit: #{ run[:head_sha].first(7) }" %></div>

@@ -27,7 +27,7 @@ class AppsController < ApplicationController
   # POST /apps or /apps.json
   def create
     @app = @team.apps.build(app_params)
-
+    @app.current_user = current_user
     respond_to do |format|
       if @app.save
         format.html { redirect_to team_app_url(@team, @app), notice: 'App was successfully created.' }
@@ -85,7 +85,7 @@ class AppsController < ApplicationController
 
   # Set various github stats for the overview
   def set_github_stats
-    return if @app.github_repo.blank?
+    return if @app.github_repo.blank? || current_user.github_token.blank?
 
     variables = { owner: @github_repository.github.owner.login, name: @github_repository.github.name }
     context = { access_token: current_user.github_token }

@@ -21,3 +21,4 @@ jack:
   password_digest: $2a$04$iUpp2uEoumjbCHfX3ypOcO.JMHSg4itA1sDodd.ILtU9AUYvZQOU2 # password
   uid: abc123_jack
   argo_token: bad_token
+  github_token: github_token

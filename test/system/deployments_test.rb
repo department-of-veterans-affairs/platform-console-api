@@ -9,6 +9,7 @@ class DeploymentsTest < ApplicationSystemTestCase
     login_as :jack
     @team = teams(:two)
     @app = apps(:two)
+    @app.current_user = @user
     @deployment = deployments(:one)
 
     @app_two = apps(:three)
@@ -108,3 +109,4 @@ class DeploymentsTest < ApplicationSystemTestCase
     end
   end
 end
+

@@ -5,8 +5,10 @@ require 'application_system_test_case'
 class AppsTest < ApplicationSystemTestCase
   setup do
     login_as :john
-    @team = teams(:two)
-    @app = apps(:two)
+    @user = users :john
+    @team = teams(:three)
+    @app = apps(:three)
+    @app.current_user = @user
     @deployment = deployments(:two)
   end
 
@@ -29,8 +31,10 @@ class AppsTest < ApplicationSystemTestCase
   end
 
   test 'should show app and generate a token' do
-    visit team_app_url(@team, @app)
-    assert_selector 'h3', text: "App: #{@app.name}"
+    VCR.use_cassette('system/apps', record: :new_episodes) do
+      visit team_app_url(@team, @app)
+      assert_selector 'h3', text: "App: #{@app.name}"
+    end
   end
 
   test 'should create app' do

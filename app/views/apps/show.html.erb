@@ -1,6 +1,6 @@
 <%= render 'github/shared/tabs' %>
 
-<% if @app.github_repo.present? %>
+<% if @app.github_repo.present? && @github_stats.present?%>
   <div>
     <dl class="mt-5 mb-5 grid grid-cols-1 gap-5 sm:grid-cols-5">
       <div class="px-2 py-3 bg-white shadow rounded-lg overflow-hidden sm:p-2">
@@ -99,4 +99,3 @@
 </div>
 
 
-<%= render "apps/app_deployments" %>
