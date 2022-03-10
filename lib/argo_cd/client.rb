@@ -26,7 +26,7 @@ module ArgoCd
 
     def get_app_info(uri)
       https = Net::HTTP.new(uri.host, uri.port)
-      https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      https.verify_mode = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
       response = https.get(uri, request_headers)
 
       Response.new(response: response)
@@ -58,7 +58,7 @@ module ArgoCd
     def generate_token
       uri = URI("#{base_path}/api/v1/session")
       https = Net::HTTP.new(uri.host, uri.port)
-      https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      https.verify_mode = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
 
       request = build_request(uri)
 
