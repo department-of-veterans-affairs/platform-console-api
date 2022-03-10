@@ -58,8 +58,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_09_153801) do
     t.datetime "updated_at", null: false
     t.string "uid"
     t.string "github_token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "argo_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["password_digest"], name: "index_users_on_password_digest"
