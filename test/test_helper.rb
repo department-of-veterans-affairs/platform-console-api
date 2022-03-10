@@ -24,6 +24,7 @@ VCR.configure do |config|
   config.filter_sensitive_data('github_client_secret') { ENV['GITHUB_CLIENT_SECRET'] }
   # whitelist 127.0.0.1 so VCR doesn't interfere with system tests
   config.ignore_hosts '127.0.0.1'
+  config.ignore_hosts 'chromedriver.storage.googleapis.com'
 end
 
 module ActiveSupport
