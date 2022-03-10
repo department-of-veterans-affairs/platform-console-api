@@ -30,6 +30,9 @@ class User < ApplicationRecord
       Octokit::Client.new(access_token: github_token).user
     rescue Octokit::Unauthorized
       nil
+    end
+  end
+
   def argo_token_invalid?
     begin
       decoded_token = JWT.decode(argo_token, nil, false)

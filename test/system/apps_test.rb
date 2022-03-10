@@ -26,6 +26,8 @@ class AppsTest < ApplicationSystemTestCase
       assert_selector 'dt', text: 'Tags'
       assert_selector 'dt', text: 'Latest Release'
     end
+  end
+
   test 'should show app and generate a token' do
     visit team_app_url(@team, @app)
     assert_selector 'h3', text: "App: #{@app.name}"
