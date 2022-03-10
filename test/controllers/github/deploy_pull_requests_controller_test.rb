@@ -13,11 +13,11 @@ module Github
 
     test 'should create a deploy pull request' do
       VCR.use_cassette('github/deploy_pull_requests_controller') do
-        # TODO: need to fix auth
-        get github_oauth_callback_path(code: '1b5acd1175129a747f29')
+        get github_oauth_callback_path(code: '5a789efeb8e9226de745')
         @user.reload
         post team_app_deploy_pull_requests_path(@team, @app)
         assert_redirected_to team_app_deploys_path
+        assert_equal 'Pull Request has been created.', flash.notice
       end
     end
   end
