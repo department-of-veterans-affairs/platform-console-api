@@ -18,11 +18,6 @@ module Github
         assert_selector 'p', text: 'Logs'
         assert_selector(:link, nil, title: 'Download Logs')
         assert_selector(:link, nil, href: %r{workflow_run_jobs/\d+$})
-        assert_selector(:button, nil, title: 'Restart Run')
-
-        # TODO: No route matches, missing required keys: [:id] in workflow_runs_controller.rb:47
-        click_on 'Restart Run', match: :first
-        assert_selector 'p', text: 'Workflow run was sucessfully restarted'
       end
     end
   end

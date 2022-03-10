@@ -44,11 +44,11 @@ module Github
     def update
       respond_to do |format|
         if @github_workflow_run.rerun!
-          path = team_app_workflow_path(@team, @app, github_workflow_run_params[:workflow_id])
+          path = team_app_workflow_path(@team, @app, @github_workflow_run.github.workflow_id)
           format.html { redirect_to path, notice: 'Workflow run was sucessfully restarted' }
           format.json { render json: true }
         else
-          path = team_app_workflow_run_path(@team, @app, github_workflow_run_params[:id])
+          path = team_app_workflow_run_path(@team, @app, @github_workflow_run.github.workflow_id)
           format.html { redirect_to path, notice: 'There was a problem restarting the workflow run' }
           format.json { render json: false }
         end
