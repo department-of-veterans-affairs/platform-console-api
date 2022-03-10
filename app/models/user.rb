@@ -2,6 +2,7 @@
 
 # The User Model
 class User < ApplicationRecord
+  encrypts :argo_token
   has_paper_trail
   has_secure_password
   encrypts :github_token
@@ -29,6 +30,23 @@ class User < ApplicationRecord
       Octokit::Client.new(access_token: github_token).user
     rescue Octokit::Unauthorized
       nil
+    end
+  end
+
+  def argo_token_invalid?
+    begin
+      decoded_token = JWT.decode(argo_token, nil, false)
+    rescue StandardError
+      return true
+    end
+
+    decoded_token_info = decoded_token[0]
+
+    if decoded_token_info.keys.include?('exp')
+      expiration = Time.zone.at(decoded_token_info['exp'])
+      (expiration + 24.hours) < DateTime.now # token has expired
+    else
+      false
     end
   end
 

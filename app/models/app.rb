@@ -5,6 +5,7 @@ class App < ApplicationRecord
   attr_accessor :current_user
 
   belongs_to :team
+  has_many :deployments, dependent: :destroy
   has_paper_trail
   validates :name, presence: true
   before_save :validate_github_repo, if: :will_save_change_to_github_repo?

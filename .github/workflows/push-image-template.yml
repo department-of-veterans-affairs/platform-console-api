@@ -11,6 +11,8 @@ on:
         required: true
       aws_secret_access_key: #${{ secrets.AWS_SECRET_ACCESS_KEY }}
         required: true
+      rails_master_key: #${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        required: true
 
 
 jobs:
@@ -29,4 +31,4 @@ jobs:
           region: us-gov-west-1
           tags: "${{inputs.ecr_repository}}-${{ github.sha }}"
           dockerfile: Dockerfile
-          extra_build_args: "--build-arg RAILS_ENV=production"
+          extra_build_args: "--build-arg RAILS_ENV=production --build-arg RAILS_MASTER_KEY=${{ secrets.rails_master_key }}"
