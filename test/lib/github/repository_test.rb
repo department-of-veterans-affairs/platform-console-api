@@ -7,7 +7,7 @@ module Github
     setup do
       VCR.use_cassette('github/repository') do
         @repository = Github::Repository.new(
-          ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/vets-api'
+          ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/platform-console-api'
         )
       end
     end
@@ -15,7 +15,7 @@ module Github
     test 'can be created with a valid repository' do
       assert_instance_of Github::Repository, @repository
       assert_instance_of Sawyer::Resource, @repository.github
-      assert_equal 'vets-api', @repository.github.name
+      assert_equal 'platform-console-api', @repository.github.name
     end
 
     test 'cannot be created with an invalid repository' do
@@ -68,9 +68,9 @@ module Github
 
     test 'lists workflow runs for a given workflow in the repository' do
       VCR.use_cassette('github/repository', record: :new_episodes) do
-        workflow_runs = @repository.workflow_run('13418388').workflow_runs
+        workflow_runs = @repository.workflow_run('17962379').workflow_runs
         assert_kind_of Array, workflow_runs
-        assert_equal 13_418_388, workflow_runs.first.workflow_id
+        assert_equal 17_962_379, workflow_runs.first.workflow_id
       end
     end
 
@@ -78,6 +78,14 @@ module Github
       VCR.use_cassette('github/repository', record: :new_episodes) do
         org_repos = Github::Repository.all(ENV['GITHUB_ACCESS_TOKEN'])[:repositories]
         assert_kind_of Array, org_repos
+      end
+    end
+
+    test 'creates a deploy pull request' do
+      VCR.use_cassette('github/repository') do
+        pull_request = @repository.create_deploy_workflow_pr
+        assert_kind_of Sawyer::Resource, pull_request
+        assert_equal 'Add deploy-template_demo.yml workflow file', pull_request.title
       end
     end
   end
