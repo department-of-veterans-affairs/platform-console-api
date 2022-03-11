@@ -21,7 +21,7 @@ module Github
     def create # rubocop:disable Metrics/MethodLength
       respond_to do |format|
         options = {}
-        options[:inputs] = { inputs: github_workflow_run_params[:inputs] } if github_workflow_run_params[:inputs]
+        options[:inputs] = github_workflow_run_params[:inputs] if github_workflow_run_params[:inputs].present?
         Github::Workflow.dispatch!(
           current_user.github_token, @app.github_repo, github_workflow_run_params[:workflow_id],
           github_workflow_run_params[:ref], options
