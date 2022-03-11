@@ -18,6 +18,13 @@ module Github
       end
     end
 
+    test 'should get index for deploys' do
+      VCR.use_cassette('github/workflows_controller', record: :new_episodes) do
+        get team_app_deploys_path(@team, @app)
+        assert_response :success
+      end
+    end
+
     test 'should get index in json format' do
       VCR.use_cassette('github/workflows_controller') do
         get "#{team_app_workflows_path(@team, @app)}.json"
@@ -31,6 +38,13 @@ module Github
     test 'should show workflow' do
       VCR.use_cassette('github/workflows_controller', record: :new_episodes) do
         get team_app_workflow_path(@team, @app, 7_426_309)
+        assert_response :success
+      end
+    end
+
+    test 'should show deploy' do
+      VCR.use_cassette('github/workflows_controller', record: :new_episodes) do
+        get team_app_deploy_path(@team, @app, 7_426_309)
         assert_response :success
       end
     end
