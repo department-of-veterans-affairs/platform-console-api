@@ -7,7 +7,7 @@ ruby '~> 3.1.0'
 gem 'rails', '~> 7.0.2'
 
 gem 'bcrypt',            '~> 3.1' # Use ActiveModel has_secure_password
-gem 'bootsnap',          '~> 1.10', require: false # Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap',          '~> 1.11', require: false # Reduces boot times through caching; required in config/boot.rb
 gem 'flipper',           '~> 0.24' # Feature flipper for ANYTHING
 gem 'flipper-redis',     '~> 0.24' # Redis adapter for Flipper
 gem 'flipper-ui',        '~> 0.24' # UI for the Flipper gem
