@@ -9,7 +9,7 @@
     </h3>
   </div>
 
-  <% if @response.successful? %>
+  <% if @response && @response.successful? %>
     <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
       <dl class="sm:divide-y sm:divide-gray-200">
         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -38,7 +38,7 @@
               Date: <%= @current_revision.date %><br/>
               Message: <%= @current_revision.message %><br/>
             <% else %>
-                Author, Date, Message: <%= @response.status %> - 
+                Author, Date, Message: <%= @response.status %> -
                 <%= @response.error_message %> Error: Something went wrong with the Argo API call, please try again
             <% end %>
           </dd>
