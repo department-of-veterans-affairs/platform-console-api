@@ -9,6 +9,7 @@
     </h3>
   </div>
 
+<% if ENV['ARGO_API'] == 'true' %>
   <% if @response && @response.successful? %>
     <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
       <dl class="sm:divide-y sm:divide-gray-200">
@@ -72,6 +73,20 @@
     </dl>
   </div>
   <% end %>
+<% else %>
+  <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+    <dl class="sm:divide-y sm:divide-gray-200">
+      <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+         Please enable the ArgoAPI via the ARGO_API env var
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          Error: Something went wrong with the Argo API call, please try again
+        </dd>
+      </div>
+    </dl>
+  </div>
+<% end %>
 </div>
 
 <br/>
