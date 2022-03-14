@@ -7,13 +7,15 @@ ruby '~> 3.1.0'
 gem 'rails', '~> 7.0.2'
 
 gem 'bcrypt',            '~> 3.1' # Use ActiveModel has_secure_password
-gem 'bootsnap',          '~> 1.10', require: false # Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap',          '~> 1.11', require: false # Reduces boot times through caching; required in config/boot.rb
 gem 'ddtrace',           '~> 0.54', require: 'ddtrace/auto_instrument' # Datadog's tracing client for Ruby
 gem 'flipper',           '~> 0.24' # Feature flipper for ANYTHING
 gem 'flipper-redis',     '~> 0.24' # Redis adapter for Flipper
 gem 'flipper-ui',        '~> 0.24' # UI for the Flipper gem
 gem 'jbuilder',          '~> 2.11' # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem 'omniauth-keycloak', '~> 1.4'  # Keycloack SSO Oauth Strategy
+gem 'jwt',               '~> 2.3'  # Ruby implementation of the JWT standard
+gem 'net-http',          '~> 0.2' # HTTP client api for Ruby
+gem 'omniauth-keycloak', '~> 1.4' # Keycloack SSO Oauth Strategy
 gem 'omniauth-rails_csrf_protection'
 gem 'pagy',              '~> 5.10' # Agnostic pagination in plain ruby
 gem 'paper_trail',       '~> 12.2' # Track changes to your models, for auditing or versioning
@@ -49,5 +51,7 @@ group :test do
   gem 'minitest-ci'        # Minitest Junit XML results for GHA
   gem 'selenium-webdriver' # Capybara system testing with Chrome
   gem 'simplecov'          # Code coverage for Ruby
+  gem 'vcr',               github: 'vcr/vcr' # Edge version for Ruby 3.1 support. Record/replay HTTP interactions
   gem 'webdrivers'         # Easy installation and use of web drivers to run system tests with browsers
+  gem 'webmock'            # Stubbing and setting expectations in HTTP requests
 end
