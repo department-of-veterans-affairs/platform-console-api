@@ -33,7 +33,7 @@ class User < ApplicationRecord
 
     if decoded_token_info.keys.include?('exp')
       expiration = Time.zone.at(decoded_token_info['exp'])
-      (expiration + 24.hours) < DateTime.now # token has expired
+      (expiration + 24.hours) <= DateTime.now # token has expired
     else
       false
     end
