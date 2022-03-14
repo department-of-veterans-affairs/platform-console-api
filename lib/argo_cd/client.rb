@@ -15,16 +15,20 @@ module ArgoCd
 
     def app_info
       uri = URI("#{base_path}/api/v1/applications?name=#{deployment_name}")
+      get_app_info(uri)
+    end
 
+    def current_revision(revision)
+      uri = URI("#{base_path}/api/v1/applications/#{deployment_name}/revisions/#{revision}/metadata")
+      get_app_info(uri)
+    end
+
+    def get_app_info(uri)
       if current_user.argo_token_invalid?
         token_response = generate_token
         return token_response unless token_response.successful?
       end
 
-      get_app_info(uri)
-    end
-
-    def get_app_info(uri)
       https = Net::HTTP.new(uri.host, uri.port)
       https.verify_mode = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
       https.use_ssl = true if Rails.env.production?
@@ -38,10 +42,6 @@ module ArgoCd
         'Authorization' => "Bearer #{jwt}",
         'Content-Type' => 'application/json'
       }
-    end
-
-    def current_deploy
-      # TODO: - dig in after first iteration
     end
 
     private
