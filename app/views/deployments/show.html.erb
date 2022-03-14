@@ -17,8 +17,8 @@
             App Health
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            App Health: <%= @response.app_health %><br/>
-            Message: <%= @response.app_health_message || "none" %>
+            <%= @response.app_health %><br/>
+            Message: <%= @response.app_health_message || "none"%>
           </dd>
         </div>
       </dl>
@@ -31,16 +31,7 @@
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
             Status: <%= @response.current_git_status %><br/>
-            Git Revision: <%= @response.current_git_revision %><br/>
-
-            <% if @current_revision.successful? %>
-              Author: <%= @current_revision.author %><br/>
-              Date: <%= @current_revision.date %><br/>
-              Message: <%= @current_revision.message %><br/>
-            <% else %>
-                Author, Date, Message: <%= @response.status %> - 
-                <%= @response.error_message %> Error: Something went wrong with the Argo API call, please try again
-            <% end %>
+            Git Revision: <%= @response.current_git_revision %>
           </dd>
         </div>
       </dl>
