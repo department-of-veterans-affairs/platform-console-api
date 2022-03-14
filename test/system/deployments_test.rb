@@ -13,7 +13,6 @@ class DeploymentsTest < ApplicationSystemTestCase
 
     @app_two = apps(:three)
     @deployment_two = deployments(:two)
-    ENV['ARGO_API'] = true
   end
 
   test 'visiting the index' do
