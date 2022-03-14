@@ -17,10 +17,10 @@ class DeploymentsController < ApplicationController
   # GET /apps/1 or /apps/1.json
   def show
     argo_client = ArgoCd::Client.new(@app.id, @deployment.name, @current_user.id)
-    return unless ENV['ARGO_API'] == 'true'
-
-    @response = argo_client.app_info
-    @current_revision = argo_client.current_revision(@response.current_git_revision) if @response.successful?
+    if ENV['ARGO_API'] == "true"
+      @response = argo_client.app_info
+      @current_revision = argo_client.current_revision(@response.current_git_revision) if @response.successful?
+    end
   end
 
   # GET /apps/new
