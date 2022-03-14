@@ -13,6 +13,7 @@ class DeploymentsTest < ApplicationSystemTestCase
 
     @app_two = apps(:three)
     @deployment_two = deployments(:two)
+    puts "!!!!!#{ENV['ARGO_API']}"
   end
 
   test 'visiting the index' do
