@@ -10,26 +10,14 @@ class DeploymentsTest < ApplicationSystemTestCase
     @team = teams(:two)
     @app = apps(:two)
     @deployment = deployments(:one)
-
     @app_two = apps(:three)
     @deployment_two = deployments(:two)
+    ENV['ARGO_API'] = 'true'
   end
 
   test 'visiting the index' do
     visit team_app_deployments_url(@team, @app)
     assert_selector 'h1', text: 'Deployments'
-  end
-
-  test 'should show app with existing record' do
-    VCR.use_cassette('system/success', record: :new_episodes) do
-      visit team_app_deployment_url(@team, @app, @deployment)
-      assert_selector 'h3', text: 'Argo Deployment Stats'
-      assert_selector 'dt', text: 'App Health'
-      assert_selector 'dd', text: 'Healthy'
-      assert_selector 'dt', text: 'Current Commit Info'
-      assert_selector 'dd', text: 'Status: Synced'
-      assert_selector 'dt', text: 'Previous Commit Info'
-    end
   end
 
   test 'should show app and generate a token' do
@@ -116,7 +104,6 @@ class DeploymentsTest < ApplicationSystemTestCase
       visit team_app_deployment_url(@team, @app, @deployment)
       click_on 'Destroy this deployment', match: :first
       page.driver.browser.switch_to.alert.accept
-
       assert_text 'Deployment was successfully destroyed'
     end
   end

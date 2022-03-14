@@ -77,7 +77,6 @@ class DeploymentsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_team
     @team = Team.find(params[:team_id])
   end
@@ -86,7 +85,6 @@ class DeploymentsController < ApplicationController
     @app = App.find(params[:app_id])
   end
 
-  # Find the app deployment
   def set_deployment
     @deployment = @app.deployments.find(params[:id])
   end
