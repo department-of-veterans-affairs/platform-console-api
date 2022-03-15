@@ -102,6 +102,10 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
+    ddtrace (0.54.2)
+      debase-ruby_core_source (<= 0.10.14)
+      msgpack
+    debase-ruby_core_source (0.10.14)
     digest (3.1.0)
     docile (1.4.0)
     erubi (1.10.0)
@@ -375,6 +379,7 @@ DEPENDENCIES
   brakeman
   bundler-audit
   capybara
+  ddtrace (~> 0.54)
   flipper (~> 0.24)
   flipper-redis (~> 0.24)
   flipper-ui (~> 0.24)
