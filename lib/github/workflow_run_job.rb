@@ -21,8 +21,8 @@ module Github
       @access_token = access_token
       @id = id
       @repo = repo
-      @octokit_client = Octokit::Client.new(access_token: @access_token)
-      @github = octokit_client.workflow_run_job(@repo, @id)
+      @octokit_client = Octokit::Client.new(access_token: access_token)
+      @github = octokit_client.workflow_run_job(repo, id)
       @logs = format_logs
     end
 
@@ -55,7 +55,7 @@ module Github
     # @see https://docs.github.com/en/rest/reference/checks#get-a-check-run
     def format_logs
       logs = begin
-        @octokit_client.workflow_run_job_logs(@repo, @id)
+        @octokit_client.workflow_run_job_logs(repo, id)
       rescue Octokit::NotFound
         begin
           check_run = @octokit_client.check_run_from_url(github.check_run_url)

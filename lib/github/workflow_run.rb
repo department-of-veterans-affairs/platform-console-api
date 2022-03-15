@@ -22,13 +22,13 @@ module Github
       @access_token = access_token
       @id = id
       @repo = repo
-      @octokit_client = Octokit::Client.new(access_token: @access_token)
+      @octokit_client = Octokit::Client.new(access_token: access_token)
       @logs_url = begin
-        @octokit_client.workflow_run_logs(@repo, @id)
+        octokit_client.workflow_run_logs(repo, id)
       rescue Octokit::NotFound
         nil
       end
-      @github = @octokit_client.workflow_run(@repo, @id)
+      @github = octokit_client.workflow_run(repo, id)
     end
 
     # List all Workflow Runs associated to a Repository
@@ -88,7 +88,7 @@ module Github
     # @return [Sawyer::Resource] Workflows Run Jobs
     # @see https://docs.github.com/en/rest/reference/actions#re-run-a-workflow
     def jobs
-      Github::WorkflowRunJob.all_for_workflow_run(@access_token, @repo, @id)
+      Github::WorkflowRunJob.all_for_workflow_run(access_token, repo, id)
     end
 
     # Rerun a Workflow Run
@@ -96,7 +96,7 @@ module Github
     # @return [Boolean] If the rerun was successful
     # @see https://docs.github.com/en/rest/reference/actions#re-run-a-workflow
     def rerun!
-      @octokit_client.rerun_workflow_run(@repo, @id)
+      @octokit_client.rerun_workflow_run(repo, id)
     end
   end
 end
