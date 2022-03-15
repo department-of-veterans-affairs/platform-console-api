@@ -29,7 +29,6 @@ module Github
         delete github_oauth_revoke_path
         @user.reload
         assert_nil @user.github_token
-        delete github_oauth_revoke_path
         assert_redirected_to edit_user_path(@user)
         assert_equal 'GitHub account successfully removed.', flash.notice
       end
