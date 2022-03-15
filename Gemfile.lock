@@ -398,8 +398,8 @@ DEPENDENCIES
   jbuilder (~> 2.11)
   jwt (~> 2.3)
   minitest-ci
-  octokit (~> 4.22)
   net-http (~> 0.2)
+  octokit (~> 4.22)
   omniauth-keycloak (~> 1.4)
   omniauth-rails_csrf_protection (~> 1.0.1)
   pagy (~> 5.10)
