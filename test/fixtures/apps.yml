@@ -17,6 +17,7 @@ three:
   name: App3
   team_id: 3
   github_repo: 'department-of-veterans-affairs/vets-api'
+  deploy_workflow: 'code_checks.yml'
 
 four:
   id: 4

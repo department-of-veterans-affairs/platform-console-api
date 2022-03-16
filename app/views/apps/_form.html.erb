@@ -55,7 +55,7 @@
           </div>
         </div>
       </div>
-      <% if current_user.github_token.present? %>
+      <% if @app.id.present? && @app.github_repo.present? && current_user.github_token.present? %>
         <div class="space-y-6 sm:space-y-5">
           <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
             <div>

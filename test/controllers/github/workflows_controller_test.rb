@@ -18,10 +18,10 @@ module Github
       end
     end
 
-    test 'should get index for deploys' do
+    test 'should redirect index for deploys' do
       VCR.use_cassette('github/workflows_controller', record: :new_episodes) do
         get team_app_deploys_path(@team, @app)
-        assert_response :success
+        assert_response :found
       end
     end
 
