@@ -20,8 +20,8 @@ module Github
       @repo = repo
       @id = id_or_filename if id_or_filename.is_a?(Integer)
       @file_name = id_or_filename if id_or_filename.is_a?(String)
-      @octokit_client = Octokit::Client.new(access_token: @access_token)
-      @github = octokit_client.workflow(@repo, id_or_filename)
+      @octokit_client = Octokit::Client.new(access_token: access_token)
+      @github = octokit_client.workflow(repo, id_or_filename)
       @id ||= @github[:id]
       @file_name ||= @github[:path]&.split('/')&.last
       @inputs = build_inputs
@@ -61,7 +61,7 @@ module Github
     # @return [Sawyer::Resource] Workflow Runs
     # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs
     def workflow_runs(page = 1, options = {})
-      Github::WorkflowRun.all_for_workflow(@access_token, @repo, @id, page, options)
+      Github::WorkflowRun.all_for_workflow(access_token, repo, id, page, options)
     end
     alias deploy_runs workflow_runs
 

@@ -18,8 +18,8 @@ module Github
       @access_token = access_token
       @id = id
       @repo = repo
-      @octokit_client = Octokit::Client.new(access_token: @access_token)
-      @github = octokit_client.pull_request(@repo, @id)
+      @octokit_client = Octokit::Client.new(access_token: access_token)
+      @github = octokit_client.pull_request(repo, id)
       @branch_name = @github[:head][:ref]
     end
 
@@ -81,7 +81,7 @@ module Github
     # @return [Sawyer::Resource] Comments
     # @see https://docs.github.com/en/rest/reference/pulls#review-comments
     def comments
-      @octokit_client.pull_request_comments(@repo, @id)
+      @octokit_client.pull_request_comments(repo, id)
     end
 
     # Check if a pull request is merged
@@ -89,7 +89,7 @@ module Github
     # @return [Boolean] If it has been merged
     # @see https://docs.github.com/en/rest/reference/pulls#check-if-a-pull-request-has-been-merged
     def merged?
-      @octokit_client.pull_merged?(@repo, @id)
+      @octokit_client.pull_merged?(repo, id)
     end
 
     # List Workflow Runs associated with a PRs branch
@@ -97,7 +97,7 @@ module Github
     # @return [Sawyer::Resource] Workflow runs
     # @see https://docs.github.com/en/rest/reference/actions#list-repository-workflows
     def workflow_runs
-      Github::WorkflowRun.all_for_branch(@access_token, @repo, @branch_name)
+      Github::WorkflowRun.all_for_branch(access_token, repo, branch_name)
     end
   end
 end

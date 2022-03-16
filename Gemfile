@@ -12,7 +12,7 @@ gem 'faraday-http-cache', '~> 2.2' # middleware that respects HTTP cache by chec
 gem 'flipper',           '~> 0.24' # Feature flipper for ANYTHING
 gem 'flipper-redis',     '~> 0.24' # Redis adapter for Flipper
 gem 'flipper-ui',        '~> 0.24' # UI for the Flipper gem
-gem 'graphql-client', '~> 0.17' # Ruby library for declaring, composing and executing GraphQL queries.
+gem 'graphql-client',    '~> 0.17' # Ruby library for declaring, composing and executing GraphQL queries.
 gem 'jbuilder',          '~> 2.11' # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jwt',               '~> 2.3'  # Ruby implementation of the JWT standard
 gem 'net-http',          '~> 0.2' # HTTP client api for Ruby
