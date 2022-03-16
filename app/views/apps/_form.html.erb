@@ -55,6 +55,26 @@
           </div>
         </div>
       </div>
+      <% if current_user.github_token.present? %>
+        <div class="space-y-6 sm:space-y-5">
+          <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+            <div>
+              <%= form.label :deploy_workflow_file, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2', autofocus: true %>
+            </div>
+            <div class="mt-1 sm:mt-0 sm:col-span-2">
+              <div class="flex items-center space-x-3">
+                <%= form.text_field :deploy_workflow, class: 'max-w-lg block w-full shadow-sm focus:ring-blue-900 focus:border-blue-900 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
+                <span class="text-xs text-gray-600">Don't have a deploy workflow file?</span>
+                <div class="flex items-center space-x-3">
+                   <%= link_to team_app_deploy_pull_requests_path(@team, @app), class: 'inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500', data: { "turbo-method": :post } do %>
+                    Create Workflow PR
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
       <div class="pt-5">
         <div class="flex justify-end">
           <%= form.submit class: 'ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md cursor-pointer text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' %>

@@ -97,6 +97,6 @@ class AppsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def app_params
-    params.require(:app).permit(:name, :team_id, :github_repo)
+    params.require(:app).permit(:name, :team_id, :github_repo, :deploy_workflow)
   end
 end
