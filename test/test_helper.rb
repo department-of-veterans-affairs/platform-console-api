@@ -12,6 +12,8 @@ end
 
 ENV['RAILS_ENV'] ||= 'test'
 ENV['KEYCLOAK_SITE_URL'] = 'http://www.example.com/auth/keycloak/callback'
+ENV['GITHUB_CLIENT_ID'] ||= 'github_client_id'
+ENV['GITHUB_CLIENT_SECRET'] ||= 'github_client_secret'
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'vcr'
