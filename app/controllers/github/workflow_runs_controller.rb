@@ -70,11 +70,13 @@ module Github
     end
 
     def set_all_workflows
-      @all_workflows = if request.path.include?('deploy')
-                         [@github_repository.deploy_workflow.github]
-                       else
-                         @github_repository.workflows[:workflows]
-                       end
+      if request.path.include?('deploy')
+        workflow = @github_repository.deploy_workflow(@app.deploy_workflow)
+        @all_workflows = [workflow.github]
+        @inputs = workflow.inputs
+      else
+        @all_workflows = @github_repository.workflows[:workflows]
+      end
     end
   end
 end

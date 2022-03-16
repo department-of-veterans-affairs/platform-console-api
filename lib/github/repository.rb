@@ -98,10 +98,8 @@ module Github
     # Get the deploy workflow in a repository
     #
     # @return [Sawyer::Resource, nil] The deploy workflow or nil if it doesnt exist
-    def deploy_workflow
-      Github::Workflow.new(access_token, repo, DEPLOY_WORKFLOW_FILE)
-    rescue Octokit::NotFound
-      nil
+    def deploy_workflow(filename)
+      Github::Workflow.new(@access_token, @repo, filename)
     end
 
     # Dispatches a workflow on platform-console-api that will create a new PR on

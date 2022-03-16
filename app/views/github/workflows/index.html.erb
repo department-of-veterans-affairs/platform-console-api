@@ -3,22 +3,14 @@
 <% if request.path.include?('workflow') && @github_workflows.present? %>
   <%= render 'github/shared/workflows_dashboard', all_workflows: @github_workflows, current_workflow: nil, workflow_runs: @github_workflow_runs %>
 <% elsif request.path.include?('deploy') %>
-  <div class="text-center border-dashed border-gray-300 hover:border-gray-400 border-2 rounded-lg p-6 max-w-lg m-auto">
+ <div class="text-center border-dashed border-gray-300 hover:border-gray-400 border-2 rounded-lg p-6 max-w-lg m-auto mt-5">
     <svg width="96" height="96" fill="none" class="mx-auto mb-6 text-gray-900"><path d="M36 28.024A18.05 18.05 0 0025.022 39M59.999 28.024A18.05 18.05 0 0170.975 39" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><ellipse cx="37.5" cy="43.5" rx="4.5" ry="7.5" fill="currentColor"></ellipse><ellipse cx="58.5" cy="43.5" rx="4.5" ry="7.5" fill="currentColor"></ellipse><path d="M24.673 75.42a9.003 9.003 0 008.879 5.563m-8.88-5.562A8.973 8.973 0 0124 72c0-7.97 9-18 9-18s9 10.03 9 18a9 9 0 01-8.448 8.983m-8.88-5.562C16.919 68.817 12 58.983 12 48c0-19.882 16.118-36 36-36s36 16.118 36 36-16.118 36-36 36a35.877 35.877 0 01-14.448-3.017" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M41.997 71.75A14.94 14.94 0 0148 70.5c2.399 0 4.658.56 6.661 1.556a3 3 0 003.999-4.066 12 12 0 00-10.662-6.49 11.955 11.955 0 00-7.974 3.032c1.11 2.37 1.917 4.876 1.972 7.217z" fill="currentColor"></path></svg>
-    <h3 class="mt-2 text-sm font-medium text-gray-900">No Deploy Workflow File In Repository</h3>
+    <h3 class="mt-2 text-sm font-medium text-gray-900">No Deploy Workflow File Set</h3>
     <p class="mt-1 text-sm text-gray-500">
-      Get started by creating a new PR to add the Workflow file
+      Add a deploy workflow file in
+      <span>
+        <%= link_to 'app settings.', edit_team_app_path(@team, @app), class: "text-sm text-blue-500 font-medium"%>
+      </span>
     </p>
-    <p class="mt-1 text-sm text-gray-500">
-      *Deploy will not be available until the created PR is merged.
-    </p>
-    <div class="mt-6">
-      <%= button_to team_app_deploy_pull_requests_path(@team, @app), class: 'inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' do %>
-        <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-        </svg>
-        Create PR
-      <% end %>
-    </div>
   </div>
 <% end %>

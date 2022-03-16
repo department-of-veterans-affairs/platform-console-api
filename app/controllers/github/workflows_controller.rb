@@ -8,8 +8,8 @@ module Github
 
     # GET /github/workflows or /github/workflows.json
     def index
-      if request.path.include?('deploy')
-        deploy_workflow = @github_repository.deploy_workflow
+      if @app.deploy_workflow.present? && request.path.include?('deploy')
+        deploy_workflow = @github_repository.deploy_workflow(@app.deploy_workflow)
         redirect_to team_app_deploy_path(@team, @app, deploy_workflow.id) if deploy_workflow
       else
         @current_page = params.fetch(:page, 1)
@@ -22,7 +22,7 @@ module Github
     def show
       @current_page = params.fetch(:page, 1)
       @all_workflows = if request.path.include?('deploy')
-                         [@github_repository.deploy_workflow]
+                         [@github_repository.deploy_workflow(@app.deploy_workflow)]
                        else
                          @github_repository.workflows[:workflows]
                        end

@@ -45,15 +45,16 @@
         </div>
       </div>
       <% if request.path.include?('deploy') %>
-        <div class="space-y-6 sm:space-y-5">
-          <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-            <%= form.label :environment, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2', autofocus: true %>
-            <div class="mt-1 sm:mt-0 sm:col-span-2">
-
-              <%= form.text_field 'inputs[environment]', class: 'max-w-lg block w-full shadow-sm focus:ring-blue-900 focus:border-blue-900 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
+        <% @inputs.each do |k,v| %>
+          <div class="space-y-6 sm:space-y-5">
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <%= form.label k, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2', autofocus: true %>
+              <div class="mt-1 sm:mt-0 sm:col-span-2">
+                <%= form.text_field "inputs[#{k}]", class: 'max-w-lg block w-full shadow-sm focus:ring-blue-900 focus:border-blue-900 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
       <div class="pt-5">
         <div class="flex justify-end">
