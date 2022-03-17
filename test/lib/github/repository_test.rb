@@ -13,15 +13,17 @@ module Github
     end
 
     test 'can be created with a valid repository' do
-      assert_instance_of Github::Repository, @repository
-      assert_instance_of Sawyer::Resource, @repository.github
-      assert_equal 'platform-console-api', @repository.github.name
+      VCR.use_cassette('github/repository', record: :new_episodes) do
+        assert_instance_of Github::Repository, @repository
+        assert_instance_of Sawyer::Resource, @repository.github
+        assert_equal 'platform-console-api', @repository.github.name
+      end
     end
 
     test 'cannot be created with an invalid repository' do
-      VCR.use_cassette('github/invalid_repository') do
+      VCR.use_cassette('github/invalid_repository', record: :new_episodes) do
         assert_raises Octokit::NotFound do
-          Github::Repository.new(ENV['GITHUB_ACCESS_TOKEN'], 'invalid-user/invalid-repository')
+          Github::Repository.new(ENV['GITHUB_ACCESS_TOKEN'], 'invalid-user/invalid-repository').github
         end
       end
     end

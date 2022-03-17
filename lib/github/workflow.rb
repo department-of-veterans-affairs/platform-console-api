@@ -6,7 +6,7 @@ module Github
     include Github::Pagination
     include Github::Inspect
 
-    attr_accessor :access_token, :repo, :id, :file_name, :octokit_client, :inputs, :github
+    attr_accessor :access_token, :repo, :id_or_filename
 
     # Creates a Github::Workflow object with the github response attached
     #
@@ -18,13 +18,7 @@ module Github
     def initialize(acccess_token, repo, id_or_filename)
       @access_token = acccess_token
       @repo = repo
-      @id = id_or_filename if id_or_filename.is_a?(Integer)
-      @file_name = id_or_filename if id_or_filename.is_a?(String)
-      @octokit_client = Octokit::Client.new(access_token: access_token)
-      @github = octokit_client.workflow(repo, id_or_filename)
-      @id ||= @github[:id]
-      @file_name ||= @github[:path]&.split('/')&.last
-      @inputs = build_inputs
+      @id_or_filename = id_or_filename
     end
 
     class << self
@@ -54,6 +48,30 @@ module Github
       end
     end
 
+    def id
+      @id ||= if id_or_filename.is_a?(Integer)
+                id_or_filename
+              else
+                github[:id]
+              end
+    end
+
+    def file_name
+      @file_name ||= if id_or_filename.is_a?(String)
+                       id_or_filename
+                     else
+                       github[:path]&.split('/')&.last
+                     end
+    end
+
+    def octokit_client
+      @octokit_client ||= Octokit::Client.new(access_token: access_token)
+    end
+
+    def github
+      @github ||= octokit_client.workflow(repo, id_or_filename)
+    end
+
     # List all Workflows Runs associated to a workflow in this repo
     #
     # @param page [Integer] Page number
@@ -77,9 +95,9 @@ module Github
     # Returns a list of the inputs for a workflow
     #
     # @return [Hash] the inputs for a workflow
-    def build_inputs
+    def inputs
       yml = YAML.safe_load(content).deep_symbolize_keys
-      search_hash(yml, :inputs)
+      @inputs ||= search_hash(yml, :inputs)
     end
 
     private

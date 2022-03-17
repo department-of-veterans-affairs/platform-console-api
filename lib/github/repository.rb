@@ -6,7 +6,7 @@ module Github
     include Github::Pagination
     include Github::Inspect
 
-    attr_accessor :access_token, :repo, :octokit_client, :github
+    attr_accessor :access_token, :repo
 
     # Creates a Github::Repository object with the github response attached
     #
@@ -17,8 +17,6 @@ module Github
     def initialize(access_token, repo)
       @access_token = access_token
       @repo = repo
-      @octokit_client = Octokit::Client.new(access_token: access_token)
-      @github = octokit_client.repository(repo)
     end
 
     # Get all repositories in an organization
@@ -34,6 +32,14 @@ module Github
 
       response[:pages] = page_numbers(octokit_client)
       response
+    end
+
+    def octokit_client
+      @octokit_client ||= Octokit::Client.new(access_token: access_token)
+    end
+
+    def github
+      @github ||= octokit_client.repository(repo)
     end
 
     # List all issues in a repository
@@ -108,7 +114,7 @@ module Github
     # @return [Pull Request] The newly created pull request
     def create_deploy_workflow_pr
       branch_name = 'gha-add-deploy-template-workflow'
-      default_branch_sha = octokit_client.ref(@repo, "heads/#{@github.default_branch}").object.sha
+      default_branch_sha = octokit_client.ref(repo, "heads/#{github.default_branch}").object.sha
       message = "Add #{DEPLOY_WORKFLOW_FILE} workflow file"
       Github::PullRequest.create_from_new_branch(
         access_token, repo, branch_name, default_branch_sha, message, ".github/workflows/#{DEPLOY_WORKFLOW_FILE}"

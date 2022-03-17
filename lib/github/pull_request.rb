@@ -5,7 +5,7 @@ module Github
   class PullRequest
     include Github::Pagination
 
-    attr_accessor :access_token, :repo, :id, :octokit_client, :github, :branch_name
+    attr_accessor :access_token, :repo, :id
 
     # Creates a Github::PullRequest object with the github response attached
     #
@@ -16,11 +16,8 @@ module Github
     # @see https://docs.github.com/en/rest/reference/pulls#get-a-pull-request
     def initialize(access_token, repo, id)
       @access_token = access_token
-      @id = id
       @repo = repo
-      @octokit_client = Octokit::Client.new(access_token: access_token)
-      @github = octokit_client.pull_request(repo, id)
-      @branch_name = @github[:head][:ref]
+      @id = id
     end
 
     class << self
@@ -76,12 +73,24 @@ module Github
       end
     end
 
+    def octokit_client
+      @octokit_client ||= Octokit::Client.new(access_token: access_token)
+    end
+
+    def github
+      @github ||= octokit_client.pull_request(repo, id)
+    end
+
+    def branch_name
+      @branch_name ||= github[:head][:ref]
+    end
+
     # List a Pull Request's comments
     #
     # @return [Sawyer::Resource] Comments
     # @see https://docs.github.com/en/rest/reference/pulls#review-comments
     def comments
-      @octokit_client.pull_request_comments(repo, id)
+      octokit_client.pull_request_comments(repo, id)
     end
 
     # Check if a pull request is merged
@@ -89,7 +98,7 @@ module Github
     # @return [Boolean] If it has been merged
     # @see https://docs.github.com/en/rest/reference/pulls#check-if-a-pull-request-has-been-merged
     def merged?
-      @octokit_client.pull_merged?(repo, id)
+      octokit_client.pull_merged?(repo, id)
     end
 
     # List Workflow Runs associated with a PRs branch

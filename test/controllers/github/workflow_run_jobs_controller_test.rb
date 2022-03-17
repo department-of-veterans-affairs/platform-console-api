@@ -12,14 +12,14 @@ module Github
     end
 
     test 'should show workflow run job' do
-      VCR.use_cassette('github/workflow_run_jobs_controller') do
+      VCR.use_cassette('github/workflow_run_jobs_controller', record: :new_episodes) do
         get team_app_workflow_run_job_path(@team, @app, 5_204_164_825)
         assert_response :success
       end
     end
 
     test 'should show workflow run job in json format' do
-      VCR.use_cassette('github/workflow_run_jobs_controller') do
+      VCR.use_cassette('github/workflow_run_jobs_controller', record: :new_episodes) do
         get "#{team_app_workflow_run_job_path(@team, @app, 5_204_164_825)}.json"
         assert_response :success
         json_response = JSON.parse(response.body)

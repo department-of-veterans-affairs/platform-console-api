@@ -13,14 +13,18 @@ module Github
     end
 
     test 'can be created with a valid repo and workflow_run_job id' do
-      assert_instance_of Github::WorkflowRunJob, @workflow_run_job
-      assert_instance_of Sawyer::Resource, @workflow_run_job.github
-      assert_equal 5_169_530_176, @workflow_run_job.id
+      VCR.use_cassette('github/workflow_run_job', record: :new_episodes) do
+        assert_instance_of Github::WorkflowRunJob, @workflow_run_job
+        assert_instance_of Sawyer::Resource, @workflow_run_job.github
+        assert_equal 5_169_530_176, @workflow_run_job.id
+      end
     end
 
     test 'get logs' do
-      logs = @workflow_run_job.logs
-      assert_kind_of String, logs
+      VCR.use_cassette('github/workflow_run_job', record: :new_episodes) do
+        logs = @workflow_run_job.logs
+        assert_kind_of String, logs
+      end
     end
 
     test 'get logs returns check-run results when logs do not exist' do

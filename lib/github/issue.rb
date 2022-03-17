@@ -6,7 +6,7 @@ module Github
     include Github::Pagination
     include Github::Inspect
 
-    attr_accessor :access_token, :repo, :id, :octokit_client, :github
+    attr_accessor :access_token, :repo, :id
 
     # Creates a Github::Issue object with the github response attached
     #
@@ -19,8 +19,14 @@ module Github
       @access_token = access_token
       @id = id
       @repo = repo
-      @octokit_client = Octokit::Client.new(access_token: access_token)
-      @github = octokit_client.issue(repo, id)
+    end
+
+    def octokit_client
+      @octokit_client ||= Octokit::Client.new(access_token: access_token)
+    end
+
+    def github
+      @github ||= octokit_client.issue(repo, id)
     end
 
     # List all Issues associated with a repository
@@ -44,7 +50,7 @@ module Github
     # @return [Sawyer::Resource] Comments
     # @see https://docs.github.com/en/rest/reference/issues#list-issue-comments
     def comments
-      @octokit_client.issue_comments(repo, id)
+      octokit_client.issue_comments(repo, id)
     end
   end
 end
