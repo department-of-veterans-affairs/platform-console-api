@@ -25,7 +25,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:16 GMT
+      - Thu, 17 Mar 2022 15:55:49 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -46,11 +46,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4674'
+      - '4616'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '326'
+      - '384'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -73,11 +73,11 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - E147:7F76:F7346D:1D1DB86:62335750
+      - EDC8:3A67:E7077:F4A44:62335A05
     body:
       encoding: ASCII-8BIT
       string: '{"id":5204164825,"run_id":1848333333,"run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333","run_attempt":1,"node_id":"CR_kwDOA7hKyc8AAAABNjFA2Q","head_sha":"4be7b708db46716631e0eb62da647fab5bdbf97a","url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825","html_url":"https://github.com/department-of-veterans-affairs/vets-api/runs/5204164825","status":"completed","conclusion":"success","started_at":"2022-02-15T17:11:18Z","completed_at":"2022-02-15T17:11:18Z","name":"Coverage","steps":[],"check_run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/check-runs/5204164825","labels":[],"runner_id":null,"runner_name":null,"runner_group_id":null,"runner_group_name":null}'
-  recorded_at: Thu, 17 Mar 2022 15:44:16 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:49 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333/jobs?page=1
@@ -103,7 +103,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:16 GMT
+      - Thu, 17 Mar 2022 15:55:50 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -124,11 +124,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4673'
+      - '4615'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '327'
+      - '385'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -151,7 +151,7 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - E148:639E:F7A763:1E623F9:62335750
+      - EDC9:6ECE:ACEA4:B9142:62335A05
     body:
       encoding: ASCII-8BIT
       string: '{"total_count":5,"jobs":[{"id":5204071637,"run_id":1848333333,"run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333","run_attempt":1,"node_id":"CR_kwDOA7hKyc8AAAABNi_U1Q","head_sha":"4be7b708db46716631e0eb62da647fab5bdbf97a","url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204071637","html_url":"https://github.com/department-of-veterans-affairs/vets-api/runs/5204071637?check_suite_focus=true","status":"completed","conclusion":"failure","started_at":"2022-02-15T17:05:07Z","completed_at":"2022-02-15T17:09:59Z","name":"Test","steps":[{"name":"Set
@@ -201,7 +201,7 @@ http_interactions:
         job","status":"completed","conclusion":"success","number":33,"started_at":"2022-02-15T10:11:34.000-07:00","completed_at":"2022-02-15T10:11:34.000-07:00"}],"check_run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/check-runs/5204146623","labels":["ubuntu-20.04"],"runner_id":12,"runner_name":"GitHub
         Actions 12","runner_group_id":2,"runner_group_name":"GitHub Actions"},{"id":5204164523,"run_id":1848333333,"run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333","run_attempt":1,"node_id":"CR_kwDOA7hKyc8AAAABNjE_qw","head_sha":"4be7b708db46716631e0eb62da647fab5bdbf97a","url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164523","html_url":"https://github.com/department-of-veterans-affairs/vets-api/runs/5204164523","status":"completed","conclusion":"failure","started_at":"2022-02-15T17:11:17Z","completed_at":"2022-02-15T17:11:17Z","name":"Test
         Results","steps":[],"check_run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/check-runs/5204164523","labels":[],"runner_id":null,"runner_name":null,"runner_group_id":null,"runner_group_name":null},{"id":5204164825,"run_id":1848333333,"run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333","run_attempt":1,"node_id":"CR_kwDOA7hKyc8AAAABNjFA2Q","head_sha":"4be7b708db46716631e0eb62da647fab5bdbf97a","url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825","html_url":"https://github.com/department-of-veterans-affairs/vets-api/runs/5204164825","status":"completed","conclusion":"success","started_at":"2022-02-15T17:11:18Z","completed_at":"2022-02-15T17:11:18Z","name":"Coverage","steps":[],"check_run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/check-runs/5204164825","labels":[],"runner_id":null,"runner_name":null,"runner_group_id":null,"runner_group_name":null}]}'
-  recorded_at: Thu, 17 Mar 2022 15:44:17 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:50 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333
@@ -227,7 +227,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:17 GMT
+      - Thu, 17 Mar 2022 15:55:50 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -248,11 +248,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4672'
+      - '4614'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '328'
+      - '386'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -275,7 +275,7 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - E14B:62E9:A88E76:1F6D018:62335751
+      - EDCE:1828:E7FDB:F57B8:62335A06
     body:
       encoding: ASCII-8BIT
       string: '{"id":1848333333,"name":"Code Checks","node_id":"WFR_kwLOA7hKyc5uK1QV","head_branch":"API-12125-fixup-appellant-and-hlr-class","head_sha":"4be7b708db46716631e0eb62da647fab5bdbf97a","run_number":15265,"event":"push","status":"completed","conclusion":"failure","workflow_id":7426309,"check_suite_id":5317419450,"check_suite_node_id":"CS_kwDOA7hKyc8AAAABPPFhug","url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333","html_url":"https://github.com/department-of-veterans-affairs/vets-api/actions/runs/1848333333","pull_requests":[],"created_at":"2022-02-15T17:05:01Z","updated_at":"2022-02-15T17:11:39Z","actor":{"login":"ElleeB","id":30485143,"node_id":"MDQ6VXNlcjMwNDg1MTQz","avatar_url":"https://avatars.githubusercontent.com/u/30485143?v=4","gravatar_id":"","url":"https://api.github.com/users/ElleeB","html_url":"https://github.com/ElleeB","followers_url":"https://api.github.com/users/ElleeB/followers","following_url":"https://api.github.com/users/ElleeB/following{/other_user}","gists_url":"https://api.github.com/users/ElleeB/gists{/gist_id}","starred_url":"https://api.github.com/users/ElleeB/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/ElleeB/subscriptions","organizations_url":"https://api.github.com/users/ElleeB/orgs","repos_url":"https://api.github.com/users/ElleeB/repos","events_url":"https://api.github.com/users/ElleeB/events{/privacy}","received_events_url":"https://api.github.com/users/ElleeB/received_events","type":"User","site_admin":false},"run_attempt":1,"run_started_at":"2022-02-15T17:05:01Z","triggering_actor":{"login":"ElleeB","id":30485143,"node_id":"MDQ6VXNlcjMwNDg1MTQz","avatar_url":"https://avatars.githubusercontent.com/u/30485143?v=4","gravatar_id":"","url":"https://api.github.com/users/ElleeB","html_url":"https://github.com/ElleeB","followers_url":"https://api.github.com/users/ElleeB/followers","following_url":"https://api.github.com/users/ElleeB/following{/other_user}","gists_url":"https://api.github.com/users/ElleeB/gists{/gist_id}","starred_url":"https://api.github.com/users/ElleeB/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/ElleeB/subscriptions","organizations_url":"https://api.github.com/users/ElleeB/orgs","repos_url":"https://api.github.com/users/ElleeB/repos","events_url":"https://api.github.com/users/ElleeB/events{/privacy}","received_events_url":"https://api.github.com/users/ElleeB/received_events","type":"User","site_admin":false},"jobs_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333/jobs","logs_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333/logs","check_suite_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/check-suites/5317419450","artifacts_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333/artifacts","cancel_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333/cancel","rerun_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333/rerun","previous_attempt_url":null,"workflow_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/workflows/7426309","head_commit":{"id":"4be7b708db46716631e0eb62da647fab5bdbf97a","tree_id":"5f7a17935c11f9149403289a1a24b85e9d4dc575","message":"Delete
@@ -283,7 +283,7 @@ http_interactions:
         Trager","email":"laura.trager@adhocteam.us"},"committer":{"name":"Laura Trager","email":"laura.trager@adhocteam.us"}},"repository":{"id":62409417,"node_id":"MDEwOlJlcG9zaXRvcnk2MjQwOTQxNw==","name":"vets-api","full_name":"department-of-veterans-affairs/vets-api","private":false,"owner":{"login":"department-of-veterans-affairs","id":5421563,"node_id":"MDEyOk9yZ2FuaXphdGlvbjU0MjE1NjM=","avatar_url":"https://avatars.githubusercontent.com/u/5421563?v=4","gravatar_id":"","url":"https://api.github.com/users/department-of-veterans-affairs","html_url":"https://github.com/department-of-veterans-affairs","followers_url":"https://api.github.com/users/department-of-veterans-affairs/followers","following_url":"https://api.github.com/users/department-of-veterans-affairs/following{/other_user}","gists_url":"https://api.github.com/users/department-of-veterans-affairs/gists{/gist_id}","starred_url":"https://api.github.com/users/department-of-veterans-affairs/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/department-of-veterans-affairs/subscriptions","organizations_url":"https://api.github.com/users/department-of-veterans-affairs/orgs","repos_url":"https://api.github.com/users/department-of-veterans-affairs/repos","events_url":"https://api.github.com/users/department-of-veterans-affairs/events{/privacy}","received_events_url":"https://api.github.com/users/department-of-veterans-affairs/received_events","type":"Organization","site_admin":false},"html_url":"https://github.com/department-of-veterans-affairs/vets-api","description":"API
         powering VA.gov","fork":false,"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api","forks_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/forks","keys_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/keys{/key_id}","collaborators_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/teams","hooks_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/hooks","issue_events_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/issues/events{/number}","events_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/events","assignees_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/assignees{/user}","branches_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/branches{/branch}","tags_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tags","blobs_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/git/refs{/sha}","trees_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/git/trees{/sha}","statuses_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/statuses/{sha}","languages_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/languages","stargazers_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/stargazers","contributors_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/contributors","subscribers_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/subscribers","subscription_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/subscription","commits_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/commits{/sha}","git_commits_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/git/commits{/sha}","comments_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/comments{/number}","issue_comment_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/issues/comments{/number}","contents_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/contents/{+path}","compare_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/compare/{base}...{head}","merges_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/merges","archive_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/downloads","issues_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/issues{/number}","pulls_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/pulls{/number}","milestones_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/milestones{/number}","notifications_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/labels{/name}","releases_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases{/id}","deployments_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/deployments"},"head_repository":{"id":62409417,"node_id":"MDEwOlJlcG9zaXRvcnk2MjQwOTQxNw==","name":"vets-api","full_name":"department-of-veterans-affairs/vets-api","private":false,"owner":{"login":"department-of-veterans-affairs","id":5421563,"node_id":"MDEyOk9yZ2FuaXphdGlvbjU0MjE1NjM=","avatar_url":"https://avatars.githubusercontent.com/u/5421563?v=4","gravatar_id":"","url":"https://api.github.com/users/department-of-veterans-affairs","html_url":"https://github.com/department-of-veterans-affairs","followers_url":"https://api.github.com/users/department-of-veterans-affairs/followers","following_url":"https://api.github.com/users/department-of-veterans-affairs/following{/other_user}","gists_url":"https://api.github.com/users/department-of-veterans-affairs/gists{/gist_id}","starred_url":"https://api.github.com/users/department-of-veterans-affairs/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/department-of-veterans-affairs/subscriptions","organizations_url":"https://api.github.com/users/department-of-veterans-affairs/orgs","repos_url":"https://api.github.com/users/department-of-veterans-affairs/repos","events_url":"https://api.github.com/users/department-of-veterans-affairs/events{/privacy}","received_events_url":"https://api.github.com/users/department-of-veterans-affairs/received_events","type":"Organization","site_admin":false},"html_url":"https://github.com/department-of-veterans-affairs/vets-api","description":"API
         powering VA.gov","fork":false,"url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api","forks_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/forks","keys_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/keys{/key_id}","collaborators_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/teams","hooks_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/hooks","issue_events_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/issues/events{/number}","events_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/events","assignees_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/assignees{/user}","branches_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/branches{/branch}","tags_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/tags","blobs_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/git/refs{/sha}","trees_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/git/trees{/sha}","statuses_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/statuses/{sha}","languages_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/languages","stargazers_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/stargazers","contributors_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/contributors","subscribers_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/subscribers","subscription_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/subscription","commits_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/commits{/sha}","git_commits_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/git/commits{/sha}","comments_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/comments{/number}","issue_comment_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/issues/comments{/number}","contents_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/contents/{+path}","compare_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/compare/{base}...{head}","merges_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/merges","archive_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/downloads","issues_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/issues{/number}","pulls_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/pulls{/number}","milestones_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/milestones{/number}","notifications_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/labels{/name}","releases_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/releases{/id}","deployments_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/deployments"}}'
-  recorded_at: Thu, 17 Mar 2022 15:44:17 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:50 GMT
 - request:
     method: head
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333/logs
@@ -307,21 +307,21 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:17 GMT
+      - Thu, 17 Mar 2022 15:55:50 GMT
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
       - '0'
       Location:
-      - https://pipelines.actions.githubusercontent.com/fu96GOJleFsryGAthC19eocndqQLJsouxGK8ssvNvGWTMO2pLp/_apis/pipelines/1/runs/49089/signedlogcontent?urlExpires=2022-03-17T15%3A45%3A17.6254196Z&urlSigningMethod=HMACV1&urlSignature=z9gVSLGuETEpKMmB5b4IukayBIcy33mpBDcdotZDN0I%3D
+      - https://pipelines.actions.githubusercontent.com/fu96GOJleFsryGAthC19eocndqQLJsouxGK8ssvNvGWTMO2pLp/_apis/pipelines/1/runs/49089/signedlogcontent?urlExpires=2022-03-17T15%3A56%3A50.8957936Z&urlSigningMethod=HMACV1&urlSignature=uMws4i%2FPuafHq4T4WqaFr5OjlVSm5uNpmjJCHpiL%2F7s%3D
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4671'
+      - '4613'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '329'
+      - '387'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -346,11 +346,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E150:5818:3D1AC:B1E19:62335751
+      - EDCF:272D:98FE1:A438B:62335A06
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Thu, 17 Mar 2022 15:44:17 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:50 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -376,7 +376,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:17 GMT
+      - Thu, 17 Mar 2022 15:55:51 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -390,11 +390,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4670'
+      - '4612'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '330'
+      - '388'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -419,11 +419,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E151:1361:1EC40:6A2A2:62335751
+      - EDD0:466E:1AD56:24927:62335A07
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:17 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:51 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/check-runs/5204164825
@@ -449,7 +449,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:18 GMT
+      - Thu, 17 Mar 2022 15:55:51 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -470,11 +470,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4669'
+      - '4611'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '331'
+      - '389'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -497,14 +497,14 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - E152:50EB:C6A31:18D8A7:62335752
+      - EDD1:7DCD:3D3F8:47B4B:62335A07
     body:
       encoding: ASCII-8BIT
       string: '{"id":5204164825,"name":"Coverage","node_id":"CR_kwDOA7hKyc8AAAABNjFA2Q","head_sha":"4be7b708db46716631e0eb62da647fab5bdbf97a","external_id":"","url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/check-runs/5204164825","html_url":"https://github.com/department-of-veterans-affairs/vets-api/runs/5204164825","details_url":"https://github.com/department-of-veterans-affairs/vets-api/runs/5204164825","status":"completed","conclusion":"success","started_at":"2022-02-15T17:11:18Z","completed_at":"2022-02-15T17:11:18Z","output":{"title":"Coverage
         96.43%","summary":"**Coverage**:\n\n| Type  | covered | minimum |\n| -----
         | ------- | ------- |\n| Lines | 96.43%     | 90%     |\n","text":null,"annotations_count":0,"annotations_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/check-runs/5204164825/annotations"},"check_suite":{"id":5317419450},"app":{"id":15368,"slug":"github-actions","node_id":"MDM6QXBwMTUzNjg=","owner":{"login":"github","id":9919,"node_id":"MDEyOk9yZ2FuaXphdGlvbjk5MTk=","avatar_url":"https://avatars.githubusercontent.com/u/9919?v=4","gravatar_id":"","url":"https://api.github.com/users/github","html_url":"https://github.com/github","followers_url":"https://api.github.com/users/github/followers","following_url":"https://api.github.com/users/github/following{/other_user}","gists_url":"https://api.github.com/users/github/gists{/gist_id}","starred_url":"https://api.github.com/users/github/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/github/subscriptions","organizations_url":"https://api.github.com/users/github/orgs","repos_url":"https://api.github.com/users/github/repos","events_url":"https://api.github.com/users/github/events{/privacy}","received_events_url":"https://api.github.com/users/github/received_events","type":"Organization","site_admin":false},"name":"GitHub
         Actions","description":"Automate your workflow from idea to production","external_url":"https://help.github.com/en/actions","html_url":"https://github.com/apps/github-actions","created_at":"2018-07-30T09:30:17Z","updated_at":"2019-12-10T19:04:12Z","permissions":{"actions":"write","administration":"read","checks":"write","contents":"write","deployments":"write","discussions":"write","issues":"write","metadata":"read","organization_packages":"write","packages":"write","pages":"write","pull_requests":"write","repository_hooks":"write","repository_projects":"write","security_events":"write","statuses":"write","vulnerability_alerts":"read"},"events":["branch_protection_rule","check_run","check_suite","create","delete","deployment","deployment_status","discussion","discussion_comment","fork","gollum","issues","issue_comment","label","milestone","page_build","project","project_card","project_column","public","pull_request","pull_request_review","pull_request_review_comment","push","registry_package","release","repository","repository_dispatch","status","watch","workflow_dispatch","workflow_run"]},"pull_requests":[]}'
-  recorded_at: Thu, 17 Mar 2022 15:44:18 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:51 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -530,7 +530,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:18 GMT
+      - Thu, 17 Mar 2022 15:55:51 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -544,11 +544,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4668'
+      - '4610'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '332'
+      - '390'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -573,11 +573,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E157:7F75:8D7B94:13C8D78:62335752
+      - EDD6:0EB9:11C2B7:129C52:62335A07
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:18 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:51 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -603,7 +603,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:18 GMT
+      - Thu, 17 Mar 2022 15:55:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -617,11 +617,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4667'
+      - '4609'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '333'
+      - '391'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -646,11 +646,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E159:1A9E:108637B:1EC56BF:62335752
+      - EDD9:8BC8:10BBCC:1196A6:62335A08
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:19 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:52 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -676,7 +676,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:19 GMT
+      - Thu, 17 Mar 2022 15:55:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -690,11 +690,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4666'
+      - '4608'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '334'
+      - '392'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -719,11 +719,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E15A:0897:28A330:7F1F76:62335753
+      - EDDE:1827:9DC19:AA06B:62335A08
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:19 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:52 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -749,7 +749,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:19 GMT
+      - Thu, 17 Mar 2022 15:55:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -763,11 +763,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4665'
+      - '4607'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '335'
+      - '393'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -792,11 +792,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E15F:6DBB:D3049:18EE65:62335753
+      - EDDF:1828:E8109:F58F3:62335A08
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:19 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:53 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -822,7 +822,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:19 GMT
+      - Thu, 17 Mar 2022 15:55:53 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -836,11 +836,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4664'
+      - '4606'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '336'
+      - '394'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -865,11 +865,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E160:402F:D47E2:187BAA:62335753
+      - EDE0:85B5:B1503:BD7E7:62335A09
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:19 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:53 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -895,7 +895,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:19 GMT
+      - Thu, 17 Mar 2022 15:55:53 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -909,11 +909,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4663'
+      - '4605'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '337'
+      - '395'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -938,11 +938,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E161:1A9F:B33597:2264325:62335753
+      - EDE5:1E9E:A2E37:AF0BD:62335A09
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:20 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:53 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -968,7 +968,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:20 GMT
+      - Thu, 17 Mar 2022 15:55:53 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -982,11 +982,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4662'
+      - '4604'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '338'
+      - '396'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -1011,11 +1011,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E162:02C3:436CE:A8E8C:62335754
+      - EDE6:272C:46C4A:51424:62335A09
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:20 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:53 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -1041,7 +1041,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:20 GMT
+      - Thu, 17 Mar 2022 15:55:54 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -1055,11 +1055,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4661'
+      - '4603'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '339'
+      - '397'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -1084,11 +1084,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E168:10B4:958CB:1D796F:62335754
+      - EDE7:6ECE:AD03B:B92F7:62335A09
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:20 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:54 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -1114,7 +1114,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:20 GMT
+      - Thu, 17 Mar 2022 15:55:54 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -1128,11 +1128,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4660'
+      - '4602'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '340'
+      - '398'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -1157,11 +1157,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E16A:72A2:7DC73:1111A6:62335754
+      - EDE8:1E9F:F73D7:104E51:62335A0A
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:20 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:54 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -1187,7 +1187,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:20 GMT
+      - Thu, 17 Mar 2022 15:55:54 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -1201,11 +1201,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4659'
+      - '4601'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '341'
+      - '399'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -1230,11 +1230,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E16B:66DF:A8BCBF:1558B66:62335754
+      - EDED:3A61:D791:170C5:62335A0A
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:20 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:54 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -1260,7 +1260,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:21 GMT
+      - Thu, 17 Mar 2022 15:55:54 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -1274,11 +1274,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4658'
+      - '4600'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '342'
+      - '400'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -1303,11 +1303,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E16C:4AB1:204A1F:7A4985:62335755
+      - EDEE:1828:E81FE:F59FB:62335A0A
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:21 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:54 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -1333,7 +1333,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:21 GMT
+      - Thu, 17 Mar 2022 15:55:55 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -1347,11 +1347,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4657'
+      - '4599'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '343'
+      - '401'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -1376,11 +1376,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E171:2E2C:3A3FC:AAD6C:62335755
+      - EDEF:9398:6FE2D:7B221:62335A0B
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:21 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:55 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -1406,7 +1406,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:21 GMT
+      - Thu, 17 Mar 2022 15:55:55 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -1420,11 +1420,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4656'
+      - '4598'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '344'
+      - '402'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -1449,11 +1449,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E172:2B2A:7A29C:117089:62335755
+      - EDF1:068E:ADBD4:B9F8E:62335A0B
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:21 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:55 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -1479,7 +1479,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:21 GMT
+      - Thu, 17 Mar 2022 15:55:55 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -1493,11 +1493,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4655'
+      - '4597'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '345'
+      - '403'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -1522,11 +1522,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E173:7F74:4BFBF2:C9784E:62335755
+      - EDF6:272F:FD44C:10ABA7:62335A0B
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:22 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:55 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -1552,7 +1552,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:22 GMT
+      - Thu, 17 Mar 2022 15:55:56 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -1566,11 +1566,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4654'
+      - '4596'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '346'
+      - '404'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -1595,11 +1595,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E174:7FFA:7136D:FEC27:62335756
+      - EDF7:6ECF:11DA07:12B30C:62335A0B
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:22 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:56 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -1625,7 +1625,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:22 GMT
+      - Thu, 17 Mar 2022 15:55:56 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -1639,11 +1639,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4653'
+      - '4595'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '347'
+      - '405'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -1668,11 +1668,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E179:2B2A:7A2C9:117105:62335756
+      - EDF8:939A:DDFDC:EB8FE:62335A0C
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:22 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:56 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -1698,7 +1698,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:22 GMT
+      - Thu, 17 Mar 2022 15:55:56 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -1712,11 +1712,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4652'
+      - '4594'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '348'
+      - '406'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -1741,11 +1741,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E17F:50ED:99885:1CB01E:62335756
+      - EDFD:0EB9:11C4FD:129EB5:62335A0C
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:22 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:56 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -1771,7 +1771,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:22 GMT
+      - Thu, 17 Mar 2022 15:55:56 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -1785,11 +1785,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4651'
+      - '4593'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '349'
+      - '407'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -1814,11 +1814,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E180:2E2D:79D59:10BC6B:62335756
+      - EDFE:7DCF:DB730:E7B99:62335A0C
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:23 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:56 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825/logs
@@ -1844,7 +1844,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 17 Mar 2022 15:44:23 GMT
+      - Thu, 17 Mar 2022 15:55:57 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -1858,11 +1858,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4650'
+      - '4592'
       X-Ratelimit-Reset:
       - '1647533082'
       X-Ratelimit-Used:
-      - '350'
+      - '408'
       X-Ratelimit-Resource:
       - core
       Access-Control-Expose-Headers:
@@ -1887,9 +1887,79 @@ http_interactions:
       Vary:
       - Accept-Encoding, Accept, X-Requested-With
       X-Github-Request-Id:
-      - E182:50EA:83014:11695D:62335757
+      - EDFF:4857:B50EA:C1547:62335A0C
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#download-job-logs-for-a-workflow-run"}'
-  recorded_at: Thu, 17 Mar 2022 15:44:23 GMT
+  recorded_at: Thu, 17 Mar 2022 15:55:57 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/check-runs/5204164825
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.22.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      If-None-Match:
+      - W/"2d137a5b19c05f9f9de8a382ba415363c40817f2157b4659534b4a78e967fe01"
+      Authorization:
+      - token github_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 304
+      message: Not Modified
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 17 Mar 2022 15:56:58 GMT
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - '"2d137a5b19c05f9f9de8a382ba415363c40817f2157b4659534b4a78e967fe01"'
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4591'
+      X-Ratelimit-Reset:
+      - '1647533082'
+      X-Ratelimit-Used:
+      - '409'
+      X-Ratelimit-Resource:
+      - core
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - EF0F:5FAC:9CA1F:1E001E:62335A49
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Thu, 17 Mar 2022 15:56:58 GMT
 recorded_with: VCR 6.0.0
