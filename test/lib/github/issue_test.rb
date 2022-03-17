@@ -11,9 +11,11 @@ module Github
     end
 
     test 'can be created with a valid repo and issue number' do
-      assert_instance_of Github::Issue, @issue
-      assert_instance_of Sawyer::Resource, @issue.github
-      assert_equal 24, @issue.github.number
+      VCR.use_cassette('github/issue', record: :new_episodes) do
+        assert_instance_of Github::Issue, @issue
+        assert_instance_of Sawyer::Resource, @issue.github
+        assert_equal 24, @issue.github.number
+      end
     end
 
     test 'lists issue comments' do

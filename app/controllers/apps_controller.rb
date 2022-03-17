@@ -77,7 +77,7 @@ class AppsController < ApplicationController
 
   # Set the current github repository and get the latest releases for it
   def set_github_info
-    return if @app.github_repo.blank?
+    return if @app.github_repo.blank? || @app.errors.present?
 
     @github_repository = @app.repository(current_user.github_token)
     @releases = @github_repository.octokit_client.releases(@app.github_repo)

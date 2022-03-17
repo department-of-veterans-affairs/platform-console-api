@@ -13,9 +13,11 @@ module Github
     end
 
     test 'can be created with a valid repo and workflow_run id' do
-      assert_instance_of Github::WorkflowRun, @workflow_run
-      assert_instance_of Sawyer::Resource, @workflow_run.github
-      assert_equal 1_815_728_096, @workflow_run.github.id
+      VCR.use_cassette('github/workflow_run', record: :new_episodes) do
+        assert_instance_of Github::WorkflowRun, @workflow_run
+        assert_instance_of Sawyer::Resource, @workflow_run.github
+        assert_equal 1_815_728_096, @workflow_run.github.id
+      end
     end
 
     test 'extracting logs' do

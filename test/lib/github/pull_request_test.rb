@@ -13,9 +13,11 @@ module Github
     end
 
     test 'can be created with a valid repo and pull request number' do
-      assert_instance_of Github::PullRequest, @pull_request
-      assert_instance_of Sawyer::Resource, @pull_request.github
-      assert_equal 10, @pull_request.github.number
+      VCR.use_cassette('github/pull_request', record: :new_episodes) do
+        assert_instance_of Github::PullRequest, @pull_request
+        assert_instance_of Sawyer::Resource, @pull_request.github
+        assert_equal 10, @pull_request.github.number
+      end
     end
 
     test 'lists comments for the pull request' do
