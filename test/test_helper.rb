@@ -48,7 +48,7 @@ module ActiveSupport
 
     def setup_omniauth_mock(user)
       stub_keycloak_requests
-      Rails.application.env_config["omniauth.auth"] = keycloak_auth(user)
+      Rails.application.env_config['omniauth.auth'] = keycloak_auth(user)
       get '/auth/keycloak/callback'
     end
 
