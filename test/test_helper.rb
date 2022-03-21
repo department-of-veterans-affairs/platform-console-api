@@ -11,11 +11,13 @@ if ENV['COVERAGE'] || ENV['CI']
 end
 
 ENV['RAILS_ENV'] ||= 'test'
-ENV['KEYCLOAK_SITE_URL'] = 'http://www.example.com/auth/keycloak/callback'
 ENV['GITHUB_CLIENT_ID'] ||= 'github_client_id'
 ENV['GITHUB_CLIENT_SECRET'] ||= 'github_client_secret'
+ENV['KEYCLOAK_SITE_URL'] = 'http://test.host/auth/keycloak/callback'
+ENV['KEYCLOAK_REALM'] = 'example-realm'
 require_relative '../config/environment'
 require 'rails/test_help'
+require 'webmock/minitest'
 require 'vcr'
 require 'webmock/minitest'
 
@@ -42,13 +44,19 @@ module ActiveSupport
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
+    WebMock.disable_net_connect!(
+      {
+        allow_localhost: true,
+        allow: 'chromedriver.storage.googleapis.com' # Needed for GitHub runners
+      }
+    )
 
     # Add more helper methods to be used by all tests here...
+    OmniAuth.config.test_mode = true
 
     def setup_omniauth_mock(user)
-      OmniAuth.config.test_mode = true
-      request = ActionDispatch::Request.new({})
-      request.env['omniauth.auth'] = keycloak_auth(user)
+      stub_keycloak_requests
+      Rails.application.env_config['omniauth.auth'] = keycloak_auth(user)
       get '/auth/keycloak/callback'
     end
 
@@ -68,6 +76,14 @@ module ActiveSupport
 
     def login_as(user)
       visit "/login?request.omniauth[uid]=#{users(user).uid}"
+    end
+
+    def stub_keycloak_requests
+      WebMock.stub_request(:get, 'http://test.host/auth/realms/example-realm/.well-known/openid-configuration')
+             .to_return(status: 200, body: File.read(Rails.root.join('test/fixtures/files/keycloak_config.json')))
+
+      WebMock.stub_request(:get, 'http://test.host/auth/realms/example-realm/protocol/openid-connect/certs')
+             .to_return(status: 200, body: { "keys": [] }.to_json)
     end
   end
 end
