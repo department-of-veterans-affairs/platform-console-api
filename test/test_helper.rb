@@ -16,6 +16,18 @@ ENV['KEYCLOAK_REALM'] = 'example-realm'
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'webmock/minitest'
+require 'vcr'
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'test/vcr_cassettes'
+  config.hook_into :webmock
+  config.allow_http_connections_when_no_cassette = true
+  config.filter_sensitive_data('github_token') { ENV['GITHUB_ACCESS_TOKEN'] }
+  config.filter_sensitive_data('github_client_id') { ENV['GITHUB_CLIENT_ID'] }
+  config.filter_sensitive_data('github_client_secret') { ENV['GITHUB_CLIENT_SECRET'] }
+  # whitelist 127.0.0.1 so VCR doesn't interfere with system tests
+  config.ignore_hosts '127.0.0.1'
+end
 
 module ActiveSupport
   class TestCase
@@ -32,14 +44,17 @@ module ActiveSupport
     )
 
     # Add more helper methods to be used by all tests here...
+    OmniAuth.config.test_mode = true
 
     def setup_omniauth_mock(user)
       stub_keycloak_requests
-      OmniAuth.config.test_mode = true
-      request = ActionDispatch::TestRequest.create
-      request.env['omniauth.auth'] = keycloak_auth(user)
+      Rails.application.env_config["omniauth.auth"] = keycloak_auth(user)
       get '/auth/keycloak/callback'
     end
+
+    # keycloak_auth(user)
+    #   Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:keycloak]
+    #   get "/auth/keycloak"
 
     def keycloak_auth(user)
       OmniAuth.config.mock_auth[:keycloak] =
