@@ -52,10 +52,6 @@ module ActiveSupport
       get '/auth/keycloak/callback'
     end
 
-    # keycloak_auth(user)
-    #   Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:keycloak]
-    #   get "/auth/keycloak"
-
     def keycloak_auth(user)
       OmniAuth.config.mock_auth[:keycloak] =
         OmniAuth::AuthHash.new(
