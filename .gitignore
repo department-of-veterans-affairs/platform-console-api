@@ -17,6 +17,7 @@
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
+/config/ssl
 
 # Ignore uploaded files in development.
 /storage/*
@@ -37,3 +38,6 @@ test/reports
 # Ignore Tailwind generated files
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# Ignore env local env file
+.env.local

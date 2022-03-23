@@ -63,7 +63,7 @@ module ApplicationHelper
         { name: I18n.t('navbar.datadog'), path: datadog_link, target: '_blank' },
         { name: I18n.t('navbar.loki'), path: loki_link, target: '_blank' },
         { name: I18n.t('navbar.sentry'), path: sentry_link, target: '_blank' },
-        { name: I18n.t('navbar.support'), path: slack_path}
+        { name: I18n.t('navbar.support'), path: 'https://slack.com/oauth/v2/authorize?client_id=3214246874021.3202543886663&scope=channels:history,channels:read,chat:write,chat:write.customize,conversations.connect:manage,conversations.connect:read,conversations.connect:write,users:read&user_scope=channels:history,channels:read,channels:write,groups:history,groups:read,groups:write,users:read,team:read'}
       ],
       drop: nav_links_drop
     }

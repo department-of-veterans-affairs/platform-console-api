@@ -1,0 +1,58 @@
+name: Create Deploy Workflow PR
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: The Repository the PR will be created in
+        required: true
+      file_name:
+        description: The file to include in the PR
+        required: true
+        default: deploy-template.yml
+
+jobs:
+  create_pull_request:
+    name: Create Branch & PR
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-gov-west-1
+
+      - uses: marvinpinto/action-inject-ssm-secrets@v1.1.1
+        with:
+          ssm_parameter: /dsva-vagov/platform-console-api/utility/github_access_token
+          env_variable_name: GITHUB_ACCESS_TOKEN
+
+      - uses: actions/checkout@v2
+
+      - name: Copy File
+        run: cp .github/workflows/${{ github.event.inputs.file_name }} ${{runner.temp}}
+
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          token: ${{env.GITHUB_ACCESS_TOKEN}}
+          repository: ${{ github.event.inputs.repo }}
+          ref: master
+
+      - name: Create Commits
+        run: |
+          git config user.name 'va-vsp-bot'
+          git config user.email 'va-vsp-bot@users.noreply.github.com'
+          mkdir -p .github/workflows
+          cp ${{runner.temp}}/${{ github.event.inputs.file_name }} .github/workflows
+          git add .
+          git commit -m 'Add ${{ github.event.inputs.file_name }} workflow'
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{env.GITHUB_ACCESS_TOKEN}}
+          branch: gha-add-deploy-template-workflow
+          title: Add Deploy Workflow
+          body: Adding ${{ github.event.inputs.file_name }} workflow to your repository to enable deployment from the Platform Console.

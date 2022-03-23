@@ -14,6 +14,20 @@ class OmniauthController < SessionsController
     end
   end
 
+  def slack_api
+    if session[:slack_token].blank?
+      response = Faraday.post("https://slack.com/api/oauth.access") do |req|
+        req.headers =
+          {
+            'Content-Type' => 'application/x-www-form-urlencoded'
+          }
+        req.body = "code=#{params[:code]}&client_id=#{ENV['SLACK_CLIENT_ID']}&client_secret=#{ENV['SLACK_CLIENT_SECRET']}"
+      end
+      #session[:slack_token] = JSON.parse(response.body)["authed_user"]["access_token"]
+    end
+    redirect_to slack_index_path
+  end
+
   private
 
   def set_user

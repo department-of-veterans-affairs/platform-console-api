@@ -60,3 +60,55 @@
 .pagy-info {
   @apply hidden sm:inline-block;
 }
+
+.group:focus .group-focus\:flex {
+  display: flex;
+}
+
+.max-w-xs {
+max-width: 20rem;
+}
+
+.text-purple-lighter {
+  color: #d6bbfc;
+}
+
+.bg-indigo-darker {
+  background-color: #4a154b!important;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.items-start {
+  -webkit-box-align: start;
+  align-items: flex-start;
+}
+.flex-1 {
+  -webkit-box-flex: 1;
+  flex: 1;
+  }
+
+.flex-col {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+}
+
+.overflow-y-scroll {
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.w-full {
+  width: 100%;
+}

@@ -2,6 +2,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
+
 // Toggle Navbar Dropdown
 document.addEventListener('click', function navbarDropToggler(e) {
   var menuButton = document.querySelector("#user-menu-button")

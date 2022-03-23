@@ -4,6 +4,8 @@
 class TeamsController < ApplicationController
   before_action :authorize_session!
   before_action :set_team, only: %i[show edit update destroy]
+  before_action :set_apps, only: :show
+  before_action :set_slack_client
 
   # GET /teams or /teams.json
   def index
@@ -70,6 +72,11 @@ class TeamsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_team
     @team = Team.find(params[:id])
+    session[:team_id] = @team.id
+  end
+
+  def set_apps
+    @apps = @team.apps.where.not(name: "Slack")
   end
 
   # Only allow a list of trusted parameters through.
@@ -83,5 +90,9 @@ class TeamsController < ApplicationController
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
+
+  def set_slack_client
+    @slack_client = session[:slack_token]
   end
 end

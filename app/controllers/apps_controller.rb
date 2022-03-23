@@ -3,7 +3,7 @@
 # Handles creating apps which are owned by a team
 class AppsController < ApplicationController
   before_action :authorize_session!
-  before_action :set_team, except: :slack
+  before_action :set_team
   before_action :set_app, only: %i[show edit update destroy]
 
   # GET /apps or /apps.json
@@ -61,13 +61,6 @@ class AppsController < ApplicationController
     end
   end
 
-  def slack
-    if params[:app][:name]
-      client = Slack::Web::Client.new
-      client.chat_postMessage(channel: '#console-support', text: params[:app][:name], as_user: true)
-    end
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -78,6 +71,7 @@ class AppsController < ApplicationController
   # Find the team app
   def set_app
     @app = @team.apps.find(params[:id])
+    # user = client.users_info(user: client.conversations_history(channel: "C036D41HER0")["messages"][1].user)
   end
 
   # Only allow a list of trusted parameters through.
