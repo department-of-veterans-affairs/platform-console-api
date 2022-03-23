@@ -8,4 +8,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
             name: 'keycloak'
 end
 
-OmniAuth.config.allowed_request_methods = %i[post get]
+OmniAuth.configure do |config|
+  config.allowed_request_methods = %i[post get]
+  config.logger = Rails.logger
+end
