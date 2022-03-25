@@ -15,24 +15,25 @@ module ArgoCd
 
     def app_info
       uri = URI("#{base_path}/api/v1/applications?name=#{deployment_name}")
-      get_app_info(uri)
+      get_app_info(uri, :get)
     end
 
     def current_revision(revision)
       uri = URI("#{base_path}/api/v1/applications/#{deployment_name}/revisions/#{revision}/metadata")
-      get_app_info(uri)
+      get_app_info(uri, :get)
     end
 
-    def get_app_info(uri)
-      if current_user.argo_token_invalid?
-        token_response = generate_token
-        return token_response unless token_response.successful?
-      end
+    def destroy_token
+      token_id = current_user.token_id
+      uri = URI("#{base_path}/api/v1/account/#{ENV['ARGO_USER']}/token/#{token_id}")
+      get_app_info(uri, :delete)
+    end
 
+    def get_app_info(uri, verb)
       https = Net::HTTP.new(uri.host, uri.port)
-      https.verify_mode = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
-      https.use_ssl = true if Rails.env.production?
-      response = https.get(uri, request_headers)
+      https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      https.use_ssl = true
+      response = https.method(verb).call(uri, request_headers)
 
       Response.new(response: response)
     end
@@ -47,12 +48,13 @@ module ArgoCd
     private
 
     def base_path
-      return 'https://localhost:8080' unless Rails.env.production?
+      return 'https://argocd.local.com' unless Rails.env.production?
 
       ENV['ARGO_API_BASE_PATH']
     end
 
     def jwt
+      puts "!!!!!!!!!!!#{current_user.argo_token}"
       current_user.argo_token
     end
 
