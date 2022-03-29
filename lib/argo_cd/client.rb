@@ -31,8 +31,8 @@ module ArgoCd
 
     def get_app_info(uri, verb)
       https = Net::HTTP.new(uri.host, uri.port)
-      https.verify_mode = OpenSSL::SSL::VERIFY_NONE
-      https.use_ssl = true
+      https.verify_mode = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
+      https.use_ssl = true if Rails.env.production?
       response = https.method(verb).call(uri, request_headers)
 
       Response.new(response: response)
@@ -48,7 +48,7 @@ module ArgoCd
     private
 
     def base_path
-      return 'https://argocd.local.com' unless Rails.env.production?
+      return 'http://argocd.local.com' unless Rails.env.production?
 
       ENV['ARGO_API_BASE_PATH']
     end
@@ -56,35 +56,6 @@ module ArgoCd
     def jwt
       puts "!!!!!!!!!!!#{current_user.argo_token}"
       current_user.argo_token
-    end
-
-    def generate_token
-      uri = URI("#{base_path}/api/v1/session")
-      https = Net::HTTP.new(uri.host, uri.port)
-      https.verify_mode = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
-      https.use_ssl = true if Rails.env.production?
-
-      request = build_request(uri)
-
-      r = https.request(request)
-      response = Response.new(response: r)
-
-      save_token(response) if response.successful?
-
-      response
-    end
-
-    def build_request(uri)
-      request = Net::HTTP::Post.new(uri.request_uri)
-      request.body = { "username": ENV['ARGO_USER'], "password": ENV['ARGO_PWD'] }.to_json
-      request['Content-Type'] = 'application/json'
-      request
-    end
-
-    def save_token(response)
-      token = response.token
-      current_user.argo_token = token
-      current_user.save!
     end
   end
 end
