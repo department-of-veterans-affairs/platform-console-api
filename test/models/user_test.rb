@@ -12,4 +12,9 @@ class UserTest < ActiveSupport::TestCase
     user = User.new
     assert_not user.save
   end
+
+  test 'should successfully delete a user' do
+    user = users :john
+    assert user.destroy
+  end
 end
