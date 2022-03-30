@@ -12,7 +12,7 @@
   "basePath": "/v2",
   "tags": [
     {
-      "name": "oath",
+      "name": "oauth",
       "description": "Authenticate with github"
     },
     {
@@ -38,6 +38,51 @@
   ],
   "schemes": ["https", "http"],
   "paths": {
+    "/github/oauth/callback": {
+      "get": {
+        "tags": ["oauth"],
+        "summary": "Exchange temporary github oauth code for authentication token",
+        "description": "",
+        "operationId": "getOuathCallback",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "header",
+            "type": "string",
+            "name": "code",
+            "description": "Github Oauth Code",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response is OK",
+            "schema": {
+              "$ref": ""
+            }
+          }
+        }
+      }
+    },
+    "/github/oauth/revoke": {
+      "get": {
+        "tags": ["oauth"],
+        "summary": "Revoke the current user's github authentication token",
+        "description": "",
+        "operationId": "deleteOauthRevoke",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Response is OK",
+            "schema": {
+              "$ref": ""
+            }
+          }
+        }
+      }
+    },
     "/teams/{team_id}/apps/{app_id}/pull_requests.json": {
       "get": {
         "tags": ["pull_requests"],
@@ -46,15 +91,6 @@
         "operationId": "getPullRequests",
         "consumes": ["application/json"],
         "produces": ["application/json"],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": true,
-            "schema": {}
-          }
-        ],
         "responses": {
           "200": {
             "description": "Response is OK",
@@ -73,15 +109,6 @@
         "operationId": "getWorkflow",
         "consumes": ["application/json"],
         "produces": ["application/json"],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": true,
-            "schema": {}
-          }
-        ],
         "responses": {
           "200": {
             "description": "Response is OK",
@@ -100,15 +127,6 @@
         "operationId": "getWorkflows",
         "consumes": ["application/json"],
         "produces": ["application/json"],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": true,
-            "schema": {}
-          }
-        ],
         "responses": {
           "200": {
             "description": "Response is OK",
@@ -127,15 +145,6 @@
         "operationId": "getWorkflowRun",
         "consumes": ["application/json"],
         "produces": ["application/json"],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": true,
-            "schema": {}
-          }
-        ],
         "responses": {
           "200": {
             "description": "Response is OK",
@@ -154,15 +163,6 @@
         "operationId": "getWorkflowRuns",
         "consumes": ["application/json"],
         "produces": ["application/json"],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": true,
-            "schema": {}
-          }
-        ],
         "responses": {
           "200": {
             "description": "Response is OK",
@@ -181,15 +181,6 @@
         "operationId": "getWorkflowRunJob",
         "consumes": ["application/json"],
         "produces": ["application/json"],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": true,
-            "schema": {}
-          }
-        ],
         "responses": {
           "200": {
             "description": "Response is OK",
@@ -208,15 +199,6 @@
         "operationId": "getWorkflowRunJobs",
         "consumes": ["application/json"],
         "produces": ["application/json"],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "",
-            "required": true,
-            "schema": {}
-          }
-        ],
         "responses": {
           "200": {
             "description": "Response is OK",
