@@ -58,6 +58,10 @@ module ActiveSupport
           {
             uid: user.uid,
             provider: 'keycloak',
+            credentials: {
+              token:
+              'eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJERUs0UWNmR2pNMUZBeEpBSU9iRDdrQWwtVm1jYUU0b0loWm9KYjFreVcwIn0'
+            },
             info: {
               email: user.email,
               name: user.name
