@@ -23,7 +23,6 @@ class OmniauthController < SessionsController
   protected
 
   def auth_hash
-    puts "!!!!!!!!!!#{request.env['omniauth.auth']}"
     request.env['omniauth.auth']
   end
 end
