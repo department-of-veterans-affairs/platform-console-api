@@ -14,7 +14,7 @@ class User < ApplicationRecord
   # before_destroy :revoke_argo_token
 
   def self.from_omniauth(auth_hash)
-    u = User.find_or_initialize_by(uid: auth_hash['uid']) do |u|
+    app_user = User.find_or_initialize_by(uid: auth_hash['uid']) do |u|
       u.name = auth_hash['info']['name']
       u.email = auth_hash['info']['email']
       u.argo_token = auth_hash['credentials']['token']
@@ -22,16 +22,18 @@ class User < ApplicationRecord
       u.save!
     end
 
-    u.argo_token = auth_hash['credentials']['token']
-    u.save!
-    u
-
     # TODO: When will the token expire? Should we resave the token
     # on each sign in.
-
+    app_user.save_api_token(auth_hash)
+    app_user
     # Authorize user and ensure keycloak is the provider
     # teams = auth_hash['extra']['raw_info']['groups']
     # roles = auth_hash['extra']['raw_info']['resource_access']['account']['roles']
+  end
+
+  def save_api_token(auth_hash)
+    self.argo_token = auth_hash['credentials']['token']
+    save!
   end
 
   def argo_token_invalid?
