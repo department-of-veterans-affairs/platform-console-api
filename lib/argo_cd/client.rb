@@ -54,7 +54,6 @@ module ArgoCd
     end
 
     def jwt
-      puts "!!!!!!!!!!!#{current_user.argo_token}"
       current_user.argo_token
     end
   end
