@@ -14,13 +14,18 @@ class User < ApplicationRecord
   # before_destroy :revoke_argo_token
 
   def self.from_omniauth(auth_hash)
-    User.find_or_initialize_by(uid: auth_hash['uid']) do |u|
+    u = User.find_or_initialize_by(uid: auth_hash['uid']) do |u|
       u.name = auth_hash['info']['name']
       u.email = auth_hash['info']['email']
       u.argo_token = auth_hash['credentials']['token']
       u.password = SecureRandom.uuid
       u.save!
     end
+
+    u.argo_token = auth_hash['credentials']['token']
+    u.save!
+    u
+
     # TODO: When will the token expire? Should we resave the token
     # on each sign in.
 
