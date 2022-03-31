@@ -54,31 +54,37 @@ class DeploymentsTest < ApplicationSystemTestCase
   end
 
   test 'should create deployment' do
-    visit team_app_deployments_url(@team, @app)
-    click_on 'New deployment'
+    VCR.use_cassette('system/current_revision_success', record: :new_episodes) do
+      visit team_app_deployments_url(@team, @app)
+      click_on 'New deployment'
 
-    fill_in 'Name', with: @deployment.name
-    click_on 'Create Deployment'
+      fill_in 'Name', with: @deployment.name
+      click_on 'Create Deployment'
 
-    assert_text 'Deployment was successfully created'
-    click_on 'Back'
+      assert_text 'Deployment was successfully created'
+      click_on 'Back'
+    end
   end
 
   test 'should update Deployment' do
-    visit team_app_deployment_url(@team, @app, @deployment)
-    click_on 'Edit this deployment', match: :first
+    VCR.use_cassette('system/current_revision_success', record: :new_episodes) do
+      visit team_app_deployment_url(@team, @app, @deployment)
+      click_on 'Edit this deployment', match: :first
 
-    fill_in 'Name', with: @deployment.name
-    click_on 'Update Deployment'
+      fill_in 'Name', with: @deployment.name
+      click_on 'Update Deployment'
 
-    assert_text 'Deployment was successfully updated'
-    click_on 'Back'
+      assert_text 'Deployment was successfully updated'
+      click_on 'Back'
+    end
   end
 
   test 'should destroy Deployment' do
-    visit team_app_deployment_url(@team, @app, @deployment)
-    click_on 'Destroy this deployment', match: :first
-    page.driver.browser.switch_to.alert.accept
-    assert_text 'Deployment was successfully destroyed'
+    VCR.use_cassette('system/current_revision_success', record: :new_episodes) do
+      visit team_app_deployment_url(@team, @app, @deployment)
+      click_on 'Destroy this deployment', match: :first
+      page.driver.browser.switch_to.alert.accept
+      assert_text 'Deployment was successfully destroyed'
+    end
   end
 end
