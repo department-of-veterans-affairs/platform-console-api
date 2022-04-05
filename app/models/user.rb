@@ -4,7 +4,7 @@ require 'argo_cd/client'
 
 # The User Model
 class User < ApplicationRecord
- # encrypts :keycloak_token
+  # encrypts :keycloak_token
   has_paper_trail
   has_secure_password
   before_validation :downcase_email
@@ -14,7 +14,7 @@ class User < ApplicationRecord
   # before_destroy :revoke_keycloak_token
 
   def self.from_omniauth(auth_hash)
-    app_user = User.find_or_initialize_by(uid: auth_hash['uid']) do |u|
+    User.find_or_initialize_by(uid: auth_hash['uid']) do |u|
       u.name = auth_hash['info']['name']
       u.email = auth_hash['info']['email']
       # Tokens have a short expiration date.
