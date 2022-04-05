@@ -56,7 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_09_153801) do
     t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "argo_token"
+    t.string "keycloak_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["password_digest"], name: "index_users_on_password_digest"
     t.index ["uid"], name: "index_users_on_uid"
