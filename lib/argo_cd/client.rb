@@ -54,7 +54,7 @@ module ArgoCd
     end
 
     def jwt
-      current_user.argo_token
+      current_user.keycloak_token
     end
   end
 end
