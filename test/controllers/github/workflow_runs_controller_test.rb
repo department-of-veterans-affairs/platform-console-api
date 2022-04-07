@@ -13,14 +13,14 @@ module Github
 
     test 'should get index' do
       VCR.use_cassette('github/workflow_runs_controller', record: :new_episodes) do
-        get team_app_workflow_runs_path(@team, @app)
+        get team_app_v0_workflow_runs_path(@team, @app)
         assert_response :success
       end
     end
 
     test 'should get index in json format' do
       VCR.use_cassette('github/workflow_runs_controller', record: :new_episodes) do
-        get "#{team_app_workflow_runs_path(@team, @app)}.json"
+        get "#{team_app_v0_workflow_runs_path(@team, @app)}.json"
         assert_response :success
         json_response = JSON.parse(response.body)
         expected_keys = %w[id name node_id head_branch head_sha run_number event status conclusion workflow_id
@@ -33,14 +33,14 @@ module Github
 
     test 'should show workflow run' do
       VCR.use_cassette('github/workflow_runs_controller', record: :new_episodes) do
-        get team_app_workflow_run_path(@team, @app, 1_960_262_366)
+        get team_app_v0_workflow_run_path(@team, @app, 1_960_262_366)
         assert_response :success
       end
     end
 
     test 'should show workflow run in json format' do
       VCR.use_cassette('github/workflow_runs_controller') do
-        get "#{team_app_workflow_run_path(@team, @app, 1_960_262_366)}.json"
+        get "#{team_app_v0_workflow_run_path(@team, @app, 1_960_262_366)}.json"
         assert_response :success
         json_response = JSON.parse(response.body)
         expected_keys = %w[id name node_id head_branch head_sha run_number event status conclusion workflow_id
@@ -54,9 +54,9 @@ module Github
 
     test 'should rerun workflow' do
       VCR.use_cassette('github/workflow_runs_controller', record: :new_episodes) do
-        patch team_app_workflow_run_path(@team, @app, 1_960_262_366)
+        patch team_app_v0_workflow_run_path(@team, @app, 1_960_262_366)
         assert_equal 'Workflow run was sucessfully restarted', flash.notice
-        assert_redirected_to team_app_workflow_path(@team, @app, 17_962_379)
+        assert_redirected_to team_app_v0_workflow_path(@team, @app, 17_962_379)
       end
     end
   end

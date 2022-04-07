@@ -13,8 +13,8 @@ module Github
 
     test 'should create a deploy pull request' do
       VCR.use_cassette('github/deploy_pull_requests_controller', allow_playback_repeats: true) do
-        post team_app_deploy_pull_requests_path(@team, @app)
-        assert_redirected_to team_app_deploys_path
+        post team_app_v0_deploy_pull_requests_path(@team, @app)
+        assert_redirected_to team_app_v0_deploys_path
         assert_equal 'Pull Request has been created.', flash.notice
       end
     end
