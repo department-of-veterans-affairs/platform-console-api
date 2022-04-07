@@ -13,14 +13,14 @@ module Github
 
     test 'should get index' do
       VCR.use_cassette('github/pull_requests_controller') do
-        get team_app_v0_pull_requests_path(@team, @app)
+        get team_app_pull_requests_path(@team, @app)
         assert_response :success
       end
     end
 
     test 'should get index in json format' do
       VCR.use_cassette('github/pull_requests_controller') do
-        get "#{team_app_v0_pull_requests_path(@team, @app)}.json"
+        get "#{team_app_pull_requests_path(@team, @app)}.json"
         assert_response :success
         json_response = JSON.parse(response.body)
         expected_keys = %w[url id node_id html_url diff_url patch_url issue_url number state locked title user body

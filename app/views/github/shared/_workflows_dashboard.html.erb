@@ -9,9 +9,9 @@
             <nav class="mt-2 flex-1" aria-label="Sidebar">
               <div class="px-2 space-y-1">
                 <% if request.path.include?('workflow') %>
-                  <%= link_to 'Dispatch a Workflow', new_team_app_v0_workflow_run_path(@team, @app), title: 'Dispatch Workflow', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-5' %>
+                  <%= link_to 'Dispatch a Workflow', new_team_app_workflow_run_path(@team, @app), title: 'Dispatch Workflow', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-5' %>
                 <% elsif request.path.include?('deploy') %>
-                   <%= link_to 'New Deploy', new_team_app_v0_deploy_run_path(@team, @app), title: 'New Deploy', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-5' %>
+                   <%= link_to 'New Deploy', new_team_app_deploy_run_path(@team, @app), title: 'New Deploy', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-5' %>
                 <% end %>
                 <div class="relative">
                   <div class="absolute inset-0 flex items-center" aria-hidden="true">
@@ -22,17 +22,17 @@
                 <% current_css = 'bg-gray-200 text-gray-900 group flex items-center px-2 py-2 text-md font-medium rounded-md' %>
                 <% default_css = 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-md font-medium rounded-md' %>
                 <% if request.path.include?('workflow') %>
-                  <%= link_to team_app_v0_workflows_path(@team, @app), class: current_workflow.nil? ? current_css : default_css do%>
+                  <%= link_to team_app_workflows_path(@team, @app), class: current_workflow.nil? ? current_css : default_css do%>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
                     All Workflows
                     <% end %>
                   <% all_workflows.each do |workflow|%>
-                    <%= link_to workflow[:name], team_app_v0_workflow_path(@team, @app, workflow[:id], ref: params[:ref]), class: current_workflow.present? && current_workflow.id == workflow[:id] ? current_css : default_css  %>
+                    <%= link_to workflow[:name], team_app_workflow_path(@team, @app, workflow[:id], ref: params[:ref]), class: current_workflow.present? && current_workflow.id == workflow[:id] ? current_css : default_css  %>
                   <% end %>
                 <% elsif request.path.include?('deploy')%>
-                  <%= link_to @github_workflow.github[:name], team_app_v0_deploy_path(@team, @app, @github_workflow.github[:id], ref: params[:ref]), class: current_css %>
+                  <%= link_to @github_workflow.github[:name], team_app_deploy_path(@team, @app, @github_workflow.github[:id], ref: params[:ref]), class: current_css %>
                 <% end %>
               </div>
             </nav>
@@ -120,9 +120,9 @@
                           <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <div class="flex space-x-2">
                               <% if request.path.include?('workflow') %>
-                                <%= link_to 'View', team_app_v0_workflow_run_path(@team, @app, run[:id], ref: params[:ref]), title: 'View Workflow Run', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
+                                <%= link_to 'View', team_app_workflow_run_path(@team, @app, run[:id], ref: params[:ref]), title: 'View Workflow Run', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
                               <% elsif request.path.include?('deploy') %>
-                                <%= link_to 'View', team_app_v0_deploy_run_path(@team, @app, run[:id] ), title: 'View Deploy', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
+                                <%= link_to 'View', team_app_deploy_run_path(@team, @app, run[:id] ), title: 'View Deploy', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
                               <% end %>
                             </div>
                           </td>
@@ -141,23 +141,23 @@
   </div>
 
   <% if request.path.include?('deploy') %>
-     <%= render 'github/shared/pagination', curr_path: team_app_v0_deploys_path(@team, @app,  page: @current_page),
-                                    first_path: team_app_v0_deploys_path(@team, @app,  page: @first_page),
-                                    last_path: team_app_v0_deploys_path(@team, @app,  page: @last_page),
-                                    next_path: team_app_v0_deploys_path(@team, @app,  page: @next_page),
-                                    prev_path: team_app_v0_deploys_path(@team, @app,  page: @prev_page) %>
+     <%= render 'github/shared/pagination', curr_path: team_app_deploys_path(@team, @app,  page: @current_page),
+                                    first_path: team_app_deploys_path(@team, @app,  page: @first_page),
+                                    last_path: team_app_deploys_path(@team, @app,  page: @last_page),
+                                    next_path: team_app_deploys_path(@team, @app,  page: @next_page),
+                                    prev_path: team_app_deploys_path(@team, @app,  page: @prev_page) %>
 
   <% elsif current_workflow.present? %>
-     <%= render 'github/shared/pagination', curr_path: team_app_v0_workflow_path(@team, @app,  current_workflow.id, page: @current_page),
-                                    first_path: team_app_v0_workflow_path(@team, @app,  current_workflow.id, page: @first_page),
-                                    last_path: team_app_v0_workflow_path(@team, @app,  current_workflow.id, page: @last_page),
-                                    next_path: team_app_v0_workflow_path(@team, @app,  current_workflow.id, page: @next_page),
-                                    prev_path: team_app_v0_workflow_path(@team, @app,  current_workflow.id, page: @prev_page) %>
+     <%= render 'github/shared/pagination', curr_path: team_app_workflow_path(@team, @app,  current_workflow.id, page: @current_page),
+                                    first_path: team_app_workflow_path(@team, @app,  current_workflow.id, page: @first_page),
+                                    last_path: team_app_workflow_path(@team, @app,  current_workflow.id, page: @last_page),
+                                    next_path: team_app_workflow_path(@team, @app,  current_workflow.id, page: @next_page),
+                                    prev_path: team_app_workflow_path(@team, @app,  current_workflow.id, page: @prev_page) %>
   <% else %>
-    <%= render 'github/shared/pagination', curr_path: team_app_v0_workflows_path(@team, @app, page: @current_page),
-                                    first_path: team_app_v0_workflows_path(@team, @app, page: @first_page),
-                                    last_path: team_app_v0_workflows_path(@team, @app, page: @last_page),
-                                    next_path: team_app_v0_workflows_path(@team, @app, page: @next_page),
-                                    prev_path: team_app_v0_workflows_path(@team, @app, page: @prev_page) %>
+    <%= render 'github/shared/pagination', curr_path: team_app_workflows_path(@team, @app, page: @current_page),
+                                    first_path: team_app_workflows_path(@team, @app, page: @first_page),
+                                    last_path: team_app_workflows_path(@team, @app, page: @last_page),
+                                    next_path: team_app_workflows_path(@team, @app, page: @next_page),
+                                    prev_path: team_app_workflows_path(@team, @app, page: @prev_page) %>
   <% end %>
 <% end %>
