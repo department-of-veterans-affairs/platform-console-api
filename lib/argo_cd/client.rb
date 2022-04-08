@@ -48,13 +48,11 @@ module ArgoCd
     private
 
     def base_path
-      return 'http://argocd.local.com' unless Rails.env.production?
-
       ENV['ARGO_API_BASE_PATH']
     end
 
     def jwt
-      current_user.keycloak_token
+      current_user.keycloak_access_token
     end
   end
 end

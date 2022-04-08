@@ -17,7 +17,22 @@ class OmniauthController < SessionsController
   private
 
   def set_user
-    @user = User.from_omniauth(auth_hash)
+    @user = User.from_omniauth(auth_hash, keycloak_access_token)
+  end
+
+  def keycloak_access_token
+    return nil if auth_hash['credentials'].blank?
+
+    conn = Faraday.new
+    response = conn.post(ENV['KEYCLOAK_TOKEN_URL']) do |req|
+      req.headers =
+        {
+          'Content-Type' => 'application/x-www-form-urlencoded',
+          'Authorization' => "Bearer #{auth_hash['credentials']['token']}"
+        }
+      req.body = 'grant_type=urn:ietf:params:oauth:grant-type:uma-ticket&audience=account'
+    end
+    JSON.parse(response.body)['access_token']
   end
 
   protected
