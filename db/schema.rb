@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_09_153801) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_08_181428) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,6 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_09_153801) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "keycloak_token"
+    t.string "keycloak_access_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["password_digest"], name: "index_users_on_password_digest"
     t.index ["uid"], name: "index_users_on_uid"
