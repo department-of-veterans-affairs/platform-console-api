@@ -50,11 +50,12 @@ module Github
     end
 
     def set_github_workflow_runs
-      @github_workflow_runs = if params[:ref].present?
-                                @github_repository.branch_workflow_runs(params[:ref], params[:page] || 1).to_h
-                              else
-                                @github_repository.workflow_runs(params[:page] || 1).to_h
-                              end
+      @github_workflow_runs =
+        if params[:ref].present?
+          @github_repository.branch_workflow_runs(params[:ref], params[:page] || 1).to_h
+        else
+          @github_repository.workflow_runs(params[:page] || 1).to_h
+        end
     end
   end
 end
