@@ -18,13 +18,13 @@ gem 'net-http',          '~> 0.2' # HTTP client api for Ruby
 gem 'omniauth-keycloak', '~> 1.4' # Keycloack SSO Oauth Strategy
 gem 'omniauth-rails_csrf_protection'
 gem 'pagy',              '~> 5.10' # Agnostic pagination in plain ruby
-gem 'paper_trail',       '~> 12.2' # Track changes to your models, for auditing or versioning
+gem 'paper_trail',       '~> 12.3' # Track changes to your models, for auditing or versioning
 gem 'pg',                '~> 1.3'  # Use postgresql as the database for Active Record
 gem 'puma',              '~> 5.6'  # Use the Puma web server [https://github.com/puma/puma]
 gem 'redis',             '~> 4.6'  # Use Redis adapter to run Action Cable in production
 gem 'rolify',            '~> 6.0'  # Simple Roles library
 gem 'sidekiq',           '~> 6.4'  # Simple, efficient background processing for Ruby
-gem 'strong_migrations', '~> 0.8'  # Catch potentially dangerous operations in migrations
+gem 'strong_migrations', '~> 1.0'  # Catch potentially dangerous operations in migrations
 
 # Assets
 gem 'importmap-rails',   '~> 1.0' # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
