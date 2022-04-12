@@ -39,6 +39,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email)
   end
 
+  # TODO: Use Pundit here once it is merged.
+  # https://github.com/department-of-veterans-affairs/platform-console-api/pull/16
   def authorize_user!
     return if @user == current_user
 
