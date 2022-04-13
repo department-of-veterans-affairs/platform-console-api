@@ -30,6 +30,7 @@ gem 'rouge',             '~> 3.28'  # Pure Ruby syntax highlighter
 gem 'rubyzip',           '~> 2.3'   # Ruby library for reading and writing zip files.
 gem 'sidekiq',           '~> 6.4'   # Simple, efficient background processing for Ruby
 gem 'strong_migrations', '~> 1.0'   # Catch potentially dangerous operations in migrations
+
 # Assets
 gem 'importmap-rails',   '~> 1.0' # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'redcarpet',         '~> 3.5' # For Markdown processing [https://github.com/vmg/redcarpet]
