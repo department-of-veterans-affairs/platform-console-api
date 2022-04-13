@@ -1,4 +1,4 @@
-<%= render 'github/shared/tabs' %>
+<%= render 'shared/app_tabs' %>
 
 <% if request.path.include?('workflow') && @github_workflows.present? %>
   <%= render 'github/shared/workflows_dashboard', all_workflows: @github_workflows, current_workflow: nil, workflow_runs: @github_workflow_runs %>
