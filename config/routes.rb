@@ -10,14 +10,16 @@ Rails.application.routes.draw do
 
   resources :teams do
     resources :apps do
-      resources :deploy_pull_requests, only: %i[create], controller: 'github/deploy_pull_requests'
-      resources :pull_requests, only: %i[index], controller: 'github/pull_requests'
-      resources :workflows, only: %i[index show], controller: 'github/workflows'
-      resources :workflow_runs, controller: 'github/workflow_runs'
-      resources :workflow_run_jobs, only: [:show], controller: 'github/workflow_run_jobs'
-      resources :deploys, only: %i[index show], controller: 'github/workflows'
-      resources :deploy_runs, controller: 'github/workflow_runs'
-      resources :deploy_run_jobs, only: [:show], controller: 'github/workflow_run_jobs'
+      scope :v0 do
+        resources :deploy_pull_requests, only: %i[create], controller: 'github/deploy_pull_requests'
+        resources :pull_requests, only: %i[index], controller: 'github/pull_requests'
+        resources :workflows, only: %i[index show], controller: 'github/workflows'
+        resources :workflow_runs, controller: 'github/workflow_runs'
+        resources :workflow_run_jobs, only: [:show], controller: 'github/workflow_run_jobs'
+        resources :deploys, only: %i[index show], controller: 'github/workflows'
+        resources :deploy_runs, controller: 'github/workflow_runs'
+        resources :deploy_run_jobs, only: [:show], controller: 'github/workflow_run_jobs'
+      end
       resources :deployments
     end
   end
