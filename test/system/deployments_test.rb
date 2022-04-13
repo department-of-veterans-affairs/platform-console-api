@@ -17,7 +17,7 @@ class DeploymentsTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit team_app_deployments_url(@team, @app)
-    assert_selector 'h1', text: 'Deployments'
+    assert_selector 'h3', text: 'Argo Deployments'
   end
 
   test 'should show app with existing record' do
@@ -75,7 +75,7 @@ class DeploymentsTest < ApplicationSystemTestCase
   test 'should create deployment' do
     VCR.use_cassette('system/success') do
       visit team_app_deployments_url(@team, @app)
-      click_on 'New deployment'
+      click_on 'New Deployment'
 
       fill_in 'Name', with: @deployment.name
       click_on 'Create Deployment'
