@@ -17,10 +17,15 @@ FileUtils.chdir APP_ROOT do
   system! "gem install bundler --conservative"
   system("bundle check") || system!("bundle install")
 
-  # puts "\n== Copying sample files =="
-  # unless File.exist?("config/database.yml")
-  #   FileUtils.cp "config/database.yml.sample", "config/database.yml"
-  # end
+  unless File.exist?(".env.local")
+    puts "\n== Creating .env.local file =="
+    FileUtils.cp ".env.example", ".env.local"
+  end
+
+  unless File.exist?("tmp/caching-dev.txt")
+    puts "\n== Creating local cache file =="
+    FileUtils.touch "tmp/caching-dev.txt"
+  end
 
   puts "\n== Creating .env.local file =="
   unless File.exist?(".env.local")

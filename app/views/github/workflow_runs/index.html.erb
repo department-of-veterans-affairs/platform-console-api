@@ -1,0 +1,52 @@
+<div class="flex justify-between">
+  <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate mt-4">
+    Workflow runs
+  </h1>
+</div>
+
+<br>
+
+<% if @teams.present? %>
+  <div class="flex flex-col">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+          <table class="table-fixed min-w-full divide-y divide-gray-200" id="github_workflow_runs">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase w-full">
+                  Name
+                </th>
+                <th scope="col" class="relative px-6 py-3">
+                  <span class="sr-only">Edit</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @github_workflow_runs.each do |github_workflow_run| %>
+              <tr class="<%= cycle 'bg-white', 'bg-gray-50' %>">
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  <%= link_to github_workflow_run.name, github_workflow_run, class: 'text-blue-900 hover:text-blue-800' %>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <div class="flex space-x-2">
+                    <%= link_to 'Edit', edit_github_workflow_run_path(github_workflow_run), class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
+                    <%= button_to 'Destroy', github_workflow_run, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-red-900 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-900 sm:text-sm' %>
+                  </div>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if @pagy %>
+    <div class="md:flex justify-between text-center mt-6 md:mt-0">
+      <%== pagy_info @pagy %>
+      <%== pagy_nav @pagy %>
+    </div>
+  <% end %>
+<% end %>

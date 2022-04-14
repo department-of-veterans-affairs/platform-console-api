@@ -11,6 +11,8 @@ if ENV['COVERAGE'] || ENV['CI']
 end
 
 ENV['RAILS_ENV'] ||= 'test'
+ENV['GITHUB_CLIENT_ID'] ||= 'github_client_id'
+ENV['GITHUB_CLIENT_SECRET'] ||= 'github_client_secret'
 ENV['KEYCLOAK_SITE_URL'] = 'http://test.host/auth/keycloak/callback'
 ENV['KEYCLOAK_REALM'] = 'example-realm'
 require_relative '../config/environment'
@@ -21,18 +23,23 @@ require 'vcr'
 VCR.configure do |config|
   config.cassette_library_dir = 'test/vcr_cassettes'
   config.hook_into :webmock
-  config.allow_http_connections_when_no_cassette = true
   config.filter_sensitive_data('github_token') { ENV['GITHUB_ACCESS_TOKEN'] }
   config.filter_sensitive_data('github_client_id') { ENV['GITHUB_CLIENT_ID'] }
   config.filter_sensitive_data('github_client_secret') { ENV['GITHUB_CLIENT_SECRET'] }
   # whitelist 127.0.0.1 so VCR doesn't interfere with system tests
-  config.ignore_hosts '127.0.0.1'
+  config.ignore_hosts '127.0.0.1', 'chromedriver.storage.googleapis.com'
+  config.ignore_request do |request|
+    request.uri.include?('example.com')
+  end
 end
 
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
-    parallelize(workers: :number_of_processors)
+
+    # Don't parallelize because there is an issue with simplecov
+    # See: https://github.com/simplecov-ruby/simplecov/issues/718
+    # parallelize(workers: :number_of_processors)
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
