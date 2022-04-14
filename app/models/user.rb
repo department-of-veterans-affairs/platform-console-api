@@ -5,6 +5,7 @@ class User < ApplicationRecord
   encrypts :argo_token
   has_paper_trail
   has_secure_password
+  encrypts :github_token
   before_validation :downcase_email
   rolify
   validates :email, uniqueness: true
@@ -20,6 +21,16 @@ class User < ApplicationRecord
     # Authorize user and ensure keycloak is the provider
     # teams = auth_hash['extra']['raw_info']['groups']
     # roles = auth_hash['extra']['raw_info']['resource_access']['account']['roles']
+  end
+
+  def github_user
+    return nil if github_token.blank?
+
+    begin
+      Octokit::Client.new(access_token: github_token).user
+    rescue Octokit::Unauthorized
+      nil
+    end
   end
 
   def argo_token_invalid?
