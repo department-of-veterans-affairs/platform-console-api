@@ -128,7 +128,7 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
-    flipper (0.24.0)
+    flipper (0.24.1)
     flipper-redis (0.24.0)
       flipper (~> 0.24.0)
       redis (>= 3.0, < 5)
