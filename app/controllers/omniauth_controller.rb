@@ -20,6 +20,22 @@ class OmniauthController < SessionsController
     @user = User.from_omniauth(auth_hash)
   end
 
+  def keycloak_access_token
+    return nil if auth_hash['credentials'].blank?
+
+    conn = Faraday.new
+    token_url = ENV['KEYCLOAK_TOKEN_URL'] || 'http://localhost:8180/auth/realms/Twilight/protocol/openid-connect/token'
+    response = conn.post(token_url) do |req|
+      req.headers =
+        {
+          'Content-Type' => 'application/x-www-form-urlencoded',
+          'Authorization' => "Bearer #{auth_hash['credentials']['token']}"
+        }
+      req.body = 'grant_type=urn:ietf:params:oauth:grant-type:uma-ticket&audience=account'
+    end
+    JSON.parse(response.body)['access_token']
+  end
+
   protected
 
   def auth_hash
