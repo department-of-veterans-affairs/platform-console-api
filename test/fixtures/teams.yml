@@ -11,3 +11,9 @@ two:
   name: Team2
   owner: john
   owner_type: User
+
+three:
+  id: 3
+  name: Team3
+  owner: github
+  owner_type: User

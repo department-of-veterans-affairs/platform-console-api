@@ -15,6 +15,12 @@ module ApplicationHelper
     link_to name, options, html_options, &block
   end
 
+  # Convert markdown into html using Redcarpet
+  def markdown(text)
+    options = %i[autolink hard_wrap no_intra_emphasis fenced_code_blocks space_after_headers]
+    Markdown.new(text, *options).to_html
+  end
+
   def sort_link_to(name, column, **options)
     direction = if params[:sort] == column.to_s
                   params[:direction] == 'asc' ? 'desc' : 'asc'
@@ -26,7 +32,6 @@ module ApplicationHelper
     end
   end
 
-  # rubocop:disable Metrics/MethodLength
   def sort_direction_icon(column)
     return '' unless params[:sort] == column.to_s
 
@@ -72,10 +77,10 @@ module ApplicationHelper
       drop: nav_links_drop
     }
   end
-  # rubocop:enable Metrics/MethodLength
 
   def nav_links_drop
     nav_links_drop_admin + [
+      { name: I18n.t('navbar.drop.settings'), path: edit_user_path(current_user) },
       { name: I18n.t('navbar.drop.sign_out'), path: '/logout' }
     ]
   end

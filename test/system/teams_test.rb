@@ -23,6 +23,15 @@ class TeamsTest < ApplicationSystemTestCase
     assert_text 'Team was successfully created'
   end
 
+  test 'should not create invalid team' do
+    visit teams_url
+    click_on 'New team'
+
+    click_on 'Create Team'
+
+    assert_text "Name can't be blank"
+  end
+
   test 'should update Team' do
     visit team_url(@team)
     click_on 'Edit this team', match: :first
@@ -31,6 +40,16 @@ class TeamsTest < ApplicationSystemTestCase
     click_on 'Update Team'
 
     assert_text 'Team was successfully updated'
+  end
+
+  test 'should not update invalid team' do
+    visit team_url(@team)
+    click_on 'Edit this team', match: :first
+
+    fill_in 'Name', with: ''
+    click_on 'Update Team'
+
+    assert_text "Name can't be blank"
   end
 
   test 'should destroy Team' do

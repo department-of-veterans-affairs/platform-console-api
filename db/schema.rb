@@ -19,6 +19,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_08_181428) do
     t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "github_repo"
+    t.string "deploy_workflow"
     t.index ["team_id"], name: "index_apps_on_team_id"
   end
 
@@ -53,9 +55,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_08_181428) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
+    t.string "github_token"
     t.string "keycloak_token"
     t.string "keycloak_access_token"
     t.index ["email"], name: "index_users_on_email", unique: true
