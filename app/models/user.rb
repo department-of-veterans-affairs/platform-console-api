@@ -13,14 +13,13 @@ class User < ApplicationRecord
   validates :name, :email, presence: true
   # before_destroy :revoke_keycloak_token
 
-  def self.from_omniauth(auth_hash, keycloak_access_token)
+  def self.from_omniauth(auth_hash)
     User.find_or_initialize_by(uid: auth_hash['uid']) do |u|
       u.name = auth_hash['info']['name']
       u.email = auth_hash['info']['email']
       # Tokens have a short expiration date.
       # The token should be stored in the session or database for every login.
       u.keycloak_token = auth_hash['credentials']['token']
-      u.keycloak_access_token = keycloak_access_token
       u.password = SecureRandom.uuid
       u.save!
     end
