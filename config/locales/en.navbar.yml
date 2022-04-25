@@ -3,6 +3,7 @@ en:
     docs: Docs
     drop:
       flipper: Flipper
+      settings: Settings
       sidekiq: Sidekiq
       sign_out: Sign out
     support: Support

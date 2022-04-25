@@ -56,6 +56,9 @@ Rails.application.configure do
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
 
+  # Encrypt Rails fixtures automatically
+  config.active_record.encryption.encrypt_fixtures = true
+
   config.log_level = :error
 
   # Raises error for missing translations.
