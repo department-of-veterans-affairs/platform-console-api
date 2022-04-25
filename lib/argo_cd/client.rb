@@ -31,7 +31,7 @@ module ArgoCd
 
     def get_app_info(uri, verb)
       https = Net::HTTP.new(uri.host, uri.port)
-      https.verify_mode = OpenSSL::SSL::VERIFY_NONE unless Rails.env.production?
+      https.verify_mode = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
       https.use_ssl = true if Rails.env.production?
       response = https.method(verb).call(uri, request_headers)
 
