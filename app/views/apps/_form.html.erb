@@ -1,4 +1,4 @@
-<%= form_with(model: [@team, app], class: 'space-y-8') do |form| %>
+<%= form_with(model: [@team, app]) do |form| %>
   <% if app.errors.any? %>
     <div class="rounded-md bg-red-50 p-4">
       <div class="flex">
@@ -25,7 +25,7 @@
   <% end %>
 
   <div class="space-y-8 sm:space-y-5">
-    <div class="pt-8 divide-y divide-gray-200 space-y-6 sm:pt-10 sm:space-y-5">
+    <div class="divide-y divide-gray-200 space-y-6 sm:space-y-5">
       <div class="space-y-6 sm:space-y-5">
         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <%= form.label :name, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2', autofocus: true %>
@@ -34,13 +34,49 @@
           </div>
         </div>
       </div>
+      <div class="space-y-6 sm:space-y-5">
+        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <div>
+            <% if current_user.github_token.present? %>
+              <%= form.label :github_repository, 'GitHub Repository', class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2', autofocus: true %>
+            <% else %>
+              <div class='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'>
+                Connect your account Github to add a repository
+              </div>
+            <% end %>
+          </div>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <% if current_user.github_token.present? %>
+              <%= form.text_field :github_repo, class: 'max-w-lg block w-full shadow-sm focus:ring-blue-900 focus:border-blue-900 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
+              <span class="text-xs text-gray-600">{owner}/{repository}</span>
+            <% else %>
+              <%= render 'github/shared/authorize_github' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% if @app.id.present? && @app.github_repo.present? && current_user.github_token.present? %>
+        <div class="space-y-6 sm:space-y-5">
+          <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+            <div>
+              <%= form.label :deploy_workflow_file, class: 'block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2', autofocus: true %>
+            </div>
+            <div class="mt-1 sm:mt-0 sm:col-span-2">
+              <div class="flex items-center space-x-3">
+                <%= form.text_field :deploy_workflow, class: 'max-w-lg block w-full shadow-sm focus:ring-blue-900 focus:border-blue-900 sm:max-w-xs sm:text-sm border-gray-300 rounded-md' %>
+                <span class="text-xs text-gray-600">Don't have a deploy workflow file?</span>
+                <div class="flex items-center space-x-3">
+                   <%= link_to team_app_deploy_pull_requests_path(@team, @app), class: 'inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500', data: { "turbo-method": :post } do %>
+                    Create Workflow PR
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
       <div class="pt-5">
         <div class="flex justify-end">
-          <% if app.persisted? %>
-            <%= link_to 'Cancel', team_app_path(@team,app), class: 'bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' %>
-          <% else %>
-            <%= link_to 'Cancel', team_path(@team), class: 'bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' %>
-          <% end %>
           <%= form.submit class: 'ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md cursor-pointer text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900' %>
         </div>
       </div>

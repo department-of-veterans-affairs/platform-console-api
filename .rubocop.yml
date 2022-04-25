@@ -6,7 +6,7 @@ AllCops:
   NewCops: disable
 
 Metrics/MethodLength:
-  Max: 15
+  Max: 20
 
 Style/HashSyntax:
   EnforcedShorthandSyntax: either

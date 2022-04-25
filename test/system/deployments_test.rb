@@ -15,7 +15,7 @@ class DeploymentsTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit team_app_deployments_url(@team, @app)
-    assert_selector 'h1', text: 'Deployments'
+    assert_selector 'h3', text: 'Argo Deployments'
   end
 
   test 'should show deployment with a successful jwt' do
@@ -56,13 +56,12 @@ class DeploymentsTest < ApplicationSystemTestCase
   test 'should create deployment' do
     VCR.use_cassette('system/current_revision_success', record: :new_episodes) do
       visit team_app_deployments_url(@team, @app)
-      click_on 'New deployment'
+      click_on 'New Deployment'
 
       fill_in 'Name', with: @deployment.name
       click_on 'Create Deployment'
 
       assert_text 'Deployment was successfully created'
-      click_on 'Back'
     end
   end
 
@@ -75,7 +74,6 @@ class DeploymentsTest < ApplicationSystemTestCase
       click_on 'Update Deployment'
 
       assert_text 'Deployment was successfully updated'
-      click_on 'Back'
     end
   end
 

@@ -6,8 +6,8 @@ class AppsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:john)
     setup_omniauth_mock(@user)
-    @team = teams(:one)
-    @app = apps(:one)
+    @team = teams(:three)
+    @app = apps(:three)
   end
 
   test 'should get index' do
@@ -29,8 +29,10 @@ class AppsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show app' do
-    get team_app_url(@team, @app)
-    assert_response :success
+    VCR.use_cassette('apps_controller') do
+      get team_app_url(@team, @app)
+      assert_response :success
+    end
   end
 
   test 'should get edit' do
