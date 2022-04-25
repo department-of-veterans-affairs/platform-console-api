@@ -4,7 +4,7 @@ require 'argo_cd/client'
 
 # The User Model
 class User < ApplicationRecord
-  # encrypts :keycloak_token
+  encrypts :keycloak_token
   has_paper_trail
   has_secure_password
   encrypts :github_token
@@ -31,7 +31,7 @@ class User < ApplicationRecord
   end
 
   def save_api_token(auth_hash)
-    self.argo_token = auth_hash['credentials']['token']
+    self.keycloak_token = auth_hash['credentials']['token']
     save!
   end
 
