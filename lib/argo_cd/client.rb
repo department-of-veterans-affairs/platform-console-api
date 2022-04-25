@@ -31,7 +31,7 @@ module ArgoCd
 
     def get_app_info(uri, verb)
       https = Net::HTTP.new(uri.host, uri.port)
-      https.verify_mode = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
+      https.verify_mode = OpenSSL::SSL::VERIFY_NONE if !Rails.env.production?
       https.use_ssl = true if Rails.env.production?
       response = https.method(verb).call(uri, request_headers)
 
@@ -52,7 +52,7 @@ module ArgoCd
     end
 
     def jwt
-      current_user.keycloak_access_token
+      current_user.keycloak_token
     end
   end
 end
