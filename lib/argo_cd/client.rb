@@ -48,7 +48,6 @@ module ArgoCd
     private
 
     def base_path
-      return 'https://localhost:8080' unless Rails.env.production?
       ENV['ARGO_API_BASE_PATH']
     end
 
