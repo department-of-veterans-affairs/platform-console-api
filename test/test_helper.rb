@@ -13,6 +13,7 @@ end
 ENV['RAILS_ENV'] ||= 'test'
 ENV['KEYCLOAK_SITE_URL'] = 'http://test.host/auth/keycloak/callback'
 ENV['KEYCLOAK_REALM'] = 'example-realm'
+ENV['ARGO_API_BASE_PATH'] = 'http://localhost:8080'
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'webmock/minitest'
