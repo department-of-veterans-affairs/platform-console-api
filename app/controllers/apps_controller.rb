@@ -5,6 +5,7 @@ class AppsController < ApplicationController
   before_action :authorize_session!
   before_action :set_team
   before_action :set_app, only: %i[show edit update destroy]
+  before_action :set_github_info, :set_github_stats, only: :show
 
   # GET /apps or /apps.json
   def index
@@ -26,7 +27,7 @@ class AppsController < ApplicationController
   # POST /apps or /apps.json
   def create
     @app = @team.apps.build(app_params)
-
+    @app.current_user = current_user
     respond_to do |format|
       if @app.save
         format.html { redirect_to team_app_url(@team, @app), notice: 'App was successfully created.' }
@@ -71,10 +72,31 @@ class AppsController < ApplicationController
   # Find the team app
   def set_app
     @app = @team.apps.find(params[:id])
+    @app.current_user = current_user
+  end
+
+  # Set the current github repository and get the latest releases for it
+  def set_github_info
+    return if @app.github_repo.blank? || @app.errors.present?
+
+    @github_repository = @app.repository(current_user.github_token)
+    @releases = @github_repository.octokit_client.releases(@app.github_repo)
+  end
+
+  # Set various github stats for the overview
+  def set_github_stats
+    return if @app.github_repo.blank? || current_user.github_token.blank?
+
+    variables = { owner: @github_repository.github.owner.login, name: @github_repository.github.name }
+    context = { access_token: current_user.github_token }
+
+    @github_stats = Github::GraphQL::Client.query(
+      Github::GraphQL::GithubInfoQuery, variables: variables, context: context
+    ).data.repo
   end
 
   # Only allow a list of trusted parameters through.
   def app_params
-    params.require(:app).permit(:name, :team_id)
+    params.require(:app).permit(:name, :team_id, :github_repo, :deploy_workflow)
   end
 end

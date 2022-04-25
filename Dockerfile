@@ -2,11 +2,13 @@ FROM ruby:3.1.0-slim-buster AS base
 
 ARG RAILS_ENV=development \
   USER_ID=1000 \
-  RAILS_MASTER_KEY
+  RAILS_MASTER_KEY \
+  REDIS_URL=redis://localhost:6379
 
 ENV RAILS_ENV=$RAILS_ENV \
   BUNDLER_VERSION=2.3.3 \
-  RAILS_MASTER_KEY=$RAILS_MASTER_KEY
+  RAILS_MASTER_KEY=$RAILS_MASTER_KEY \
+  REDIS_URL=$REDIS_URL
 
 RUN groupadd --gid $USER_ID nonroot \
   && useradd --uid $USER_ID --gid nonroot --shell /bin/bash --create-home nonroot --home-dir /app

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   encrypts :argo_token
   has_paper_trail
   has_secure_password
+  encrypts :github_token
   before_validation :downcase_email
   rolify
   validates :email, uniqueness: true
@@ -34,6 +35,16 @@ class User < ApplicationRecord
   def save_api_token(auth_hash)
     self.argo_token = auth_hash['credentials']['token']
     save!
+  end
+
+  def github_user
+    return nil if github_token.blank?
+
+    begin
+      Octokit::Client.new(access_token: github_token).user
+    rescue Octokit::Unauthorized
+      nil
+    end
   end
 
   def argo_token_invalid?
