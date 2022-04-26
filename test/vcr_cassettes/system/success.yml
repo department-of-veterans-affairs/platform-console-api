@@ -27,11 +27,11 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 29 Mar 2022 17:14:26 GMT
+      - Tue, 26 Apr 2022 12:53:36 GMT
       Content-Length:
       - '79'
     body:
       encoding: UTF-8
       string: '{"error":"no session information","code":16,"message":"no session information"}'
-  recorded_at: Tue, 29 Mar 2022 17:14:26 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Tue, 26 Apr 2022 12:53:36 GMT
+recorded_with: VCR 6.1.0
