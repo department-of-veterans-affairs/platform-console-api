@@ -92,7 +92,7 @@ module ActiveSupport
 
     def stub_argo_requests
       WebMock.stub_request(:get, 'http://test.host/api/v1/applications?name=guestbook')
-              .to_return(status: 200, body: File.read(Rails.root.join('test/fixtures/files/argo_config.json')))
+             .to_return(status: 200, body: File.read(Rails.root.join('test/fixtures/files/argo_config.json')))
     end
   end
 end
