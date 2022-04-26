@@ -1,155 +1,6 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: http://localhost:8080/api/v1/session
-    body:
-      encoding: UTF-8
-      string: '{"username":"test_user","password":"password"}'
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-      Content-Type:
-      - application/json
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json
-      Grpc-Metadata-Content-Type:
-      - application/grpc
-      Set-Cookie:
-      - argocd.token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDcwOTk5MTQsImp0aSI6ImE0NzUxZjYyLWY5MGYtNGJiZC04YjljLTVmNTJjNjNjNTcwMSIsImlhdCI6MTY0NzAxMzUxNCwiaXNzIjoiYXJnb2NkIiwibmJmIjoxNjQ3MDEzNTE0LCJzdWIiOiJ0ZXN0X3VzZXI6bG9naW4ifQ.zTaiQgMyuyvgm-3cpAXMcXTcD95-pzC9V4MmpaHvFiE;
-        path=/; SameSite=lax; httpOnly
-      Date:
-      - Fri, 11 Mar 2022 15:45:14 GMT
-      Content-Length:
-      - '275'
-    body:
-      encoding: UTF-8
-      string: '{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDcwOTk5MTQsImp0aSI6ImE0NzUxZjYyLWY5MGYtNGJiZC04YjljLTVmNTJjNjNjNTcwMSIsImlhdCI6MTY0NzAxMzUxNCwiaXNzIjoiYXJnb2NkIiwibmJmIjoxNjQ3MDEzNTE0LCJzdWIiOiJ0ZXN0X3VzZXI6bG9naW4ifQ.zTaiQgMyuyvgm-3cpAXMcXTcD95-pzC9V4MmpaHvFiE"}'
-  recorded_at: Fri, 11 Mar 2022 15:45:14 GMT
-- request:
-    method: get
-    uri: http://localhost:8080/api/v1/applications?name=guestbook
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDcwOTk5MTQsImp0aSI6ImE0NzUxZjYyLWY5MGYtNGJiZC04YjljLTVmNTJjNjNjNTcwMSIsImlhdCI6MTY0NzAxMzUxNCwiaXNzIjoiYXJnb2NkIiwibmJmIjoxNjQ3MDEzNTE0LCJzdWIiOiJ0ZXN0X3VzZXI6bG9naW4ifQ.zTaiQgMyuyvgm-3cpAXMcXTcD95-pzC9V4MmpaHvFiE
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-      Host:
-      - localhost:8080
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json
-      Grpc-Metadata-Content-Type:
-      - application/grpc
-      Date:
-      - Fri, 11 Mar 2022 15:45:14 GMT
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: '{"metadata":{"resourceVersion":"636862"},"items":[{"metadata":{"name":"guestbook","namespace":"argocd","uid":"47d5848c-10bc-45f4-b4a6-9d8ad3efa13c","resourceVersion":"636862","generation":2339,"creationTimestamp":"2022-02-24T21:20:01Z","managedFields":[{"manager":"argocd-server","operation":"Update","apiVersion":"argoproj.io/v1alpha1","time":"2022-02-24T21:20:55Z","fieldsType":"FieldsV1","fieldsV1":{"f:spec":{".":{},"f:destination":{".":{},"f:namespace":{},"f:server":{}},"f:project":{},"f:source":{".":{},"f:path":{},"f:repoURL":{},"f:targetRevision":{}}},"f:status":{".":{},"f:health":{},"f:summary":{},"f:sync":{".":{},"f:comparedTo":{".":{},"f:destination":{},"f:source":{}}}}}},{"manager":"argocd-application-controller","operation":"Update","apiVersion":"argoproj.io/v1alpha1","time":"2022-03-05T23:27:35Z","fieldsType":"FieldsV1","fieldsV1":{"f:status":{"f:health":{"f:status":{}},"f:history":{},"f:operationState":{".":{},"f:finishedAt":{},"f:message":{},"f:operation":{".":{},"f:initiatedBy":{".":{},"f:username":{}},"f:retry":{},"f:sync":{".":{},"f:revision":{},"f:syncStrategy":{".":{},"f:hook":{}}}},"f:phase":{},"f:startedAt":{},"f:syncResult":{".":{},"f:resources":{},"f:revision":{},"f:source":{".":{},"f:path":{},"f:repoURL":{},"f:targetRevision":{}}}},"f:reconciledAt":{},"f:resources":{},"f:sourceType":{},"f:summary":{"f:images":{}},"f:sync":{"f:comparedTo":{"f:destination":{"f:namespace":{},"f:server":{}},"f:source":{"f:path":{},"f:repoURL":{},"f:targetRevision":{}}},"f:revision":{},"f:status":{}}}}}]},"spec":{"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"destination":{"server":"https://kubernetes.default.svc","namespace":"default"},"project":"default"},"status":{"resources":[{"version":"v1","kind":"Service","namespace":"default","name":"guestbook-ui","status":"Synced","health":{"status":"Healthy"}},{"group":"apps","version":"v1","kind":"Deployment","namespace":"default","name":"guestbook-ui","status":"Synced","health":{"status":"Healthy"}}],"sync":{"status":"Synced","comparedTo":{"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"destination":{"server":"https://kubernetes.default.svc","namespace":"default"}},"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba"},"health":{"status":"Healthy"},"history":[{"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","deployedAt":"2022-02-24T21:20:55Z","id":0,"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"deployStartedAt":"2022-02-24T21:20:55Z"}],"reconciledAt":"2022-03-11T15:43:09Z","operationState":{"operation":{"sync":{"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","syncStrategy":{"hook":{}}},"initiatedBy":{"username":"admin"},"retry":{}},"phase":"Succeeded","message":"successfully
-        synced (all tasks run)","syncResult":{"resources":[{"group":"","version":"v1","kind":"Service","namespace":"default","name":"guestbook-ui","status":"Synced","message":"service/guestbook-ui
-        created","hookPhase":"Running","syncPhase":"Sync"},{"group":"apps","version":"v1","kind":"Deployment","namespace":"default","name":"guestbook-ui","status":"Synced","message":"deployment.apps/guestbook-ui
-        created","hookPhase":"Running","syncPhase":"Sync"}],"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"}},"startedAt":"2022-02-24T21:20:55Z","finishedAt":"2022-02-24T21:20:55Z"},"sourceType":"Directory","summary":{"images":["gcr.io/heptio-images/ks-guestbook-demo:0.2"]}}}]}'
-  recorded_at: Fri, 11 Mar 2022 15:45:14 GMT
-- request:
-    method: get
-    uri: http://localhost:8080/api/v1/applications/guestbook/revisions/53e28ff20cc530b9ada2173fbbd64d48338583ba/metadata
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Authorization:
-      - Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDcwOTk5MTQsImp0aSI6ImE0NzUxZjYyLWY5MGYtNGJiZC04YjljLTVmNTJjNjNjNTcwMSIsImlhdCI6MTY0NzAxMzUxNCwiaXNzIjoiYXJnb2NkIiwibmJmIjoxNjQ3MDEzNTE0LCJzdWIiOiJ0ZXN0X3VzZXI6bG9naW4ifQ.zTaiQgMyuyvgm-3cpAXMcXTcD95-pzC9V4MmpaHvFiE
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-      Host:
-      - localhost:8080
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json
-      Grpc-Metadata-Content-Type:
-      - application/grpc
-      Date:
-      - Fri, 11 Mar 2022 15:45:14 GMT
-      Content-Length:
-      - '407'
-    body:
-      encoding: UTF-8
-      string: '{"author":"May Zhang \u003cmay_zhang@intuit.com\u003e","date":"2021-03-03T21:07:29Z","message":"feat:
-        update helm samples to use helm3 (#78)\n\n* helm3 guestbook\r\n\r\n* helm3
-        blue-green\r\n\r\n* helm3 dependencies\r\n\r\n* helm3 plugin\r\n\r\n* helm3
-        plugin\r\n\r\n* helm3 plugin\r\n\r\n* helm3 apps\r\n\r\n* helm3 dependency\r\n\r\n*
-        helm3 dependency\r\n\r\n* helm3 dependency\r\n\r\n* helm3 fix readme"}'
-  recorded_at: Fri, 11 Mar 2022 15:45:14 GMT
-- request:
-    method: post
-    uri: http://localhost:8080/api/v1/session
-    body:
-      encoding: UTF-8
-      string: '{"username":"test_user","password":"password"}'
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-      Content-Type:
-      - application/json
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json
-      Grpc-Metadata-Content-Type:
-      - application/grpc
-      Set-Cookie:
-      - argocd.token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDczNDk4MDIsImp0aSI6IjI3NDVlODZlLTE0OGItNDU1Yi1hNjM4LTI4NzBmM2RmMDhkYiIsImlhdCI6MTY0NzI2MzQwMiwiaXNzIjoiYXJnb2NkIiwibmJmIjoxNjQ3MjYzNDAyLCJzdWIiOiJ0ZXN0X3VzZXI6bG9naW4ifQ.o5L5sFbV6AWf3WE_RFcfM6SE39c20LgLy7P1dvlGzLA;
-        path=/; SameSite=lax; httpOnly
-      Date:
-      - Mon, 14 Mar 2022 13:10:02 GMT
-      Content-Length:
-      - '275'
-    body:
-      encoding: UTF-8
-      string: '{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDczNDk4MDIsImp0aSI6IjI3NDVlODZlLTE0OGItNDU1Yi1hNjM4LTI4NzBmM2RmMDhkYiIsImlhdCI6MTY0NzI2MzQwMiwiaXNzIjoiYXJnb2NkIiwibmJmIjoxNjQ3MjYzNDAyLCJzdWIiOiJ0ZXN0X3VzZXI6bG9naW4ifQ.o5L5sFbV6AWf3WE_RFcfM6SE39c20LgLy7P1dvlGzLA"}'
-  recorded_at: Mon, 14 Mar 2022 13:10:02 GMT
-- request:
     method: get
     uri: http://argocd.local.com/api/v1/applications?name=guestbook
     body:
@@ -157,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJERUs0UWNmR2pNMUZBeEpBSU9iRDdrQWwtVm1jYUU0b0loWm9KYjFreVcwIn0.eyJleHAiOjE2NDg1OTk2ODcsImlhdCI6MTY0ODU2MzY4OCwiYXV0aF90aW1lIjoxNjQ4NTYzNjg3LCJqdGkiOiJhNGM1OTVjNi03MWFhLTQ2OTMtOTFiZi1mYThkZGE1OWI1NTgiLCJpc3MiOiJodHRwOi8vYmRiOS0xMzEtMTUwLTEzOS0xMTkubmdyb2suaW8vYXV0aC9yZWFsbXMvVHdpbGlnaHQiLCJhdWQiOlsiYXJnb2NkIiwiYWNjb3VudCJdLCJzdWIiOiJjMTAyMzU4Ny0yODVhLTRhYmUtYmY1Yi1kMzRlYzhmMDQ5NmIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhY2NvdW50Iiwic2Vzc2lvbl9zdGF0ZSI6ImIxMzI5YjIwLTg5OWYtNDQ5Mi04MDE5LTcyODZiMmYwMzA3OSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctYXBwbGljYXRpb25zIiwidmlldy1jb25zZW50IiwiYWRtaW4iLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsIm1hbmFnZS1jb25zZW50IiwiZGVsZXRlLWFjY291bnQiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBncm91cHMgcHJvZmlsZSBnb29kLXNlcnZpY2UgZW1haWwiLCJzaWQiOiJiMTMyOWIyMC04OTlmLTQ0OTItODAxOS03Mjg2YjJmMDMwNzkiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJLZXljbG9hayBVc2VyIiwiZ3JvdXBzIjpbIkFyZ29DREFkbWlucyIsIlNlbnRyeSIsImRhdGFkb2ciXSwicHJlZmVycmVkX3VzZXJuYW1lIjoia2V5Y2xvYWtfdXNlciIsImdpdmVuX25hbWUiOiJLZXljbG9hayIsImZhbWlseV9uYW1lIjoiVXNlciIsImVtYWlsIjoia2V5Y2xvYWtfdXNlckBleGFtcGxlLmNvbSJ9.dajQ5dmUorH03NLDeACMN4ucTO3kZ66FbnylWQfK3VT6t9UVcV1Kct4tQew4YwGjEfh7x7CcD_P3O-KdwdNQSy6f5q9zzRv58VKhyaJPeAAytNKwBrZUg673GTVDz2KXaHV0OI1kwhn9J01X-UTLbL6aOe7vFeCC13JX8xi0pzLahTv1on4vYeSV8266XHAclu46drdww8eXi71xPjkPVqHpEv0pHoxFLRujwUVxKHep6iZR6xo9vZuiyd0NICvOpdGXp23dLOXFhnBXA74neheMG8PrnQQ3UCSYd1TrnpM-o5BF8_Tssq9IWXbyWaDlM8Nc0D0taHNsJa0NbrU1uw
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJERUs0UWNmR2pNMUZBeEpBSU9iRDdrQWwtVm1jYUU0b0loWm9KYjFreVcwIn0.eyJleHAiOjE2NTEwMTI5NTcsImlhdCI6MTY1MDk3ODE0MywiYXV0aF90aW1lIjoxNjUwOTc2OTU3LCJqdGkiOiIxMTdjMWUyNy1jZTdlLTQ0ZGEtOTdjMC1mMzA3MjA1ODcxY2MiLCJpc3MiOiJodHRwOi8vZjg1Yy0xMzEtMTUwLTEzOS0xMTkubmdyb2suaW8vYXV0aC9yZWFsbXMvVHdpbGlnaHQiLCJhdWQiOlsiZGV4IiwiYXJnb2NkIiwiYWNjb3VudCJdLCJzdWIiOiJjMTAyMzU4Ny0yODVhLTRhYmUtYmY1Yi1kMzRlYzhmMDQ5NmIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhY2NvdW50Iiwic2Vzc2lvbl9zdGF0ZSI6IjZiMzU5Zjg4LTBlNmUtNDYxMC1hMTM4LTI0MTQ2YTU1MzVjNSIsImFjciI6IjAiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctYXBwbGljYXRpb25zIiwidmlldy1jb25zZW50IiwiYWRtaW4iLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsIm1hbmFnZS1jb25zZW50IiwiZGVsZXRlLWFjY291bnQiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBncm91cHMgcHJvZmlsZSBnb29kLXNlcnZpY2UgZW1haWwiLCJzaWQiOiI2YjM1OWY4OC0wZTZlLTQ2MTAtYTEzOC0yNDE0NmE1NTM1YzUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJLZXljbG9hayBVc2VyIiwiZ3JvdXBzIjpbIkFyZ29DREFkbWlucyIsIlNlbnRyeSIsImRhdGFkb2ciXSwicHJlZmVycmVkX3VzZXJuYW1lIjoia2V5Y2xvYWtfdXNlciIsImdpdmVuX25hbWUiOiJLZXljbG9hayIsImZhbWlseV9uYW1lIjoiVXNlciIsImVtYWlsIjoia2V5Y2xvYWtfdXNlckBleGFtcGxlLmNvbSJ9.UEAf6ftg3OPdle3I-BAPyWhdjh0S6P7WP8CRAPOcJBqoFBMQOfaIJGDtdJPNbLRPCr3sE6tWJS2w6W7KF8IzNCiwd7umJu0jef8_n8Waz8S4nzMfcE70snrgTptToDedWaLXEE_GWK5BBkJus4R--XAVO8MPd0TNWV4JrTXnN_VZCNp5G9pOgzv_PXoVZNSFMQgCH9OvPyNlThV7AHzbdp7f0TlTiwG3ZEca3-CuWucvaqScqiTxDfOdgd3DuUhS3l8Cigp5am5izMRvGB7bd670ovFuPm88ZFjGD0mGp7hn-j6CUFRiOxUb6EdmeTyDQJ4c5zucZHQ3L4jeHu14Zw
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -178,16 +29,16 @@ http_interactions:
       Grpc-Metadata-Content-Type:
       - application/grpc
       Date:
-      - Tue, 29 Mar 2022 16:56:23 GMT
+      - Tue, 26 Apr 2022 13:05:59 GMT
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"metadata":{"resourceVersion":"1357582"},"items":[{"metadata":{"name":"guestbook","namespace":"argocd","uid":"47d5848c-10bc-45f4-b4a6-9d8ad3efa13c","resourceVersion":"1357582","generation":5086,"creationTimestamp":"2022-02-24T21:20:01Z","managedFields":[{"manager":"argocd-server","operation":"Update","apiVersion":"argoproj.io/v1alpha1","time":"2022-02-24T21:20:55Z","fieldsType":"FieldsV1","fieldsV1":{"f:spec":{".":{},"f:destination":{".":{},"f:namespace":{},"f:server":{}},"f:project":{},"f:source":{".":{},"f:path":{},"f:repoURL":{},"f:targetRevision":{}}},"f:status":{".":{},"f:health":{},"f:summary":{},"f:sync":{".":{},"f:comparedTo":{".":{},"f:destination":{},"f:source":{}}}}}},{"manager":"argocd-application-controller","operation":"Update","apiVersion":"argoproj.io/v1alpha1","time":"2022-03-20T20:18:12Z","fieldsType":"FieldsV1","fieldsV1":{"f:status":{"f:health":{"f:status":{}},"f:history":{},"f:operationState":{".":{},"f:finishedAt":{},"f:message":{},"f:operation":{".":{},"f:initiatedBy":{".":{},"f:username":{}},"f:retry":{},"f:sync":{".":{},"f:revision":{},"f:syncStrategy":{".":{},"f:hook":{}}}},"f:phase":{},"f:startedAt":{},"f:syncResult":{".":{},"f:resources":{},"f:revision":{},"f:source":{".":{},"f:path":{},"f:repoURL":{},"f:targetRevision":{}}}},"f:summary":{"f:images":{}},"f:sync":{"f:comparedTo":{"f:destination":{"f:namespace":{},"f:server":{}},"f:source":{"f:path":{},"f:repoURL":{},"f:targetRevision":{}}}}}}},{"manager":"Go-http-client","operation":"Update","apiVersion":"argoproj.io/v1alpha1","time":"2022-03-28T12:32:50Z","fieldsType":"FieldsV1","fieldsV1":{"f:status":{"f:reconciledAt":{},"f:resources":{},"f:sourceType":{},"f:sync":{"f:revision":{},"f:status":{}}}}}]},"spec":{"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"destination":{"server":"https://kubernetes.default.svc","namespace":"default"},"project":"default"},"status":{"resources":[{"version":"v1","kind":"Service","namespace":"default","name":"guestbook-ui","status":"Synced","health":{"status":"Healthy"}},{"group":"apps","version":"v1","kind":"Deployment","namespace":"default","name":"guestbook-ui","status":"Synced","health":{"status":"Healthy"}}],"sync":{"status":"Synced","comparedTo":{"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"destination":{"server":"https://kubernetes.default.svc","namespace":"default"}},"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba"},"health":{"status":"Healthy"},"history":[{"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","deployedAt":"2022-02-24T21:20:55Z","id":0,"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"deployStartedAt":"2022-02-24T21:20:55Z"}],"reconciledAt":"2022-03-29T16:55:08Z","operationState":{"operation":{"sync":{"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","syncStrategy":{"hook":{}}},"initiatedBy":{"username":"admin"},"retry":{}},"phase":"Succeeded","message":"successfully
+      string: '{"metadata":{"resourceVersion":"2291655"},"items":[{"metadata":{"name":"guestbook","namespace":"argocd","uid":"47d5848c-10bc-45f4-b4a6-9d8ad3efa13c","resourceVersion":"2291655","generation":8641,"creationTimestamp":"2022-02-24T21:20:01Z","managedFields":[{"manager":"argocd-server","operation":"Update","apiVersion":"argoproj.io/v1alpha1","time":"2022-02-24T21:20:55Z","fieldsType":"FieldsV1","fieldsV1":{"f:spec":{".":{},"f:destination":{".":{},"f:namespace":{},"f:server":{}},"f:project":{},"f:source":{".":{},"f:path":{},"f:repoURL":{},"f:targetRevision":{}}},"f:status":{".":{},"f:health":{},"f:summary":{},"f:sync":{".":{},"f:comparedTo":{".":{},"f:destination":{},"f:source":{}}}}}},{"manager":"argocd-application-controller","operation":"Update","apiVersion":"argoproj.io/v1alpha1","time":"2022-03-20T20:18:12Z","fieldsType":"FieldsV1","fieldsV1":{"f:status":{"f:health":{"f:status":{}},"f:history":{},"f:operationState":{".":{},"f:finishedAt":{},"f:message":{},"f:operation":{".":{},"f:initiatedBy":{".":{},"f:username":{}},"f:retry":{},"f:sync":{".":{},"f:revision":{},"f:syncStrategy":{".":{},"f:hook":{}}}},"f:phase":{},"f:startedAt":{},"f:syncResult":{".":{},"f:resources":{},"f:revision":{},"f:source":{".":{},"f:path":{},"f:repoURL":{},"f:targetRevision":{}}}},"f:summary":{"f:images":{}},"f:sync":{"f:comparedTo":{"f:destination":{"f:namespace":{},"f:server":{}},"f:source":{"f:path":{},"f:repoURL":{},"f:targetRevision":{}}}}}}},{"manager":"Go-http-client","operation":"Update","apiVersion":"argoproj.io/v1alpha1","time":"2022-04-26T12:32:59Z","fieldsType":"FieldsV1","fieldsV1":{"f:status":{"f:reconciledAt":{},"f:resources":{},"f:sourceType":{},"f:sync":{"f:revision":{},"f:status":{}}}}}]},"spec":{"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"destination":{"server":"https://kubernetes.default.svc","namespace":"default"},"project":"default"},"status":{"resources":[{"version":"v1","kind":"Service","namespace":"default","name":"guestbook-ui","status":"Synced","health":{"status":"Healthy"}},{"group":"apps","version":"v1","kind":"Deployment","namespace":"default","name":"guestbook-ui","status":"Synced","health":{"status":"Healthy"}}],"sync":{"status":"Synced","comparedTo":{"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"destination":{"server":"https://kubernetes.default.svc","namespace":"default"}},"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba"},"health":{"status":"Healthy"},"history":[{"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","deployedAt":"2022-02-24T21:20:55Z","id":0,"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"deployStartedAt":"2022-02-24T21:20:55Z"}],"reconciledAt":"2022-04-26T13:05:55Z","operationState":{"operation":{"sync":{"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","syncStrategy":{"hook":{}}},"initiatedBy":{"username":"admin"},"retry":{}},"phase":"Succeeded","message":"successfully
         synced (all tasks run)","syncResult":{"resources":[{"group":"","version":"v1","kind":"Service","namespace":"default","name":"guestbook-ui","status":"Synced","message":"service/guestbook-ui
         created","hookPhase":"Running","syncPhase":"Sync"},{"group":"apps","version":"v1","kind":"Deployment","namespace":"default","name":"guestbook-ui","status":"Synced","message":"deployment.apps/guestbook-ui
         created","hookPhase":"Running","syncPhase":"Sync"}],"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"}},"startedAt":"2022-02-24T21:20:55Z","finishedAt":"2022-02-24T21:20:55Z"},"sourceType":"Directory","summary":{"images":["gcr.io/heptio-images/ks-guestbook-demo:0.2"]}}}]}'
-  recorded_at: Tue, 29 Mar 2022 16:56:23 GMT
+  recorded_at: Tue, 26 Apr 2022 13:05:59 GMT
 - request:
     method: get
     uri: http://argocd.local.com/api/v1/applications/guestbook/revisions/53e28ff20cc530b9ada2173fbbd64d48338583ba/metadata
@@ -196,7 +47,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJERUs0UWNmR2pNMUZBeEpBSU9iRDdrQWwtVm1jYUU0b0loWm9KYjFreVcwIn0.eyJleHAiOjE2NDg1OTk2ODcsImlhdCI6MTY0ODU2MzY4OCwiYXV0aF90aW1lIjoxNjQ4NTYzNjg3LCJqdGkiOiJhNGM1OTVjNi03MWFhLTQ2OTMtOTFiZi1mYThkZGE1OWI1NTgiLCJpc3MiOiJodHRwOi8vYmRiOS0xMzEtMTUwLTEzOS0xMTkubmdyb2suaW8vYXV0aC9yZWFsbXMvVHdpbGlnaHQiLCJhdWQiOlsiYXJnb2NkIiwiYWNjb3VudCJdLCJzdWIiOiJjMTAyMzU4Ny0yODVhLTRhYmUtYmY1Yi1kMzRlYzhmMDQ5NmIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhY2NvdW50Iiwic2Vzc2lvbl9zdGF0ZSI6ImIxMzI5YjIwLTg5OWYtNDQ5Mi04MDE5LTcyODZiMmYwMzA3OSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctYXBwbGljYXRpb25zIiwidmlldy1jb25zZW50IiwiYWRtaW4iLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsIm1hbmFnZS1jb25zZW50IiwiZGVsZXRlLWFjY291bnQiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBncm91cHMgcHJvZmlsZSBnb29kLXNlcnZpY2UgZW1haWwiLCJzaWQiOiJiMTMyOWIyMC04OTlmLTQ0OTItODAxOS03Mjg2YjJmMDMwNzkiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJLZXljbG9hayBVc2VyIiwiZ3JvdXBzIjpbIkFyZ29DREFkbWlucyIsIlNlbnRyeSIsImRhdGFkb2ciXSwicHJlZmVycmVkX3VzZXJuYW1lIjoia2V5Y2xvYWtfdXNlciIsImdpdmVuX25hbWUiOiJLZXljbG9hayIsImZhbWlseV9uYW1lIjoiVXNlciIsImVtYWlsIjoia2V5Y2xvYWtfdXNlckBleGFtcGxlLmNvbSJ9.dajQ5dmUorH03NLDeACMN4ucTO3kZ66FbnylWQfK3VT6t9UVcV1Kct4tQew4YwGjEfh7x7CcD_P3O-KdwdNQSy6f5q9zzRv58VKhyaJPeAAytNKwBrZUg673GTVDz2KXaHV0OI1kwhn9J01X-UTLbL6aOe7vFeCC13JX8xi0pzLahTv1on4vYeSV8266XHAclu46drdww8eXi71xPjkPVqHpEv0pHoxFLRujwUVxKHep6iZR6xo9vZuiyd0NICvOpdGXp23dLOXFhnBXA74neheMG8PrnQQ3UCSYd1TrnpM-o5BF8_Tssq9IWXbyWaDlM8Nc0D0taHNsJa0NbrU1uw
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJERUs0UWNmR2pNMUZBeEpBSU9iRDdrQWwtVm1jYUU0b0loWm9KYjFreVcwIn0.eyJleHAiOjE2NTEwMTI5NTcsImlhdCI6MTY1MDk3ODE0MywiYXV0aF90aW1lIjoxNjUwOTc2OTU3LCJqdGkiOiIxMTdjMWUyNy1jZTdlLTQ0ZGEtOTdjMC1mMzA3MjA1ODcxY2MiLCJpc3MiOiJodHRwOi8vZjg1Yy0xMzEtMTUwLTEzOS0xMTkubmdyb2suaW8vYXV0aC9yZWFsbXMvVHdpbGlnaHQiLCJhdWQiOlsiZGV4IiwiYXJnb2NkIiwiYWNjb3VudCJdLCJzdWIiOiJjMTAyMzU4Ny0yODVhLTRhYmUtYmY1Yi1kMzRlYzhmMDQ5NmIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhY2NvdW50Iiwic2Vzc2lvbl9zdGF0ZSI6IjZiMzU5Zjg4LTBlNmUtNDYxMC1hMTM4LTI0MTQ2YTU1MzVjNSIsImFjciI6IjAiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctYXBwbGljYXRpb25zIiwidmlldy1jb25zZW50IiwiYWRtaW4iLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsIm1hbmFnZS1jb25zZW50IiwiZGVsZXRlLWFjY291bnQiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBncm91cHMgcHJvZmlsZSBnb29kLXNlcnZpY2UgZW1haWwiLCJzaWQiOiI2YjM1OWY4OC0wZTZlLTQ2MTAtYTEzOC0yNDE0NmE1NTM1YzUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJLZXljbG9hayBVc2VyIiwiZ3JvdXBzIjpbIkFyZ29DREFkbWlucyIsIlNlbnRyeSIsImRhdGFkb2ciXSwicHJlZmVycmVkX3VzZXJuYW1lIjoia2V5Y2xvYWtfdXNlciIsImdpdmVuX25hbWUiOiJLZXljbG9hayIsImZhbWlseV9uYW1lIjoiVXNlciIsImVtYWlsIjoia2V5Y2xvYWtfdXNlckBleGFtcGxlLmNvbSJ9.UEAf6ftg3OPdle3I-BAPyWhdjh0S6P7WP8CRAPOcJBqoFBMQOfaIJGDtdJPNbLRPCr3sE6tWJS2w6W7KF8IzNCiwd7umJu0jef8_n8Waz8S4nzMfcE70snrgTptToDedWaLXEE_GWK5BBkJus4R--XAVO8MPd0TNWV4JrTXnN_VZCNp5G9pOgzv_PXoVZNSFMQgCH9OvPyNlThV7AHzbdp7f0TlTiwG3ZEca3-CuWucvaqScqiTxDfOdgd3DuUhS3l8Cigp5am5izMRvGB7bd670ovFuPm88ZFjGD0mGp7hn-j6CUFRiOxUb6EdmeTyDQJ4c5zucZHQ3L4jeHu14Zw
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -217,7 +68,7 @@ http_interactions:
       Grpc-Metadata-Content-Type:
       - application/grpc
       Date:
-      - Tue, 29 Mar 2022 16:56:23 GMT
+      - Tue, 26 Apr 2022 13:05:59 GMT
       Content-Length:
       - '407'
     body:
@@ -227,7 +78,7 @@ http_interactions:
         blue-green\r\n\r\n* helm3 dependencies\r\n\r\n* helm3 plugin\r\n\r\n* helm3
         plugin\r\n\r\n* helm3 plugin\r\n\r\n* helm3 apps\r\n\r\n* helm3 dependency\r\n\r\n*
         helm3 dependency\r\n\r\n* helm3 dependency\r\n\r\n* helm3 fix readme"}'
-  recorded_at: Tue, 29 Mar 2022 16:56:23 GMT
+  recorded_at: Tue, 26 Apr 2022 13:05:59 GMT
 - request:
     method: get
     uri: http://argocd.local.com/api/v1/applications?name=guestbook
@@ -236,7 +87,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJERUs0UWNmR2pNMUZBeEpBSU9iRDdrQWwtVm1jYUU0b0loWm9KYjFreVcwIn0.eyJleHAiOjE2NDg3NzE3NDcsImlhdCI6MTY0ODczNTkwOCwiYXV0aF90aW1lIjoxNjQ4NzM1NzQ3LCJqdGkiOiJiMzJmNjAzZC05NjUyLTRmYjMtYTFkMy0wM2VkMGFmMDBlYTEiLCJpc3MiOiJodHRwOi8vYmRiOS0xMzEtMTUwLTEzOS0xMTkubmdyb2suaW8vYXV0aC9yZWFsbXMvVHdpbGlnaHQiLCJhdWQiOlsiYXJnb2NkIiwiYWNjb3VudCJdLCJzdWIiOiJjMTAyMzU4Ny0yODVhLTRhYmUtYmY1Yi1kMzRlYzhmMDQ5NmIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhY2NvdW50Iiwic2Vzc2lvbl9zdGF0ZSI6ImFiNjZkOThmLTczODktNGNhMy1iMGRjLWZlYTAzNzRiODMyNiIsImFjciI6IjAiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctYXBwbGljYXRpb25zIiwidmlldy1jb25zZW50IiwiYWRtaW4iLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsIm1hbmFnZS1jb25zZW50IiwiZGVsZXRlLWFjY291bnQiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBncm91cHMgcHJvZmlsZSBnb29kLXNlcnZpY2UgZW1haWwiLCJzaWQiOiJhYjY2ZDk4Zi03Mzg5LTRjYTMtYjBkYy1mZWEwMzc0YjgzMjYiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJLZXljbG9hayBVc2VyIiwiZ3JvdXBzIjpbIkFyZ29DREFkbWlucyIsIlNlbnRyeSIsImRhdGFkb2ciXSwicHJlZmVycmVkX3VzZXJuYW1lIjoia2V5Y2xvYWtfdXNlciIsImdpdmVuX25hbWUiOiJLZXljbG9hayIsImZhbWlseV9uYW1lIjoiVXNlciIsImVtYWlsIjoia2V5Y2xvYWtfdXNlckBleGFtcGxlLmNvbSJ9.BFZ0HWWQzgP03uxdZVv7CDAwaGQwY1N3Qf45UlgneX4uFiKx6ywQ5WxABrlGEWH2L6ju8m_y2zGqRBJA_DfwlYQaIGf3MkqJHD3D5OV_fLwlQxaicnfnpBDN-oDtd8SbNT955_9Fzpgba3xzMTD1DwYnOHZ6gkEs_URkt9kUfT88weChtKCUuwQhdUun14JUlIRs4nTvqfj0wSQMS2de4eMkZGNxCRUCOCJPZTMLWsSVBwaW7-IIkUNMIBIJW-dXmtfIOscOqP5iIw3HipqerTOHyqAZKI1NeBR2NG8vnZN-ISpDx5jN5o0xGg1XxFx11az8AKtC1KFuATSFoJGpfA
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJERUs0UWNmR2pNMUZBeEpBSU9iRDdrQWwtVm1jYUU0b0loWm9KYjFreVcwIn0.eyJleHAiOjE2NTEwMTI5NTcsImlhdCI6MTY1MDk3ODE0MywiYXV0aF90aW1lIjoxNjUwOTc2OTU3LCJqdGkiOiIxMTdjMWUyNy1jZTdlLTQ0ZGEtOTdjMC1mMzA3MjA1ODcxY2MiLCJpc3MiOiJodHRwOi8vZjg1Yy0xMzEtMTUwLTEzOS0xMTkubmdyb2suaW8vYXV0aC9yZWFsbXMvVHdpbGlnaHQiLCJhdWQiOlsiZGV4IiwiYXJnb2NkIiwiYWNjb3VudCJdLCJzdWIiOiJjMTAyMzU4Ny0yODVhLTRhYmUtYmY1Yi1kMzRlYzhmMDQ5NmIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhY2NvdW50Iiwic2Vzc2lvbl9zdGF0ZSI6IjZiMzU5Zjg4LTBlNmUtNDYxMC1hMTM4LTI0MTQ2YTU1MzVjNSIsImFjciI6IjAiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctYXBwbGljYXRpb25zIiwidmlldy1jb25zZW50IiwiYWRtaW4iLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsIm1hbmFnZS1jb25zZW50IiwiZGVsZXRlLWFjY291bnQiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBncm91cHMgcHJvZmlsZSBnb29kLXNlcnZpY2UgZW1haWwiLCJzaWQiOiI2YjM1OWY4OC0wZTZlLTQ2MTAtYTEzOC0yNDE0NmE1NTM1YzUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJLZXljbG9hayBVc2VyIiwiZ3JvdXBzIjpbIkFyZ29DREFkbWlucyIsIlNlbnRyeSIsImRhdGFkb2ciXSwicHJlZmVycmVkX3VzZXJuYW1lIjoia2V5Y2xvYWtfdXNlciIsImdpdmVuX25hbWUiOiJLZXljbG9hayIsImZhbWlseV9uYW1lIjoiVXNlciIsImVtYWlsIjoia2V5Y2xvYWtfdXNlckBleGFtcGxlLmNvbSJ9.UEAf6ftg3OPdle3I-BAPyWhdjh0S6P7WP8CRAPOcJBqoFBMQOfaIJGDtdJPNbLRPCr3sE6tWJS2w6W7KF8IzNCiwd7umJu0jef8_n8Waz8S4nzMfcE70snrgTptToDedWaLXEE_GWK5BBkJus4R--XAVO8MPd0TNWV4JrTXnN_VZCNp5G9pOgzv_PXoVZNSFMQgCH9OvPyNlThV7AHzbdp7f0TlTiwG3ZEca3-CuWucvaqScqiTxDfOdgd3DuUhS3l8Cigp5am5izMRvGB7bd670ovFuPm88ZFjGD0mGp7hn-j6CUFRiOxUb6EdmeTyDQJ4c5zucZHQ3L4jeHu14Zw
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -257,16 +108,16 @@ http_interactions:
       Grpc-Metadata-Content-Type:
       - application/grpc
       Date:
-      - Thu, 31 Mar 2022 14:41:34 GMT
+      - Tue, 26 Apr 2022 13:06:14 GMT
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"metadata":{"resourceVersion":"1445733"},"items":[{"metadata":{"name":"guestbook","namespace":"argocd","uid":"47d5848c-10bc-45f4-b4a6-9d8ad3efa13c","resourceVersion":"1445733","generation":5407,"creationTimestamp":"2022-02-24T21:20:01Z","managedFields":[{"manager":"argocd-server","operation":"Update","apiVersion":"argoproj.io/v1alpha1","time":"2022-02-24T21:20:55Z","fieldsType":"FieldsV1","fieldsV1":{"f:spec":{".":{},"f:destination":{".":{},"f:namespace":{},"f:server":{}},"f:project":{},"f:source":{".":{},"f:path":{},"f:repoURL":{},"f:targetRevision":{}}},"f:status":{".":{},"f:health":{},"f:summary":{},"f:sync":{".":{},"f:comparedTo":{".":{},"f:destination":{},"f:source":{}}}}}},{"manager":"argocd-application-controller","operation":"Update","apiVersion":"argoproj.io/v1alpha1","time":"2022-03-20T20:18:12Z","fieldsType":"FieldsV1","fieldsV1":{"f:status":{"f:health":{"f:status":{}},"f:history":{},"f:operationState":{".":{},"f:finishedAt":{},"f:message":{},"f:operation":{".":{},"f:initiatedBy":{".":{},"f:username":{}},"f:retry":{},"f:sync":{".":{},"f:revision":{},"f:syncStrategy":{".":{},"f:hook":{}}}},"f:phase":{},"f:startedAt":{},"f:syncResult":{".":{},"f:resources":{},"f:revision":{},"f:source":{".":{},"f:path":{},"f:repoURL":{},"f:targetRevision":{}}}},"f:summary":{"f:images":{}},"f:sync":{"f:comparedTo":{"f:destination":{"f:namespace":{},"f:server":{}},"f:source":{"f:path":{},"f:repoURL":{},"f:targetRevision":{}}}}}}},{"manager":"Go-http-client","operation":"Update","apiVersion":"argoproj.io/v1alpha1","time":"2022-03-28T12:32:50Z","fieldsType":"FieldsV1","fieldsV1":{"f:status":{"f:reconciledAt":{},"f:resources":{},"f:sourceType":{},"f:sync":{"f:revision":{},"f:status":{}}}}}]},"spec":{"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"destination":{"server":"https://kubernetes.default.svc","namespace":"default"},"project":"default"},"status":{"resources":[{"version":"v1","kind":"Service","namespace":"default","name":"guestbook-ui","status":"Synced","health":{"status":"Healthy"}},{"group":"apps","version":"v1","kind":"Deployment","namespace":"default","name":"guestbook-ui","status":"Synced","health":{"status":"Healthy"}}],"sync":{"status":"Synced","comparedTo":{"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"destination":{"server":"https://kubernetes.default.svc","namespace":"default"}},"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba"},"health":{"status":"Healthy"},"history":[{"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","deployedAt":"2022-02-24T21:20:55Z","id":0,"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"deployStartedAt":"2022-02-24T21:20:55Z"}],"reconciledAt":"2022-03-31T14:38:12Z","operationState":{"operation":{"sync":{"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","syncStrategy":{"hook":{}}},"initiatedBy":{"username":"admin"},"retry":{}},"phase":"Succeeded","message":"successfully
+      string: '{"metadata":{"resourceVersion":"2291655"},"items":[{"metadata":{"name":"guestbook","namespace":"argocd","uid":"47d5848c-10bc-45f4-b4a6-9d8ad3efa13c","resourceVersion":"2291655","generation":8641,"creationTimestamp":"2022-02-24T21:20:01Z","managedFields":[{"manager":"argocd-server","operation":"Update","apiVersion":"argoproj.io/v1alpha1","time":"2022-02-24T21:20:55Z","fieldsType":"FieldsV1","fieldsV1":{"f:spec":{".":{},"f:destination":{".":{},"f:namespace":{},"f:server":{}},"f:project":{},"f:source":{".":{},"f:path":{},"f:repoURL":{},"f:targetRevision":{}}},"f:status":{".":{},"f:health":{},"f:summary":{},"f:sync":{".":{},"f:comparedTo":{".":{},"f:destination":{},"f:source":{}}}}}},{"manager":"argocd-application-controller","operation":"Update","apiVersion":"argoproj.io/v1alpha1","time":"2022-03-20T20:18:12Z","fieldsType":"FieldsV1","fieldsV1":{"f:status":{"f:health":{"f:status":{}},"f:history":{},"f:operationState":{".":{},"f:finishedAt":{},"f:message":{},"f:operation":{".":{},"f:initiatedBy":{".":{},"f:username":{}},"f:retry":{},"f:sync":{".":{},"f:revision":{},"f:syncStrategy":{".":{},"f:hook":{}}}},"f:phase":{},"f:startedAt":{},"f:syncResult":{".":{},"f:resources":{},"f:revision":{},"f:source":{".":{},"f:path":{},"f:repoURL":{},"f:targetRevision":{}}}},"f:summary":{"f:images":{}},"f:sync":{"f:comparedTo":{"f:destination":{"f:namespace":{},"f:server":{}},"f:source":{"f:path":{},"f:repoURL":{},"f:targetRevision":{}}}}}}},{"manager":"Go-http-client","operation":"Update","apiVersion":"argoproj.io/v1alpha1","time":"2022-04-26T12:32:59Z","fieldsType":"FieldsV1","fieldsV1":{"f:status":{"f:reconciledAt":{},"f:resources":{},"f:sourceType":{},"f:sync":{"f:revision":{},"f:status":{}}}}}]},"spec":{"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"destination":{"server":"https://kubernetes.default.svc","namespace":"default"},"project":"default"},"status":{"resources":[{"version":"v1","kind":"Service","namespace":"default","name":"guestbook-ui","status":"Synced","health":{"status":"Healthy"}},{"group":"apps","version":"v1","kind":"Deployment","namespace":"default","name":"guestbook-ui","status":"Synced","health":{"status":"Healthy"}}],"sync":{"status":"Synced","comparedTo":{"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"destination":{"server":"https://kubernetes.default.svc","namespace":"default"}},"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba"},"health":{"status":"Healthy"},"history":[{"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","deployedAt":"2022-02-24T21:20:55Z","id":0,"source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"},"deployStartedAt":"2022-02-24T21:20:55Z"}],"reconciledAt":"2022-04-26T13:05:55Z","operationState":{"operation":{"sync":{"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","syncStrategy":{"hook":{}}},"initiatedBy":{"username":"admin"},"retry":{}},"phase":"Succeeded","message":"successfully
         synced (all tasks run)","syncResult":{"resources":[{"group":"","version":"v1","kind":"Service","namespace":"default","name":"guestbook-ui","status":"Synced","message":"service/guestbook-ui
         created","hookPhase":"Running","syncPhase":"Sync"},{"group":"apps","version":"v1","kind":"Deployment","namespace":"default","name":"guestbook-ui","status":"Synced","message":"deployment.apps/guestbook-ui
         created","hookPhase":"Running","syncPhase":"Sync"}],"revision":"53e28ff20cc530b9ada2173fbbd64d48338583ba","source":{"repoURL":"https://github.com/argoproj/argocd-example-apps.git","path":"guestbook","targetRevision":"HEAD"}},"startedAt":"2022-02-24T21:20:55Z","finishedAt":"2022-02-24T21:20:55Z"},"sourceType":"Directory","summary":{"images":["gcr.io/heptio-images/ks-guestbook-demo:0.2"]}}}]}'
-  recorded_at: Thu, 31 Mar 2022 14:41:34 GMT
+  recorded_at: Tue, 26 Apr 2022 13:06:14 GMT
 - request:
     method: get
     uri: http://argocd.local.com/api/v1/applications/guestbook/revisions/53e28ff20cc530b9ada2173fbbd64d48338583ba/metadata
@@ -275,7 +126,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJERUs0UWNmR2pNMUZBeEpBSU9iRDdrQWwtVm1jYUU0b0loWm9KYjFreVcwIn0.eyJleHAiOjE2NDg3NzE3NDcsImlhdCI6MTY0ODczNTkwOCwiYXV0aF90aW1lIjoxNjQ4NzM1NzQ3LCJqdGkiOiJiMzJmNjAzZC05NjUyLTRmYjMtYTFkMy0wM2VkMGFmMDBlYTEiLCJpc3MiOiJodHRwOi8vYmRiOS0xMzEtMTUwLTEzOS0xMTkubmdyb2suaW8vYXV0aC9yZWFsbXMvVHdpbGlnaHQiLCJhdWQiOlsiYXJnb2NkIiwiYWNjb3VudCJdLCJzdWIiOiJjMTAyMzU4Ny0yODVhLTRhYmUtYmY1Yi1kMzRlYzhmMDQ5NmIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhY2NvdW50Iiwic2Vzc2lvbl9zdGF0ZSI6ImFiNjZkOThmLTczODktNGNhMy1iMGRjLWZlYTAzNzRiODMyNiIsImFjciI6IjAiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctYXBwbGljYXRpb25zIiwidmlldy1jb25zZW50IiwiYWRtaW4iLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsIm1hbmFnZS1jb25zZW50IiwiZGVsZXRlLWFjY291bnQiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBncm91cHMgcHJvZmlsZSBnb29kLXNlcnZpY2UgZW1haWwiLCJzaWQiOiJhYjY2ZDk4Zi03Mzg5LTRjYTMtYjBkYy1mZWEwMzc0YjgzMjYiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJLZXljbG9hayBVc2VyIiwiZ3JvdXBzIjpbIkFyZ29DREFkbWlucyIsIlNlbnRyeSIsImRhdGFkb2ciXSwicHJlZmVycmVkX3VzZXJuYW1lIjoia2V5Y2xvYWtfdXNlciIsImdpdmVuX25hbWUiOiJLZXljbG9hayIsImZhbWlseV9uYW1lIjoiVXNlciIsImVtYWlsIjoia2V5Y2xvYWtfdXNlckBleGFtcGxlLmNvbSJ9.BFZ0HWWQzgP03uxdZVv7CDAwaGQwY1N3Qf45UlgneX4uFiKx6ywQ5WxABrlGEWH2L6ju8m_y2zGqRBJA_DfwlYQaIGf3MkqJHD3D5OV_fLwlQxaicnfnpBDN-oDtd8SbNT955_9Fzpgba3xzMTD1DwYnOHZ6gkEs_URkt9kUfT88weChtKCUuwQhdUun14JUlIRs4nTvqfj0wSQMS2de4eMkZGNxCRUCOCJPZTMLWsSVBwaW7-IIkUNMIBIJW-dXmtfIOscOqP5iIw3HipqerTOHyqAZKI1NeBR2NG8vnZN-ISpDx5jN5o0xGg1XxFx11az8AKtC1KFuATSFoJGpfA
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJERUs0UWNmR2pNMUZBeEpBSU9iRDdrQWwtVm1jYUU0b0loWm9KYjFreVcwIn0.eyJleHAiOjE2NTEwMTI5NTcsImlhdCI6MTY1MDk3ODE0MywiYXV0aF90aW1lIjoxNjUwOTc2OTU3LCJqdGkiOiIxMTdjMWUyNy1jZTdlLTQ0ZGEtOTdjMC1mMzA3MjA1ODcxY2MiLCJpc3MiOiJodHRwOi8vZjg1Yy0xMzEtMTUwLTEzOS0xMTkubmdyb2suaW8vYXV0aC9yZWFsbXMvVHdpbGlnaHQiLCJhdWQiOlsiZGV4IiwiYXJnb2NkIiwiYWNjb3VudCJdLCJzdWIiOiJjMTAyMzU4Ny0yODVhLTRhYmUtYmY1Yi1kMzRlYzhmMDQ5NmIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhY2NvdW50Iiwic2Vzc2lvbl9zdGF0ZSI6IjZiMzU5Zjg4LTBlNmUtNDYxMC1hMTM4LTI0MTQ2YTU1MzVjNSIsImFjciI6IjAiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctYXBwbGljYXRpb25zIiwidmlldy1jb25zZW50IiwiYWRtaW4iLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsIm1hbmFnZS1jb25zZW50IiwiZGVsZXRlLWFjY291bnQiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBncm91cHMgcHJvZmlsZSBnb29kLXNlcnZpY2UgZW1haWwiLCJzaWQiOiI2YjM1OWY4OC0wZTZlLTQ2MTAtYTEzOC0yNDE0NmE1NTM1YzUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJLZXljbG9hayBVc2VyIiwiZ3JvdXBzIjpbIkFyZ29DREFkbWlucyIsIlNlbnRyeSIsImRhdGFkb2ciXSwicHJlZmVycmVkX3VzZXJuYW1lIjoia2V5Y2xvYWtfdXNlciIsImdpdmVuX25hbWUiOiJLZXljbG9hayIsImZhbWlseV9uYW1lIjoiVXNlciIsImVtYWlsIjoia2V5Y2xvYWtfdXNlckBleGFtcGxlLmNvbSJ9.UEAf6ftg3OPdle3I-BAPyWhdjh0S6P7WP8CRAPOcJBqoFBMQOfaIJGDtdJPNbLRPCr3sE6tWJS2w6W7KF8IzNCiwd7umJu0jef8_n8Waz8S4nzMfcE70snrgTptToDedWaLXEE_GWK5BBkJus4R--XAVO8MPd0TNWV4JrTXnN_VZCNp5G9pOgzv_PXoVZNSFMQgCH9OvPyNlThV7AHzbdp7f0TlTiwG3ZEca3-CuWucvaqScqiTxDfOdgd3DuUhS3l8Cigp5am5izMRvGB7bd670ovFuPm88ZFjGD0mGp7hn-j6CUFRiOxUb6EdmeTyDQJ4c5zucZHQ3L4jeHu14Zw
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -296,7 +147,7 @@ http_interactions:
       Grpc-Metadata-Content-Type:
       - application/grpc
       Date:
-      - Thu, 31 Mar 2022 14:41:34 GMT
+      - Tue, 26 Apr 2022 13:06:14 GMT
       Content-Length:
       - '407'
     body:
@@ -306,5 +157,5 @@ http_interactions:
         blue-green\r\n\r\n* helm3 dependencies\r\n\r\n* helm3 plugin\r\n\r\n* helm3
         plugin\r\n\r\n* helm3 plugin\r\n\r\n* helm3 apps\r\n\r\n* helm3 dependency\r\n\r\n*
         helm3 dependency\r\n\r\n* helm3 dependency\r\n\r\n* helm3 fix readme"}'
-  recorded_at: Thu, 31 Mar 2022 14:41:34 GMT
-recorded_with: VCR 6.0.0
+  recorded_at: Tue, 26 Apr 2022 13:06:14 GMT
+recorded_with: VCR 6.1.0
