@@ -15,7 +15,7 @@ ENV['GITHUB_CLIENT_ID'] ||= 'github_client_id'
 ENV['GITHUB_CLIENT_SECRET'] ||= 'github_client_secret'
 ENV['KEYCLOAK_SITE_URL'] = 'http://test.host/auth/keycloak/callback'
 ENV['KEYCLOAK_REALM'] = 'example-realm'
-ENV['ARGO_API_BASE_PATH'] = 'http://localhost:8080'
+ENV['ARGO_API_BASE_PATH'] = 'http://test.host'
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'webmock/minitest'
@@ -88,6 +88,11 @@ module ActiveSupport
 
       WebMock.stub_request(:get, 'http://test.host/auth/realms/example-realm/protocol/openid-connect/certs')
              .to_return(status: 200, body: { "keys": [] }.to_json)
+    end
+
+    def stub_argo_requests
+      WebMock.stub_request(:get, 'http://test.host/api/v1/applications?name=guestbook')
+              .to_return(status: 200, body: File.read(Rails.root.join('test/fixtures/files/argo_config.json')))
     end
   end
 end
