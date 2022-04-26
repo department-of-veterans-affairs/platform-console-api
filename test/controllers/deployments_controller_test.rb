@@ -31,7 +31,6 @@ class DeploymentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show deployment' do
-
     VCR.use_cassette('system/success', record: :new_episodes) do
       get team_app_deployment_url(@team, @app, @deployment)
       assert_response :success
