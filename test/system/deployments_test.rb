@@ -19,7 +19,7 @@ class DeploymentsTest < ApplicationSystemTestCase
   end
 
   test 'should show deployment with a successful jwt' do
-    VCR.use_cassette('system/keycloak_jwt', record: :new_episodes) do
+    VCR.use_cassette('system/keycloak_jwt') do
       visit team_app_deployment_url(@team, @app, @deployment)
       assert_selector 'h3', text: 'Argo Deployment Stats'
       assert_selector 'dt', text: 'App Health'
@@ -31,7 +31,7 @@ class DeploymentsTest < ApplicationSystemTestCase
   end
 
   test 'should show error when bad jwt' do
-    VCR.use_cassette('system/deployments_401', record: :new_episodes) do
+    VCR.use_cassette('system/deployments_401') do
       @user = users :jack
       login_as :jack
       visit team_app_deployment_url(@team, @app, @deployment)
@@ -41,7 +41,7 @@ class DeploymentsTest < ApplicationSystemTestCase
   end
 
   test 'should get the current revision info' do
-    VCR.use_cassette('system/current_revision_success', record: :new_episodes) do
+    VCR.use_cassette('system/current_revision_success') do
       visit team_app_deployment_url(@team, @app, @deployment)
       assert_selector 'h3', text: 'Argo Deployment Stats'
       assert_selector 'dt', text: 'App Health'
@@ -54,7 +54,7 @@ class DeploymentsTest < ApplicationSystemTestCase
   end
 
   test 'should create deployment' do
-    VCR.use_cassette('system/current_revision_success', record: :new_episodes) do
+    VCR.use_cassette('system/current_revision_success') do
       visit team_app_deployments_url(@team, @app)
       click_on 'New Deployment'
 
@@ -66,7 +66,7 @@ class DeploymentsTest < ApplicationSystemTestCase
   end
 
   test 'should update Deployment' do
-    VCR.use_cassette('system/current_revision_success', record: :new_episodes) do
+    VCR.use_cassette('system/current_revision_success') do
       visit team_app_deployment_url(@team, @app, @deployment)
       click_on 'Edit this deployment', match: :first
 
@@ -78,7 +78,7 @@ class DeploymentsTest < ApplicationSystemTestCase
   end
 
   test 'should destroy Deployment' do
-    VCR.use_cassette('system/current_revision_success', record: :new_episodes) do
+    VCR.use_cassette('system/current_revision_success') do
       visit team_app_deployment_url(@team, @app, @deployment)
       click_on 'Destroy this deployment', match: :first
       page.driver.browser.switch_to.alert.accept
