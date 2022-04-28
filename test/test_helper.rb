@@ -68,7 +68,7 @@ module ActiveSupport
             provider: 'keycloak',
             credentials: {
               token:
-              'eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJERUs0UWNmR2pNMUZBeEpBSU9iRDdrQWwtVm1jYUU0b0loWm9KYjFreVcwIn0'
+              'eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwstia2lkIiA6ICJERUs0UWNmR2pNMUZBeEpBSU9iRDdrQWwtVm1jYUU0b0loWm9KYjFreVcwIn0'
             },
             info: {
               email: user.email,
@@ -88,11 +88,6 @@ module ActiveSupport
 
       WebMock.stub_request(:get, 'http://test.host/auth/realms/example-realm/protocol/openid-connect/certs')
              .to_return(status: 200, body: { "keys": [] }.to_json)
-    end
-
-    def stub_argo_requests
-      WebMock.stub_request(:get, 'http://test.host/api/v1/applications?name=guestbook')
-             .to_return(status: 200, body: File.read(Rails.root.join('test/fixtures/files/argo_config.json')))
     end
   end
 end
