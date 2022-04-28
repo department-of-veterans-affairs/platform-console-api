@@ -9,7 +9,6 @@ class DeploymentsControllerTest < ActionDispatch::IntegrationTest
     @team = teams(:two)
     @app = apps(:two)
     @deployment = deployments(:one)
-    stub_argo_requests
   end
 
   test 'should get index' do
