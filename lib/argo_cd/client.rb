@@ -45,6 +45,5 @@ module ArgoCd
     def base_path
       ENV['ARGO_API_BASE_PATH']
     end
-
   end
 end

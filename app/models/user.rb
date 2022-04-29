@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :name, :email, presence: true
 
   def self.from_omniauth(auth_hash)
-    user = User.find_or_initialize_by(uid: auth_hash['uid']) do |u|
+    User.find_or_initialize_by(uid: auth_hash['uid']) do |u|
       u.name = auth_hash['info']['name']
       u.email = auth_hash['info']['email']
       # Tokens have a short expiration date.
@@ -21,7 +21,7 @@ class User < ApplicationRecord
       u.password = SecureRandom.uuid
       u.save!
     end
-    user
+
     # Authorize user and ensure keycloak is the provider
     # teams = auth_hash['extra']['raw_info']['groups']
     # roles = auth_hash['extra']['raw_info']['resource_access']['account']['roles']
