@@ -3,9 +3,10 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider  :keycloak_openid, ENV['KEYCLOAK_CLIENT_ID'] || 'account', ENV['KEYCLOAK_CLIENT_SECRET'] || '',
             scope: 'openid profile email',
-            client_options: { site: ENV['KEYCLOAK_SITE_URL'] || 'http://localhost:8080',
-                              realm: ENV['KEYCLOAK_REALM'] || 'Twilight' },
-            name: 'keycloak'
+            client_options: { site: ENV.fetch('KEYCLOAK_SITE_URL'),
+                              realm: ENV.fetch('KEYCLOAK_REALM') },
+            name: 'keycloak',
+            strategy_class: OmniAuth::Strategies::KeycloakOpenId
 end
 
 OmniAuth.configure do |config|
