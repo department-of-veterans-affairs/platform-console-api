@@ -6,7 +6,7 @@ require 'test_helper'
 class DeploymentsTest < ApplicationSystemTestCase
   setup do
     @user = users :john
-    login_as :john
+    omniauth_login_as(@user)
     @team = teams(:two)
     @app = apps(:two)
     @deployment = deployments(:one)
