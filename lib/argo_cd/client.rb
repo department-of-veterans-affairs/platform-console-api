@@ -7,10 +7,11 @@ module ArgoCd
   class Client
     attr_accessor :app_id, :deployment_name, :current_user
 
-    def initialize(app_id, deployment_name, current_user_id)
+    def initialize(app_id, deployment_name, current_user_id, keycloak_token)
       @app_id = app_id
       @deployment_name = deployment_name
       @current_user = User.find(current_user_id)
+      @keycloak_token = keycloak_token
     end
 
     def app_info
@@ -21,12 +22,6 @@ module ArgoCd
     def current_revision(revision)
       uri = URI("#{base_path}/api/v1/applications/#{deployment_name}/revisions/#{revision}/metadata")
       get_app_info(uri, :get)
-    end
-
-    def destroy_token
-      token_id = current_user.token_id
-      uri = URI("#{base_path}/api/v1/account/#{ENV['ARGO_USER']}/token/#{token_id}")
-      get_app_info(uri, :delete)
     end
 
     def get_app_info(uri, verb)
@@ -40,7 +35,7 @@ module ArgoCd
 
     def request_headers
       {
-        'Authorization' => "Bearer #{jwt}",
+        'Authorization' => "Bearer #{@keycloak_token}",
         'Content-Type' => 'application/json'
       }
     end
@@ -51,8 +46,5 @@ module ArgoCd
       ENV['ARGO_API_BASE_PATH']
     end
 
-    def jwt
-      current_user.keycloak_token
-    end
   end
 end
