@@ -25,8 +25,8 @@ module PlatformConsole
     # config.generators do |g|
     #   g.test_framework :minitest
     # end
-    config.active_record.encryption.primary_key = ENV['PRIMARY_KEY']
-    config.active_record.encryption.deterministic_key = ENV['DETERMINISTIC_KEY']
-    config.active_record.encryption.key_derivation_salt = ENV['KEY_DERIVATION_SALT']
+    # config.active_record.encryption.primary_key = ENV['PRIMARY_KEY']
+    # config.active_record.encryption.deterministic_key = ENV['DETERMINISTIC_KEY']
+    # config.active_record.encryption.key_derivation_salt = ENV['KEY_DERIVATION_SALT']
   end
 end
