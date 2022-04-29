@@ -54,9 +54,13 @@ module ActiveSupport
     # Add more helper methods to be used by all tests here...
     OmniAuth.config.test_mode = true
 
-    def setup_omniauth_mock(user)
+    def keycloak_setup(user)
       stub_keycloak_requests
       Rails.application.env_config['omniauth.auth'] = keycloak_auth(user)
+    end
+
+    def setup_omniauth_mock(user)
+      keycloak_setup(user)
       get '/auth/keycloak/callback'
     end
 
@@ -68,7 +72,7 @@ module ActiveSupport
             provider: 'keycloak',
             credentials: {
               token:
-              'eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwstia2lkIiA6ICJERUs0UWNmR2pNMUZBeEpBSU9iRDdrQWwtVm1jYUU0b0loWm9KYjFreVcwIn0'
+              '"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJERUs0UWNmR2pNMUZBeEpBSU9iRDdrQWwtVm1jYUU0b0loWm9KYjFreVcwIn0.eyJleHAiOjE2NTEwMTI5NTcsImlhdCI6MTY1MDk3ODE0MywiYXV0aF90aW1lIjoxNjUwOTc2OTU3LCJqdGkiOiIxMTdjMWUyNy1jZTdlLTQ0ZGEtOTdjMC1mMzA3MjA1ODcxY2MiLCJpc3MiOiJodHRwOi8vZjg1Yy0xMzEtMTUwLTEzOS0xMTkubmdyb2suaW8vYXV0aC9yZWFsbXMvVHdpbGlnaHQiLCJhdWQiOlsiZGV4IiwiYXJnb2NkIiwiYWNjb3VudCJdLCJzdWIiOiJjMTAyMzU4Ny0yODVhLTRhYmUtYmY1Yi1kMzRlYzhmMDQ5NmIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhY2NvdW50Iiwic2Vzc2lvbl9zdGF0ZSI6IjZiMzU5Zjg4LTBlNmUtNDYxMC1hMTM4LTI0MTQ2YTU1MzVjNSIsImFjciI6IjAiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctYXBwbGljYXRpb25zIiwidmlldy1jb25zZW50IiwiYWRtaW4iLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsIm1hbmFnZS1jb25zZW50IiwiZGVsZXRlLWFjY291bnQiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBncm91cHMgcHJvZmlsZSBnb29kLXNlcnZpY2UgZW1haWwiLCJzaWQiOiI2YjM1OWY4OC0wZTZlLTQ2MTAtYTEzOC0yNDE0NmE1NTM1YzUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJLZXljbG9hayBVc2VyIiwiZ3JvdXBzIjpbIkFyZ29DREFkbWlucyIsIlNlbnRyeSIsImRhdGFkb2ciXSwicHJlZmVycmVkX3VzZXJuYW1lIjoia2V5Y2xvYWtfdXNlciIsImdpdmVuX25hbWUiOiJLZXljbG9hayIsImZhbWlseV9uYW1lIjoiVXNlciIsImVtYWlsIjoia2V5Y2xvYWtfdXNlckBleGFtcGxlLmNvbSJ9.UEAf6ftg3OPdle3I-BAPyWhdjh0S6P7WP8CRAPOcJBqoFBMQOfaIJGDtdJPNbLRPCr3sE6tWJS2w6W7KF8IzNCiwd7umJu0jef8_n8Waz8S4nzMfcE70snrgTptToDedWaLXEE_GWK5BBkJus4R--XAVO8MPd0TNWV4JrTXnN_VZCNp5G9pOgzv_PXoVZNSFMQgCH9OvPyNlThV7AHzbdp7f0TlTiwG3ZEca3-CuWucvaqScqiTxDfOdgd3DuUhS3l8Cigp5am5izMRvGB7bd670ovFuPm88ZFjGD0mGp7hn-j6CUFRiOxUb6EdmeTyDQJ4c5zucZHQ3L4jeHu14Zw'
             },
             info: {
               email: user.email,
@@ -80,6 +84,11 @@ module ActiveSupport
 
     def login_as(user)
       visit "/login?request.omniauth[uid]=#{users(user).uid}"
+    end
+
+    def omniauth_login_as(user)
+      keycloak_setup(user)
+      visit '/auth/keycloak/callback'
     end
 
     def stub_keycloak_requests
