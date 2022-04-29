@@ -17,8 +17,8 @@ class DeploymentsController < ApplicationController
   # GET /apps/1 or /apps/1.json
   def show
     return unless ENV['ARGO_API'] == 'true'
-
-    argo_client = ArgoCd::Client.new(@app.id, @deployment.name, @current_user.id)
+    redirect_to ENV['KEYCLOAK_SSO_TARGET_URL'] and return if session[:keycloak_token].blank?
+    argo_client = ArgoCd::Client.new(@app.id, @deployment.name, @current_user.id, session[:keycloak_token])
     @response = argo_client.app_info
     @current_revision = argo_client.current_revision(@response.current_git_revision) if @response.successful?
   end

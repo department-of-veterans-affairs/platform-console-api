@@ -23,6 +23,7 @@ class SessionsController < ApplicationController
 
   def destroy
     cookies.permanent[:user] = nil
+    session.delete :keycloak_token
     redirect_to root_path, notice: t('.notice')
   end
 
