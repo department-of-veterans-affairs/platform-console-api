@@ -55,23 +55,23 @@ module ArgoCd
     end
 
     def sync_status
-      body['status']['sync']
+      @sync_status ||= body['status']['sync']
     end
 
     def author
-      body['author']
+      @author ||= body['author']
     end
 
     def date
-      body['date']
+      @date ||= body['date']
     end
 
     def message
-      body['message']
+      @message ||= body['message']
     end
 
     def token
-      body['token']
+      @token ||= body['token']
     end
   end
 end
