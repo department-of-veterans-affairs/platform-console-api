@@ -67,7 +67,7 @@ Instructions for running and initializing Keycloak locally:
   To setup keycloak, run:
   bin/keycloak
 
-  This will create a keycloak databse, docker image, and a docker container (Keycloak).
+  This will create a keycloak database, docker image, and a docker container (Keycloak).
   You can access keycloak at http://localhost:8080
 
   Keycloak ADMIN credentials:
