@@ -15,6 +15,7 @@ ENV['GITHUB_CLIENT_ID'] ||= 'github_client_id'
 ENV['GITHUB_CLIENT_SECRET'] ||= 'github_client_secret'
 ENV['KEYCLOAK_SITE_URL'] = 'http://test.host/auth/keycloak/callback'
 ENV['KEYCLOAK_REALM'] = 'example-realm'
+ENV['ARGO_API_BASE_PATH'] = 'http://argocd.local.com'
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'webmock/minitest'
@@ -53,9 +54,13 @@ module ActiveSupport
     # Add more helper methods to be used by all tests here...
     OmniAuth.config.test_mode = true
 
-    def setup_omniauth_mock(user)
+    def keycloak_setup(user)
       stub_keycloak_requests
       Rails.application.env_config['omniauth.auth'] = keycloak_auth(user)
+    end
+
+    def setup_omniauth_mock(user)
+      keycloak_setup(user)
       get '/auth/keycloak/callback'
     end
 
@@ -65,6 +70,10 @@ module ActiveSupport
           {
             uid: user.uid,
             provider: 'keycloak',
+            credentials: {
+              token:
+              'eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJERUs0UWNmR2pNMUZBeEpBSU9iRDdrQWwtVm1jYUU0b0loWm9KYjFreVcwIn0'
+            },
             info: {
               email: user.email,
               name: user.name
@@ -75,6 +84,11 @@ module ActiveSupport
 
     def login_as(user)
       visit "/login?request.omniauth[uid]=#{users(user).uid}"
+    end
+
+    def omniauth_login_as(user)
+      keycloak_setup(user)
+      visit '/auth/keycloak/callback'
     end
 
     def stub_keycloak_requests
