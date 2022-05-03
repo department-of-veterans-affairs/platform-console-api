@@ -10,3 +10,7 @@ Metrics/MethodLength:
 
 Style/HashSyntax:
   EnforcedShorthandSyntax: either
+
+Layout/LineLength:
+  Exclude:
+    - 'test/test_helper.rb'

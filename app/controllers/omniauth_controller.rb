@@ -18,6 +18,7 @@ class OmniauthController < SessionsController
 
   def set_user
     @user = User.from_omniauth(auth_hash)
+    session[:keycloak_token] = auth_hash['credentials']['token']
   end
 
   protected
