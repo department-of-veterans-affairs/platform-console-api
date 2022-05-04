@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
+require 'argo_cd/client'
+
 # The User Model
 class User < ApplicationRecord
-  encrypts :argo_token
   has_paper_trail
   has_secure_password
   encrypts :github_token
@@ -15,9 +16,12 @@ class User < ApplicationRecord
     User.find_or_initialize_by(uid: auth_hash['uid']) do |u|
       u.name = auth_hash['info']['name']
       u.email = auth_hash['info']['email']
+      # Tokens have a short expiration date.
+      # The token should be stored in the session or database for every login.
       u.password = SecureRandom.uuid
       u.save!
     end
+
     # Authorize user and ensure keycloak is the provider
     # teams = auth_hash['extra']['raw_info']['groups']
     # roles = auth_hash['extra']['raw_info']['resource_access']['account']['roles']
@@ -30,23 +34,6 @@ class User < ApplicationRecord
       Octokit::Client.new(access_token: github_token).user
     rescue Octokit::Unauthorized
       nil
-    end
-  end
-
-  def argo_token_invalid?
-    begin
-      decoded_token = JWT.decode(argo_token, nil, false)
-    rescue StandardError
-      return true
-    end
-
-    decoded_token_info = decoded_token[0]
-
-    if decoded_token_info.keys.include?('exp')
-      expiration = Time.zone.at(decoded_token_info['exp'])
-      (expiration + 24.hours) < DateTime.now # token has expired
-    else
-      false
     end
   end
 

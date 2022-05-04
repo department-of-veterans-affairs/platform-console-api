@@ -16,8 +16,12 @@ class DeploymentsController < ApplicationController
 
   # GET /apps/1 or /apps/1.json
   def show
-    argo_client = ArgoCd::Client.new(@app.id, @deployment.name, @current_user.id)
+    return unless ENV['ARGO_API'] == 'true'
+    redirect_to ENV['KEYCLOAK_SSO_TARGET_URL'] and return if session[:keycloak_token].blank?
+
+    argo_client = ArgoCd::Client.new(@app.id, @deployment.name, @current_user.id, session[:keycloak_token])
     @response = argo_client.app_info
+    @current_revision = argo_client.current_revision(@response.current_git_revision) if @response.successful?
   end
 
   # GET /apps/new
@@ -74,7 +78,6 @@ class DeploymentsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_team
     @team = Team.find(params[:team_id])
   end
@@ -83,7 +86,6 @@ class DeploymentsController < ApplicationController
     @app = App.find(params[:app_id])
   end
 
-  # Find the app deployment
   def set_deployment
     @deployment = @app.deployments.find(params[:id])
   end

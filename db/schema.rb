@@ -55,11 +55,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_144355) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
+    t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "uid"
     t.string "github_token"
-    t.string "argo_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["password_digest"], name: "index_users_on_password_digest"
     t.index ["uid"], name: "index_users_on_uid"

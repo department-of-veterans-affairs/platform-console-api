@@ -10,7 +10,8 @@
     </h3>
   </div>
 
-  <% if @response.successful? %>
+<% if ENV['ARGO_API'] == 'true' %>
+  <% if @response && @response.successful? %>
     <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
       <dl class="sm:divide-y sm:divide-gray-200">
         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -18,8 +19,8 @@
             App Health
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            <%= @response.app_health %><br/>
-            Message: <%= @response.app_health_message || "none"%>
+            App Health: <%= @response.app_health %><br/>
+            Message: <%= @response.app_health_message || "none" %>
           </dd>
         </div>
       </dl>
@@ -32,7 +33,16 @@
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
             Status: <%= @response.current_git_status %><br/>
-            Git Revision: <%= @response.current_git_revision %>
+            Git Revision: <%= @response.current_git_revision %><br/>
+
+            <% if @current_revision.successful? %>
+              Author: <%= @current_revision.author %><br/>
+              Date: <%= @current_revision.date %><br/>
+              Message: <%= @current_revision.message %><br/>
+            <% else %>
+                Author, Date, Message: <%= @response.status %> -
+                <%= @response.error_message %> Error: Something went wrong with the Argo API call, please try again
+            <% end %>
           </dd>
         </div>
       </dl>
@@ -64,6 +74,20 @@
     </dl>
   </div>
   <% end %>
+<% else %>
+  <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+    <dl class="sm:divide-y sm:divide-gray-200">
+      <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+         Please enable the ArgoAPI via the ARGO_API env var
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          Error: Something went wrong with the Argo API call, please try again
+        </dd>
+      </div>
+    </dl>
+  </div>
+<% end %>
 </div>
 
 <br/>

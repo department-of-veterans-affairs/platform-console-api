@@ -24,7 +24,7 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0.1' # Mitigates against CSRF in oau
 gem 'pagy',               '~> 5.10'  # Agnostic pagination in plain ruby
 gem 'paper_trail',        '~> 12.3'  # Track changes to your models, for auditing or versioning
 gem 'pg',                 '~> 1.3'   # Use postgresql as the database for Active Record
-gem 'puma',               '~> 5.6'   # Use the Puma web server [https://github.com/puma/puma]
+gem 'puma',               '>= 5.6.4' # Use the Puma web server [https://github.com/puma/puma]
 gem 'redis',              '~> 4.6'   # Use Redis adapter to run Action Cable in production
 gem 'rolify',             '~> 6.0'   # Simple Roles library
 gem 'rouge',              '~> 3.28'  # Pure Ruby syntax highlighter

@@ -58,8 +58,8 @@ rails test test/path/to/the_test.rb:123
 ```
 
 ## Deployment
+With respect to semantic release syntax, each commit to master is automatically built and the image is pushed to ECR. The image tag is then updated in the manifests repo in the deployment.yml
 
-While we await provisioning of appropriate services on the VA network, we are hosting the platform-console on Heroku. Each commit to master is automatically deployed and each pull request will generate a Review App.
 ## KEYCLOAK INTEGRATION
 Create Keycloak DB:
 
@@ -67,15 +67,19 @@ Instructions for running and initializing Keycloak locally:
   To setup keycloak, run:
   bin/keycloak
 
-  This will create a keycloak databse, docker image, and a docker container (Keycloak).
+  This will create a keycloak database, docker image, and a docker container (Keycloak).
   You can access keycloak at http://localhost:8080
 
   Keycloak ADMIN credentials:
-  # Create Realms
+  Create Realms:
   username: admin
   password: password
 
   Keycloak SSO credentials:
   username: keycloak_user@example.com
   password: password
+
+
+## Running ArgoCd Locally
+See the [Argo Intgration docs](https://vfs.atlassian.net/wiki/spaces/VI/pages/2121465877/Running+ArgoCd+Locally+for+platform-console-api) in Confluence
 
