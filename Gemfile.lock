@@ -376,6 +376,7 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
+  arm64-darwin
   arm64-darwin-20
   arm64-darwin-21
   ruby
@@ -431,7 +432,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 3.1.0p0
+   ruby 3.1.2p20
 
 BUNDLED WITH
-   2.3.3
+   2.3.13
