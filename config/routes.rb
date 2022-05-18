@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   scope module: :api do
     namespace :v1 do
+      resources :users, only: %i[show edit update]
       resources :teams do
         resources :apps do
           resources :deploy_pull_requests, only: %i[create], controller: 'github/deploy_pull_requests'
