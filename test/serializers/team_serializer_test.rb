@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class TeamSerializerTest < ActionDispatch::IntegrationTest
@@ -8,14 +10,21 @@ class TeamSerializerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should serialize with the correct attributes' do
-   assert_equal @hash.dig(:data, :attributes).keys, [:name, :created_at, :updated_at]
+    assert_equal @hash.dig(:data, :attributes).keys, %i[name created_at updated_at]
   end
 
   test 'should have the correct relationships' do
-    assert_equal @hash.dig(:data, :relationships).keys, [:owner, :apps]
+    assert_equal @hash.dig(:data, :relationships).keys, %i[owner apps]
   end
 
   test 'should have the correct self link' do
     assert_equal @hash.dig(:data, :links, :self), "#{ENV['BASE_URL']}/api/v1/teams/#{@team.id}"
+  end
+
+  test 'should have correct relationship links' do
+    assert_equal @hash.dig(:data, :relationships, :apps, :links, :related),
+                 "#{ENV['BASE_URL']}/api/v1/teams/#{@team.id}/apps"
+    assert_equal @hash.dig(:data, :relationships, :owner, :links, :related),
+                 "#{ENV['BASE_URL']}/api/v1/users/#{@team.owner_id}"
   end
 end
