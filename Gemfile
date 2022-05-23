@@ -32,7 +32,7 @@ gem 'sidekiq',            '~> 6.4'   # Simple, efficient background processing f
 gem 'strong_migrations',  '~> 1.0'   # Catch potentially dangerous operations in migrations
 
 # Assets
-gem 'importmap-rails',    '~> 1.0' # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+gem 'importmap-rails',    '~> 1.1' # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'redcarpet',          '~> 3.5' # For Markdown processing [https://github.com/vmg/redcarpet]
 gem 'sprockets-rails',    '~> 3.4' # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'stimulus-rails',     '~> 1.0' # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
