@@ -8,7 +8,7 @@ module Github
     include Github::Pagination
     include Github::Inspect
 
-    attr_accessor :access_token, :repo, :id
+    attr_accessor :access_token, :repo, :id, :app_id
 
     # Creates a Github::WorkflowRunJob object with the github response attached
     #
@@ -17,10 +17,11 @@ module Github
     #
     # @return [Github::WorkflowRunJob]
     # @see https://docs.github.com/en/rest/reference/actions#get-a-job-for-a-workflow-run
-    def initialize(access_token, repo, id)
+    def initialize(access_token, repo, id, app_id)
       @access_token = access_token
       @repo = repo
       @id = id
+      @app_id = app_id
     end
 
     class << self

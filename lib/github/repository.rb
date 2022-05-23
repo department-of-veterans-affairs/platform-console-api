@@ -6,7 +6,7 @@ module Github
     include Github::Pagination
     include Github::Inspect
 
-    attr_accessor :access_token, :repo
+    attr_accessor :id, :access_token, :repo, :app_id
 
     # Creates a Github::Repository object with the github response attached
     #
@@ -14,9 +14,10 @@ module Github
     #
     # @return [Github::Repository]
     # @see https://docs.github.com/en/rest/reference/repos#get-a-repository
-    def initialize(access_token, repo)
+    def initialize(access_token, repo, app_id)
       @access_token = access_token
       @repo = repo
+      @app_id = app_id
     end
 
     # Get all repositories in an organization
@@ -68,6 +69,10 @@ module Github
     # @see https://docs.github.com/en/rest/reference/actions#list-repository-workflows
     def workflows
       Github::Workflow.all(access_token, repo)
+    end
+
+    def workflow_ids
+      workflows.workflows.pluck(:id)
     end
 
     # List all repository workflows runs
