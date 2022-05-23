@@ -12,7 +12,7 @@ class App < ApplicationRecord
   before_save :validate_deploy_workflow, if: :will_save_change_to_deploy_workflow?
 
   def github_repository(access_token)
-    Github::Repository.new(access_token, github_repo)
+    Github::Repository.new(access_token, github_repo, id)
   end
   alias repository github_repository
 
@@ -28,7 +28,7 @@ class App < ApplicationRecord
     end
 
     begin
-      Github::Repository.new(current_user.github_token, github_repo).github
+      Github::Repository.new(current_user.github_token, github_repo, id).github
     rescue Octokit::NotFound, Octokit::Unauthorized, Octokit::Forbidden => e
       errors.add(:base, e.message)
       throw(:abort)
@@ -51,7 +51,7 @@ class App < ApplicationRecord
     end
 
     begin
-      Github::Repository.new(current_user.github_token, github_repo).deploy_workflow(deploy_workflow)
+      Github::Repository.new(current_user.github_token, github_repo, id).deploy_workflow(deploy_workflow)
     rescue Octokit::NotFound, Octokit::Unauthorized, Octokit::Forbidden => e
       errors.add(:base, e.message)
       throw(:abort)

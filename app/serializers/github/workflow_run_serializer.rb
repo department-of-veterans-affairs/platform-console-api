@@ -4,7 +4,16 @@ module Github
   class WorkflowRunSerializer < ::BaseSerializer
     attributes :repo, :github, :app_id
 
-    belongs_to :workflow, id_method_name: :workflow_id
-    has_many :workflow_run_jobs, id_method_name: :workflow_run_job_ids
+    belongs_to :workflow, id_method_name: :workflow_id, links: {
+      related: lambda { |workflow_run|
+        "#{ENV['BASE_URL']}/api/v1/teams/#{team_id_from_app_id(workflow_run.app_id)}/apps/#{workflow_run.app_id}/workflows/#{workflow_run.github.workflow_id}"
+      }
+    }
+
+    has_many :workflow_run_jobs, id_method_name: :jobs_ids, links: {
+      related: lambda { |workflow_run|
+        "#{ENV['BASE_URL']}/api/v1/teams/#{team_id_from_app_id(workflow_run.app_id)}/apps/#{workflow_run.app_id}/workflow_run_jobs"
+      }
+    }
   end
 end

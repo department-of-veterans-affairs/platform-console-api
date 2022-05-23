@@ -84,6 +84,10 @@ module Github
     end
     alias deploy_runs workflow_runs
 
+    def workflow_run_ids
+      workflow_runs.workflow_runs.pluck(:id)
+    end
+
     # List the content of a file
     #
     # @return [String] the contents of the file

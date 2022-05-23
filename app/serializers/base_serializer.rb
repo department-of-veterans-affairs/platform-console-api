@@ -2,4 +2,5 @@
 
 class BaseSerializer
   include JSONAPI::Serializer
+  extend SerializerHelper
 end

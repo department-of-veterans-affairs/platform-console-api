@@ -73,6 +73,10 @@ module Github
       @logs ||= logs_to_html(result)
     end
 
+    def workflow_run_id
+      github.run_id
+    end
+
     private
 
     # Formats the logs to HTML to make them look pretty

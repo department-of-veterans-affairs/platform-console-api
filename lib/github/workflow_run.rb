@@ -100,6 +100,12 @@ module Github
       Github::WorkflowRunJob.all_for_workflow_run(access_token, repo, id)
     end
 
+    def jobs_ids
+      jobs.jobs.pluck(:id)
+    end
+
+    delegate :workflow_id, to: :github
+
     # Rerun a Workflow Run
     #
     # @return [Boolean] If the rerun was successful

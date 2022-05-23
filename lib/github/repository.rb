@@ -110,7 +110,7 @@ module Github
     #
     # @return [Sawyer::Resource, nil] The deploy workflow or nil if it doesnt exist
     def deploy_workflow(filename)
-      Github::Workflow.new(@access_token, @repo, filename)
+      Github::Workflow.new(@access_token, @repo, filename, app_id)
     end
 
     # Dispatches a workflow on platform-console-api that will create a new PR on
