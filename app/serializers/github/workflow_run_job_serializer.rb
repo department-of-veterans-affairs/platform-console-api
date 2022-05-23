@@ -2,7 +2,7 @@
 
 module Github
   class WorkflowRunJobSerializer < ::BaseSerializer
-    attributes :repo, :github
+    attributes :repo, :github, :app_id
 
     belongs_to :workflow_run, id_method_name: :workflow_run_id
   end

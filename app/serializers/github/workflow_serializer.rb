@@ -2,7 +2,7 @@
 
 module Github
   class WorkflowSerializer < ::BaseSerializer
-    attributes :repo, :github
+    attributes :repo, :github, :app_id
 
     has_many :workflow_runs, id_method_name: :workflow_run_ids
   end
