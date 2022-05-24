@@ -393,7 +393,7 @@ DEPENDENCIES
   flipper (~> 0.24)
   flipper-redis (~> 0.24)
   flipper-ui (~> 0.24)
-  graphql-client (~> 0.17)
+  graphql-client (~> 0.18)
   importmap-rails (~> 1.0)
   jbuilder (~> 2.11)
   jsonapi-serializer (~> 2.2)
