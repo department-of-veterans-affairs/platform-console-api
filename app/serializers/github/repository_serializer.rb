@@ -6,8 +6,8 @@ module Github
     attributes :repo, :github, :app_id
 
     has_many :workflows, id_method_name: :workflow_ids, links: {
-      related: lambda { |repository|
-        "#{ENV['BASE_URL']}/api/v1/teams/#{team_id_from_app_id(repository.app_id)}/apps/#{repository.app_id}/workflows"
+      related: lambda { |object|
+        "#{api_path}/teams/#{team_id_from_app_id(object.app_id)}/apps/#{object.app_id}/workflows"
       }
     }
   end

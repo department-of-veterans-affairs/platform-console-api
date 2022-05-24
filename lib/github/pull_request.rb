@@ -14,7 +14,7 @@ module Github
     #
     # @return [Github::PullRequest]
     # @see https://docs.github.com/en/rest/reference/pulls#get-a-pull-request
-    def initialize(access_token, repo, id, app_id)
+    def initialize(access_token, repo, id, app_id = nil)
       @access_token = access_token
       @repo = repo
       @id = id

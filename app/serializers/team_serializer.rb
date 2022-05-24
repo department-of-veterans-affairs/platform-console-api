@@ -5,17 +5,17 @@ class TeamSerializer < BaseSerializer
   attributes :name, :created_at, :updated_at
 
   belongs_to :owner, polymorphic: { User => :user }, links: {
-    related: lambda { |team|
-      "#{ENV['BASE_URL']}/api/v1/#{team.owner_type.downcase.pluralize}/#{team.owner_id}"
+    related: lambda { |object|
+      "#{api_path}/#{object.owner_type.downcase.pluralize}/#{object.owner_id}"
     }
   }
   has_many :apps, links: {
-    related: lambda { |team|
-      "#{ENV['BASE_URL']}/api/v1/teams/#{team.id}/apps"
+    related: lambda { |object|
+      "#{api_path}/teams/#{object.id}/apps"
     }
   }
 
-  link :self do |team|
-    "#{ENV['BASE_URL']}/api/v1/teams/#{team.id}"
+  link :self do |object|
+    "#{api_path}/teams/#{object.id}"
   end
 end

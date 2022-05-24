@@ -14,7 +14,7 @@ module Github
     #
     # @return [Github::Repository]
     # @see https://docs.github.com/en/rest/reference/repos#get-a-repository
-    def initialize(access_token, repo, app_id)
+    def initialize(access_token, repo, app_id = nil)
       @access_token = access_token
       @repo = repo
       @app_id = app_id

@@ -5,8 +5,8 @@ module Github
     attributes :repo, :github, :app_id
 
     belongs_to :app, serializer: AppSerializer, links: {
-      related: lambda { |pull_request|
-        "#{ENV['BASE_URL']}/api/v1/teams/#{team_id_from_app_id(pull_request.app_id)}/apps/#{pull_request.app_id}"
+      related: lambda { |object|
+        "#{api_path}/teams/#{team_id_from_app_id(object.app_id)}/apps/#{object.app_id}"
       }
     }
   end

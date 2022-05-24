@@ -4,12 +4,12 @@
 class UserSerializer < BaseSerializer
   attributes :name, :email, :created_at, :updated_at
   has_many :teams, links: {
-    related: lambda { |user|
-      "#{ENV['BASE_URL']}/api/v1/users/#{user.id}/teams"
+    related: lambda { |object|
+      "#{api_path}/users/#{object.id}/teams"
     }
   }
 
-  link :self do |user|
-    "#{ENV['BASE_URL']}/api/v1/users/#{user.id}"
+  link :self do |object|
+    "#{api_path}/users/#{object.id}"
   end
 end

@@ -7,4 +7,8 @@ module SerializerHelper
 
     App.find_by(id: app_id)&.team_id
   end
+
+  def api_path
+    "#{ENV['BASE_URL']}/api/v1"
+  end
 end

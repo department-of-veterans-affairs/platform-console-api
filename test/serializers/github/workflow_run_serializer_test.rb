@@ -26,10 +26,10 @@ module Github
 
     test 'should have correct relationship links' do
       assert_equal @hash.dig(:data, :relationships, :workflow, :links, :related),
-                   "#{ENV['BASE_URL']}/api/v1/teams/#{@app.team_id}/apps/#{@app.id}/workflows/#{@workflow_run.workflow_id}"
+                   "/api/v1/teams/#{@app.team_id}/apps/#{@app.id}/workflows/#{@workflow_run.workflow_id}"
 
       assert_equal @hash.dig(:data, :relationships, :workflow_run_jobs, :links, :related),
-                   "#{ENV['BASE_URL']}/api/v1/teams/#{@app.team_id}/apps/#{@app.id}/workflow_run_jobs"
+                   "/api/v1/teams/#{@app.team_id}/apps/#{@app.id}/workflow_run_jobs"
     end
   end
 end

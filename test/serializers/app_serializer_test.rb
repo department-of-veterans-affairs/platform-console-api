@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class AppsSerializerTest < ActionDispatch::IntegrationTest
+class AppSerializerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:john)
     @team = teams(:three)
@@ -19,13 +19,13 @@ class AppsSerializerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should have the correct self link' do
-    assert_equal @hash.dig(:data, :links, :self), "#{ENV['BASE_URL']}/api/v1/teams/#{@app.team_id}/apps/#{@app.id}"
+    assert_equal @hash.dig(:data, :links, :self), "/api/v1/teams/#{@app.team_id}/apps/#{@app.id}"
   end
 
   test 'should have correct relationship links' do
     assert_equal @hash.dig(:data, :relationships, :team, :links, :related),
-                 "#{ENV['BASE_URL']}/api/v1/teams/#{@app.team_id}"
+                 "/api/v1/teams/#{@app.team_id}"
     assert_equal @hash.dig(:data, :relationships, :deployments, :links, :related),
-                 "#{ENV['BASE_URL']}/api/v1/teams/#{@app.team_id}/apps/#{@app.id}/deployments"
+                 "/api/v1/teams/#{@app.team_id}/apps/#{@app.id}/deployments"
   end
 end

@@ -15,7 +15,7 @@ module Github
     #
     # @return [Github::Workflow]
     # @see https://docs.github.com/en/rest/reference/actions#get-a-workflow
-    def initialize(acccess_token, repo, id_or_filename, app_id)
+    def initialize(acccess_token, repo, id_or_filename, app_id = nil)
       @access_token = acccess_token
       @repo = repo
       @id_or_filename = id_or_filename

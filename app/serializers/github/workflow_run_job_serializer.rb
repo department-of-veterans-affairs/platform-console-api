@@ -5,14 +5,14 @@ module Github
     attributes :repo, :github, :app_id
 
     belongs_to :workflow_run, id_method_name: :workflow_run_id, links: {
-      related: lambda { |workflow_run_job|
-        "#{ENV['BASE_URL']}/api/v1/teams/#{team_id_from_app_id(workflow_run_job.app_id)}/apps/#{workflow_run_job.app_id}/workflow_runs"
+      related: lambda { |object|
+        "#{api_path}/teams/#{team_id_from_app_id(object.app_id)}/apps/#{object.app_id}/workflow_runs"
       }
     }
 
     belongs_to :app, serializer: AppSerializer, links: {
-      related: lambda { |workflow_run_job|
-        "#{ENV['BASE_URL']}/api/v1/teams/#{team_id_from_app_id(workflow_run_job.app_id)}/apps/#{workflow_run_job.app_id}"
+      related: lambda { |object|
+        "#{api_path}/teams/#{team_id_from_app_id(object.app_id)}/apps/#{object.app_id}"
       }
     }
   end
