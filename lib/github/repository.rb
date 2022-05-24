@@ -6,7 +6,7 @@ module Github
     include Github::Pagination
     include Github::Inspect
 
-    attr_accessor :id, :access_token, :repo, :app_id
+    attr_accessor :access_token, :repo, :app_id
 
     # Creates a Github::Repository object with the github response attached
     #
