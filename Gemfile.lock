@@ -158,6 +158,8 @@ GEM
       activesupport (>= 4.2)
       aes_key_wrap
       bindata
+    jsonapi-serializer (2.2.0)
+      activesupport (>= 4.2)
     jwt (2.3.0)
     loofah (2.18.0)
       crass (~> 1.0.2)
@@ -393,6 +395,7 @@ DEPENDENCIES
   graphql-client (~> 0.18)
   importmap-rails (~> 1.0)
   jbuilder (~> 2.11)
+  jsonapi-serializer (~> 2.2)
   jwt (~> 2.3)
   minitest-ci
   net-http (~> 0.2)
@@ -427,7 +430,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 3.1.0p0
+   ruby 3.1.2p20
 
 BUNDLED WITH
    2.3.3

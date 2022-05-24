@@ -6,7 +6,7 @@ module Github
     include Github::Pagination
     include Github::Inspect
 
-    attr_accessor :access_token, :repo, :id_or_filename
+    attr_accessor :access_token, :repo, :id_or_filename, :app_id
 
     # Creates a Github::Workflow object with the github response attached
     #
@@ -15,10 +15,11 @@ module Github
     #
     # @return [Github::Workflow]
     # @see https://docs.github.com/en/rest/reference/actions#get-a-workflow
-    def initialize(acccess_token, repo, id_or_filename)
+    def initialize(acccess_token, repo, id_or_filename, app_id = nil)
       @access_token = acccess_token
       @repo = repo
       @id_or_filename = id_or_filename
+      @app_id = app_id
     end
 
     class << self
@@ -82,6 +83,10 @@ module Github
       Github::WorkflowRun.all_for_workflow(access_token, repo, id, page, options)
     end
     alias deploy_runs workflow_runs
+
+    def workflow_run_ids
+      workflow_runs.workflow_runs.pluck(:id)
+    end
 
     # List the content of a file
     #

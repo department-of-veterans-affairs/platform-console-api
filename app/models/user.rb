@@ -6,6 +6,7 @@ require 'argo_cd/client'
 class User < ApplicationRecord
   has_paper_trail
   has_secure_password
+  has_many :teams, as: :owner, dependent: :destroy
   encrypts :github_token
   before_validation :downcase_email
   rolify

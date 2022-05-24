@@ -61,7 +61,7 @@ module Github
 
     # Use callbacks to share common setup or constraints between actions.
     def set_github_workflow_run
-      @github_workflow_run = Github::WorkflowRun.new(current_user.github_token, @app.github_repo, params[:id])
+      @github_workflow_run = Github::WorkflowRun.new(current_user.github_token, @app.github_repo, params[:id], @app.id)
     end
 
     # Only allow a list of trusted parameters through.
