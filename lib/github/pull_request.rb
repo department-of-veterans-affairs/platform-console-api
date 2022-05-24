@@ -5,7 +5,7 @@ module Github
   class PullRequest
     include Github::Pagination
 
-    attr_accessor :access_token, :repo, :id
+    attr_accessor :access_token, :repo, :id, :app_id
 
     # Creates a Github::PullRequest object with the github response attached
     #
@@ -14,10 +14,11 @@ module Github
     #
     # @return [Github::PullRequest]
     # @see https://docs.github.com/en/rest/reference/pulls#get-a-pull-request
-    def initialize(access_token, repo, id)
+    def initialize(access_token, repo, id, app_id)
       @access_token = access_token
       @repo = repo
       @id = id
+      @app_id = app_id
     end
 
     class << self
