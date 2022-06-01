@@ -9,6 +9,6 @@ module SerializerHelper
   end
 
   def api_path
-    "#{ENV['BASE_URL']}/api/v1"
+    "#{ENV.fetch('BASE_URL')}/api/v1"
   end
 end

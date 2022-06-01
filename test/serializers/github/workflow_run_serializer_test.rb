@@ -10,7 +10,7 @@ module Github
       @app = apps(:three)
       VCR.use_cassette('github/workflow_run') do
         @workflow_run = Github::WorkflowRun.new(
-          ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/vets-api', '1815728096', @app.id
+          ENV.fetch('GITHUB_ACCESS_TOKEN'), 'department-of-veterans-affairs/vets-api', '1815728096', @app.id
         )
         @hash = Github::WorkflowRunSerializer.new(@workflow_run).serializable_hash
       end
@@ -26,10 +26,10 @@ module Github
 
     test 'should have correct relationship links' do
       assert_equal @hash.dig(:data, :relationships, :workflow, :links, :related),
-                   "/api/v1/teams/#{@app.team_id}/apps/#{@app.id}/workflows/#{@workflow_run.workflow_id}"
+                   "test.host/api/v1/teams/#{@app.team_id}/apps/#{@app.id}/workflows/#{@workflow_run.workflow_id}"
 
       assert_equal @hash.dig(:data, :relationships, :workflow_run_jobs, :links, :related),
-                   "/api/v1/teams/#{@app.team_id}/apps/#{@app.id}/workflow_run_jobs"
+                   "test.host/api/v1/teams/#{@app.team_id}/apps/#{@app.id}/workflow_run_jobs"
     end
   end
 end

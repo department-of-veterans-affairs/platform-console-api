@@ -20,12 +20,12 @@ class DeploymentSerializerTest < ActionDispatch::IntegrationTest
 
   test 'should have the correct self link' do
     assert_equal @hash.dig(:data, :links, :self),
-                 "/api/v1/teams/#{@deployment.app.team_id}/apps
-                  /#{@deployment.app.id}/deployments/#{@deployment.id}".delete(" \t\r\n\ ")
+                 "test.host/api/v1/teams/#{@deployment.app.team_id}/apps/#{@deployment.app.id}"\
+                 "/deployments/#{@deployment.id}"
   end
 
   test 'should have correct relationship links' do
     assert_equal @hash.dig(:data, :relationships, :app, :links, :related),
-                 "/api/v1/teams/#{@deployment.app.team_id}/apps/#{@deployment.app.id}"
+                 "test.host/api/v1/teams/#{@deployment.app.team_id}/apps/#{@deployment.app.id}"
   end
 end

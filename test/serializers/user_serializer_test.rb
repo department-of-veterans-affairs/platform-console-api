@@ -17,11 +17,11 @@ class UserSerializerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should have the correct self link' do
-    assert_equal @hash.dig(:data, :links, :self), "/api/v1/users/#{@user.id}"
+    assert_equal @hash.dig(:data, :links, :self), "test.host/api/v1/users/#{@user.id}"
   end
 
   test 'should have correct relationship links' do
     assert_equal @hash.dig(:data, :relationships, :teams, :links, :related),
-                 "/api/v1/users/#{@user.id}/teams"
+                 "test.host/api/v1/users/#{@user.id}/teams"
   end
 end
