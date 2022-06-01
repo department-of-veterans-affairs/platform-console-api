@@ -17,7 +17,7 @@ gem 'graphql-client',     '~> 0.18' # Ruby library for declaring, composing and 
 gem 'jbuilder',           '~> 2.11' # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jwt',                '~> 2.3'  # Ruby implementation of the JWT standard
 gem 'net-http',           '~> 0.2' # HTTP client api for Ruby
-gem 'octokit',            '~> 4.22'  # Ruby toolkit for the GitHub API.
+gem 'octokit',            '~> 4.23'  # Ruby toolkit for the GitHub API.
 gem 'omniauth-keycloak',  '~> 1.4'   # Keycloack SSO Oauth Strategy
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1' # Mitigates against CSRF in oauth flow
 gem 'pagy',               '~> 5.10'  # Agnostic pagination in plain ruby
