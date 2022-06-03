@@ -7,7 +7,7 @@ ruby '~> 3.1.2'
 gem 'rails', '~> 7.0.3'
 
 gem 'bcrypt',             '~> 3.1' # Use ActiveModel has_secure_password
-gem 'bootsnap',           '~> 1.11', require: false # Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap',           '~> 1.12', require: false # Reduces boot times through caching; required in config/boot.rb
 gem 'ddtrace',            '~> 0.54', require: 'ddtrace/auto_instrument' # Datadog's tracing client for Ruby
 gem 'faraday-http-cache', '~> 2.3' # middleware that respects HTTP cache by checking expiration of the stored responses.
 gem 'flipper',            '~> 0.24' # Feature flipper for ANYTHING
@@ -27,7 +27,7 @@ gem 'pg',                 '~> 1.3'   # Use postgresql as the database for Active
 gem 'puma',               '>= 5.6.4' # Use the Puma web server [https://github.com/puma/puma]
 gem 'redis',              '~> 4.6'   # Use Redis adapter to run Action Cable in production
 gem 'rolify',             '~> 6.0'   # Simple Roles library
-gem 'rouge',              '~> 3.28'  # Pure Ruby syntax highlighter
+gem 'rouge',              '~> 3.29'  # Pure Ruby syntax highlighter
 gem 'rubyzip',            '~> 2.3'   # Ruby library for reading and writing zip files.
 gem 'sidekiq',            '~> 6.4'   # Simple, efficient background processing for Ruby
 gem 'strong_migrations',  '~> 1.0'   # Catch potentially dangerous operations in migrations
