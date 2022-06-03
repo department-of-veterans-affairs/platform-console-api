@@ -9,7 +9,7 @@ module Github
     include Github::Pagination
     include Github::Inspect
 
-    attr_accessor :access_token, :repo, :id
+    attr_accessor :access_token, :repo, :id, :app_id
 
     # Creates a Github::WorkflowRun object with the github response attached
     #
@@ -18,10 +18,11 @@ module Github
     #
     # @return [Github::WorkflowRun]
     # @see https://docs.github.com/en/rest/reference/actions#get-a-workflow-run
-    def initialize(access_token, repo, id)
+    def initialize(access_token, repo, id, app_id = nil)
       @access_token = access_token
       @repo = repo
       @id = id
+      @app_id = app_id
     end
 
     class << self
@@ -98,6 +99,12 @@ module Github
     def jobs
       Github::WorkflowRunJob.all_for_workflow_run(access_token, repo, id)
     end
+
+    def jobs_ids
+      jobs.jobs.pluck(:id)
+    end
+
+    delegate :workflow_id, to: :github
 
     # Rerun a Workflow Run
     #

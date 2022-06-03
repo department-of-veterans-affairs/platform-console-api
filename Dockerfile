@@ -1,4 +1,4 @@
-FROM ruby:3.1.0-slim-buster AS base
+FROM ruby:3.1.2-slim-buster AS base
 
 ARG RAILS_ENV=development \
   USER_ID=1000 \
