@@ -75,10 +75,6 @@ module Github
       workflows[:objects].pluck(:id)
     end
 
-    def workflow_ids
-      workflows.workflows.pluck(:id)
-    end
-
     # List all repository workflows runs
     #
     # @param page [Integer] Page number
