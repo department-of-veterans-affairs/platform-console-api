@@ -30,7 +30,7 @@ module Github
         get "#{team_app_workflows_path(@team, @app)}.json"
         assert_response :success
         json_response = JSON.parse(response.body)
-        expected_keys = %w[id node_id name path state created_at updated_at url html_url badge_url]
+        expected_keys = %w[id repo app_id github]
         assert(expected_keys.all? { |k| json_response['workflows'].first.key? k })
       end
     end

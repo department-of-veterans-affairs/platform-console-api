@@ -88,24 +88,24 @@
                     <span class="px-3 bg-white text-sm font-medium text-gray-500"> Jobs </span>
                   </div>
                 </div>
-                <% jobs[:jobs].each do |job|%>
+                <% jobs.each do |job|%>
                   <% if request.path.include?('workflow') %>
-                    <% path = team_app_workflow_run_job_path(@team, @app, job[:id] )%>
+                    <% path = team_app_workflow_run_job_path(@team, @app, job.github[:id] )%>
                   <% elsif request.path.include?('deploy') %>
-                    <% path = team_app_deploy_run_job_path(@team, @app, job[:id] )%>
+                    <% path = team_app_deploy_run_job_path(@team, @app, job.github[:id] )%>
                   <% end %>
-                  <%= link_to path, class: workflow_run_job.github[:name] == job[:name] ? current_css : default_css do %>
-                    <% if job[:conclusion] == 'success' %>
+                  <%= link_to path, class: workflow_run_job.github[:name] == job.github[:name] ? current_css : default_css do %>
+                    <% if job.github[:conclusion] == 'success' %>
                         <!-- Heroicon name: solid/check-circle -->
                         <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                         </svg>
-                      <% elsif job[:conclusion] == 'failure' %>
+                      <% elsif job.github[:conclusion] == 'failure' %>
                           <!-- Heroicon name: solid/x -->
                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                           </svg>
-                      <% elsif job[:conclusion] == 'cancelled' %>
+                      <% elsif job.github[:conclusion] == 'cancelled' %>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -114,7 +114,7 @@
                           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
                         </svg>
                       <% end %>
-                    <%= job[:name] %>
+                    <%= job.github[:name] %>
                   <% end %>
                 <% end %>
               </div>

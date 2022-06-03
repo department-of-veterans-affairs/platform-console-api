@@ -4,6 +4,8 @@ module Github
   # Class representing a Github PullRequest
   class PullRequest
     include Github::Pagination
+    include Github::Inspect
+    include Github::Collection
 
     attr_accessor :access_token, :repo, :id, :app_id
 
@@ -29,13 +31,12 @@ module Github
       #
       # @return [Sawyer::Resource] Pull requests
       # @see https://docs.github.com/en/rest/reference/pulls#list-pull-requests
-      def all(access_token, repo, page = 1)
+      def all(access_token, repo, app_id, page = 1)
         octokit_client = Octokit::Client.new(access_token: access_token)
-        response = {}
-        response[:pull_requests] = octokit_client.pull_requests(repo, page: page)
+        response = octokit_client.pull_requests(repo, page: page)
 
-        response[:pages] = page_numbers(octokit_client)
-        response
+        pages = page_numbers(octokit_client)
+        transform_collection_response(response, pages, repo, app_id)
       end
 
       def create_from_new_branch(access_token, repo, branch_name, branch_from_sha, message, file_path)
@@ -107,7 +108,7 @@ module Github
     # @return [Sawyer::Resource] Workflow runs
     # @see https://docs.github.com/en/rest/reference/actions#list-repository-workflows
     def workflow_runs
-      Github::WorkflowRun.all_for_branch(access_token, repo, branch_name)
+      Github::WorkflowRun.all_for_branch(access_token, repo, app_id, branch_name)
     end
   end
 end

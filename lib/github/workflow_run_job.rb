@@ -7,6 +7,7 @@ module Github
   class WorkflowRunJob
     include Github::Pagination
     include Github::Inspect
+    include Github::Collection
 
     attr_accessor :access_token, :repo, :id, :app_id
 
@@ -33,12 +34,12 @@ module Github
       #
       # @return [Sawyer::Resource] Issues
       # @see https://docs.github.com/en/rest/reference/issues#list-repository-issues
-      def all_for_workflow_run(access_token, repo, workflow_run_id, page = 1)
+      def all_for_workflow_run(access_token, repo, app_id, workflow_run_id, page = 1)
         octokit_client = Octokit::Client.new(access_token: access_token)
         response = octokit_client.workflow_run_jobs(repo, workflow_run_id, page: page)
+        pages = page_numbers(octokit_client)
 
-        response[:pages] = page_numbers(octokit_client)
-        response
+        transform_collection_response(response.jobs, pages, repo, app_id)
       end
       alias all_for_deploy_run all_for_workflow_run
     end
