@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: platform-console-api
+  description: API for creating and deploying applications on the VA Platform.
+  annotations:
+    github.com/project-slug: department-of-veterans-affairs/platform-console-api
+  tags:
+    - ruby
+    - rails
+    - platform-console-api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: platform-console-services
+  definition: | 
+    openapi: "3.0.0"
+    info:
+      version: 1.0.0
+      title: Platform Console API
+      license:
+        name: MIT
+    servers:
+      - url: http://platform-console-api.vfs.va.gov/
+    paths:
+      '/v1/teams':
+        get:
+          summary: List of teams
+        responses:
+          '200':
+            description: Successfully returned teams 
+            schema:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  type: object
+                  required:
+                  - teams
+                  properties:
+                    teams:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
