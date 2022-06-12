@@ -19,11 +19,13 @@ module Api
       end
 
       test 'should create app with valid params' do
-        assert_difference('App.count') do
+        assert_difference('App.count', +1) do
           post v1_team_apps_url(@team), params: { app: { name: @app.name, team_id: @team.id } }
         end
 
         assert_response :created
+        assert_equal @app.name, @response.parsed_body.dig('data', 'attributes', 'name')
+        assert_equal @team.id, @response.parsed_body.dig('data', 'relationships', 'team', 'data', 'id').to_i
       end
 
       test 'should not create app with invalid params' do
@@ -37,16 +39,17 @@ module Api
       test 'should show app' do
         VCR.use_cassette('api/apps_controller') do
           get v1_team_app_url(@team, @app.id)
-          assert_response :success
           assert_equal @app.name, @response.parsed_body.dig('data', 'attributes', 'name')
           assert_equal @app.id, @response.parsed_body.dig('data', 'id').to_i
           assert_equal @team.id, @response.parsed_body.dig('data', 'relationships', 'team', 'data', 'id').to_i
+          assert_response :success
         end
       end
 
       test 'should update app with valid params' do
         patch v1_team_app_url(@team, @app), params: { app: { name: 'App1 Updated' } }
-        assert_response :ok
+        assert_equal 'App1 Updated', @response.parsed_body.dig('data', 'attributes', 'name')
+        assert_response :success
       end
 
       test 'should not update app with invalid params' do

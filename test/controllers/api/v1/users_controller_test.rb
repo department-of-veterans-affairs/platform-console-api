@@ -20,7 +20,8 @@ module Api
 
       test 'should update user with valid params' do
         patch v1_user_url(@user), params: { user: { name: 'New Name' } }
-        assert_response :ok
+        assert_equal 'New Name', @response.parsed_body.dig('data', 'attributes', 'name')
+        assert_response :success
       end
 
       test 'should not update user with invalid params' do

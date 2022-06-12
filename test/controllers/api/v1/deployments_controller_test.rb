@@ -20,11 +20,13 @@ module Api
       end
 
       test 'should create deployment' do
-        assert_difference('Deployment.count') do
+        assert_difference('Deployment.count', +1) do
           post v1_team_app_deployments_url(@team, @app),
                params: { deployment: { name: @deployment.name, app_id: @app.id } }
         end
 
+        assert_equal @deployment.name, @response.parsed_body.dig('data', 'attributes', 'name')
+        assert_equal @app.id, @response.parsed_body.dig('data', 'attributes', 'id')
         assert_response :created
       end
 
@@ -38,7 +40,8 @@ module Api
 
       test 'should update deployment' do
         patch v1_team_app_deployment_url(@team, @app, @deployment), params: { deployment: { name: 'deployment1A' } }
-        assert_response :ok
+        assert_equal 'deployment1A', @response.parsed_body.dig('data', 'attributes', 'name')
+        assert_response :success
       end
 
       test 'should destroy deployment' do

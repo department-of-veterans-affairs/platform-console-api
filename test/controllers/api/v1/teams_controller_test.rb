@@ -19,10 +19,10 @@ module Api
       end
 
       test 'should create team with valid params' do
-        assert_difference('Team.count') do
-          post v1_teams_url(@team), params: { team: { name: @app.name, team_id: @team.id } }
+        assert_difference('Team.count', +1) do
+          post v1_teams_url(@team), params: { team: { name: @app.name } }
         end
-
+        assert_equal @app.name, @response.parsed_body.dig('data', 'attributes', 'name')
         assert_response :created
       end
 
@@ -46,7 +46,8 @@ module Api
 
       test 'should update app with valid params' do
         patch v1_team_app_url(@team, @app), params: { app: { name: 'App1 Updated' } }
-        assert_response :ok
+        assert_equal 'App1 Updated', @response.parsed_body.dig('data', 'attributes', 'name')
+        assert_response :success
       end
 
       test 'should not update app with invalid params' do

@@ -15,7 +15,7 @@ module Api
         test 'should create a deploy pull request' do
           VCR.use_cassette('api/github/deploy_pull_requests_controller', allow_playback_repeats: true) do
             post v1_team_app_deploy_pull_requests_path(@team, @app)
-            assert_response :ok
+            assert_response :success
           end
         end
       end
