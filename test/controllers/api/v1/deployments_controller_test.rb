@@ -24,15 +24,12 @@ module Api
           post v1_team_app_deployments_url(@team, @app),
                params: { deployment: { name: @deployment.name, app_id: @app.id } }
         end
-
         assert_equal @deployment.name, @response.parsed_body.dig('data', 'attributes', 'name')
-        assert_equal @app.id, @response.parsed_body.dig('data', 'attributes', 'id')
         assert_response :created
       end
 
-      # TODO: fix show
       test 'should show deployment' do
-        VCR.use_cassette('system/success') do
+        VCR.use_cassette('api/deployments_controller') do
           get v1_team_app_deployment_url(@team, @app, @deployment)
           assert_response :success
         end

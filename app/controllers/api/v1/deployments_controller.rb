@@ -15,7 +15,6 @@ module Api
         render json: ::DeploymentSerializer.new(@deployments).serializable_hash
       end
 
-      # TODO: fix this
       # GET /v1/teams/:team_id/deployments/:id
       def show
         return unless ENV['ARGO_API'] == 'true'
@@ -32,7 +31,7 @@ module Api
         @deployment = @app.deployments.build(deployment_params)
 
         if @app.save
-          render json: ::DeploymentSerializer.new(@deployments).serializable_hash, status: :created
+          render json: ::DeploymentSerializer.new(@deployment).serializable_hash, status: :created
         else
           render json: @deployment.errors, status: :unprocessable_entity
         end
@@ -41,7 +40,7 @@ module Api
       # PATCH /v1/teams/:team_id/deployments/:id
       def update
         if @deployment.update(deployment_params)
-          render json: ::DeploymentSerializer.new(@deployments).serializable_hash, status: :ok
+          render json: ::DeploymentSerializer.new(@deployment).serializable_hash, status: :ok
         else
           render json: @deployment.errors, status: :unprocessable_entity
         end
