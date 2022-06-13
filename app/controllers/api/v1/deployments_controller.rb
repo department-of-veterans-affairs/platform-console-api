@@ -17,8 +17,10 @@ module Api
 
       # GET /v1/teams/:team_id/deployments/:id
       def show
-        return unless ENV['ARGO_API'] == 'true'
-        redirect_to ENV['KEYCLOAK_SSO_TARGET_URL'] and return if session[:keycloak_token].blank?
+        render json: { error: 'ARGO_API is disabled.' }, status: :unprocessable_entity unless ENV['ARGO_API']
+        if session[:keycloak_token].blank?
+          render json: { error: 'Keycloak token is not present.' }, status: :unauthorized
+        end
 
         argo_client = ArgoCd::Client.new(@app.id, @deployment.name, @current_user.id, session[:keycloak_token])
         @response = argo_client.app_info
