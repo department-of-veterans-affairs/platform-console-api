@@ -23,7 +23,7 @@ module Api
         argo_client = ArgoCd::Client.new(@app.id, @deployment.name, @current_user.id, session[:keycloak_token])
         @response = argo_client.app_info
         @current_revision = argo_client.current_revision(@response.current_git_revision) if @response.successful?
-        render json: ::DeploymentSerializer.new(@current_revision)
+        render json: ::DeploymentSerializer.new(@current_revision).serializable_hash
       end
 
       # POST /v1/teams/:team_id/deployments
