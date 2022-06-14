@@ -30,7 +30,7 @@ gem 'rolify',             '~> 6.0'   # Simple Roles library
 gem 'rouge',              '~> 3.29'  # Pure Ruby syntax highlighter
 gem 'rubyzip',            '~> 2.3'   # Ruby library for reading and writing zip files.
 gem 'sidekiq',            '~> 6.5'   # Simple, efficient background processing for Ruby
-gem 'strong_migrations',  '~> 1.0'   # Catch potentially dangerous operations in migrations
+gem 'strong_migrations',  '~> 1.2'   # Catch potentially dangerous operations in migrations
 
 # Assets
 gem 'importmap-rails',    '~> 1.1' # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
