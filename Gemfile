@@ -16,7 +16,7 @@ gem 'flipper-ui',         '~> 0.24' # UI for the Flipper gem
 gem 'graphql-client',     '~> 0.18' # Ruby library for declaring, composing and executing GraphQL queries.
 gem 'jbuilder',           '~> 2.11' # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jsonapi-serializer', '~> 2.2'  # A fast JSON:API serializer for Ruby Objects.
-gem 'jwt',                '~> 2.3'  # Ruby implementation of the JWT standard
+gem 'jwt',                '~> 2.4'  # Ruby implementation of the JWT standard
 gem 'net-http',           '~> 0.2' # HTTP client api for Ruby
 gem 'octokit',            '~> 4.24'  # Ruby toolkit for the GitHub API.
 gem 'omniauth-keycloak',  '~> 1.4'   # Keycloack SSO Oauth Strategy
