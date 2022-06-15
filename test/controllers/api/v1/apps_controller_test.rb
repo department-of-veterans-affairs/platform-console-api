@@ -23,9 +23,9 @@ module Api
           post v1_team_apps_url(@team), params: { app: { name: @app.name, team_id: @team.id } }
         end
 
-        assert_response :created
         assert_equal @app.name, @response.parsed_body.dig('data', 'attributes', 'name')
         assert_equal @team.id, @response.parsed_body.dig('data', 'relationships', 'team', 'data', 'id').to_i
+        assert_response :created
       end
 
       test 'should not create app with invalid params' do

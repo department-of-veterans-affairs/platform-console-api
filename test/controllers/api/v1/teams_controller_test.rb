@@ -37,10 +37,10 @@ module Api
       test 'should show team' do
         VCR.use_cassette('apps_controller') do
           get v1_team_app_url(@team, @app.id)
-          assert_response :success
           assert_equal @app.name, @response.parsed_body.dig('data', 'attributes', 'name')
           assert_equal @app.id, @response.parsed_body.dig('data', 'id').to_i
           assert_equal @team.id, @response.parsed_body.dig('data', 'relationships', 'team', 'data', 'id').to_i
+          assert_response :success
         end
       end
 

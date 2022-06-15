@@ -9,10 +9,7 @@ module Api
 
         # GET /v1/teams/:team_id/apps/:app_id/workflow_run_jobs/:id
         def show
-          @github_workflow_run = ::Github::WorkflowRun.new(current_user.github_token, @app.github_repo,
-                                                           @github_workflow_run_job.github.run_id, @app.id)
-          @all_jobs = @github_workflow_run.jobs[:objects]
-          render json: ::Github::PullRequestSerializer.new(@all_jobs)
+          render json: ::Github::WorkflowRunJobSerializer.new(@github_workflow_run_job).serializable_hash.to_json
         end
 
         private

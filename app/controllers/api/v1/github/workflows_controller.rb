@@ -21,13 +21,6 @@ module Api
 
         # GET /v1/teams/:team_id/apps/:app_id/workflows/:id
         def show
-          @current_page = params.fetch(:page, 1)
-          @all_workflows = if request.path.include?('deploy')
-                             [@github_repository.deploy_workflow(@app.deploy_workflow)]
-                           else
-                             @github_repository.workflows[:objects]
-                           end
-          @github_workflow_runs = @github_workflow.workflow_runs(params[:page] || 1, { branch: params[:ref] }).to_h
           render json: ::Github::WorkflowSerializer.new(@all_workflows).serializable_hash
         end
 

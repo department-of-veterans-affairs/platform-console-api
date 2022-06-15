@@ -7,7 +7,7 @@ module Api
       class RepositoriesController < BaseController
         def show
           @repository = ::Github::Repository.new(params[:acces_token], params[:repo], 'app_id')
-          render json: ::Github::PullRequestSerializer.new(@pull_requests[:pull_requests])
+          render json: ::Github::RepositorySerializer.new(@repository).serializable_hash
         end
 
         private

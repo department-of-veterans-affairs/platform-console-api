@@ -11,13 +11,13 @@ module Api
         # GET /v1/teams/:team_id/apps/:app_id/workflow_runs
         def index
           @github_workflow_runs = ::Github::WorkflowRun.all(current_user.github_token, @github_repository.repo, @app.id)
-          render json: ::Github::WorkflowRunSerializer.new(@github_workflow_runs[:objects])
+          render json: ::Github::WorkflowRunSerializer.new(@github_workflow_runs[:objects]).serializable_hash
         end
 
         # GET /v1/teams/:team_id/apps/:app_id/workflow_runs/:id
         def show
           @jobs = @github_workflow_run.jobs[:objects]
-          render json: ::Github::WorkflowRunSerializer.new(@jobs)
+          render json: ::Github::WorkflowRunSerializer.new(@jobs).serializable_hash
         end
 
         # POST /v1/teams/:team_id/apps/:app_id/workflow_runs
