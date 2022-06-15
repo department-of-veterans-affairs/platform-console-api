@@ -21,8 +21,8 @@ Rails.application.routes.draw do
           resources :deploys, only: %i[index show], controller: 'github/workflows'
           resources :deploy_runs, controller: 'github/workflow_runs'
           resources :deploy_run_jobs, only: [:show], controller: 'github/workflow_run_jobs'
+          resources :deployments
         end
-        resources :deployments
       end
     end
   end
