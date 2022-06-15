@@ -9,7 +9,7 @@ module Api
       # GET /v1/users/:id
       def show
         @user = User.find_by(id: params[:id])
-        render json: ::UserSerializer.new(@user).serializable_hash.to_json
+        render json: ::UserSerializer.new(@user).serializable_hash
       end
 
       # PATCH /v1/users/:id

@@ -9,7 +9,7 @@ module Api
 
         # GET /v1/teams/:team_id/apps/:app_id/workflow_run_jobs/:id
         def show
-          render json: ::Github::WorkflowRunJobSerializer.new(@github_workflow_run_job).serializable_hash.to_json
+          render json: ::Github::WorkflowRunJobSerializer.new(@github_workflow_run_job).serializable_hash
         end
 
         private

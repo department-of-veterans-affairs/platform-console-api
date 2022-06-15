@@ -17,15 +17,16 @@ module Api
 
       # GET /v1/teams/:team_id/deployments/:id
       def show
-        render json: { error: 'ARGO_API is disabled.' }, status: :unprocessable_entity unless ENV['ARGO_API']
-        if session[:keycloak_token].blank?
+        if ENV['ARGO_API'] == 'false'
+          render json: { error: 'ARGO_API is disabled.' }, status: :unprocessable_entity
+        elsif session[:keycloak_token].blank?
           render json: { error: 'Keycloak token is not present.' }, status: :unauthorized
+        else
+          argo_client = ArgoCd::Client.new(@app.id, @deployment.name, @current_user.id, session[:keycloak_token])
+          @response = argo_client.app_info
+          @current_revision = argo_client.current_revision(@response.current_git_revision) if @response.successful?
+          render json: ::DeploymentSerializer.new(@current_revision).serializable_hash
         end
-
-        argo_client = ArgoCd::Client.new(@app.id, @deployment.name, @current_user.id, session[:keycloak_token])
-        @response = argo_client.app_info
-        @current_revision = argo_client.current_revision(@response.current_git_revision) if @response.successful?
-        render json: ::DeploymentSerializer.new(@current_revision).serializable_hash
       end
 
       # POST /v1/teams/:team_id/deployments
