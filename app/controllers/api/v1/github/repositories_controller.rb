@@ -5,16 +5,10 @@ module Api
     module Github
       # Handles displaying pull request info for an app
       class RepositoriesController < BaseController
+        # GET /v1/teams/:team_id/apps/:app_id/repositories/:id
         def show
-          @repository = ::Github::Repository.new(params[:acces_token], params[:repo], 'app_id')
+          @repository = ::Github::Repository.new(current_user.github_token, params[:id], @app.id)
           render json: ::Github::RepositorySerializer.new(@repository).serializable_hash
-        end
-
-        private
-
-        # Only allow a list of trusted parameters through.
-        def repository_params
-          params.require(:repo).permit(:access_token)
         end
       end
     end
