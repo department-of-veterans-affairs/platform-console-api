@@ -14,9 +14,11 @@ module Api
             render json: ::Github::WorkflowSerializer.new(deploy_workflow).serializable_hash
           else
             @current_page = params.fetch(:page, 1)
-            @github_workflows = @github_repository.workflows[:objects]
-            render json: ::Github::WorkflowSerializer.new(@github_workflows,
-                                                          collection_options(github_workflow[:pages])).serializable_hash
+            @github_workflows = @github_repository.workflows
+            render json: ::Github::WorkflowSerializer.new(
+              @github_workflows[:objects],
+              collection_options(@github_workflows[:pages])
+            ).serializable_hash
           end
         end
 

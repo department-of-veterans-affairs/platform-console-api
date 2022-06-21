@@ -14,7 +14,7 @@ module Api
 
       test 'should get index' do
         get v1_team_apps_url(@team)
-        assert_equal App.count, @response.parsed_body['data'].length
+        assert_equal @team.apps.count, @response.parsed_body['data'].length
         assert_response :success
       end
 
