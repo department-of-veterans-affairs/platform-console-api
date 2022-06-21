@@ -13,7 +13,8 @@ spec:
   type: openapi
   lifecycle: production
   owner: platform-console-services
-  definition: | 
+  system: platform-console
+  definition: |
     openapi: "3.0.0"
     info:
       version: 1.0.0
@@ -28,7 +29,7 @@ spec:
           summary: List of teams
         responses:
           '200':
-            description: Successfully returned teams 
+            description: Successfully returned teams
             schema:
               type: object
               required:
