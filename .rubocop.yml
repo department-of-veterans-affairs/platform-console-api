@@ -14,3 +14,11 @@ Style/HashSyntax:
 Layout/LineLength:
   Exclude:
     - 'test/test_helper.rb'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'app/controllers/application_controller.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/application_controller.rb'

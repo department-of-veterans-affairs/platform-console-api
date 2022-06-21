@@ -12,7 +12,8 @@ module Api
       # GET /v1/teams/:team_id/deployments
       def index
         @deployments = @app.deployments
-        render json: ::DeploymentSerializer.new(@deployments).serializable_hash
+        @pagy, @deployments = pagy @deployments
+        render json: ::DeploymentSerializer.new(@deployments, collection_options(@pagy)).serializable_hash
       end
 
       # GET /v1/teams/:team_id/deployments/:id

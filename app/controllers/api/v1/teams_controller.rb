@@ -9,7 +9,8 @@ module Api
       # GET /v1/teams
       def index
         @teams = Team.all
-        render json: ::TeamSerializer.new(@teams).serializable_hash
+        @pagy, @teams = pagy @teams
+        render json: ::TeamSerializer.new(@teams, collection_options(@pagy)).serializable_hash
       end
 
       # GET /v1/teams/:id
