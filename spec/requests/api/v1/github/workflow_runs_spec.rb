@@ -4,19 +4,20 @@ require 'swagger_helper'
 
 RSpec.describe 'api/v1/github/workflow_runs', type: :request do
   fixtures :users, :teams, :apps
+
+  before(:each) do
+    @user = users(:john)
+    setup_omniauth_mock(@user)
+    VCR.insert_cassette('rswag/workflow_runs', record: :new_episodes)
+  end
+
+  after(:each) do
+    VCR.eject_cassette
+  end
+
   path '/v1/teams/{team_id}/apps/{app_id}/workflow_runs' do
     parameter name: 'team_id', in: :path, type: :int, description: 'team_id'
     parameter name: 'app_id', in: :path, type: :int, description: 'app_id'
-
-    before(:each) do
-      @user = users(:john)
-      setup_omniauth_mock(@user)
-      VCR.insert_cassette('rswag/workflow_runs', record: :new_episodes)
-    end
-
-    after(:each) do
-      VCR.eject_cassette
-    end
 
     get('lists workflow_runs') do
       response(200, 'successful') do
@@ -41,16 +42,6 @@ RSpec.describe 'api/v1/github/workflow_runs', type: :request do
     parameter name: 'team_id', in: :path, type: :int, description: 'team_id'
     parameter name: 'app_id', in: :path, type: :int, description: 'app_id'
     parameter name: 'id', in: :path, type: :int, description: 'id'
-
-    before(:each) do
-      @user = users(:john)
-      setup_omniauth_mock(@user)
-      VCR.insert_cassette('rswag/workflow_runs', record: :new_episodes)
-    end
-
-    after(:each) do
-      VCR.eject_cassette
-    end
 
     get('show workflow_run') do
       response(200, 'successful') do

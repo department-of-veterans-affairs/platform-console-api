@@ -14,6 +14,7 @@ Style/HashSyntax:
 Layout/LineLength:
   Exclude:
     - 'test/test_helper.rb'
+    - 'spec/support/omni_auth_mock_helper.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:
@@ -22,3 +23,6 @@ Metrics/CyclomaticComplexity:
 Metrics/AbcSize:
   Exclude:
     - 'app/controllers/application_controller.rb'
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe']
