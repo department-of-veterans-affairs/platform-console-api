@@ -1,13 +1,36 @@
 # frozen_string_literal: true
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
+ENV['GITHUB_CLIENT_ID'] ||= 'github_client_id'
+ENV['GITHUB_CLIENT_SECRET'] ||= 'github_client_secret'
+ENV['GITHUB_ACCESS_TOKEN'] ||= 'github_token'
+ENV['KEYCLOAK_SITE_URL'] = 'http://test.host/auth/keycloak/callback'
+ENV['KEYCLOAK_REALM'] = 'example-realm'
+ENV['ARGO_API_BASE_PATH'] = 'http://argocd.local.com'
+ENV['BASE_URL'] ||= 'test.host'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
+require 'support/shared_contexts/request_test'
+require 'support/omni_auth_mock_helper'
+require 'webmock/minitest'
+require 'vcr'
 # Add additional requires below this line. Rails is not loaded until this point!
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'test/vcr_cassettes'
+  config.hook_into :webmock
+  config.filter_sensitive_data('github_token') { ENV['GITHUB_ACCESS_TOKEN'] }
+  config.filter_sensitive_data('github_client_id') { ENV['GITHUB_CLIENT_ID'] }
+  config.filter_sensitive_data('github_client_secret') { ENV['GITHUB_CLIENT_SECRET'] }
+  # whitelist 127.0.0.1 so VCR doesn't interfere with system tests
+  config.ignore_hosts '127.0.0.1', 'chromedriver.storage.googleapis.com'
+  config.ignore_request do |request|
+    request.uri.include?('example.com')
+  end
+end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -64,4 +87,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.include OmniAuthMockHelper
 end
