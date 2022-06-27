@@ -19,20 +19,17 @@ RSpec.describe 'api/v1/github/workflow_runs', type: :request do
     parameter name: 'team_id', in: :path, type: :int, description: 'team_id'
     parameter name: 'app_id', in: :path, type: :int, description: 'app_id'
 
-    get('lists workflow_runs') do
-      response(200, 'successful') do
-        let(:team_id) { teams(:three).id }
-        let(:app_id) { apps(:four).id }
+    let(:team_id) { teams(:three).id }
+    let(:app_id) { apps(:four).id }
 
+    get('list workflow_runs') do
+      response(200, 'OK') do
         include_context 'run request test'
       end
     end
 
     post('creates workflow_run') do
-      response(200, 'successful') do
-        let(:team_id) { teams(:three).id }
-        let(:app_id) { apps(:four).id }
-
+      response(200, 'OK') do
         include_context 'run request test'
       end
     end
@@ -43,22 +40,23 @@ RSpec.describe 'api/v1/github/workflow_runs', type: :request do
     parameter name: 'app_id', in: :path, type: :int, description: 'app_id'
     parameter name: 'id', in: :path, type: :int, description: 'id'
 
-    get('show workflow_run') do
-      response(200, 'successful') do
-        let(:team_id) { teams(:three).id }
-        let(:app_id) { apps(:four).id }
-        let(:id) { 2_471_421_620 }
+    let(:team_id) { teams(:three).id }
+    let(:app_id) { apps(:four).id }
+    let(:id) { 2_471_421_620 }
 
+    get('show workflow_run') do
+      response(200, 'OK') do
         include_context 'run request test'
       end
     end
 
     patch('rerun workflow_run') do
-      response(201, 'created') do
-        let(:team_id) { teams(:three).id }
-        let(:app_id) { apps(:four).id }
-        let(:id) { 2_471_421_620 }
+      response(201, 'Created') do
+        include_context 'run request test'
+      end
 
+      response(422, 'Validation failed') do
+        let(:id) { 'invalid_id' }
         include_context 'run request test'
       end
     end
