@@ -1,0 +1,12 @@
+site_name: 'Platform Console API'
+site_description: 'The Platform Console API: for creating and deploying applications on the VA Platform.'
+repo_url: https://github.com/department-of-veterans-affairs/platform-console-api
+edit_uri: edit/master/docs/
+
+nav:
+  - README: 'README.md'
+  - Licence: 'LICENSE.md'
+  - Security: 'SECURITY.md'
+
+plugins:
+  - techdocs-core
