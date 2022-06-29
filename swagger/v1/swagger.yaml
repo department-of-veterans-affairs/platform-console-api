@@ -3304,6 +3304,324 @@ paths:
                   next:
                   prev:
                   last:
+  "/v1/teams/{team_id}/apps/{app_id}/repository":
+    parameters:
+    - name: team_id
+      in: path
+      description: team_id
+      required: true
+      schema:
+        type: int
+    - name: app_id
+      in: path
+      description: app_id
+      required: true
+      schema:
+        type: int
+    get:
+      summary: shows repository
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                data:
+                  id: department-of-veterans-affairs/platform-console-api
+                  type: repository
+                  attributes:
+                    repo: department-of-veterans-affairs/platform-console-api
+                    github:
+                    - - id
+                      - 447769607
+                    - - node_id
+                      - R_kgDOGrBsBw
+                    - - name
+                      - platform-console-api
+                    - - full_name
+                      - department-of-veterans-affairs/platform-console-api
+                    - - private
+                      - false
+                    - - owner
+                      - - - login
+                          - department-of-veterans-affairs
+                        - - id
+                          - 5421563
+                        - - node_id
+                          - MDEyOk9yZ2FuaXphdGlvbjU0MjE1NjM=
+                        - - avatar_url
+                          - https://avatars.githubusercontent.com/u/5421563?v=4
+                        - - gravatar_id
+                          - ''
+                        - - url
+                          - https://api.github.com/users/department-of-veterans-affairs
+                        - - html_url
+                          - https://github.com/department-of-veterans-affairs
+                        - - followers_url
+                          - https://api.github.com/users/department-of-veterans-affairs/followers
+                        - - following_url
+                          - https://api.github.com/users/department-of-veterans-affairs/following{/other_user}
+                        - - gists_url
+                          - https://api.github.com/users/department-of-veterans-affairs/gists{/gist_id}
+                        - - starred_url
+                          - https://api.github.com/users/department-of-veterans-affairs/starred{/owner}{/repo}
+                        - - subscriptions_url
+                          - https://api.github.com/users/department-of-veterans-affairs/subscriptions
+                        - - organizations_url
+                          - https://api.github.com/users/department-of-veterans-affairs/orgs
+                        - - repos_url
+                          - https://api.github.com/users/department-of-veterans-affairs/repos
+                        - - events_url
+                          - https://api.github.com/users/department-of-veterans-affairs/events{/privacy}
+                        - - received_events_url
+                          - https://api.github.com/users/department-of-veterans-affairs/received_events
+                        - - type
+                          - Organization
+                        - - site_admin
+                          - false
+                    - - html_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api
+                    - - description
+                      -
+                    - - fork
+                      - false
+                    - - url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api
+                    - - forks_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/forks
+                    - - keys_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/keys{/key_id}
+                    - - collaborators_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/collaborators{/collaborator}
+                    - - teams_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/teams
+                    - - hooks_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/hooks
+                    - - issue_events_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/issues/events{/number}
+                    - - events_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/events
+                    - - assignees_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/assignees{/user}
+                    - - branches_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/branches{/branch}
+                    - - tags_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/tags
+                    - - blobs_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/blobs{/sha}
+                    - - git_tags_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/tags{/sha}
+                    - - git_refs_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/refs{/sha}
+                    - - trees_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/trees{/sha}
+                    - - statuses_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/statuses/{sha}
+                    - - languages_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/languages
+                    - - stargazers_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/stargazers
+                    - - contributors_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/contributors
+                    - - subscribers_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/subscribers
+                    - - subscription_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/subscription
+                    - - commits_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/commits{/sha}
+                    - - git_commits_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/git/commits{/sha}
+                    - - comments_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/comments{/number}
+                    - - issue_comment_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/issues/comments{/number}
+                    - - contents_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/contents/{+path}
+                    - - compare_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/compare/{base}...{head}
+                    - - merges_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/merges
+                    - - archive_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/{archive_format}{/ref}
+                    - - downloads_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/downloads
+                    - - issues_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/issues{/number}
+                    - - pulls_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/pulls{/number}
+                    - - milestones_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/milestones{/number}
+                    - - notifications_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/notifications{?since,all,participating}
+                    - - labels_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/labels{/name}
+                    - - releases_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/releases{/id}
+                    - - deployments_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/deployments
+                    - - created_at
+                      - '2022-01-13T22:21:19.000Z'
+                    - - updated_at
+                      - '2022-06-10T13:43:49.000Z'
+                    - - pushed_at
+                      - '2022-06-29T18:01:58.000Z'
+                    - - git_url
+                      - git://github.com/department-of-veterans-affairs/platform-console-api.git
+                    - - ssh_url
+                      - git@github.com:department-of-veterans-affairs/platform-console-api.git
+                    - - clone_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api.git
+                    - - svn_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api
+                    - - homepage
+                      -
+                    - - size
+                      - 4059
+                    - - stargazers_count
+                      - 1
+                    - - watchers_count
+                      - 1
+                    - - language
+                      - Ruby
+                    - - has_issues
+                      - true
+                    - - has_projects
+                      - true
+                    - - has_downloads
+                      - true
+                    - - has_wiki
+                      - true
+                    - - has_pages
+                      - false
+                    - - forks_count
+                      - 0
+                    - - mirror_url
+                      -
+                    - - archived
+                      - false
+                    - - disabled
+                      - false
+                    - - open_issues_count
+                      - 6
+                    - - license
+                      -
+                    - - allow_forking
+                      - true
+                    - - is_template
+                      - false
+                    - - web_commit_signoff_required
+                      - false
+                    - - topics
+                      - []
+                    - - visibility
+                      - public
+                    - - forks
+                      - 0
+                    - - open_issues
+                      - 6
+                    - - watchers
+                      - 1
+                    - - default_branch
+                      - master
+                    - - permissions
+                      - - - admin
+                          - true
+                        - - maintain
+                          - true
+                        - - push
+                          - true
+                        - - triage
+                          - true
+                        - - pull
+                          - true
+                    - - temp_clone_token
+                      - ''
+                    - - allow_squash_merge
+                      - true
+                    - - allow_merge_commit
+                      - true
+                    - - allow_rebase_merge
+                      - true
+                    - - allow_auto_merge
+                      - false
+                    - - delete_branch_on_merge
+                      - true
+                    - - allow_update_branch
+                      - false
+                    - - use_squash_pr_title_as_default
+                      - false
+                    - - organization
+                      - - - login
+                          - department-of-veterans-affairs
+                        - - id
+                          - 5421563
+                        - - node_id
+                          - MDEyOk9yZ2FuaXphdGlvbjU0MjE1NjM=
+                        - - avatar_url
+                          - https://avatars.githubusercontent.com/u/5421563?v=4
+                        - - gravatar_id
+                          - ''
+                        - - url
+                          - https://api.github.com/users/department-of-veterans-affairs
+                        - - html_url
+                          - https://github.com/department-of-veterans-affairs
+                        - - followers_url
+                          - https://api.github.com/users/department-of-veterans-affairs/followers
+                        - - following_url
+                          - https://api.github.com/users/department-of-veterans-affairs/following{/other_user}
+                        - - gists_url
+                          - https://api.github.com/users/department-of-veterans-affairs/gists{/gist_id}
+                        - - starred_url
+                          - https://api.github.com/users/department-of-veterans-affairs/starred{/owner}{/repo}
+                        - - subscriptions_url
+                          - https://api.github.com/users/department-of-veterans-affairs/subscriptions
+                        - - organizations_url
+                          - https://api.github.com/users/department-of-veterans-affairs/orgs
+                        - - repos_url
+                          - https://api.github.com/users/department-of-veterans-affairs/repos
+                        - - events_url
+                          - https://api.github.com/users/department-of-veterans-affairs/events{/privacy}
+                        - - received_events_url
+                          - https://api.github.com/users/department-of-veterans-affairs/received_events
+                        - - type
+                          - Organization
+                        - - site_admin
+                          - false
+                    - - security_and_analysis
+                      - - - secret_scanning
+                          - - - status
+                              - enabled
+                        - - secret_scanning_push_protection
+                          - - - status
+                              - enabled
+                    - - network_count
+                      - 0
+                    - - subscribers_count
+                      - 33
+                    app_id: 4
+                  relationships:
+                    workflows:
+                      data:
+                      - id: '17919887'
+                        type: workflow
+                      - id: '17929736'
+                        type: workflow
+                      - id: '20207154'
+                        type: workflow
+                      - id: '19519063'
+                        type: workflow
+                      - id: '21074865'
+                        type: workflow
+                      - id: '17962379'
+                        type: workflow
+                      - id: '18716103'
+                        type: workflow
+                      - id: '19519233'
+                        type: workflow
+                      - id: '18776241'
+                        type: workflow
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4/workflows
   "/v1/teams/{team_id}/apps/{app_id}/workflow_run_jobs/{id}":
     parameters:
     - name: team_id
