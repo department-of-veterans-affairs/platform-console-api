@@ -25,7 +25,7 @@ RSpec.describe 'api/v1/github/workflow_run_jobs', type: :request do
     let(:id) { 7_115_360_258 }
 
     get('show workflow_run_job') do
-      tags 'workflow_run_jobs'
+      tags 'Workflow Run Jobs'
       response(200, 'OK') do
         include_context 'run request test'
       end

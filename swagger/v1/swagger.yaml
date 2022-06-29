@@ -3320,6 +3320,8 @@ paths:
         type: int
     get:
       summary: shows repository
+      tags:
+      - Repositories
       responses:
         '200':
           description: OK
@@ -3645,7 +3647,7 @@ paths:
     get:
       summary: show workflow_run_job
       tags:
-      - workflow_run_jobs
+      - Workflow Run Jobs
       responses:
         '200':
           description: OK

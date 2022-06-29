@@ -23,6 +23,7 @@ RSpec.describe 'api/v1/github/repositories', type: :request do
     let(:app_id) { apps(:four).id }
 
     get 'shows repository' do
+      tags 'Repositories'
       response(200, 'OK') do
         include_context 'run request test'
       end
