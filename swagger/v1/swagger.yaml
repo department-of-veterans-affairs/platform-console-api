@@ -4,6 +4,30 @@ info:
   title: API V1
   version: v1
 paths:
+  "/v1/teams/{team_id}/apps/{app_id}/deploy_pull_requests":
+    parameters:
+    - name: team_id
+      in: path
+      description: team_id
+      required: true
+      schema:
+        type: int
+    - name: app_id
+      in: path
+      description: app_id
+      required: true
+      schema:
+        type: int
+    post:
+      summary: creates deploy_pull_requests
+      tags:
+      - Deploy Pull Requests
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example: true
   "/v1/teams/{team_id}/apps/{app_id}/pull_requests":
     parameters:
     - name: team_id
@@ -20,9 +44,11 @@ paths:
         type: int
     get:
       summary: list pull_requests
+      tags:
+      - Pull Requests
       responses:
         '200':
-          description: successful
+          description: OK
           content:
             application/json:
               example:
@@ -3278,6 +3304,203 @@ paths:
                   next:
                   prev:
                   last:
+  "/v1/teams/{team_id}/apps/{app_id}/workflow_run_jobs/{id}":
+    parameters:
+    - name: team_id
+      in: path
+      description: team_id
+      required: true
+      schema:
+        type: int
+    - name: app_id
+      in: path
+      description: app_id
+      required: true
+      schema:
+        type: int
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: int
+    get:
+      summary: show workflow_run_job
+      tags:
+      - workflow_run_jobs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                data:
+                  id: '7115360258'
+                  type: workflow_run_job
+                  attributes:
+                    repo: department-of-veterans-affairs/platform-console-api
+                    github:
+                    - - id
+                      - 7115360258
+                    - - run_id
+                      - 2584147683
+                    - - run_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/runs/2584147683
+                    - - run_attempt
+                      - 1
+                    - - node_id
+                      - CR_kwDOGrBsB88AAAABqBvIAg
+                    - - head_sha
+                      - 24a4854401b8fbaaa0037a09c1e970dd2993d63a
+                    - - url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/jobs/7115360258
+                    - - html_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/runs/7115360258?check_suite_focus=true
+                    - - status
+                      - completed
+                    - - conclusion
+                      - success
+                    - - started_at
+                      - '2022-06-29T15:42:56.000Z'
+                    - - completed_at
+                      - '2022-06-29T15:43:37.000Z'
+                    - - name
+                      - Linting and Security
+                    - - steps
+                      - - - - name
+                            - Set up job
+                          - - status
+                            - completed
+                          - - conclusion
+                            - success
+                          - - number
+                            - 1
+                          - - started_at
+                            - '2022-06-29T08:42:55.000-07:00'
+                          - - completed_at
+                            - '2022-06-29T08:42:57.000-07:00'
+                        - - - name
+                            - Run actions/checkout@v2
+                          - - status
+                            - completed
+                          - - conclusion
+                            - success
+                          - - number
+                            - 2
+                          - - started_at
+                            - '2022-06-29T08:42:57.000-07:00'
+                          - - completed_at
+                            - '2022-06-29T08:42:58.000-07:00'
+                        - - - name
+                            - Run ruby/setup-ruby@v1
+                          - - status
+                            - completed
+                          - - conclusion
+                            - success
+                          - - number
+                            - 3
+                          - - started_at
+                            - '2022-06-29T08:42:59.000-07:00'
+                          - - completed_at
+                            - '2022-06-29T08:43:25.000-07:00'
+                        - - - name
+                            - Run bundle-audit (checks gems for CVE issues)
+                          - - status
+                            - completed
+                          - - conclusion
+                            - success
+                          - - number
+                            - 4
+                          - - started_at
+                            - '2022-06-29T08:43:25.000-07:00'
+                          - - completed_at
+                            - '2022-06-29T08:43:27.000-07:00'
+                        - - - name
+                            - Run Rubocop
+                          - - status
+                            - completed
+                          - - conclusion
+                            - success
+                          - - number
+                            - 5
+                          - - started_at
+                            - '2022-06-29T08:43:27.000-07:00'
+                          - - completed_at
+                            - '2022-06-29T08:43:31.000-07:00'
+                        - - - name
+                            - Run Brakeman
+                          - - status
+                            - completed
+                          - - conclusion
+                            - success
+                          - - number
+                            - 6
+                          - - started_at
+                            - '2022-06-29T08:43:31.000-07:00'
+                          - - completed_at
+                            - '2022-06-29T08:43:35.000-07:00'
+                        - - - name
+                            - Run actions/upload-artifact@v2
+                          - - status
+                            - completed
+                          - - conclusion
+                            - success
+                          - - number
+                            - 7
+                          - - started_at
+                            - '2022-06-29T08:43:35.000-07:00'
+                          - - completed_at
+                            - '2022-06-29T08:43:35.000-07:00'
+                        - - - name
+                            - Post Run actions/checkout@v2
+                          - - status
+                            - completed
+                          - - conclusion
+                            - success
+                          - - number
+                            - 14
+                          - - started_at
+                            - '2022-06-29T08:43:36.000-07:00'
+                          - - completed_at
+                            - '2022-06-29T08:43:36.000-07:00'
+                        - - - name
+                            - Complete job
+                          - - status
+                            - completed
+                          - - conclusion
+                            - success
+                          - - number
+                            - 15
+                          - - started_at
+                            - '2022-06-29T08:43:36.000-07:00'
+                          - - completed_at
+                            - '2022-06-29T08:43:36.000-07:00'
+                    - - check_run_url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/check-runs/7115360258
+                    - - labels
+                      - - ubuntu-20.04
+                    - - runner_id
+                      - 14
+                    - - runner_name
+                      - GitHub Actions 14
+                    - - runner_group_id
+                      - 2
+                    - - runner_group_name
+                      - GitHub Actions
+                    app_id: 4
+                  relationships:
+                    workflow_run:
+                      data:
+                        id: '2584147683'
+                        type: workflow_run
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4/workflow_runs
+                    app:
+                      data:
+                        id: '4'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4
   "/v1/teams/{team_id}/apps/{app_id}/workflow_runs":
     parameters:
     - name: team_id
@@ -3293,10 +3516,12 @@ paths:
       schema:
         type: int
     get:
-      summary: lists workflow_runs
+      summary: list workflow_runs
+      tags:
+      - Workflow Runs
       responses:
         '200':
-          description: successful
+          description: OK
           content:
             application/json:
               example:
@@ -12219,14 +12444,11 @@ paths:
                   last: http://www.example.com/v1/teams/3/apps/4/workflow_runs?page=219
     post:
       summary: creates workflow_run
+      tags:
+      - Workflow Runs
       responses:
         '200':
-          description: created
-          content:
-            application/json:
-              example: true
-        '422':
-          description: not created
+          description: OK
           content:
             application/json:
               example: true
@@ -12252,42 +12474,44 @@ paths:
         type: int
     get:
       summary: show workflow_run
+      tags:
+      - Workflow Runs
       responses:
         '200':
-          description: successful
+          description: OK
           content:
             application/json:
               example:
                 data:
-                - id: '7080406015'
+                - id: '7082127662'
                   type: workflow_run
                   attributes:
                     repo: department-of-veterans-affairs/platform-console-api
                     github:
                     - - id
-                      - 7080406015
+                      - 7082127662
                     - - run_id
                       - 2471421620
                     - - run_url
                       - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/runs/2471421620
                     - - run_attempt
-                      - 3
+                      - 4
                     - - node_id
-                      - CR_kwDOGrBsB88AAAABpgZr_w
+                      - CR_kwDOGrBsB88AAAABpiCxLg
                     - - head_sha
                       - de1c45039b8dfa76c91b8fe7b419a43270a5f43c
                     - - url
-                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/jobs/7080406015
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/jobs/7082127662
                     - - html_url
-                      - https://github.com/department-of-veterans-affairs/platform-console-api/runs/7080406015?check_suite_focus=true
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/runs/7082127662?check_suite_focus=true
                     - - status
                       - completed
                     - - conclusion
                       - success
                     - - started_at
-                      - '2022-06-27T20:02:31.000Z'
+                      - '2022-06-27T21:59:36.000Z'
                     - - completed_at
-                      - '2022-06-27T20:02:31.000Z'
+                      - '2022-06-27T21:59:37.000Z'
                     - - name
                       - deploy / prepare-values
                     - - steps
@@ -12300,9 +12524,9 @@ paths:
                           - - number
                             - 1
                           - - started_at
-                            - '2022-06-27T13:02:29.000-07:00'
+                            - '2022-06-27T14:59:35.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:02:29.000-07:00'
+                            - '2022-06-27T14:59:36.000-07:00'
                         - - - name
                             - Set to auto deploy environments on push to master
                           - - status
@@ -12312,9 +12536,9 @@ paths:
                           - - number
                             - 2
                           - - started_at
-                            - '2022-06-27T13:02:29.000-07:00'
+                            - '2022-06-27T14:59:36.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:02:29.000-07:00'
+                            - '2022-06-27T14:59:36.000-07:00'
                         - - - name
                             - Set output
                           - - status
@@ -12324,9 +12548,9 @@ paths:
                           - - number
                             - 3
                           - - started_at
-                            - '2022-06-27T13:02:29.000-07:00'
+                            - '2022-06-27T14:59:36.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:02:30.000-07:00'
+                            - '2022-06-27T14:59:36.000-07:00'
                         - - - name
                             - Complete job
                           - - status
@@ -12336,17 +12560,17 @@ paths:
                           - - number
                             - 4
                           - - started_at
-                            - '2022-06-27T13:02:30.000-07:00'
+                            - '2022-06-27T14:59:36.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:02:30.000-07:00'
+                            - '2022-06-27T14:59:36.000-07:00'
                     - - check_run_url
-                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/check-runs/7080406015
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/check-runs/7082127662
                     - - labels
                       - - ubuntu-20.04
                     - - runner_id
-                      - 6
+                      - 4
                     - - runner_name
-                      - GitHub Actions 6
+                      - GitHub Actions 4
                     - - runner_group_id
                       - 2
                     - - runner_group_name
@@ -12361,35 +12585,35 @@ paths:
                       data: []
                       links:
                         related: test.host/api/v1/teams/3/apps/4/workflow_run_jobs
-                - id: '7080409507'
+                - id: '7082130050'
                   type: workflow_run
                   attributes:
                     repo: department-of-veterans-affairs/platform-console-api
                     github:
                     - - id
-                      - 7080409507
+                      - 7082130050
                     - - run_id
                       - 2471421620
                     - - run_url
                       - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/runs/2471421620
                     - - run_attempt
-                      - 3
+                      - 4
                     - - node_id
-                      - CR_kwDOGrBsB88AAAABpgZ5ow
+                      - CR_kwDOGrBsB88AAAABpiC6gg
                     - - head_sha
                       - de1c45039b8dfa76c91b8fe7b419a43270a5f43c
                     - - url
-                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/jobs/7080409507
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/jobs/7082130050
                     - - html_url
-                      - https://github.com/department-of-veterans-affairs/platform-console-api/runs/7080409507?check_suite_focus=true
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/runs/7082130050?check_suite_focus=true
                     - - status
                       - completed
                     - - conclusion
                       - success
                     - - started_at
-                      - '2022-06-27T20:02:45.000Z'
+                      - '2022-06-27T21:59:47.000Z'
                     - - completed_at
-                      - '2022-06-27T20:03:38.000Z'
+                      - '2022-06-27T22:00:26.000Z'
                     - - name
                       - deploy / release
                     - - steps
@@ -12402,9 +12626,9 @@ paths:
                           - - number
                             - 1
                           - - started_at
-                            - '2022-06-27T13:02:45.000-07:00'
+                            - '2022-06-27T14:59:47.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:02:49.000-07:00'
+                            - '2022-06-27T14:59:49.000-07:00'
                         - - - name
                             - Run actions/checkout@v2
                           - - status
@@ -12414,9 +12638,9 @@ paths:
                           - - number
                             - 2
                           - - started_at
-                            - '2022-06-27T13:02:50.000-07:00'
+                            - '2022-06-27T14:59:49.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:02:51.000-07:00'
+                            - '2022-06-27T14:59:50.000-07:00'
                         - - - name
                             - Configure AWS Credentials
                           - - status
@@ -12426,9 +12650,9 @@ paths:
                           - - number
                             - 3
                           - - started_at
-                            - '2022-06-27T13:02:52.000-07:00'
+                            - '2022-06-27T14:59:50.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:02:52.000-07:00'
+                            - '2022-06-27T14:59:50.000-07:00'
                         - - - name
                             - Log into ECR
                           - - status
@@ -12438,9 +12662,9 @@ paths:
                           - - number
                             - 4
                           - - started_at
-                            - '2022-06-27T13:02:52.000-07:00'
+                            - '2022-06-27T14:59:51.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:02:54.000-07:00'
+                            - '2022-06-27T14:59:53.000-07:00'
                         - - - name
                             - Get bot token from Parameter Store
                           - - status
@@ -12450,9 +12674,9 @@ paths:
                           - - number
                             - 5
                           - - started_at
-                            - '2022-06-27T13:02:54.000-07:00'
+                            - '2022-06-27T14:59:53.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:02:54.000-07:00'
+                            - '2022-06-27T14:59:53.000-07:00'
                         - - - name
                             - Semantic Release
                           - - status
@@ -12462,9 +12686,9 @@ paths:
                           - - number
                             - 6
                           - - started_at
-                            - '2022-06-27T13:02:55.000-07:00'
+                            - '2022-06-27T14:59:53.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:03:13.000-07:00'
+                            - '2022-06-27T15:00:07.000-07:00'
                         - - - name
                             - Install yq if needed
                           - - status
@@ -12474,9 +12698,9 @@ paths:
                           - - number
                             - 7
                           - - started_at
-                            - '2022-06-27T13:03:13.000-07:00'
+                            - '2022-06-27T15:00:08.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:03:34.000-07:00'
+                            - '2022-06-27T15:00:24.000-07:00'
                         - - - name
                             - Check out Manifest Repo
                           - - status
@@ -12486,9 +12710,9 @@ paths:
                           - - number
                             - 8
                           - - started_at
-                            - '2022-06-27T13:03:34.000-07:00'
+                            - '2022-06-27T15:00:24.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:03:35.000-07:00'
+                            - '2022-06-27T15:00:24.000-07:00'
                         - - - name
                             - Update image name in Manifest repo
                           - - status
@@ -12498,9 +12722,9 @@ paths:
                           - - number
                             - 9
                           - - started_at
-                            - '2022-06-27T13:03:35.000-07:00'
+                            - '2022-06-27T15:00:25.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:03:35.000-07:00'
+                            - '2022-06-27T15:00:25.000-07:00'
                         - - - name
                             - Add and Commit file
                           - - status
@@ -12510,9 +12734,9 @@ paths:
                           - - number
                             - 10
                           - - started_at
-                            - '2022-06-27T13:03:35.000-07:00'
+                            - '2022-06-27T15:00:25.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:03:35.000-07:00'
+                            - '2022-06-27T15:00:25.000-07:00'
                         - - - name
                             - Post Check out Manifest Repo
                           - - status
@@ -12522,9 +12746,9 @@ paths:
                           - - number
                             - 17
                           - - started_at
-                            - '2022-06-27T13:03:35.000-07:00'
+                            - '2022-06-27T15:00:25.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:03:35.000-07:00'
+                            - '2022-06-27T15:00:25.000-07:00'
                         - - - name
                             - Post Log into ECR
                           - - status
@@ -12534,9 +12758,9 @@ paths:
                           - - number
                             - 18
                           - - started_at
-                            - '2022-06-27T13:03:36.000-07:00'
+                            - '2022-06-27T15:00:25.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:03:36.000-07:00'
+                            - '2022-06-27T15:00:25.000-07:00'
                         - - - name
                             - Post Configure AWS Credentials
                           - - status
@@ -12546,9 +12770,9 @@ paths:
                           - - number
                             - 19
                           - - started_at
-                            - '2022-06-27T13:03:36.000-07:00'
+                            - '2022-06-27T15:00:26.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:03:36.000-07:00'
+                            - '2022-06-27T15:00:26.000-07:00'
                         - - - name
                             - Post Run actions/checkout@v2
                           - - status
@@ -12558,9 +12782,9 @@ paths:
                           - - number
                             - 20
                           - - started_at
-                            - '2022-06-27T13:03:36.000-07:00'
+                            - '2022-06-27T15:00:26.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:03:36.000-07:00'
+                            - '2022-06-27T15:00:26.000-07:00'
                         - - - name
                             - Complete job
                           - - status
@@ -12570,11 +12794,11 @@ paths:
                           - - number
                             - 21
                           - - started_at
-                            - '2022-06-27T13:03:36.000-07:00'
+                            - '2022-06-27T15:00:25.000-07:00'
                           - - completed_at
-                            - '2022-06-27T13:03:36.000-07:00'
+                            - '2022-06-27T15:00:25.000-07:00'
                     - - check_run_url
-                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/check-runs/7080409507
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/check-runs/7082130050
                     - - labels
                       - - ubuntu-20.04
                     - - runner_id
@@ -12597,17 +12821,408 @@ paths:
                         related: test.host/api/v1/teams/3/apps/4/workflow_run_jobs
     patch:
       summary: rerun workflow_run
+      tags:
+      - Workflow Runs
       responses:
         '201':
-          description: rerun
+          description: Created
           content:
             application/json:
               example: true
         '422':
-          description: not rerun
+          description: Validation failed
           content:
             application/json:
               example: false
+  "/v1/teams/{team_id}/apps/{app_id}/workflows":
+    parameters:
+    - name: team_id
+      in: path
+      description: team_id
+      required: true
+      schema:
+        type: int
+    - name: app_id
+      in: path
+      description: app_id
+      required: true
+      schema:
+        type: int
+    get:
+      summary: list workflows
+      tags:
+      - Workflows
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                data:
+                - id: '17919887'
+                  type: workflow
+                  attributes:
+                    repo: department-of-veterans-affairs/platform-console-api
+                    github:
+                    - - id
+                      - 17919887
+                    - - node_id
+                      - W_kwDOGrBsB84BEW-P
+                    - - name
+                      - Code Checks
+                    - - path
+                      - ".github/workflows/code_checks.yml"
+                    - - state
+                      - active
+                    - - created_at
+                      - '2022-01-13T15:45:24.000-08:00'
+                    - - updated_at
+                      - '2022-01-14T06:42:12.000-08:00'
+                    - - url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/workflows/17919887
+                    - - html_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/blob/master/.github/workflows/code_checks.yml
+                    - - badge_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/workflows/Code%20Checks/badge.svg
+                    app_id: 4
+                  relationships:
+                    app:
+                      data:
+                        id: '4'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4
+                    workflow_runs:
+                      data: []
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4/workflow_runs
+                - id: '17929736'
+                  type: workflow
+                  attributes:
+                    repo: department-of-veterans-affairs/platform-console-api
+                    github:
+                    - - id
+                      - 17929736
+                    - - node_id
+                      - W_kwDOGrBsB84BEZYI
+                    - - name
+                      - CodeQL
+                    - - path
+                      - ".github/workflows/codeql.yml"
+                    - - state
+                      - active
+                    - - created_at
+                      - '2022-01-13T21:05:58.000-08:00'
+                    - - updated_at
+                      - '2022-02-23T23:23:42.000-08:00'
+                    - - url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/workflows/17929736
+                    - - html_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/blob/master/.github/workflows/codeql.yml
+                    - - badge_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/workflows/CodeQL/badge.svg
+                    app_id: 4
+                  relationships:
+                    app:
+                      data:
+                        id: '4'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4
+                    workflow_runs:
+                      data: []
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4/workflow_runs
+                - id: '20207154'
+                  type: workflow
+                  attributes:
+                    repo: department-of-veterans-affairs/platform-console-api
+                    github:
+                    - - id
+                      - 20207154
+                    - - node_id
+                      - W_kwDOGrBsB84BNFYy
+                    - - name
+                      - Create Deploy Workflow PR
+                    - - path
+                      - ".github/workflows/create_deploy_pr.yml"
+                    - - state
+                      - active
+                    - - created_at
+                      - '2022-02-18T08:25:57.000-08:00'
+                    - - updated_at
+                      - '2022-02-24T08:34:20.000-08:00'
+                    - - url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/workflows/20207154
+                    - - html_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/blob/master/.github/workflows/create_deploy_pr.yml
+                    - - badge_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/workflows/Create%20Deploy%20Workflow%20PR/badge.svg
+                    app_id: 4
+                  relationships:
+                    app:
+                      data:
+                        id: '4'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4
+                    workflow_runs:
+                      data: []
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4/workflow_runs
+                - id: '19519063'
+                  type: workflow
+                  attributes:
+                    repo: department-of-veterans-affairs/platform-console-api
+                    github:
+                    - - id
+                      - 19519063
+                    - - node_id
+                      - W_kwDOGrBsB84BKdZX
+                    - - name
+                      - Release and Update Manifests
+                    - - path
+                      - ".github/workflows/deploy-template.yml"
+                    - - state
+                      - active
+                    - - created_at
+                      - '2022-02-08T07:45:36.000-08:00'
+                    - - updated_at
+                      - '2022-02-11T13:54:16.000-08:00'
+                    - - url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/workflows/19519063
+                    - - html_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/blob/master/.github/workflows/deploy-template.yml
+                    - - badge_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/workflows/Release%20and%20Update%20Manifests/badge.svg
+                    app_id: 4
+                  relationships:
+                    app:
+                      data:
+                        id: '4'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4
+                    workflow_runs:
+                      data: []
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4/workflow_runs
+                - id: '21074865'
+                  type: workflow
+                  attributes:
+                    repo: department-of-veterans-affairs/platform-console-api
+                    github:
+                    - - id
+                      - 21074865
+                    - - node_id
+                      - W_kwDOGrBsB84BQZOx
+                    - - name
+                      - Deploy Template Demo
+                    - - path
+                      - ".github/workflows/deploy-template_demo.yml"
+                    - - state
+                      - active
+                    - - created_at
+                      - '2022-03-03T08:46:29.000-08:00'
+                    - - updated_at
+                      - '2022-04-14T09:52:22.000-07:00'
+                    - - url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/workflows/21074865
+                    - - html_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/blob/master/.github/workflows/deploy-template_demo.yml
+                    - - badge_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/workflows/Deploy%20Template%20Demo/badge.svg
+                    app_id: 4
+                  relationships:
+                    app:
+                      data:
+                        id: '4'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4
+                    workflow_runs:
+                      data: []
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4/workflow_runs
+                - id: '17962379'
+                  type: workflow
+                  attributes:
+                    repo: department-of-veterans-affairs/platform-console-api
+                    github:
+                    - - id
+                      - 17962379
+                    - - node_id
+                      - W_kwDOGrBsB84BEhWL
+                    - - name
+                      - Release and Update Manifests
+                    - - path
+                      - ".github/workflows/deploy.yml"
+                    - - state
+                      - active
+                    - - created_at
+                      - '2022-01-14T08:30:14.000-08:00'
+                    - - updated_at
+                      - '2022-02-24T05:16:14.000-08:00'
+                    - - url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/workflows/17962379
+                    - - html_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/blob/master/.github/workflows/deploy.yml
+                    - - badge_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/workflows/Release%20and%20Update%20Manifests/badge.svg
+                    app_id: 4
+                  relationships:
+                    app:
+                      data:
+                        id: '4'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4
+                    workflow_runs:
+                      data: []
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4/workflow_runs
+                - id: '18716103'
+                  type: workflow
+                  attributes:
+                    repo: department-of-veterans-affairs/platform-console-api
+                    github:
+                    - - id
+                      - 18716103
+                    - - node_id
+                      - W_kwDOGrBsB84BHZXH
+                    - - name
+                      - Mirror image to ECR when changes are pushed to master
+                    - - path
+                      - ".github/workflows/mirror-images.yml"
+                    - - state
+                      - active
+                    - - created_at
+                      - '2022-01-26T13:05:02.000-08:00'
+                    - - updated_at
+                      - '2022-01-26T13:05:02.000-08:00'
+                    - - url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/workflows/18716103
+                    - - html_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/blob/master/.github/workflows/mirror-images.yml
+                    - - badge_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/workflows/Mirror%20image%20to%20ECR%20when%20changes%20are%20pushed%20to%20master/badge.svg
+                    app_id: 4
+                  relationships:
+                    app:
+                      data:
+                        id: '4'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4
+                    workflow_runs:
+                      data: []
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4/workflow_runs
+                - id: '19519233'
+                  type: workflow
+                  attributes:
+                    repo: department-of-veterans-affairs/platform-console-api
+                    github:
+                    - - id
+                      - 19519233
+                    - - node_id
+                      - W_kwDOGrBsB84BKdcB
+                    - - name
+                      - Push image to ECR when changes are pushed to master
+                    - - path
+                      - ".github/workflows/push-image-template.yml"
+                    - - state
+                      - active
+                    - - created_at
+                      - '2022-02-08T07:47:28.000-08:00'
+                    - - updated_at
+                      - '2022-02-11T13:54:16.000-08:00'
+                    - - url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/workflows/19519233
+                    - - html_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/blob/master/.github/workflows/push-image-template.yml
+                    - - badge_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/workflows/Push%20image%20to%20ECR%20when%20changes%20are%20pushed%20to%20master/badge.svg
+                    app_id: 4
+                  relationships:
+                    app:
+                      data:
+                        id: '4'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4
+                    workflow_runs:
+                      data: []
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4/workflow_runs
+                - id: '18776241'
+                  type: workflow
+                  attributes:
+                    repo: department-of-veterans-affairs/platform-console-api
+                    github:
+                    - - id
+                      - 18776241
+                    - - node_id
+                      - W_kwDOGrBsB84BHoCx
+                    - - name
+                      - Push image to ECR when changes are pushed to master
+                    - - path
+                      - ".github/workflows/push-images.yml"
+                    - - state
+                      - active
+                    - - created_at
+                      - '2022-01-27T08:25:01.000-08:00'
+                    - - updated_at
+                      - '2022-02-24T05:16:14.000-08:00'
+                    - - url
+                      - https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/workflows/18776241
+                    - - html_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/blob/master/.github/workflows/push-images.yml
+                    - - badge_url
+                      - https://github.com/department-of-veterans-affairs/platform-console-api/workflows/Push%20image%20to%20ECR%20when%20changes%20are%20pushed%20to%20master/badge.svg
+                    app_id: 4
+                  relationships:
+                    app:
+                      data:
+                        id: '4'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4
+                    workflow_runs:
+                      data: []
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4/workflow_runs
+  "/v1/teams/{team_id}/apps/{app_id}/workflows/{id}":
+    parameters:
+    - name: team_id
+      in: path
+      description: team_id
+      required: true
+      schema:
+        type: int
+    - name: app_id
+      in: path
+      description: app_id
+      required: true
+      schema:
+        type: int
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: int
+    get:
+      summary: show workflow
+      tags:
+      - Workflows
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                data:
 servers:
 - url: https://{defaultHost}
   variables:
