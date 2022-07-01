@@ -25,4 +25,4 @@ Metrics/AbcSize:
     - 'app/controllers/application_controller.rb'
 
 Metrics/BlockLength:
-  IgnoredMethods: ['describe']
+  IgnoredMethods: ['describe', 'path']

@@ -16,8 +16,8 @@ RSpec.describe 'api/v1/github/workflows', type: :request do
   end
 
   path '/v1/teams/{team_id}/apps/{app_id}/workflows' do
-    parameter name: 'team_id', in: :path, type: :int, description: 'team_id'
-    parameter name: 'app_id', in: :path, type: :int, description: 'app_id'
+    parameter name: 'team_id', in: :path, type: :integer, description: 'team_id'
+    parameter name: 'app_id', in: :path, type: :integer, description: 'app_id'
 
     let(:team_id) { teams(:three).id }
     let(:app_id) { apps(:four).id }
@@ -31,9 +31,9 @@ RSpec.describe 'api/v1/github/workflows', type: :request do
   end
 
   path '/v1/teams/{team_id}/apps/{app_id}/workflows/{id}' do
-    parameter name: 'team_id', in: :path, type: :int, description: 'team_id'
-    parameter name: 'app_id', in: :path, type: :int, description: 'app_id'
-    parameter name: 'id', in: :path, type: :int, description: 'id'
+    parameter name: 'team_id', in: :path, type: :integer, description: 'team_id'
+    parameter name: 'app_id', in: :path, type: :integer, description: 'app_id'
+    parameter name: 'id', in: :path, type: :integer, description: 'id'
 
     let(:team_id) { teams(:three).id }
     let(:app_id) { apps(:four).id }

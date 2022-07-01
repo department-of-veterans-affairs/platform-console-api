@@ -16,13 +16,13 @@ RSpec.describe 'api/v1/github/deploy_pull_requests', type: :request do
   end
 
   path '/v1/teams/{team_id}/apps/{app_id}/deploy_pull_requests' do
-    parameter name: 'team_id', in: :path, type: :int, description: 'team_id'
-    parameter name: 'app_id', in: :path, type: :int, description: 'app_id'
+    parameter name: 'team_id', in: :path, type: :integer, description: 'team_id'
+    parameter name: 'app_id', in: :path, type: :integer, description: 'app_id'
 
     let(:team_id) { teams(:three).id }
     let(:app_id) { apps(:four).id }
 
-    post 'creates deploy_pull_requests' do
+    post 'create deploy_pull_request' do
       tags 'Deploy Pull Requests'
       response(200, 'OK') do
         include_context 'run request test'

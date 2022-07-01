@@ -4,6 +4,430 @@ info:
   title: API V1
   version: v1
 paths:
+  "/v1/teams/{team_id}/apps":
+    parameters:
+    - name: team_id
+      in: path
+      description: team_id
+      required: true
+      schema:
+        type: integer
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: list apps
+      tags:
+      - Apps
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                data:
+                - id: '3'
+                  type: app
+                  attributes:
+                    name: App3
+                    github_repo: department-of-veterans-affairs/vets-api
+                    deploy_workflow: code_checks.yml
+                    created_at: '2022-07-01T18:11:18.060Z'
+                    updated_at: '2022-07-01T18:11:18.060Z'
+                  relationships:
+                    team:
+                      data:
+                        id: '3'
+                        type: team
+                      links:
+                        related: test.host/api/v1/teams/3
+                    deployments:
+                      data:
+                      - id: '298486374'
+                        type: deployment
+                      links:
+                        related: test.host/api/v1/teams/3/apps/3/deployments
+                  links:
+                    self: test.host/api/v1/teams/3/apps/3
+                - id: '4'
+                  type: app
+                  attributes:
+                    name: App4
+                    github_repo: department-of-veterans-affairs/platform-console-api
+                    deploy_workflow:
+                    created_at: '2022-07-01T18:11:18.060Z'
+                    updated_at: '2022-07-01T18:11:18.060Z'
+                  relationships:
+                    team:
+                      data:
+                        id: '3'
+                        type: team
+                      links:
+                        related: test.host/api/v1/teams/3
+                    deployments:
+                      data: []
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4/deployments
+                  links:
+                    self: test.host/api/v1/teams/3/apps/4
+                links:
+                  next:
+                  prev:
+                  last: http://www.example.com/v1/teams/3/apps?page=1
+    post:
+      summary: create app
+      tags:
+      - Apps
+      parameters: []
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              example:
+                data:
+                  id: '5'
+                  type: app
+                  attributes:
+                    name: App4
+                    github_repo:
+                    deploy_workflow:
+                    created_at: '2022-07-01T18:11:18.484Z'
+                    updated_at: '2022-07-01T18:11:18.484Z'
+                  relationships:
+                    team:
+                      data:
+                        id: '3'
+                        type: team
+                      links:
+                        related: test.host/api/v1/teams/3
+                    deployments:
+                      data: []
+                      links:
+                        related: test.host/api/v1/teams/3/apps/5/deployments
+                  links:
+                    self: test.host/api/v1/teams/3/apps/5
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              example:
+                name:
+                - can't be blank
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                app:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    team_id:
+                      type: integer
+                required:
+                - name
+                - team_id
+              required:
+              - app
+  "/v1/teams/{team_id}/apps/{id}":
+    parameters:
+    - name: team_id
+      in: path
+      description: team_id
+      required: true
+      schema:
+        type: integer
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: show app
+      tags:
+      - Apps
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                data:
+                  id: '4'
+                  type: app
+                  attributes:
+                    name: App4
+                    github_repo: department-of-veterans-affairs/platform-console-api
+                    deploy_workflow:
+                    created_at: '2022-07-01T18:11:18.060Z'
+                    updated_at: '2022-07-01T18:11:18.060Z'
+                  relationships:
+                    team:
+                      data:
+                        id: '3'
+                        type: team
+                      links:
+                        related: test.host/api/v1/teams/3
+                    deployments:
+                      data: []
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4/deployments
+                  links:
+                    self: test.host/api/v1/teams/3/apps/4
+    patch:
+      summary: update app
+      tags:
+      - Apps
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                data:
+                  id: '4'
+                  type: app
+                  attributes:
+                    name: App1 Updated
+                    github_repo: department-of-veterans-affairs/platform-console-api
+                    deploy_workflow:
+                    created_at: '2022-07-01T18:11:18.060Z'
+                    updated_at: '2022-07-01T18:11:18.597Z'
+                  relationships:
+                    team:
+                      data:
+                        id: '3'
+                        type: team
+                      links:
+                        related: test.host/api/v1/teams/3
+                    deployments:
+                      data: []
+                      links:
+                        related: test.host/api/v1/teams/3/apps/4/deployments
+                  links:
+                    self: test.host/api/v1/teams/3/apps/4
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              example:
+                name:
+                - can't be blank
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                app:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                required:
+                - name
+              required:
+              - app
+    delete:
+      summary: delete app
+      tags:
+      - Apps
+      responses:
+        '204':
+          description: No Content
+  "/v1/teams/{team_id}/apps/{app_id}/deployments":
+    parameters:
+    - name: team_id
+      in: path
+      description: team_id
+      required: true
+      schema:
+        type: integer
+    - name: app_id
+      in: path
+      description: app_id
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: list deployments
+      tags:
+      - Deployments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                data:
+                - id: '980190962'
+                  type: deployment
+                  attributes:
+                    name: guestbook
+                    created_at: '2022-07-01T18:11:18.658Z'
+                    updated_at: '2022-07-01T18:11:18.658Z'
+                  relationships:
+                    app:
+                      data:
+                        id: '2'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/2/apps/2
+                  links:
+                    self: test.host/api/v1/teams/2/apps/2/deployments/980190962
+                links:
+                  next:
+                  prev:
+                  last: http://www.example.com/v1/teams/2/apps/2/deployments?page=1
+    post:
+      summary: create deployment
+      tags:
+      - Deployments
+      parameters: []
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              example:
+                data:
+                  id: '980190963'
+                  type: deployment
+                  attributes:
+                    name: guestbook
+                    created_at: '2022-07-01T18:11:18.732Z'
+                    updated_at: '2022-07-01T18:11:18.732Z'
+                  relationships:
+                    app:
+                      data:
+                        id: '2'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/2/apps/2
+                  links:
+                    self: test.host/api/v1/teams/2/apps/2/deployments/980190963
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              example:
+                name:
+                - can't be blank
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deployment:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    app_id:
+                      type: integer
+                required:
+                - name
+                - app_id
+              required:
+              - deployment
+  "/v1/teams/{team_id}/apps/{app_id}/deployments/{id}":
+    parameters:
+    - name: team_id
+      in: path
+      description: team_id
+      required: true
+      schema:
+        type: integer
+    - name: app_id
+      in: path
+      description: app_id
+      required: true
+      schema:
+        type: integer
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: show deployment
+      tags:
+      - Deployments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                data:
+    patch:
+      summary: update deployment
+      tags:
+      - Deployments
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                data:
+                  id: '980190962'
+                  type: deployment
+                  attributes:
+                    name: guestbook
+                    created_at: '2022-07-01T18:11:18.658Z'
+                    updated_at: '2022-07-01T18:11:18.658Z'
+                  relationships:
+                    app:
+                      data:
+                        id: '2'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/2/apps/2
+                  links:
+                    self: test.host/api/v1/teams/2/apps/2/deployments/980190962
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              example:
+                name:
+                - can't be blank
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deployment:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                required:
+                - name
+              required:
+              - deployment
+    delete:
+      summary: delete deployment
+      tags:
+      - Deployments
+      responses:
+        '204':
+          description: No Content
   "/v1/teams/{team_id}/apps/{app_id}/deploy_pull_requests":
     parameters:
     - name: team_id
@@ -11,15 +435,15 @@ paths:
       description: team_id
       required: true
       schema:
-        type: int
+        type: integer
     - name: app_id
       in: path
       description: app_id
       required: true
       schema:
-        type: int
+        type: integer
     post:
-      summary: creates deploy_pull_requests
+      summary: create deploy_pull_request
       tags:
       - Deploy Pull Requests
       responses:
@@ -35,13 +459,13 @@ paths:
       description: team_id
       required: true
       schema:
-        type: int
+        type: integer
     - name: app_id
       in: path
       description: app_id
       required: true
       schema:
-        type: int
+        type: integer
     get:
       summary: list pull_requests
       tags:
@@ -3311,15 +3735,15 @@ paths:
       description: team_id
       required: true
       schema:
-        type: int
+        type: integer
     - name: app_id
       in: path
       description: app_id
       required: true
       schema:
-        type: int
+        type: integer
     get:
-      summary: shows repository
+      summary: show repository
       tags:
       - Repositories
       responses:
@@ -3631,19 +4055,19 @@ paths:
       description: team_id
       required: true
       schema:
-        type: int
+        type: integer
     - name: app_id
       in: path
       description: app_id
       required: true
       schema:
-        type: int
+        type: integer
     - name: id
       in: path
       description: id
       required: true
       schema:
-        type: int
+        type: integer
     get:
       summary: show workflow_run_job
       tags:
@@ -3828,13 +4252,13 @@ paths:
       description: team_id
       required: true
       schema:
-        type: int
+        type: integer
     - name: app_id
       in: path
       description: app_id
       required: true
       schema:
-        type: int
+        type: integer
     get:
       summary: list workflow_runs
       tags:
@@ -12763,7 +13187,7 @@ paths:
                   prev:
                   last: http://www.example.com/v1/teams/3/apps/4/workflow_runs?page=219
     post:
-      summary: creates workflow_run
+      summary: create workflow_run
       tags:
       - Workflow Runs
       responses:
@@ -12779,19 +13203,19 @@ paths:
       description: team_id
       required: true
       schema:
-        type: int
+        type: integer
     - name: app_id
       in: path
       description: app_id
       required: true
       schema:
-        type: int
+        type: integer
     - name: id
       in: path
       description: id
       required: true
       schema:
-        type: int
+        type: integer
     get:
       summary: show workflow_run
       tags:
@@ -13150,7 +13574,7 @@ paths:
             application/json:
               example: true
         '422':
-          description: Validation failed
+          description: Unprocessable Entity
           content:
             application/json:
               example: false
@@ -13161,13 +13585,13 @@ paths:
       description: team_id
       required: true
       schema:
-        type: int
+        type: integer
     - name: app_id
       in: path
       description: app_id
       required: true
       schema:
-        type: int
+        type: integer
     get:
       summary: list workflows
       tags:
@@ -13519,19 +13943,19 @@ paths:
       description: team_id
       required: true
       schema:
-        type: int
+        type: integer
     - name: app_id
       in: path
       description: app_id
       required: true
       schema:
-        type: int
+        type: integer
     - name: id
       in: path
       description: id
       required: true
       schema:
-        type: int
+        type: integer
     get:
       summary: show workflow
       tags:
@@ -13543,6 +13967,329 @@ paths:
             application/json:
               example:
                 data:
+  "/v1/teams":
+    get:
+      summary: list teams
+      tags:
+      - Teams
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                data:
+                - id: '1'
+                  type: team
+                  attributes:
+                    name: Team1
+                    created_at: '2022-07-01T18:11:18.049Z'
+                    updated_at: '2022-07-01T18:11:18.049Z'
+                  relationships:
+                    owner:
+                      data:
+                        id: '830138774'
+                        type: user
+                      links:
+                        related: test.host/api/v1/users/830138774
+                    apps:
+                      data:
+                      - id: '1'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/1/apps
+                  links:
+                    self: test.host/api/v1/teams/1
+                - id: '2'
+                  type: team
+                  attributes:
+                    name: Team2
+                    created_at: '2022-07-01T18:11:18.049Z'
+                    updated_at: '2022-07-01T18:11:18.049Z'
+                  relationships:
+                    owner:
+                      data:
+                        id: '830138774'
+                        type: user
+                      links:
+                        related: test.host/api/v1/users/830138774
+                    apps:
+                      data:
+                      - id: '2'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/2/apps
+                  links:
+                    self: test.host/api/v1/teams/2
+                - id: '3'
+                  type: team
+                  attributes:
+                    name: Team3
+                    created_at: '2022-07-01T18:11:18.049Z'
+                    updated_at: '2022-07-01T18:11:18.049Z'
+                  relationships:
+                    owner:
+                      data:
+                      links:
+                        related: test.host/api/v1/users/595373034
+                    apps:
+                      data:
+                      - id: '3'
+                        type: app
+                      - id: '4'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/3/apps
+                  links:
+                    self: test.host/api/v1/teams/3
+                links:
+                  next:
+                  prev:
+                  last: http://www.example.com/v1/teams?page=1
+    post:
+      summary: create team
+      tags:
+      - Teams
+      parameters: []
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              example:
+                data:
+                  id: '4'
+                  type: team
+                  attributes:
+                    name: Team1
+                    created_at: '2022-07-01T18:11:19.327Z'
+                    updated_at: '2022-07-01T18:11:19.327Z'
+                  relationships:
+                    owner:
+                      data:
+                        id: '830138774'
+                        type: user
+                      links:
+                        related: test.host/api/v1/users/830138774
+                    apps:
+                      data: []
+                      links:
+                        related: test.host/api/v1/teams/4/apps
+                  links:
+                    self: test.host/api/v1/teams/4
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              example:
+                name:
+                - can't be blank
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                team:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                required:
+                - name
+              required:
+              - team
+  "/v1/teams/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: show team
+      tags:
+      - Teams
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                data:
+                  id: '1'
+                  type: team
+                  attributes:
+                    name: Team1
+                    created_at: '2022-07-01T18:11:18.049Z'
+                    updated_at: '2022-07-01T18:11:18.049Z'
+                  relationships:
+                    owner:
+                      data:
+                        id: '830138774'
+                        type: user
+                      links:
+                        related: test.host/api/v1/users/830138774
+                    apps:
+                      data:
+                      - id: '1'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/1/apps
+                  links:
+                    self: test.host/api/v1/teams/1
+    patch:
+      summary: update team
+      tags:
+      - Teams
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                data:
+                  id: '1'
+                  type: team
+                  attributes:
+                    name: Team2
+                    created_at: '2022-07-01T18:11:18.049Z'
+                    updated_at: '2022-07-01T18:11:19.379Z'
+                  relationships:
+                    owner:
+                      data:
+                        id: '830138774'
+                        type: user
+                      links:
+                        related: test.host/api/v1/users/830138774
+                    apps:
+                      data:
+                      - id: '1'
+                        type: app
+                      links:
+                        related: test.host/api/v1/teams/1/apps
+                  links:
+                    self: test.host/api/v1/teams/1
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              example:
+                name:
+                - can't be blank
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                team:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                required:
+                - name
+              required:
+              - team
+    delete:
+      summary: delete team
+      tags:
+      - Teams
+      responses:
+        '204':
+          description: No Content
+  "/v1/users/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: show user
+      tags:
+      - Users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                data:
+                  id: '830138774'
+                  type: user
+                  attributes:
+                    name: John
+                    email: john@example.com
+                    created_at: '2022-07-01T18:11:18.013Z'
+                    updated_at: '2022-07-01T18:11:18.013Z'
+                  relationships:
+                    teams:
+                      data:
+                      - id: '1'
+                        type: team
+                      - id: '2'
+                        type: team
+                      links:
+                        related: test.host/api/v1/users/830138774/teams
+                  links:
+                    self: test.host/api/v1/users/830138774
+    patch:
+      summary: update user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                data:
+                  id: '830138774'
+                  type: user
+                  attributes:
+                    name: John
+                    email: john@example.com
+                    created_at: '2022-07-01T18:11:18.013Z'
+                    updated_at: '2022-07-01T18:11:18.013Z'
+                  relationships:
+                    teams:
+                      data:
+                      - id: '1'
+                        type: team
+                      - id: '2'
+                        type: team
+                      links:
+                        related: test.host/api/v1/users/830138774/teams
+                  links:
+                    self: test.host/api/v1/users/830138774
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              example:
+                name:
+                - can't be blank
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                required:
+                - name
+              required:
+              - user
 servers:
 - url: https://{defaultHost}
   variables:
