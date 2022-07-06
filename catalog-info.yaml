@@ -2,6 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: platform-console-api
+  title: Platform Console API
   description: API for creating and deploying applications on the VA Platform.
   annotations:
     github.com/project-slug: department-of-veterans-affairs/platform-console-api
