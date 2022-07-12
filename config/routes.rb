@@ -5,6 +5,8 @@ require 'authenticatable_constraint'
 
 # rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   resources :users, only: %i[show edit update]
   resources :audits, only: [:index]
 
