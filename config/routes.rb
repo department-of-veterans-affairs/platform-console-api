@@ -65,6 +65,12 @@ Rails.application.routes.draw do
   } do
     mount Flipper::UI.app(Flipper) => '/flipper'
     mount Sidekiq::Web => '/sidekiq'
+
+    post '/api-keys', to: 'api_keys#create'
+    delete '/api-keys', to: 'api_keys#destroy'
+    get '/api-keys', to: 'api_keys#index'
   end
+
+
 end
 # rubocop:enable Metrics/BlockLength
