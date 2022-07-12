@@ -9,28 +9,28 @@ gem 'rails', '~> 7.0.3'
 gem 'bcrypt',             '~> 3.1' # Use ActiveModel has_secure_password
 gem 'bootsnap',           '~> 1.12', require: false # Reduces boot times through caching; required in config/boot.rb
 gem 'ddtrace',            '~> 0.54', require: 'ddtrace/auto_instrument' # Datadog's tracing client for Ruby
-gem 'faraday-http-cache', '~> 2.3' # middleware that respects HTTP cache by checking expiration of the stored responses.
-gem 'flipper',            '~> 0.24' # Feature flipper for ANYTHING
-gem 'flipper-redis',      '~> 0.24' # Redis adapter for Flipper
-gem 'flipper-ui',         '~> 0.24' # UI for the Flipper gem
+gem 'faraday-http-cache', '~> 2.4' # middleware that respects HTTP cache by checking expiration of the stored responses.
+gem 'flipper',            '~> 0.25' # Feature flipper for ANYTHING
+gem 'flipper-redis',      '~> 0.25' # Redis adapter for Flipper
+gem 'flipper-ui',         '~> 0.25' # UI for the Flipper gem
 gem 'graphql-client',     '~> 0.18' # Ruby library for declaring, composing and executing GraphQL queries.
 gem 'jbuilder',           '~> 2.11' # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jsonapi-serializer', '~> 2.2'  # A fast JSON:API serializer for Ruby Objects.
-gem 'jwt',                '~> 2.3'  # Ruby implementation of the JWT standard
+gem 'jwt',                '~> 2.4'  # Ruby implementation of the JWT standard
 gem 'net-http',           '~> 0.2' # HTTP client api for Ruby
-gem 'octokit',            '~> 4.23'  # Ruby toolkit for the GitHub API.
+gem 'octokit',            '~> 4.25'  # Ruby toolkit for the GitHub API.
 gem 'omniauth-keycloak',  '~> 1.4'   # Keycloack SSO Oauth Strategy
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1' # Mitigates against CSRF in oauth flow
 gem 'pagy',               '~> 5.10'  # Agnostic pagination in plain ruby
 gem 'paper_trail',        '~> 12.3'  # Track changes to your models, for auditing or versioning
-gem 'pg',                 '~> 1.3'   # Use postgresql as the database for Active Record
+gem 'pg',                 '~> 1.4'   # Use postgresql as the database for Active Record
 gem 'puma',               '>= 5.6.4' # Use the Puma web server [https://github.com/puma/puma]
-gem 'redis',              '~> 4.6'   # Use Redis adapter to run Action Cable in production
+gem 'redis',              '~> 4.7'   # Use Redis adapter to run Action Cable in production
 gem 'rolify',             '~> 6.0'   # Simple Roles library
 gem 'rouge',              '~> 3.29'  # Pure Ruby syntax highlighter
 gem 'rubyzip',            '~> 2.3'   # Ruby library for reading and writing zip files.
-gem 'sidekiq',            '~> 6.4'   # Simple, efficient background processing for Ruby
-gem 'strong_migrations',  '~> 1.0'   # Catch potentially dangerous operations in migrations
+gem 'sidekiq',            '~> 6.5'   # Simple, efficient background processing for Ruby
+gem 'strong_migrations',  '~> 1.2'   # Catch potentially dangerous operations in migrations
 
 # Assets
 gem 'importmap-rails',    '~> 1.1' # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
