@@ -28,6 +28,8 @@ gem 'puma',               '>= 5.6.4' # Use the Puma web server [https://github.c
 gem 'redis',              '~> 4.7'   # Use Redis adapter to run Action Cable in production
 gem 'rolify',             '~> 6.0'   # Simple Roles library
 gem 'rouge',              '~> 3.29'  # Pure Ruby syntax highlighter
+gem 'rswag-api',          '~> 2.5.1' # Swagger library to help generate open API documentation
+gem 'rswag-ui',           '~> 2.5.1' # UI for rswag documentation
 gem 'rubyzip',            '~> 2.3'   # Ruby library for reading and writing zip files.
 gem 'sidekiq',            '~> 6.5'   # Simple, efficient background processing for Ruby
 gem 'strong_migrations',  '~> 1.2'   # Catch potentially dangerous operations in migrations
@@ -49,6 +51,8 @@ group :development, :test do
   gem 'bundler-audit'     # Provides patch-level verification for Bundled apps
   gem 'pry-awesome_print' # Auto AP in pry
   gem 'pry-rails'         # Adds pry, an interactive REPL debugger; Try show-models
+  gem 'rspec-rails'       # Testing framework, required for rswag-specs
+  gem 'rswag-specs'       # Rspec DSL that can generate open api docs directly from specs
   gem 'rubocop'           # Ruby Style Guide Analyzer
   gem 'rubocop-rails'     # Add Rails specific cops to RuboCop
 end

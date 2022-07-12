@@ -1,0 +1,91 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/jobs/7115360258
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.23.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token github_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 29 Jun 2022 17:15:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - W/"67dcbedffcb9010df01803803d6b513f7a3f66a6ed16fdbe43dda04625e8babc"
+      X-Oauth-Scopes:
+      - read:org, read:user, repo, workflow
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4874'
+      X-Ratelimit-Reset:
+      - '1656524272'
+      X-Ratelimit-Used:
+      - '126'
+      X-Ratelimit-Resource:
+      - core
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - C8F9:7764:83FD56:99A32D:62BC88A9
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":7115360258,"run_id":2584147683,"run_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/runs/2584147683","run_attempt":1,"node_id":"CR_kwDOGrBsB88AAAABqBvIAg","head_sha":"24a4854401b8fbaaa0037a09c1e970dd2993d63a","url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/actions/jobs/7115360258","html_url":"https://github.com/department-of-veterans-affairs/platform-console-api/runs/7115360258?check_suite_focus=true","status":"completed","conclusion":"success","started_at":"2022-06-29T15:42:56Z","completed_at":"2022-06-29T15:43:37Z","name":"Linting
+        and Security","steps":[{"name":"Set up job","status":"completed","conclusion":"success","number":1,"started_at":"2022-06-29T08:42:55.000-07:00","completed_at":"2022-06-29T08:42:57.000-07:00"},{"name":"Run
+        actions/checkout@v2","status":"completed","conclusion":"success","number":2,"started_at":"2022-06-29T08:42:57.000-07:00","completed_at":"2022-06-29T08:42:58.000-07:00"},{"name":"Run
+        ruby/setup-ruby@v1","status":"completed","conclusion":"success","number":3,"started_at":"2022-06-29T08:42:59.000-07:00","completed_at":"2022-06-29T08:43:25.000-07:00"},{"name":"Run
+        bundle-audit (checks gems for CVE issues)","status":"completed","conclusion":"success","number":4,"started_at":"2022-06-29T08:43:25.000-07:00","completed_at":"2022-06-29T08:43:27.000-07:00"},{"name":"Run
+        Rubocop","status":"completed","conclusion":"success","number":5,"started_at":"2022-06-29T08:43:27.000-07:00","completed_at":"2022-06-29T08:43:31.000-07:00"},{"name":"Run
+        Brakeman","status":"completed","conclusion":"success","number":6,"started_at":"2022-06-29T08:43:31.000-07:00","completed_at":"2022-06-29T08:43:35.000-07:00"},{"name":"Run
+        actions/upload-artifact@v2","status":"completed","conclusion":"success","number":7,"started_at":"2022-06-29T08:43:35.000-07:00","completed_at":"2022-06-29T08:43:35.000-07:00"},{"name":"Post
+        Run actions/checkout@v2","status":"completed","conclusion":"success","number":14,"started_at":"2022-06-29T08:43:36.000-07:00","completed_at":"2022-06-29T08:43:36.000-07:00"},{"name":"Complete
+        job","status":"completed","conclusion":"success","number":15,"started_at":"2022-06-29T08:43:36.000-07:00","completed_at":"2022-06-29T08:43:36.000-07:00"}],"check_run_url":"https://api.github.com/repos/department-of-veterans-affairs/platform-console-api/check-runs/7115360258","labels":["ubuntu-20.04"],"runner_id":14,"runner_name":"GitHub
+        Actions 14","runner_group_id":2,"runner_group_name":"GitHub Actions"}'
+  recorded_at: Wed, 29 Jun 2022 17:15:21 GMT
+recorded_with: VCR 6.1.0
