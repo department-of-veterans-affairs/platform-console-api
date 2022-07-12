@@ -27,9 +27,9 @@ This has been tested on macOS Monterey using Ruby 3.1 and PG 14.1.
 
 This repository uses semantic releases triggered via Github Actions. When committing to the master branch, a semantic release will be triggered via Github Actions, but the commit message must follow the syntax in the [semantic release documentation](https://github.com/semantic-release/semantic-release#how-does-it-work).
 
-### Examples:
+### Examples
 
-```
+```text
 1. feat: add my feature
 2. fix: fix the bug
 3. BREAKING CHANGE: fix the breaking change
@@ -38,13 +38,13 @@ This repository uses semantic releases triggered via Github Actions. When commit
 
 ## Migrations
 
-### Schema migrations:
+### Schema migrations
 
 All schema migrations are run automatically upon a successful semantic release and deploy. The initContainers configuration in the platform-console-api k8s deployment spec will start and execute migrations before the other containers in the pod start.
 
-### Data Migrations:
+### Data Migrations
 
-All data migrations will need to be run via a manual process. 
+All data migrations will need to be run via a manual process.
 
 ## Running tests
 
@@ -75,7 +75,7 @@ Instructions for running and initializing Keycloak locally:
   bin/keycloak
 
   This will create a keycloak database, docker image, and a docker container (Keycloak).
-  You can access keycloak at http://localhost:8080
+  You can access keycloak at <http://localhost:8080>
 
   Keycloak ADMIN credentials:
   Create Realms:
