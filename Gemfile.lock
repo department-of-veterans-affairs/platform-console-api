@@ -194,7 +194,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
-    octokit (4.25.1)
+    octokit (5.0.0)
       faraday (>= 1, < 3)
       sawyer (~> 0.9)
     omniauth (2.1.0)
@@ -413,7 +413,7 @@ DEPENDENCIES
   jwt (~> 2.4)
   minitest-ci
   net-http (~> 0.2)
-  octokit (~> 4.25)
+  octokit (~> 5.0)
   omniauth-keycloak (~> 1.4)
   omniauth-rails_csrf_protection (~> 1.0.1)
   pagy (~> 5.10)
