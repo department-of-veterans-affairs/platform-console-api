@@ -1,0 +1,106 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8080/api/v1/applications?name=guestbook
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer adjsfajskdfjkasdfjklasfjkld
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 09 Mar 2022 16:14:30 GMT
+      Content-Length:
+      - '79'
+    body:
+      encoding: UTF-8
+      string: '{"error":"no session information","code":16,"message":"no session information"}'
+  recorded_at: Wed, 09 Mar 2022 16:14:30 GMT
+- request:
+    method: post
+    uri: http://localhost:8080/api/v1/session
+    body:
+      encoding: UTF-8
+      string: '{"username":"test_user","password":"password"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Grpc-Metadata-Content-Type:
+      - application/grpc
+      Set-Cookie:
+      - argocd.token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDY5MzEwNDUsImp0aSI6IjQ2N2IzZGZmLWFmYTMtNGEyYy05ZmQ1LWE3YTY5NjgyZjZlZSIsImlhdCI6MTY0Njg0NDY0NSwiaXNzIjoiYXJnb2NkIiwibmJmIjoxNjQ2ODQ0NjQ1LCJzdWIiOiJ0ZXN0X3VzZXI6bG9naW4ifQ.1w-MNscp6H9YxlT-ie8k7Wr3ESmwl57UkA9-HmZk7UQ;
+        path=/; SameSite=lax; httpOnly
+      Date:
+      - Wed, 09 Mar 2022 16:50:45 GMT
+      Content-Length:
+      - '275'
+    body:
+      encoding: UTF-8
+      string: '{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDY5MzEwNDUsImp0aSI6IjQ2N2IzZGZmLWFmYTMtNGEyYy05ZmQ1LWE3YTY5NjgyZjZlZSIsImlhdCI6MTY0Njg0NDY0NSwiaXNzIjoiYXJnb2NkIiwibmJmIjoxNjQ2ODQ0NjQ1LCJzdWIiOiJ0ZXN0X3VzZXI6bG9naW4ifQ.1w-MNscp6H9YxlT-ie8k7Wr3ESmwl57UkA9-HmZk7UQ"}'
+  recorded_at: Wed, 09 Mar 2022 16:50:45 GMT
+- request:
+    method: get
+    uri: http://argocd.local.com/api/v1/applications?name=guestbook
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer bad_token
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - argocd.local.com
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 29 Mar 2022 16:55:57 GMT
+      Content-Length:
+      - '79'
+    body:
+      encoding: UTF-8
+      string: '{"error":"no session information","code":16,"message":"no session information"}'
+  recorded_at: Tue, 29 Mar 2022 16:55:57 GMT
+recorded_with: VCR 6.0.0

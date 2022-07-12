@@ -13,7 +13,7 @@ module Github
         redirect_to team_app_deploy_path(@team, @app, deploy_workflow.id) if deploy_workflow
       else
         @current_page = params.fetch(:page, 1)
-        @github_workflows = @github_repository.workflows[:workflows]
+        @github_workflows = @github_repository.workflows[:objects]
         set_pages
       end
     end
@@ -24,7 +24,7 @@ module Github
       @all_workflows = if request.path.include?('deploy')
                          [@github_repository.deploy_workflow(@app.deploy_workflow)]
                        else
-                         @github_repository.workflows[:workflows]
+                         @github_repository.workflows[:objects]
                        end
       @github_workflow_runs = @github_workflow.workflow_runs(params[:page] || 1, { branch: params[:ref] }).to_h
       set_pages

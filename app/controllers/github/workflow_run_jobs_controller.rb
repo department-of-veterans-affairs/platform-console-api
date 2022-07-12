@@ -9,7 +9,7 @@ module Github
     def show
       @github_workflow_run = Github::WorkflowRun.new(current_user.github_token, @app.github_repo,
                                                      @github_workflow_run_job.github.run_id, @app.id)
-      @all_jobs = @github_workflow_run.jobs
+      @all_jobs = @github_workflow_run.jobs[:objects]
     end
 
     private

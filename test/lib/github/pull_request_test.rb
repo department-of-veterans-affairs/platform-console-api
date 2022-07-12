@@ -36,20 +36,20 @@ module Github
 
     test 'lists workflow runs for the pull request branch' do
       VCR.use_cassette('github/pull_request', record: :new_episodes) do
-        workflow_runs = @pull_request.workflow_runs.workflow_runs
+        workflow_runs = @pull_request.workflow_runs[:objects]
         assert_kind_of Array, workflow_runs
-        assert_not_nil workflow_runs.first.workflow_id
+        assert_not_nil workflow_runs.first.github.workflow_id
       end
     end
 
     test 'lists all pull_requests for a repository' do
       VCR.use_cassette('github/pull_request', record: :new_episodes) do
         pull_requests = Github::PullRequest.all(
-          ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/vets-api'
-        )[:pull_requests]
+          ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/vets-api', 1
+        )[:objects]
 
         assert_kind_of Array, pull_requests
-        assert_not_nil pull_requests.first.number
+        assert_not_nil pull_requests.first.github.number
       end
     end
   end

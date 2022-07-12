@@ -8,6 +8,7 @@ module Github
   class WorkflowRun
     include Github::Pagination
     include Github::Inspect
+    include Github::Collection
 
     attr_accessor :access_token, :repo, :id, :app_id
 
@@ -34,13 +35,13 @@ module Github
       #
       # @return [Sawyer::Resource] Workflow Runs
       # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs
-      def all_for_workflow(access_token, repo, workflow_id, page = 1, options = {})
+      def all_for_workflow(access_token, repo, app_id, workflow_id, page = 1, options = {})
         options[:page] = page
         octokit_client = Octokit::Client.new(access_token: access_token)
         response = octokit_client.workflow_runs(repo, workflow_id, options)
+        pages = page_numbers(octokit_client)
 
-        response[:pages] = page_numbers(octokit_client)
-        response
+        transform_collection_response(response.workflow_runs, pages, repo, app_id)
       end
       alias all_for_deploy all_for_workflow
 
@@ -52,12 +53,12 @@ module Github
       #
       # @return [Sawyer::Resource] Workflow Runs
       # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs-for-a-repository
-      def all_for_branch(access_token, repo, branch_name, page = 1)
+      def all_for_branch(access_token, repo, app_id, branch_name, page = 1)
         octokit_client = Octokit::Client.new(access_token: access_token)
         response = octokit_client.repository_workflow_runs(repo, branch: branch_name, page: page)
+        pages = page_numbers(octokit_client)
 
-        response[:pages] = page_numbers(octokit_client)
-        response
+        transform_collection_response(response.workflow_runs, pages, repo, app_id)
       end
 
       # List all Workflow Runs associated to a Repository
@@ -67,12 +68,12 @@ module Github
       #
       # @return [Sawyer::Resource] Workflow Runs
       # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs-for-a-repository
-      def all(access_token, repo, page = 1)
+      def all(access_token, repo, app_id, page = 1)
         octokit_client = Octokit::Client.new(access_token: access_token)
         response = octokit_client.repository_workflow_runs(repo, page: page)
+        pages = page_numbers(octokit_client)
 
-        response[:pages] = page_numbers(octokit_client)
-        response
+        transform_collection_response(response.workflow_runs, pages, repo, app_id)
       end
     end
 
@@ -97,11 +98,11 @@ module Github
     # @return [Sawyer::Resource] Workflows Run Jobs
     # @see https://docs.github.com/en/rest/reference/actions#re-run-a-workflow
     def jobs
-      Github::WorkflowRunJob.all_for_workflow_run(access_token, repo, id)
+      Github::WorkflowRunJob.all_for_workflow_run(access_token, repo, app_id, id)
     end
 
     def jobs_ids
-      jobs.jobs.pluck(:id)
+      jobs[:objects].pluck(:id)
     end
 
     delegate :workflow_id, to: :github

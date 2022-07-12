@@ -1,0 +1,209 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.23.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token github_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 09 Jun 2022 21:59:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - W/"d14cc6ce5d1b6cb1e9710e336206e16a4ca785849aa380d7c02a69e58bc11de5"
+      X-Oauth-Scopes:
+      - admin:org, repo
+      X-Accepted-Oauth-Scopes:
+      - ''
+      Github-Authentication-Token-Expiration:
+      - 2022-07-07 20:28:26 UTC
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4952'
+      X-Ratelimit-Reset:
+      - '1654812582'
+      X-Ratelimit-Used:
+      - '48'
+      X-Ratelimit-Resource:
+      - core
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - ECE3:4A4C:B53572:193641A:62A26D5A
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":5204164825,"run_id":1848333333,"run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333","run_attempt":1,"node_id":"CR_kwDOA7hKyc8AAAABNjFA2Q","head_sha":"4be7b708db46716631e0eb62da647fab5bdbf97a","url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825","html_url":"https://github.com/department-of-veterans-affairs/vets-api/runs/5204164825","status":"completed","conclusion":"success","started_at":"2022-02-15T17:11:18Z","completed_at":"2022-02-15T17:11:18Z","name":"Coverage","steps":[],"check_run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/check-runs/5204164825","labels":[],"runner_id":null,"runner_name":null,"runner_group_id":null,"runner_group_name":null}'
+  recorded_at: Thu, 09 Jun 2022 21:59:53 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333/jobs?page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 4.23.0
+      Accept:
+      - application/vnd.github.v3+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - token github_token
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 09 Jun 2022 21:59:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - W/"a1c07b6a9d8ae5e7de0fe7ec79608b18a127c60744e7ae352e7f3b1d51fd50bd"
+      X-Oauth-Scopes:
+      - admin:org, repo
+      X-Accepted-Oauth-Scopes:
+      - ''
+      Github-Authentication-Token-Expiration:
+      - 2022-07-07 20:28:26 UTC
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4951'
+      X-Ratelimit-Reset:
+      - '1654812582'
+      X-Ratelimit-Used:
+      - '49'
+      X-Ratelimit-Resource:
+      - core
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - ECE4:65D7:90F42B:187F96A:62A26D5A
+    body:
+      encoding: ASCII-8BIT
+      string: '{"total_count":5,"jobs":[{"id":5204071637,"run_id":1848333333,"run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333","run_attempt":1,"node_id":"CR_kwDOA7hKyc8AAAABNi_U1Q","head_sha":"4be7b708db46716631e0eb62da647fab5bdbf97a","url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204071637","html_url":"https://github.com/department-of-veterans-affairs/vets-api/runs/5204071637?check_suite_focus=true","status":"completed","conclusion":"failure","started_at":"2022-02-15T17:05:07Z","completed_at":"2022-02-15T17:09:59Z","name":"Test","steps":[{"name":"Set
+        up job","status":"completed","conclusion":"success","number":1,"started_at":"2022-02-15T10:05:07.000-07:00","completed_at":"2022-02-15T10:05:11.000-07:00"},{"name":"Run
+        actions/checkout@v2","status":"completed","conclusion":"success","number":2,"started_at":"2022-02-15T10:05:11.000-07:00","completed_at":"2022-02-15T10:05:27.000-07:00"},{"name":"Run
+        docker/login-action@v1","status":"completed","conclusion":"success","number":3,"started_at":"2022-02-15T10:05:27.000-07:00","completed_at":"2022-02-15T10:05:28.000-07:00"},{"name":"Setup
+        Environment","status":"completed","conclusion":"success","number":4,"started_at":"2022-02-15T10:05:28.000-07:00","completed_at":"2022-02-15T10:05:28.000-07:00"},{"name":"Setup
+        Docker","status":"completed","conclusion":"success","number":5,"started_at":"2022-02-15T10:05:28.000-07:00","completed_at":"2022-02-15T10:05:28.000-07:00"},{"name":"Build
+        Docker Image","status":"completed","conclusion":"success","number":6,"started_at":"2022-02-15T10:05:28.000-07:00","completed_at":"2022-02-15T10:05:29.000-07:00"},{"name":"Setup
+        Database","status":"completed","conclusion":"success","number":7,"started_at":"2022-02-15T10:05:29.000-07:00","completed_at":"2022-02-15T10:06:05.000-07:00"},{"name":"Run
+        Specs","status":"completed","conclusion":"failure","number":8,"started_at":"2022-02-15T10:06:05.000-07:00","completed_at":"2022-02-15T10:09:45.000-07:00"},{"name":"Upload
+        Coverage Report","status":"completed","conclusion":"success","number":9,"started_at":"2022-02-15T10:09:45.000-07:00","completed_at":"2022-02-15T10:09:55.000-07:00"},{"name":"Upload
+        Test Results","status":"completed","conclusion":"success","number":10,"started_at":"2022-02-15T10:09:55.000-07:00","completed_at":"2022-02-15T10:09:58.000-07:00"},{"name":"Cleanup","status":"completed","conclusion":"success","number":11,"started_at":"2022-02-15T10:09:58.000-07:00","completed_at":"2022-02-15T10:09:58.000-07:00"},{"name":"Post
+        Build Docker Image","status":"completed","conclusion":"success","number":20,"started_at":"2022-02-15T10:09:58.000-07:00","completed_at":"2022-02-15T10:09:58.000-07:00"},{"name":"Post
+        Run docker/login-action@v1","status":"completed","conclusion":"success","number":21,"started_at":"2022-02-15T10:09:58.000-07:00","completed_at":"2022-02-15T10:09:59.000-07:00"},{"name":"Post
+        Run actions/checkout@v2","status":"completed","conclusion":"success","number":22,"started_at":"2022-02-15T10:09:59.000-07:00","completed_at":"2022-02-15T10:09:59.000-07:00"},{"name":"Complete
+        job","status":"completed","conclusion":"success","number":23,"started_at":"2022-02-15T10:09:59.000-07:00","completed_at":"2022-02-15T10:09:59.000-07:00"}],"check_run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/check-runs/5204071637","labels":["asg"],"runner_id":2881,"runner_name":"0kCQ89i-0f5443ce6c9e667af","runner_group_id":1,"runner_group_name":"Default"},{"id":5204071774,"run_id":1848333333,"run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333","run_attempt":1,"node_id":"CR_kwDOA7hKyc8AAAABNi_VXg","head_sha":"4be7b708db46716631e0eb62da647fab5bdbf97a","url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204071774","html_url":"https://github.com/department-of-veterans-affairs/vets-api/runs/5204071774?check_suite_focus=true","status":"completed","conclusion":"success","started_at":"2022-02-15T17:05:17Z","completed_at":"2022-02-15T17:07:50Z","name":"Linting
+        and Security","steps":[{"name":"Set up job","status":"completed","conclusion":"success","number":1,"started_at":"2022-02-15T10:05:17.000-07:00","completed_at":"2022-02-15T10:05:19.000-07:00"},{"name":"Run
+        actions/checkout@v2","status":"completed","conclusion":"success","number":2,"started_at":"2022-02-15T10:05:19.000-07:00","completed_at":"2022-02-15T10:05:34.000-07:00"},{"name":"Run
+        ruby/setup-ruby@v1","status":"completed","conclusion":"success","number":3,"started_at":"2022-02-15T10:05:34.000-07:00","completed_at":"2022-02-15T10:05:41.000-07:00"},{"name":"Run
+        bundle-audit (checks gems for CVE issues)","status":"completed","conclusion":"success","number":4,"started_at":"2022-02-15T10:05:41.000-07:00","completed_at":"2022-02-15T10:05:43.000-07:00"},{"name":"Run
+        Rubocop","status":"completed","conclusion":"success","number":5,"started_at":"2022-02-15T10:05:43.000-07:00","completed_at":"2022-02-15T10:07:29.000-07:00"},{"name":"Run
+        Brakeman","status":"completed","conclusion":"success","number":6,"started_at":"2022-02-15T10:07:29.000-07:00","completed_at":"2022-02-15T10:07:49.000-07:00"},{"name":"Run
+        actions/upload-artifact@v2","status":"completed","conclusion":"success","number":7,"started_at":"2022-02-15T10:07:49.000-07:00","completed_at":"2022-02-15T10:07:50.000-07:00"},{"name":"Post
+        Run actions/checkout@v2","status":"completed","conclusion":"success","number":14,"started_at":"2022-02-15T10:07:50.000-07:00","completed_at":"2022-02-15T10:07:50.000-07:00"},{"name":"Complete
+        job","status":"completed","conclusion":"success","number":15,"started_at":"2022-02-15T10:07:50.000-07:00","completed_at":"2022-02-15T10:07:50.000-07:00"}],"check_run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/check-runs/5204071774","labels":["ubuntu-20.04"],"runner_id":15,"runner_name":"GitHub
+        Actions 15","runner_group_id":2,"runner_group_name":"GitHub Actions"},{"id":5204146623,"run_id":1848333333,"run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333","run_attempt":1,"node_id":"CR_kwDOA7hKyc8AAAABNjD5vw","head_sha":"4be7b708db46716631e0eb62da647fab5bdbf97a","url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204146623","html_url":"https://github.com/department-of-veterans-affairs/vets-api/runs/5204146623?check_suite_focus=true","status":"completed","conclusion":"success","started_at":"2022-02-15T17:10:14Z","completed_at":"2022-02-15T17:11:34Z","name":"Publish
+        Results","steps":[{"name":"Set up job","status":"completed","conclusion":"success","number":1,"started_at":"2022-02-15T10:10:14.000-07:00","completed_at":"2022-02-15T10:10:18.000-07:00"},{"name":"Pull
+        ghcr.io/enricomi/publish-unit-test-result-action:v1","status":"completed","conclusion":"success","number":2,"started_at":"2022-02-15T10:10:18.000-07:00","completed_at":"2022-02-15T10:10:22.000-07:00"},{"name":"Build
+        devmasx/brakeman-linter-action@v1.0.0","status":"completed","conclusion":"success","number":3,"started_at":"2022-02-15T10:10:22.000-07:00","completed_at":"2022-02-15T10:10:36.000-07:00"},{"name":"Build
+        devmasx/coverage-check-action@v1.2.0","status":"completed","conclusion":"success","number":4,"started_at":"2022-02-15T10:10:36.000-07:00","completed_at":"2022-02-15T10:10:40.000-07:00"},{"name":"Run
+        actions/checkout@v2","status":"completed","conclusion":"success","number":5,"started_at":"2022-02-15T10:10:40.000-07:00","completed_at":"2022-02-15T10:10:54.000-07:00"},{"name":"Run
+        ruby/setup-ruby@v1","status":"completed","conclusion":"success","number":6,"started_at":"2022-02-15T10:10:54.000-07:00","completed_at":"2022-02-15T10:11:02.000-07:00"},{"name":"Run
+        actions/download-artifact@v2","status":"completed","conclusion":"success","number":7,"started_at":"2022-02-15T10:11:02.000-07:00","completed_at":"2022-02-15T10:11:12.000-07:00"},{"name":"Run
+        duderman/rubocop-annotate-action@v0.1.0","status":"completed","conclusion":"success","number":8,"started_at":"2022-02-15T10:11:12.000-07:00","completed_at":"2022-02-15T10:11:12.000-07:00"},{"name":"Run
+        devmasx/brakeman-linter-action@v1.0.0","status":"completed","conclusion":"skipped","number":9,"started_at":"2022-02-15T10:11:12.000-07:00","completed_at":"2022-02-15T10:11:12.000-07:00"},{"name":"Publish
+        Test Results to GitHub","status":"completed","conclusion":"success","number":10,"started_at":"2022-02-15T10:11:12.000-07:00","completed_at":"2022-02-15T10:11:18.000-07:00"},{"name":"Fix
+        up coverage report to work with coverage-check-action","status":"completed","conclusion":"success","number":11,"started_at":"2022-02-15T10:11:18.000-07:00","completed_at":"2022-02-15T10:11:18.000-07:00"},{"name":"Publish
+        Coverage Report to GitHub","status":"completed","conclusion":"success","number":12,"started_at":"2022-02-15T10:11:18.000-07:00","completed_at":"2022-02-15T10:11:19.000-07:00"},{"name":"Configure
+        AWS Credentials","status":"completed","conclusion":"success","number":13,"started_at":"2022-02-15T10:11:19.000-07:00","completed_at":"2022-02-15T10:11:20.000-07:00"},{"name":"Set
+        BIGQUERY_SERVICE_CREDENTIALS Environment Variable","status":"completed","conclusion":"success","number":14,"started_at":"2022-02-15T10:11:20.000-07:00","completed_at":"2022-02-15T10:11:20.000-07:00"},{"name":"Set
+        up Cloud SDK","status":"completed","conclusion":"success","number":15,"started_at":"2022-02-15T10:11:20.000-07:00","completed_at":"2022-02-15T10:11:30.000-07:00"},{"name":"Push
+        unit test data to BigQuery","status":"completed","conclusion":"success","number":16,"started_at":"2022-02-15T10:11:30.000-07:00","completed_at":"2022-02-15T10:11:33.000-07:00"},{"name":"Post
+        Set up Cloud SDK","status":"completed","conclusion":"success","number":30,"started_at":"2022-02-15T10:11:33.000-07:00","completed_at":"2022-02-15T10:11:33.000-07:00"},{"name":"Post
+        Configure AWS Credentials","status":"completed","conclusion":"success","number":31,"started_at":"2022-02-15T10:11:33.000-07:00","completed_at":"2022-02-15T10:11:33.000-07:00"},{"name":"Post
+        Run actions/checkout@v2","status":"completed","conclusion":"success","number":32,"started_at":"2022-02-15T10:11:33.000-07:00","completed_at":"2022-02-15T10:11:34.000-07:00"},{"name":"Complete
+        job","status":"completed","conclusion":"success","number":33,"started_at":"2022-02-15T10:11:34.000-07:00","completed_at":"2022-02-15T10:11:34.000-07:00"}],"check_run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/check-runs/5204146623","labels":["ubuntu-20.04"],"runner_id":12,"runner_name":"GitHub
+        Actions 12","runner_group_id":2,"runner_group_name":"GitHub Actions"},{"id":5204164523,"run_id":1848333333,"run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333","run_attempt":1,"node_id":"CR_kwDOA7hKyc8AAAABNjE_qw","head_sha":"4be7b708db46716631e0eb62da647fab5bdbf97a","url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164523","html_url":"https://github.com/department-of-veterans-affairs/vets-api/runs/5204164523","status":"completed","conclusion":"failure","started_at":"2022-02-15T17:11:17Z","completed_at":"2022-02-15T17:11:17Z","name":"Test
+        Results","steps":[],"check_run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/check-runs/5204164523","labels":[],"runner_id":null,"runner_name":null,"runner_group_id":null,"runner_group_name":null},{"id":5204164825,"run_id":1848333333,"run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/runs/1848333333","run_attempt":1,"node_id":"CR_kwDOA7hKyc8AAAABNjFA2Q","head_sha":"4be7b708db46716631e0eb62da647fab5bdbf97a","url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/actions/jobs/5204164825","html_url":"https://github.com/department-of-veterans-affairs/vets-api/runs/5204164825","status":"completed","conclusion":"success","started_at":"2022-02-15T17:11:18Z","completed_at":"2022-02-15T17:11:18Z","name":"Coverage","steps":[],"check_run_url":"https://api.github.com/repos/department-of-veterans-affairs/vets-api/check-runs/5204164825","labels":[],"runner_id":null,"runner_name":null,"runner_group_id":null,"runner_group_name":null}]}'
+  recorded_at: Thu, 09 Jun 2022 21:59:54 GMT
+recorded_with: VCR 6.1.0

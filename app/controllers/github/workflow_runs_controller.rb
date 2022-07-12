@@ -8,12 +8,12 @@ module Github
 
     # GET /github/workflow_runs or /github/workflow_runs.json
     def index
-      @github_workflow_runs = Github::WorkflowRun.all(current_user.github_token, @github_repository.repo)
+      @github_workflow_runs = Github::WorkflowRun.all(current_user.github_token, @github_repository.repo, @app.id)
     end
 
     # GET /github/workflow_runs/1 or /github/workflow_runs/1.json
     def show
-      @jobs = @github_workflow_run.jobs
+      @jobs = @github_workflow_run.jobs[:objects]
     end
 
     def new; end
@@ -75,7 +75,7 @@ module Github
         @all_workflows = [workflow.github]
         @inputs = workflow.inputs
       else
-        @all_workflows = @github_repository.workflows[:workflows]
+        @all_workflows = @github_repository.workflows[:objects]
       end
     end
   end
