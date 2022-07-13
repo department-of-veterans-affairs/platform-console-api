@@ -24,7 +24,7 @@ class UserApiKeysController < ApplicationController
   def destroy
     @user_api_key.destroy
     respond_to do |format|
-      format.html { redirect_to user_api_keys_path(current_user), notice: 'API key was successfully destroyed.' }
+      format.html { redirect_to user_api_keys_path(current_user) }
     end
   end
 

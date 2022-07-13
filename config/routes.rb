@@ -71,8 +71,7 @@ Rails.application.routes.draw do
     mount Flipper::UI.app(Flipper) => '/flipper'
     mount Sidekiq::Web => '/sidekiq'
 
-    delete '/api-keys', to: 'api_keys#destroy'
-    get '/api-keys', to: 'api_keys#index'
+    resources :api_keys, only: %i[index destroy]
   end
 end
 # rubocop:enable Metrics/BlockLength
