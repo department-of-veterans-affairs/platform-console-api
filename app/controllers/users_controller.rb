@@ -3,7 +3,7 @@
 # Handles creating users which will own apps
 class UsersController < ApplicationController
   before_action :authorize_session!
-  before_action :set_user, only: %i[show edit update destroy_api_key create_api_key]
+  before_action :set_user, only: %i[show edit update]
   before_action :authorize_user!
 
   # GET /users/1/show
@@ -25,25 +25,6 @@ class UsersController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  def create_api_key
-    token = ApiKey.generate_token
-    respond_to do |format|
-      if @user.api_keys.create(token: token)
-        format.html { redirect_to edit_user_url(@user), notice: 'API key was successfully created' }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy_api_key
-    api_key = @user.api_keys.find(params[:api_key_id])
-    api_key.destroy
-    respond_to do |format|
-      format.html { redirect_to edit_user_url(@user), notice: 'API key was successfully destroyed.' }
     end
   end
 

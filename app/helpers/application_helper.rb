@@ -81,6 +81,7 @@ module ApplicationHelper
   def nav_links_drop
     nav_links_drop_admin + [
       { name: I18n.t('navbar.drop.settings'), path: edit_user_path(current_user) },
+      { name: I18n.t('navbar.drop.settings'), path: user_api_keys_path(current_user) },
       { name: I18n.t('navbar.drop.sign_out'), path: '/logout' }
     ]
   end

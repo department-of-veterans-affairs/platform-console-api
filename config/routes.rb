@@ -7,9 +7,10 @@ require 'authenticatable_constraint'
 Rails.application.routes.draw do
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
-  resources :users, only: %i[show edit update]
-  post '/users/:id/api-keys', to: 'users#create_api_key'
-  delete '/users/:id/api-keys/:api_key_id', to: 'users#destroy_api_key'
+  resources :users, only: %i[show edit update] do
+    resources :api_keys, only: %i[index create destroy], controller: 'user_api_keys'
+  end
+
   resources :audits, only: [:index]
 
   scope module: :api do
