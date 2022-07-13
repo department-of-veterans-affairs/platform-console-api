@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Create ApiKeys table
 class CreateApiKeys < ActiveRecord::Migration[7.0]
   def change
     create_table :api_keys do |t|
@@ -7,7 +10,7 @@ class CreateApiKeys < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
-    add_index :api_keys, [:bearer_id, :bearer_type]
+    add_index :api_keys, %i[bearer_id bearer_type]
     add_index :api_keys, :token, unique: true
   end
 end

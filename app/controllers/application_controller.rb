@@ -3,6 +3,7 @@
 # Base controller that all controllers inherits= from.
 class ApplicationController < ActionController::Base
   include Authenticatable
+  include ApiKeyAuthenticable
   include Pagy::Backend
   before_action :set_paper_trail_whodunnit
 

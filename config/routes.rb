@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   resources :users, only: %i[show edit update]
+  post '/users/:id/api-keys', to: 'users#create_api_key'
+  delete '/users/:id/api-keys/:api_key_id', to: 'users#destroy_api_key'
   resources :audits, only: [:index]
 
   scope module: :api do
@@ -68,11 +70,8 @@ Rails.application.routes.draw do
     mount Flipper::UI.app(Flipper) => '/flipper'
     mount Sidekiq::Web => '/sidekiq'
 
-    post '/api-keys', to: 'api_keys#create'
     delete '/api-keys', to: 'api_keys#destroy'
     get '/api-keys', to: 'api_keys#index'
   end
-
-
 end
 # rubocop:enable Metrics/BlockLength
