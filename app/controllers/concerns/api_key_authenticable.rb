@@ -20,7 +20,6 @@ module ApiKeyAuthenticable
 
   def authenticator(http_token, _options)
     @current_api_key = ApiKey.find_by token: http_token
-
     current_api_key&.bearer
   end
 end
