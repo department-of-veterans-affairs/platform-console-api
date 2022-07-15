@@ -6,6 +6,7 @@ module Api
   module V1
     # Handles creating deployments which are owned by an app
     class DeploymentsController < ApplicationController
+      before_action :authenticate_with_api_key!
       before_action :set_app, :set_team
       before_action :set_deployment, only: %i[show update destroy]
 

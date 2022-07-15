@@ -4,6 +4,7 @@ module Api
   module V1
     # Handles creating users which will own apps
     class UsersController < ApplicationController
+      before_action :authenticate_with_api_key!
       before_action :set_user, only: %i[show update]
 
       # GET /v1/users/:id

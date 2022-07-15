@@ -5,7 +5,7 @@ module Api
     module Github
       # Base controller of shared methods for classes in Github Module
       class BaseController < ApplicationController
-        before_action :authorize_session!
+        before_action :authenticate_with_api_key!
         before_action :set_team
         before_action :set_app
         before_action :set_github_repository

@@ -3,11 +3,9 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/teams', type: :request do
-  fixtures :users, :teams
-
   before(:each) do
     @user = users(:john)
-    setup_omniauth_mock(@user)
+    @api_key = @user.api_keys.first.token
     VCR.insert_cassette('rswag/teams')
   end
 
@@ -16,8 +14,12 @@ RSpec.describe 'api/v1/teams', type: :request do
   end
 
   path '/v1/teams' do
+    let(:Authorization) { "Bearer #{@api_key}" }
+
     get('list teams') do
       tags 'Teams'
+      consumes 'application/json'
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end
@@ -26,6 +28,7 @@ RSpec.describe 'api/v1/teams', type: :request do
     post('create team') do
       tags 'Teams'
       consumes 'application/json'
+      security [Bearer: []]
       parameter name: :params, in: :body, schema: {
         type: :object,
         properties: {
@@ -34,8 +37,7 @@ RSpec.describe 'api/v1/teams', type: :request do
             properties: {
               name: { type: :string }
             }
-          },
-          required: %w[name]
+          }
         },
         required: %w[team]
       }
@@ -56,9 +58,12 @@ RSpec.describe 'api/v1/teams', type: :request do
     parameter name: 'id', in: :path, type: :integer, description: 'id'
 
     let(:id) { teams(:one).id }
+    let(:Authorization) { "Bearer #{@api_key}" }
 
     get('show team') do
       tags 'Teams'
+      consumes 'application/json'
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end
@@ -67,6 +72,7 @@ RSpec.describe 'api/v1/teams', type: :request do
     patch('update team') do
       tags 'Teams'
       consumes 'application/json'
+      security [Bearer: []]
       parameter name: :params, in: :body, schema: {
         type: :object,
         properties: {
@@ -75,8 +81,7 @@ RSpec.describe 'api/v1/teams', type: :request do
             properties: {
               name: { type: :string }
             }
-          },
-          required: %w[name]
+          }
         },
         required: %w[team]
       }
@@ -94,6 +99,8 @@ RSpec.describe 'api/v1/teams', type: :request do
 
     delete('delete team') do
       tags 'Teams'
+      consumes 'application/json'
+      security [Bearer: []]
       response(204, 'No Content') do
         run_test!
       end

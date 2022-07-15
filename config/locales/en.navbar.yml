@@ -6,6 +6,8 @@ en:
       settings: Settings
       sidekiq: Sidekiq
       sign_out: Sign out
+      api_keys: API Keys
+      admin_api_keys: Manage All API Keys
     support: Support
     teams: Teams
     datadog: Datadog

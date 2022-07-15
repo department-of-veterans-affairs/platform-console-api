@@ -7,7 +7,10 @@ require 'authenticatable_constraint'
 Rails.application.routes.draw do
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
-  resources :users, only: %i[show edit update]
+  resources :users, only: %i[show edit update] do
+    resources :api_keys, only: %i[index create destroy], controller: 'user_api_keys'
+  end
+
   resources :audits, only: [:index]
 
   scope module: :api do
@@ -67,6 +70,8 @@ Rails.application.routes.draw do
   } do
     mount Flipper::UI.app(Flipper) => '/flipper'
     mount Sidekiq::Web => '/sidekiq'
+
+    resources :api_keys, only: %i[index destroy]
   end
 end
 # rubocop:enable Metrics/BlockLength

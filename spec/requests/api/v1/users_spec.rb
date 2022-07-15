@@ -3,11 +3,9 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/users', type: :request do
-  fixtures :users
-
   before(:each) do
     @user = users(:john)
-    setup_omniauth_mock(@user)
+    @api_key = @user.api_keys.first.token
     VCR.insert_cassette('rswag/users')
   end
 
@@ -19,9 +17,12 @@ RSpec.describe 'api/v1/users', type: :request do
     parameter name: 'id', in: :path, type: :integer, description: 'id'
 
     let(:id) { users(:john).id }
+    let(:Authorization) { "Bearer #{@api_key}" }
 
     get('show user') do
       tags 'Users'
+      consumes 'application/json'
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end
@@ -29,6 +30,8 @@ RSpec.describe 'api/v1/users', type: :request do
 
     patch('update user') do
       tags 'Users'
+      consumes 'application/json'
+      security [Bearer: []]
       consumes 'application/json'
       parameter name: :params, in: :body, schema: {
         type: :object,
@@ -38,8 +41,7 @@ RSpec.describe 'api/v1/users', type: :request do
             properties: {
               name: { type: :string }
             }
-          },
-          required: %w[name]
+          }
         },
         required: %w[user]
       }

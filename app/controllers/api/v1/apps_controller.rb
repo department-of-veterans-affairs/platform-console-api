@@ -4,6 +4,7 @@ module Api
   module V1
     # Handles creating and modifying apps which are owned by a team
     class AppsController < ApplicationController
+      before_action :authenticate_with_api_key!
       before_action :set_team
       before_action :set_app, only: %i[show update destroy]
 

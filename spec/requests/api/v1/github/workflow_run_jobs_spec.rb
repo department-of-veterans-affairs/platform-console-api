@@ -3,11 +3,9 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/github/workflow_run_jobs', type: :request do
-  fixtures :users, :teams, :apps
-
   before(:each) do
     @user = users(:john)
-    setup_omniauth_mock(@user)
+    @api_key = @user.api_keys.first.token
     VCR.insert_cassette('rswag/workflow_run_jobs', record: :new_episodes)
   end
 
@@ -23,9 +21,12 @@ RSpec.describe 'api/v1/github/workflow_run_jobs', type: :request do
     let(:team_id) { teams(:three).id }
     let(:app_id) { apps(:four).id }
     let(:id) { 7_115_360_258 }
+    let(:Authorization) { "Bearer #{@api_key}" }
 
     get('show workflow_run_job') do
       tags 'Workflow Run Jobs'
+      consumes 'application/json'
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end

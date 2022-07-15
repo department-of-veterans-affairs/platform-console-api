@@ -4,6 +4,7 @@ module Api
   module V1
     # Handles creating teams which will own apps
     class TeamsController < ApplicationController
+      before_action :authenticate_with_api_key!
       before_action :set_team, only: %i[show update destroy]
 
       # GET /v1/teams

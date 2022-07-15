@@ -8,6 +8,7 @@ RSpec.describe 'api/v1/deployments', type: :request do
   before(:each) do
     @user = users(:john)
     setup_omniauth_mock(@user)
+    @api_key = @user.api_keys.first.token
     VCR.insert_cassette('rswag/deployments')
   end
 
@@ -21,9 +22,12 @@ RSpec.describe 'api/v1/deployments', type: :request do
 
     let(:team_id) { teams(:two).id }
     let(:app_id) { apps(:two).id }
+    let(:Authorization) { "Bearer #{@api_key}" }
 
     get('list deployments') do
       tags 'Deployments'
+      consumes 'application/json'
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end
@@ -32,6 +36,7 @@ RSpec.describe 'api/v1/deployments', type: :request do
     post('create deployment') do
       tags 'Deployments'
       consumes 'application/json'
+      security [Bearer: []]
       parameter name: :params, in: :body, schema: {
         type: :object,
         properties: {
@@ -41,8 +46,7 @@ RSpec.describe 'api/v1/deployments', type: :request do
               name: { type: :string },
               app_id: { type: :integer }
             }
-          },
-          required: %w[name app_id]
+          }
         },
         required: %w[deployment]
       }
@@ -67,9 +71,12 @@ RSpec.describe 'api/v1/deployments', type: :request do
     let(:team_id) { teams(:two).id }
     let(:app_id) { apps(:two).id }
     let(:id) { deployments(:one).id }
+    let(:Authorization) { "Bearer #{@api_key}" }
 
     get('show deployment') do
       tags 'Deployments'
+      consumes 'application/json'
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end
@@ -78,6 +85,7 @@ RSpec.describe 'api/v1/deployments', type: :request do
     patch('update deployment') do
       tags 'Deployments'
       consumes 'application/json'
+      security [Bearer: []]
       parameter name: :params, in: :body, schema: {
         type: :object,
         properties: {
@@ -86,8 +94,7 @@ RSpec.describe 'api/v1/deployments', type: :request do
             properties: {
               name: { type: :string }
             }
-          },
-          required: %w[name]
+          }
         },
         required: %w[deployment]
       }
@@ -105,6 +112,8 @@ RSpec.describe 'api/v1/deployments', type: :request do
 
     delete('delete deployment') do
       tags 'Deployments'
+      consumes 'application/json'
+      security [Bearer: []]
       response(204, 'No Content') do
         run_test!
       end

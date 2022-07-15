@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @github_user = @user.github_user
+    @api_keys = @user.api_keys
   end
 
   # PATCH/PUT /users/1 or /users/1.json
