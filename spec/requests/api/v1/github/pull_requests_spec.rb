@@ -3,11 +3,9 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/github/pull_requests', type: :request do
-  fixtures :users, :teams, :apps
-
   before(:each) do
     @user = users(:john)
-    setup_omniauth_mock(@user)
+    @api_key = @user.api_keys.first.token
     VCR.insert_cassette('rswag/pull_requests')
   end
 
@@ -21,9 +19,12 @@ RSpec.describe 'api/v1/github/pull_requests', type: :request do
 
     let(:team_id) { teams(:three).id }
     let(:app_id) { apps(:four).id }
+    let(:Authorization) { "Bearer #{@api_key}" }
 
     get 'list pull_requests' do
       tags 'Pull Requests'
+      consumes 'application/json'
+      security [Bearer: {}]
       response(200, 'OK') do
         include_context 'run request test'
       end

@@ -25,5 +25,5 @@ Metrics/AbcSize:
     - 'app/controllers/application_controller.rb'
 
 Metrics/BlockLength:
-  IgnoredMethods: ['describe', 'path']
+  IgnoredMethods: ['describe', 'path', 'configure', 'get', 'post', 'patch', 'delete']
 

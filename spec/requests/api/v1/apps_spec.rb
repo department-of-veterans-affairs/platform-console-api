@@ -3,11 +3,9 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/apps', type: :request do
-  fixtures :users, :teams, :apps
-
   before(:each) do
     @user = users(:john)
-    setup_omniauth_mock(@user)
+    @api_key = @user.api_keys.first.token
     VCR.insert_cassette('rswag/apps')
   end
 
@@ -21,9 +19,12 @@ RSpec.describe 'api/v1/apps', type: :request do
 
     let(:team_id) { teams(:three).id }
     let(:id) { apps(:four).id }
+    let(:Authorization) { "Bearer #{@api_key}" }
 
     get('list apps') do
       tags 'Apps'
+      consumes 'application/json'
+      security [Bearer: {}]
       response(200, 'OK') do
         include_context 'run request test'
       end
@@ -31,6 +32,8 @@ RSpec.describe 'api/v1/apps', type: :request do
 
     post('create app') do
       tags 'Apps'
+      consumes 'application/json'
+      security [Bearer: {}]
       consumes 'application/json'
       parameter name: :params, in: :body, schema: {
         type: :object,
@@ -66,9 +69,12 @@ RSpec.describe 'api/v1/apps', type: :request do
 
     let(:team_id) { teams(:three).id }
     let(:id) { apps(:four).id }
+    let(:Authorization) { "Bearer #{@api_key}" }
 
     get('show app') do
       tags 'Apps'
+      consumes 'application/json'
+      security [Bearer: {}]
       response(200, 'OK') do
         include_context 'run request test'
       end
@@ -77,6 +83,7 @@ RSpec.describe 'api/v1/apps', type: :request do
     patch('update app') do
       tags 'Apps'
       consumes 'application/json'
+      security [Bearer: {}]
       parameter name: :params, in: :body, schema: {
         type: :object,
         properties: {
@@ -104,6 +111,8 @@ RSpec.describe 'api/v1/apps', type: :request do
 
     delete('delete app') do
       tags 'Apps'
+      consumes 'application/json'
+      security [Bearer: {}]
       response(204, 'No Content') do
         run_test!
       end
