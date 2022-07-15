@@ -27,7 +27,7 @@ RSpec.describe 'api/v1/deployments', type: :request do
     get('list deployments') do
       tags 'Deployments'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end
@@ -36,7 +36,7 @@ RSpec.describe 'api/v1/deployments', type: :request do
     post('create deployment') do
       tags 'Deployments'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       parameter name: :params, in: :body, schema: {
         type: :object,
         properties: {
@@ -46,8 +46,7 @@ RSpec.describe 'api/v1/deployments', type: :request do
               name: { type: :string },
               app_id: { type: :integer }
             }
-          },
-          required: %w[name app_id]
+          }
         },
         required: %w[deployment]
       }
@@ -77,7 +76,7 @@ RSpec.describe 'api/v1/deployments', type: :request do
     get('show deployment') do
       tags 'Deployments'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end
@@ -86,7 +85,7 @@ RSpec.describe 'api/v1/deployments', type: :request do
     patch('update deployment') do
       tags 'Deployments'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       parameter name: :params, in: :body, schema: {
         type: :object,
         properties: {
@@ -95,8 +94,7 @@ RSpec.describe 'api/v1/deployments', type: :request do
             properties: {
               name: { type: :string }
             }
-          },
-          required: %w[name]
+          }
         },
         required: %w[deployment]
       }
@@ -115,7 +113,7 @@ RSpec.describe 'api/v1/deployments', type: :request do
     delete('delete deployment') do
       tags 'Deployments'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       response(204, 'No Content') do
         run_test!
       end

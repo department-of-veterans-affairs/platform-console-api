@@ -24,7 +24,7 @@ RSpec.describe 'api/v1/github/workflows', type: :request do
     get('list workflows') do
       tags 'Workflows'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end
@@ -44,7 +44,7 @@ RSpec.describe 'api/v1/github/workflows', type: :request do
     get('show workflow') do
       tags 'Workflows'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end

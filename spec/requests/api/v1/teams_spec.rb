@@ -19,7 +19,7 @@ RSpec.describe 'api/v1/teams', type: :request do
     get('list teams') do
       tags 'Teams'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end
@@ -28,7 +28,7 @@ RSpec.describe 'api/v1/teams', type: :request do
     post('create team') do
       tags 'Teams'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       parameter name: :params, in: :body, schema: {
         type: :object,
         properties: {
@@ -37,8 +37,7 @@ RSpec.describe 'api/v1/teams', type: :request do
             properties: {
               name: { type: :string }
             }
-          },
-          required: %w[name]
+          }
         },
         required: %w[team]
       }
@@ -64,7 +63,7 @@ RSpec.describe 'api/v1/teams', type: :request do
     get('show team') do
       tags 'Teams'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end
@@ -73,7 +72,7 @@ RSpec.describe 'api/v1/teams', type: :request do
     patch('update team') do
       tags 'Teams'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       parameter name: :params, in: :body, schema: {
         type: :object,
         properties: {
@@ -82,8 +81,7 @@ RSpec.describe 'api/v1/teams', type: :request do
             properties: {
               name: { type: :string }
             }
-          },
-          required: %w[name]
+          }
         },
         required: %w[team]
       }
@@ -102,7 +100,7 @@ RSpec.describe 'api/v1/teams', type: :request do
     delete('delete team') do
       tags 'Teams'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       response(204, 'No Content') do
         run_test!
       end

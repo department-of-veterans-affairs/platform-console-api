@@ -24,7 +24,7 @@ RSpec.describe 'api/v1/github/repositories', type: :request do
     get 'show repository' do
       tags 'Repositories'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end

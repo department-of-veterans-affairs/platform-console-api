@@ -21,6 +21,16 @@ RSpec.configure do |config|
         title: 'API V1',
         version: 'v1'
       },
+      components: {
+        securitySchemes: {
+          Bearer: {
+            description: 'Bearer token',
+            type: :apiKey,
+            name: 'Authorization',
+            in: :header
+          }
+        }
+      },
       paths: {},
       servers: [
         {
@@ -39,15 +49,7 @@ RSpec.configure do |config|
             }
           }
         }
-      ],
-      securityDefinitions: {
-        Bearer: {
-          description: 'Bearer token',
-          type: :apiKey,
-          name: 'Authorization',
-          in: :header
-        }
-      }
+      ]
     }
   }
 

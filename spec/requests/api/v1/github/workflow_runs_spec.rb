@@ -50,7 +50,7 @@ RSpec.describe 'api/v1/github/workflow_runs', type: :request do
     get('show workflow_run') do
       tags 'Workflow Runs'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end
@@ -59,7 +59,7 @@ RSpec.describe 'api/v1/github/workflow_runs', type: :request do
     patch('rerun workflow_run') do
       tags 'Workflow Runs'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       response(201, 'Created') do
         include_context 'run request test'
       end
@@ -67,7 +67,7 @@ RSpec.describe 'api/v1/github/workflow_runs', type: :request do
       response(422, 'Unprocessable Entity') do
         tags 'Workflow Runs'
         consumes 'application/json'
-        security [Bearer: {}]
+        security [Bearer: []]
         let(:id) { 'invalid_id' }
         include_context 'run request test'
       end

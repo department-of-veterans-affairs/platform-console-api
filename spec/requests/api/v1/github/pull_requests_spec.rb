@@ -24,7 +24,7 @@ RSpec.describe 'api/v1/github/pull_requests', type: :request do
     get 'list pull_requests' do
       tags 'Pull Requests'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end

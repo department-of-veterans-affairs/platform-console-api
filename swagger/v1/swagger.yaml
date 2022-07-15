@@ -3,6 +3,13 @@ openapi: 3.0.1
 info:
   title: API V1
   version: v1
+components:
+  securitySchemes:
+    Bearer:
+      description: Bearer token
+      type: apiKey
+      name: Authorization
+      in: header
 paths:
   "/v1/teams/{team_id}/apps":
     parameters:
@@ -12,18 +19,12 @@ paths:
       required: true
       schema:
         type: integer
-    - name: id
-      in: path
-      description: id
-      required: true
-      schema:
-        type: integer
     get:
       summary: list apps
       tags:
       - Apps
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '200':
           description: OK
@@ -37,8 +38,8 @@ paths:
                     name: App3
                     github_repo: department-of-veterans-affairs/vets-api
                     deploy_workflow: code_checks.yml
-                    created_at: '2022-07-15T14:33:28.761Z'
-                    updated_at: '2022-07-15T14:33:28.761Z'
+                    created_at: '2022-07-15T17:40:33.072Z'
+                    updated_at: '2022-07-15T17:40:33.072Z'
                   relationships:
                     team:
                       data:
@@ -60,8 +61,8 @@ paths:
                     name: App4
                     github_repo: department-of-veterans-affairs/platform-console-api
                     deploy_workflow:
-                    created_at: '2022-07-15T14:33:28.761Z'
-                    updated_at: '2022-07-15T14:33:28.761Z'
+                    created_at: '2022-07-15T17:40:33.072Z'
+                    updated_at: '2022-07-15T17:40:33.072Z'
                   relationships:
                     team:
                       data:
@@ -84,7 +85,7 @@ paths:
       tags:
       - Apps
       security:
-      - Bearer: {}
+      - Bearer: []
       parameters: []
       responses:
         '201':
@@ -99,8 +100,8 @@ paths:
                     name: App4
                     github_repo:
                     deploy_workflow:
-                    created_at: '2022-07-15T14:33:28.876Z'
-                    updated_at: '2022-07-15T14:33:28.876Z'
+                    created_at: '2022-07-15T17:40:33.237Z'
+                    updated_at: '2022-07-15T17:40:33.237Z'
                   relationships:
                     team:
                       data:
@@ -136,9 +137,6 @@ paths:
                       type: string
                     team_id:
                       type: integer
-                required:
-                - name
-                - team_id
               required:
               - app
   "/v1/teams/{team_id}/apps/{id}":
@@ -160,7 +158,7 @@ paths:
       tags:
       - Apps
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '200':
           description: OK
@@ -174,8 +172,8 @@ paths:
                     name: App4
                     github_repo: department-of-veterans-affairs/platform-console-api
                     deploy_workflow:
-                    created_at: '2022-07-15T14:33:28.761Z'
-                    updated_at: '2022-07-15T14:33:28.761Z'
+                    created_at: '2022-07-15T17:40:33.072Z'
+                    updated_at: '2022-07-15T17:40:33.072Z'
                   relationships:
                     team:
                       data:
@@ -194,7 +192,7 @@ paths:
       tags:
       - Apps
       security:
-      - Bearer: {}
+      - Bearer: []
       parameters: []
       responses:
         '200':
@@ -209,8 +207,8 @@ paths:
                     name: App1 Updated
                     github_repo: department-of-veterans-affairs/platform-console-api
                     deploy_workflow:
-                    created_at: '2022-07-15T14:33:28.761Z'
-                    updated_at: '2022-07-15T14:33:28.910Z'
+                    created_at: '2022-07-15T17:40:33.072Z'
+                    updated_at: '2022-07-15T17:40:33.287Z'
                   relationships:
                     team:
                       data:
@@ -242,8 +240,6 @@ paths:
                   properties:
                     name:
                       type: string
-                required:
-                - name
               required:
               - app
     delete:
@@ -251,7 +247,7 @@ paths:
       tags:
       - Apps
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '204':
           description: No Content
@@ -274,7 +270,7 @@ paths:
       tags:
       - Deployments
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '200':
           description: OK
@@ -286,8 +282,8 @@ paths:
                   type: deployment
                   attributes:
                     name: guestbook
-                    created_at: '2022-07-15T14:33:28.765Z'
-                    updated_at: '2022-07-15T14:33:28.765Z'
+                    created_at: '2022-07-15T17:40:33.081Z'
+                    updated_at: '2022-07-15T17:40:33.081Z'
                   relationships:
                     app:
                       data:
@@ -306,7 +302,7 @@ paths:
       tags:
       - Deployments
       security:
-      - Bearer: {}
+      - Bearer: []
       parameters: []
       responses:
         '201':
@@ -319,8 +315,8 @@ paths:
                   type: deployment
                   attributes:
                     name: guestbook
-                    created_at: '2022-07-15T14:33:28.960Z'
-                    updated_at: '2022-07-15T14:33:28.960Z'
+                    created_at: '2022-07-15T17:40:33.340Z'
+                    updated_at: '2022-07-15T17:40:33.340Z'
                   relationships:
                     app:
                       data:
@@ -350,9 +346,6 @@ paths:
                       type: string
                     app_id:
                       type: integer
-                required:
-                - name
-                - app_id
               required:
               - deployment
   "/v1/teams/{team_id}/apps/{app_id}/deployments/{id}":
@@ -380,7 +373,7 @@ paths:
       tags:
       - Deployments
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '200':
           description: OK
@@ -393,7 +386,7 @@ paths:
       tags:
       - Deployments
       security:
-      - Bearer: {}
+      - Bearer: []
       parameters: []
       responses:
         '200':
@@ -406,8 +399,8 @@ paths:
                   type: deployment
                   attributes:
                     name: guestbook
-                    created_at: '2022-07-15T14:33:28.765Z'
-                    updated_at: '2022-07-15T14:33:28.765Z'
+                    created_at: '2022-07-15T17:40:33.081Z'
+                    updated_at: '2022-07-15T17:40:33.081Z'
                   relationships:
                     app:
                       data:
@@ -435,8 +428,6 @@ paths:
                   properties:
                     name:
                       type: string
-                required:
-                - name
               required:
               - deployment
     delete:
@@ -444,7 +435,7 @@ paths:
       tags:
       - Deployments
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '204':
           description: No Content
@@ -467,7 +458,7 @@ paths:
       tags:
       - Deploy Pull Requests
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '200':
           description: OK
@@ -493,7 +484,7 @@ paths:
       tags:
       - Pull Requests
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '200':
           description: OK
@@ -3771,7 +3762,7 @@ paths:
       tags:
       - Repositories
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '200':
           description: OK
@@ -4099,7 +4090,7 @@ paths:
       tags:
       - Workflow Run Jobs
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '200':
           description: OK
@@ -13254,7 +13245,7 @@ paths:
       tags:
       - Workflow Runs
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '200':
           description: OK
@@ -13603,7 +13594,7 @@ paths:
       tags:
       - Workflow Runs
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '201':
           description: Created
@@ -13634,7 +13625,7 @@ paths:
       tags:
       - Workflows
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '200':
           description: OK
@@ -14000,7 +13991,7 @@ paths:
       tags:
       - Workflows
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '200':
           description: OK
@@ -14014,7 +14005,7 @@ paths:
       tags:
       - Teams
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '200':
           description: OK
@@ -14026,8 +14017,8 @@ paths:
                   type: team
                   attributes:
                     name: Team1
-                    created_at: '2022-07-15T14:33:28.773Z'
-                    updated_at: '2022-07-15T14:33:28.773Z'
+                    created_at: '2022-07-15T17:40:33.087Z'
+                    updated_at: '2022-07-15T17:40:33.087Z'
                   relationships:
                     owner:
                       data:
@@ -14047,8 +14038,8 @@ paths:
                   type: team
                   attributes:
                     name: Team2
-                    created_at: '2022-07-15T14:33:28.773Z'
-                    updated_at: '2022-07-15T14:33:28.773Z'
+                    created_at: '2022-07-15T17:40:33.087Z'
+                    updated_at: '2022-07-15T17:40:33.087Z'
                   relationships:
                     owner:
                       data:
@@ -14068,8 +14059,8 @@ paths:
                   type: team
                   attributes:
                     name: Team3
-                    created_at: '2022-07-15T14:33:28.773Z'
-                    updated_at: '2022-07-15T14:33:28.773Z'
+                    created_at: '2022-07-15T17:40:33.087Z'
+                    updated_at: '2022-07-15T17:40:33.087Z'
                   relationships:
                     owner:
                       data:
@@ -14094,7 +14085,7 @@ paths:
       tags:
       - Teams
       security:
-      - Bearer: {}
+      - Bearer: []
       parameters: []
       responses:
         '201':
@@ -14107,8 +14098,8 @@ paths:
                   type: team
                   attributes:
                     name: Team1
-                    created_at: '2022-07-15T14:33:29.356Z'
-                    updated_at: '2022-07-15T14:33:29.356Z'
+                    created_at: '2022-07-15T17:40:33.713Z'
+                    updated_at: '2022-07-15T17:40:33.713Z'
                   relationships:
                     owner:
                       data:
@@ -14140,8 +14131,6 @@ paths:
                   properties:
                     name:
                       type: string
-                required:
-                - name
               required:
               - team
   "/v1/teams/{id}":
@@ -14157,7 +14146,7 @@ paths:
       tags:
       - Teams
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '200':
           description: OK
@@ -14169,8 +14158,8 @@ paths:
                   type: team
                   attributes:
                     name: Team1
-                    created_at: '2022-07-15T14:33:28.773Z'
-                    updated_at: '2022-07-15T14:33:28.773Z'
+                    created_at: '2022-07-15T17:40:33.087Z'
+                    updated_at: '2022-07-15T17:40:33.087Z'
                   relationships:
                     owner:
                       data:
@@ -14191,7 +14180,7 @@ paths:
       tags:
       - Teams
       security:
-      - Bearer: {}
+      - Bearer: []
       parameters: []
       responses:
         '200':
@@ -14204,8 +14193,8 @@ paths:
                   type: team
                   attributes:
                     name: Team2
-                    created_at: '2022-07-15T14:33:28.773Z'
-                    updated_at: '2022-07-15T14:33:29.379Z'
+                    created_at: '2022-07-15T17:40:33.087Z'
+                    updated_at: '2022-07-15T17:40:33.730Z'
                   relationships:
                     owner:
                       data:
@@ -14239,8 +14228,6 @@ paths:
                   properties:
                     name:
                       type: string
-                required:
-                - name
               required:
               - team
     delete:
@@ -14248,7 +14235,7 @@ paths:
       tags:
       - Teams
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '204':
           description: No Content
@@ -14265,7 +14252,7 @@ paths:
       tags:
       - Users
       security:
-      - Bearer: {}
+      - Bearer: []
       responses:
         '200':
           description: OK
@@ -14278,8 +14265,8 @@ paths:
                   attributes:
                     name: John
                     email: john@example.com
-                    created_at: '2022-07-15T14:33:28.775Z'
-                    updated_at: '2022-07-15T14:33:28.775Z'
+                    created_at: '2022-07-15T17:40:33.089Z'
+                    updated_at: '2022-07-15T17:40:33.089Z'
                   relationships:
                     teams:
                       data:
@@ -14296,7 +14283,7 @@ paths:
       tags:
       - Users
       security:
-      - Bearer: {}
+      - Bearer: []
       parameters: []
       responses:
         '200':
@@ -14310,8 +14297,8 @@ paths:
                   attributes:
                     name: John
                     email: john@example.com
-                    created_at: '2022-07-15T14:33:28.775Z'
-                    updated_at: '2022-07-15T14:33:28.775Z'
+                    created_at: '2022-07-15T17:40:33.089Z'
+                    updated_at: '2022-07-15T17:40:33.089Z'
                   relationships:
                     teams:
                       data:
@@ -14341,8 +14328,6 @@ paths:
                   properties:
                     name:
                       type: string
-                required:
-                - name
               required:
               - user
 servers:
@@ -14354,10 +14339,3 @@ servers:
   variables:
     defaultHost:
       default: localhost:3000
-components:
-  securitySchemes:
-    Bearer:
-      description: Bearer token
-      type: apiKey
-      name: Authorization
-      in: header

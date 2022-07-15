@@ -22,7 +22,7 @@ RSpec.describe 'api/v1/users', type: :request do
     get('show user') do
       tags 'Users'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end
@@ -31,7 +31,7 @@ RSpec.describe 'api/v1/users', type: :request do
     patch('update user') do
       tags 'Users'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       consumes 'application/json'
       parameter name: :params, in: :body, schema: {
         type: :object,
@@ -41,8 +41,7 @@ RSpec.describe 'api/v1/users', type: :request do
             properties: {
               name: { type: :string }
             }
-          },
-          required: %w[name]
+          }
         },
         required: %w[user]
       }

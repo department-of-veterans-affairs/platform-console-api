@@ -15,16 +15,14 @@ RSpec.describe 'api/v1/apps', type: :request do
 
   path '/v1/teams/{team_id}/apps' do
     parameter name: 'team_id', in: :path, type: :integer, description: 'team_id'
-    parameter name: 'id', in: :path, type: :integer, description: 'id'
 
     let(:team_id) { teams(:three).id }
-    let(:id) { apps(:four).id }
     let(:Authorization) { "Bearer #{@api_key}" }
 
     get('list apps') do
       tags 'Apps'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end
@@ -33,7 +31,7 @@ RSpec.describe 'api/v1/apps', type: :request do
     post('create app') do
       tags 'Apps'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       consumes 'application/json'
       parameter name: :params, in: :body, schema: {
         type: :object,
@@ -45,8 +43,7 @@ RSpec.describe 'api/v1/apps', type: :request do
               name: { type: :string },
               team_id: { type: :integer }
             }
-          },
-          required: %w[name team_id]
+          }
         },
         required: %w[app]
       }
@@ -74,7 +71,7 @@ RSpec.describe 'api/v1/apps', type: :request do
     get('show app') do
       tags 'Apps'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       response(200, 'OK') do
         include_context 'run request test'
       end
@@ -83,7 +80,7 @@ RSpec.describe 'api/v1/apps', type: :request do
     patch('update app') do
       tags 'Apps'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       parameter name: :params, in: :body, schema: {
         type: :object,
         properties: {
@@ -92,8 +89,7 @@ RSpec.describe 'api/v1/apps', type: :request do
             properties: {
               name: { type: :string }
             }
-          },
-          required: %w[name]
+          }
         },
         required: %w[app]
       }
@@ -112,7 +108,7 @@ RSpec.describe 'api/v1/apps', type: :request do
     delete('delete app') do
       tags 'Apps'
       consumes 'application/json'
-      security [Bearer: {}]
+      security [Bearer: []]
       response(204, 'No Content') do
         run_test!
       end
