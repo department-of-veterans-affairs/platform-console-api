@@ -10,6 +10,9 @@ on:
     - cron: '27 2 * * 1'
   workflow_dispatch:
 
+permissions:
+  contents: read
+  checks: write
 jobs:
   analyze:
     name: Analyze
