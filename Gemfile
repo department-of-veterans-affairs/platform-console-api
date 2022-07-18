@@ -8,7 +8,7 @@ gem 'rails', '~> 7.0.3'
 
 gem 'bcrypt',             '~> 3.1' # Use ActiveModel has_secure_password
 gem 'bootsnap',           '~> 1.12', require: false # Reduces boot times through caching; required in config/boot.rb
-gem 'ddtrace',            '~> 0.54', require: 'ddtrace/auto_instrument' # Datadog's tracing client for Ruby
+gem 'ddtrace',            '~> 1.2', require: 'ddtrace/auto_instrument' # Datadog's tracing client for Ruby
 gem 'faraday-http-cache', '~> 2.4' # middleware that respects HTTP cache by checking expiration of the stored responses.
 gem 'flipper',            '~> 0.25' # Feature flipper for ANYTHING
 gem 'flipper-redis',      '~> 0.25' # Redis adapter for Flipper
