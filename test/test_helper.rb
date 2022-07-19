@@ -100,5 +100,9 @@ module ActiveSupport
       WebMock.stub_request(:get, 'http://test.host/auth/realms/example-realm/protocol/openid-connect/certs')
              .to_return(status: 200, body: { "keys": [] }.to_json)
     end
+
+    def api_auth_header(user)
+      { 'Authorization': "Bearer #{user.api_keys.first.token}" }
+    end
   end
 end

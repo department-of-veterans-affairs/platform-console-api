@@ -8,7 +8,7 @@ class TeamTest < ActiveSupport::TestCase
   end
 
   test 'valid team' do
-    @team.update(name: 'Console Services')
+    @team.update!(name: 'Console Services')
     assert @team.valid?
   end
 

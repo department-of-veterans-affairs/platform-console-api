@@ -23,10 +23,10 @@
               </tr>
             </thead>
             <tbody>
-              <% @github_workflow_runs.each do |github_workflow_run| %>
+              <% @github_workflow_runs[:objects].each do |github_workflow_run| %>
               <tr class="<%= cycle 'bg-white', 'bg-gray-50' %>">
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  <%= link_to github_workflow_run.name, github_workflow_run, class: 'text-blue-900 hover:text-blue-800' %>
+                  <%= link_to github_workflow_run.github.name, github_workflow_run, class: 'text-blue-900 hover:text-blue-800' %>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div class="flex space-x-2">

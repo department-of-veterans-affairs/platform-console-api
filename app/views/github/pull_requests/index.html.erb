@@ -12,12 +12,12 @@
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-              <% @github_pull_requests[:pull_requests].each do |github_pull_request| %>
+              <% @github_pull_requests[:objects].each do |github_pull_request| %>
               <tr>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="flex items-center">
                     <div class="flex-shrink-0">
-                    <% if github_pull_request[:draft] %>
+                    <% if github_pull_request.github[:draft] %>
                       <svg class="octicon octicon-git-pull-request-draft" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
                         <path fill-rule="evenodd" d="M2.5 3.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.25 1a2.25 2.25 0 00-.75 4.372v5.256a2.251 2.251 0 101.5 0V5.372A2.25 2.25 0 003.25 1zm0 11a.75.75 0 100 1.5.75.75 0 000-1.5zm9.5 3a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5zm0-3a.75.75 0 100 1.5.75.75 0 000-1.5z"></path><path d="M14 7.5a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0zm0-4.25a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z"></path>
                       </svg>
@@ -28,10 +28,10 @@
                     <% end %>
                     </div>
                     <div class="ml-4">
-                      <div class="text-md font-medium text-gray-900"><%= github_pull_request[:title] %></div>
+                      <div class="text-md font-medium text-gray-900"><%= github_pull_request.github[:title] %></div>
                       <div class="text-sm text-gray-500">
-                        <%= "##{github_pull_request[:number]} opened #{distance_of_time_in_words(Time.now, github_pull_request[:created_at])} ago by #{github_pull_request[:user][:login]}" %>
-                        <% if github_pull_request[:draft] %>
+                        <%= "##{github_pull_request.github[:number]} opened #{distance_of_time_in_words(Time.now, github_pull_request.github[:created_at])} ago by #{github_pull_request.github[:user][:login]}" %>
+                        <% if github_pull_request.github[:draft] %>
                           • Draft
                         <% end %>
                       </div>
@@ -41,8 +41,8 @@
 
                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div class="flex space-x-2">
-                    <%= link_to 'Workflow Runs', team_app_workflows_path(@team, @app, ref: github_pull_request[:head][:ref] ), title: 'View Workflow Runs', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
-                    <%= link_to github_pull_request[:html_url], title: 'View On Github', target: :_blank, class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' do %>
+                    <%= link_to 'Workflow Runs', team_app_workflows_path(@team, @app, ref: github_pull_request.github[:head][:ref] ), title: 'View Workflow Runs', class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-800 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
+                    <%= link_to github_pull_request.github[:html_url], title: 'View On Github', target: :_blank, class: 'inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' do %>
                       <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                         width="24" height="24"
                         viewBox="0 0 24 24"

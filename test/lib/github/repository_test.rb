@@ -38,41 +38,41 @@ module Github
 
     test 'lists pull requests for the repository' do
       VCR.use_cassette('github/repository', record: :new_episodes) do
-        pull_requests = @repository.pull_requests[:pull_requests]
+        pull_requests = @repository.pull_requests[:objects]
         assert_kind_of Array, pull_requests
-        assert_not_nil pull_requests.first.number
+        assert_not_nil pull_requests.first.github.number
       end
     end
 
     test 'lists workflows for the repository' do
       VCR.use_cassette('github/repository', record: :new_episodes) do
-        workflows = @repository.workflows.workflows
+        workflows = @repository.workflows[:objects]
         assert_kind_of Array, workflows
-        assert_not_nil workflows.first.state
+        assert_not_nil workflows.first.github.state
       end
     end
 
     test 'lists workflow runs for the repository' do
       VCR.use_cassette('github/repository', record: :new_episodes) do
-        all_workflow_runs = @repository.workflow_runs.workflow_runs
+        all_workflow_runs = @repository.workflow_runs[:objects]
         assert_kind_of Array, all_workflow_runs
-        assert_not_nil all_workflow_runs.first.run_number
+        assert_not_nil all_workflow_runs.first.github.run_number
       end
     end
 
     test 'lists workflow runs for a given branch in the repository' do
       VCR.use_cassette('github/repository', record: :new_episodes) do
-        branch_workflow_runs = @repository.branch_workflow_runs('master').workflow_runs
+        branch_workflow_runs = @repository.branch_workflow_runs('master')[:objects]
         assert_kind_of Array, branch_workflow_runs
-        assert_equal 'master', branch_workflow_runs.first.head_branch
+        assert_equal 'master', branch_workflow_runs.first.github.head_branch
       end
     end
 
     test 'lists workflow runs for a given workflow in the repository' do
       VCR.use_cassette('github/repository', record: :new_episodes) do
-        workflow_runs = @repository.workflow_run('17962379').workflow_runs
+        workflow_runs = @repository.workflow_run('17962379')[:objects]
         assert_kind_of Array, workflow_runs
-        assert_equal 17_962_379, workflow_runs.first.workflow_id
+        assert_equal 17_962_379, workflow_runs.first.github.workflow_id
       end
     end
 

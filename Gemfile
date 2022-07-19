@@ -18,16 +18,18 @@ gem 'jbuilder',           '~> 2.11' # Build JSON APIs with ease [https://github.
 gem 'jsonapi-serializer', '~> 2.2'  # A fast JSON:API serializer for Ruby Objects.
 gem 'jwt',                '~> 2.4'  # Ruby implementation of the JWT standard
 gem 'net-http',           '~> 0.2' # HTTP client api for Ruby
-gem 'octokit',            '~> 4.25'  # Ruby toolkit for the GitHub API.
+gem 'octokit',            '~> 5.1'   # Ruby toolkit for the GitHub API.
 gem 'omniauth-keycloak',  '~> 1.4'   # Keycloack SSO Oauth Strategy
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1' # Mitigates against CSRF in oauth flow
 gem 'pagy',               '~> 5.10'  # Agnostic pagination in plain ruby
 gem 'paper_trail',        '~> 12.3'  # Track changes to your models, for auditing or versioning
-gem 'pg',                 '~> 1.3'   # Use postgresql as the database for Active Record
+gem 'pg',                 '~> 1.4'   # Use postgresql as the database for Active Record
 gem 'puma',               '>= 5.6.4' # Use the Puma web server [https://github.com/puma/puma]
-gem 'redis',              '~> 4.6'   # Use Redis adapter to run Action Cable in production
+gem 'redis',              '~> 4.7'   # Use Redis adapter to run Action Cable in production
 gem 'rolify',             '~> 6.0'   # Simple Roles library
 gem 'rouge',              '~> 3.29'  # Pure Ruby syntax highlighter
+gem 'rswag-api',          '~> 2.5.1' # Swagger library to help generate open API documentation
+gem 'rswag-ui',           '~> 2.5.1' # UI for rswag documentation
 gem 'rubyzip',            '~> 2.3'   # Ruby library for reading and writing zip files.
 gem 'sidekiq',            '~> 6.5'   # Simple, efficient background processing for Ruby
 gem 'strong_migrations',  '~> 1.2'   # Catch potentially dangerous operations in migrations
@@ -49,6 +51,8 @@ group :development, :test do
   gem 'bundler-audit'     # Provides patch-level verification for Bundled apps
   gem 'pry-awesome_print' # Auto AP in pry
   gem 'pry-rails'         # Adds pry, an interactive REPL debugger; Try show-models
+  gem 'rspec-rails'       # Testing framework, required for rswag-specs
+  gem 'rswag-specs'       # Rspec DSL that can generate open api docs directly from specs
   gem 'rubocop'           # Ruby Style Guide Analyzer
   gem 'rubocop-rails'     # Add Rails specific cops to RuboCop
 end

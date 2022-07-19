@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'github/collection'
 require 'github/pagination'
 require 'github/inspect'
 require 'github/issue'

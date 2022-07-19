@@ -5,6 +5,7 @@ module Github
   class Workflow
     include Github::Pagination
     include Github::Inspect
+    include Github::Collection
 
     attr_accessor :access_token, :repo, :id_or_filename, :app_id
 
@@ -43,9 +44,10 @@ module Github
       #
       # @return [Sawyer::Resource] Workflows
       # @see https://docs.github.com/en/rest/reference/actions#list-repository-workflows
-      def all(access_token, repo)
+      def all(access_token, repo, app_id)
         octokit_client = Octokit::Client.new(access_token: access_token)
-        octokit_client.workflows(repo)
+        response = octokit_client.workflows(repo)
+        transform_collection_response(response.workflows, nil, repo, app_id)
       end
     end
 
@@ -80,12 +82,12 @@ module Github
     # @return [Sawyer::Resource] Workflow Runs
     # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs
     def workflow_runs(page = 1, options = {})
-      Github::WorkflowRun.all_for_workflow(access_token, repo, id, page, options)
+      Github::WorkflowRun.all_for_workflow(access_token, repo, app_id, id, page, options)
     end
     alias deploy_runs workflow_runs
 
     def workflow_run_ids
-      workflow_runs.workflow_runs.pluck(:id)
+      workflow_runs[:objects].pluck(:id)
     end
 
     # List the content of a file

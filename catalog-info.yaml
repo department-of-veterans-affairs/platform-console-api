@@ -2,18 +2,40 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: platform-console-api
+  title: Platform Console API
   description: API for creating and deploying applications on the VA Platform.
   annotations:
     github.com/project-slug: department-of-veterans-affairs/platform-console-api
+    backstage.io/techdocs-ref: url:https://github.com/department-of-veterans-affairs/platform-console-api
   tags:
     - ruby
     - rails
     - platform-console-api
+  links:
+    - url: http://platform-console-api.vfs.va.gov
+      title: Platform Console API - Utility
+      icon: web
+    - url: https://console.amazonaws-us-gov.com/systems-manager/parameters/?region=us-gov-west-1&tab=Table#list_parameter_filters=Name:Contains:platform-console-api
+      title: AWS Systems Manager - Parameter Store
+      icon: settings
+    - url: https://console.amazonaws-us-gov.com/rds/home?region=us-gov-west-1#database:id=dsva-vagov-utility-platform-console-api
+      title: Amazon RDS
+      icon: storage
+    - url: https://argocd.vfs.va.gov/applications/platform-console-api-utility
+      title: Argo CD
+      icon: computer
+    - url: https://grafana.vfs.va.gov/explore?orgId=1&left=%5B%22now-1h%22,%22now%22,%22Loki%20(Utility)%22,%7B%22expr%22:%22%7Bapp%3D%5C%22platform-console-api%5C%22%7D%22%7D%5D
+      title: Loki - Utility
+      icon: article
+    - url: https://github.com/department-of-veterans-affairs/vsp-infra-application-manifests/tree/main/apps/vsp-tools-backend/platform-console-api
+      title: K8s Manifest Files
+      icon: file
 spec:
   type: openapi
   lifecycle: production
   owner: platform-console-services
-  definition: | 
+  system: platform-console
+  definition: |
     openapi: "3.0.0"
     info:
       version: 1.0.0
@@ -28,7 +50,7 @@ spec:
           summary: List of teams
         responses:
           '200':
-            description: Successfully returned teams 
+            description: Successfully returned teams
             schema:
               type: object
               required:

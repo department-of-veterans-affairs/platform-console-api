@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  bearer: john
+  bearer_type: User
+  token: 320e1d210dd09584bf4207a829352bfa
+
+two:
+  id: 2
+  bearer: jane
+  bearer_type: User
+  token: 9e19e4bfbfa200bf9187edac77d5e0f9
+
+three:
+  id: 3
+  bearer: jack
+  bearer_type: User
+  token: 3fd44cb524614e153b2e46fe479722c3

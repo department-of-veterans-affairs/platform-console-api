@@ -60,7 +60,7 @@ module Github
     # @return [Sawyer::Resource] Pull Requests
     # @see https://docs.github.com/en/rest/reference/pulls#list-pull-requests
     def pull_requests(page = 1)
-      Github::PullRequest.all(access_token, repo, page)
+      Github::PullRequest.all(access_token, repo, app_id, page)
     end
 
     # List all repository workflows
@@ -68,11 +68,11 @@ module Github
     # @return [Sawyer::Resource] Workflows
     # @see https://docs.github.com/en/rest/reference/actions#list-repository-workflows
     def workflows
-      Github::Workflow.all(access_token, repo)
+      Github::Workflow.all(access_token, repo, app_id)
     end
 
     def workflow_ids
-      workflows.workflows.pluck(:id)
+      workflows[:objects].pluck(:id)
     end
 
     # List all repository workflows runs
@@ -82,7 +82,7 @@ module Github
     # @return [Sawyer::Resource] Workflows
     # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs-for-a-repository
     def workflow_runs(page = 1)
-      Github::WorkflowRun.all(access_token, repo, page)
+      Github::WorkflowRun.all(access_token, repo, app_id, page)
     end
 
     # List all repository workflows runs associated to a branch in this repo
@@ -93,7 +93,7 @@ module Github
     # @return [Sawyer::Resource] Workflows
     # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs-for-a-repository
     def branch_workflow_runs(branch_name, page = 1)
-      Github::WorkflowRun.all_for_branch(access_token, repo, branch_name, page)
+      Github::WorkflowRun.all_for_branch(access_token, repo, app_id, branch_name, page)
     end
 
     # List runs for a particular workflow in this repository.
@@ -103,7 +103,7 @@ module Github
     # @return [Sawyer::Resource] Workflow runs
     # @see https://docs.github.com/en/rest/reference/actions#list-workflow-runs
     def workflow_run(workflow_id)
-      Github::WorkflowRun.all_for_workflow(access_token, repo, workflow_id)
+      Github::WorkflowRun.all_for_workflow(access_token, repo, app_id, workflow_id)
     end
 
     # Get the deploy workflow in a repository

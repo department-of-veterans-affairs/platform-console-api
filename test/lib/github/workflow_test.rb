@@ -22,18 +22,18 @@ module Github
 
     test 'lists all runs for the workflow' do
       VCR.use_cassette('github/workflow', record: :new_episodes) do
-        workflow_runs = @workflow.workflow_runs.workflow_runs
-        assert_equal 13_418_388, workflow_runs.first.workflow_id
+        workflow_runs = @workflow.workflow_runs[:objects]
+        assert_equal 13_418_388, workflow_runs.first.github.workflow_id
       end
     end
 
     test 'lists all workflows for the given repository' do
       VCR.use_cassette('github/workflow', record: :new_episodes) do
         workflows = Github::Workflow.all(
-          ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/vets-api'
-        ).workflows
+          ENV['GITHUB_ACCESS_TOKEN'], 'department-of-veterans-affairs/vets-api', 1
+        )[:objects]
         assert_kind_of Array, workflows
-        assert_not_nil workflows.first.state
+        assert_not_nil workflows.first.github.state
       end
     end
 
