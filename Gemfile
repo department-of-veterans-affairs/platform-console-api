@@ -22,12 +22,12 @@ gem 'octokit',            '~> 5.2'   # Ruby toolkit for the GitHub API.
 gem 'omniauth-keycloak',  '~> 1.4'   # Keycloack SSO Oauth Strategy
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1' # Mitigates against CSRF in oauth flow
 gem 'pagy',               '~> 5.10'  # Agnostic pagination in plain ruby
-gem 'paper_trail',        '~> 12.3'  # Track changes to your models, for auditing or versioning
+gem 'paper_trail',        '~> 13.0'  # Track changes to your models, for auditing or versioning
 gem 'pg',                 '~> 1.4'   # Use postgresql as the database for Active Record
 gem 'puma',               '>= 5.6.4' # Use the Puma web server [https://github.com/puma/puma]
 gem 'redis',              '~> 4.7'   # Use Redis adapter to run Action Cable in production
 gem 'rolify',             '~> 6.0'   # Simple Roles library
-gem 'rouge',              '~> 3.29'  # Pure Ruby syntax highlighter
+gem 'rouge',              '~> 3.30'  # Pure Ruby syntax highlighter
 gem 'rswag-api',          '~> 2.5.1' # Swagger library to help generate open API documentation
 gem 'rswag-ui',           '~> 2.5.1' # UI for rswag documentation
 gem 'rubyzip',            '~> 2.3'   # Ruby library for reading and writing zip files.
