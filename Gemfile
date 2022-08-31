@@ -32,7 +32,7 @@ gem 'rswag-api',          '~> 2.5.1' # Swagger library to help generate open API
 gem 'rswag-ui',           '~> 2.5.1' # UI for rswag documentation
 gem 'rubyzip',            '~> 2.3'   # Ruby library for reading and writing zip files.
 gem 'sidekiq',            '~> 6.5'   # Simple, efficient background processing for Ruby
-gem 'strong_migrations',  '~> 1.2'   # Catch potentially dangerous operations in migrations
+gem 'strong_migrations',  '~> 1.3'   # Catch potentially dangerous operations in migrations
 
 # Assets
 gem 'importmap-rails',    '~> 1.1' # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
