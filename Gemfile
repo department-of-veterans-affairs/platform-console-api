@@ -27,7 +27,7 @@ gem 'pg',                 '~> 1.4'   # Use postgresql as the database for Active
 gem 'puma',               '>= 5.6.4' # Use the Puma web server [https://github.com/puma/puma]
 gem 'redis',              '~> 4.8'   # Use Redis adapter to run Action Cable in production
 gem 'rolify',             '~> 6.0'   # Simple Roles library
-gem 'rouge',              '~> 3.30'  # Pure Ruby syntax highlighter
+gem 'rouge',              '~> 4.0'   # Pure Ruby syntax highlighter
 gem 'rswag-api',          '~> 2.5.1' # Swagger library to help generate open API documentation
 gem 'rswag-ui',           '~> 2.5.1' # UI for rswag documentation
 gem 'rubyzip',            '~> 2.3'   # Ruby library for reading and writing zip files.
