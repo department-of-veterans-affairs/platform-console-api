@@ -9,7 +9,7 @@ Datadog.configure do |c|
   # Tracing settings
   c.tracing.enabled = Rails.env.production?
 
-   # Instrumentation
+  # Instrumentation
   c.tracing.instrument :rails
 end
 
