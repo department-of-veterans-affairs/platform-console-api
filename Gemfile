@@ -28,7 +28,7 @@ gem 'puma',               '>= 5.6.4' # Use the Puma web server [https://github.c
 gem 'redis',              '~> 4.8'   # Use Redis adapter to run Action Cable in production
 gem 'rolify',             '~> 6.0'   # Simple Roles library
 gem 'rouge',              '~> 4.0'   # Pure Ruby syntax highlighter
-gem 'rswag-api',          '~> 2.5.1' # Swagger library to help generate open API documentation
+gem 'rswag-api',          '~> 2.6.0' # Swagger library to help generate open API documentation
 gem 'rswag-ui',           '~> 2.6.0' # UI for rswag documentation
 gem 'rubyzip',            '~> 2.3'   # Ruby library for reading and writing zip files.
 gem 'sidekiq',            '~> 6.5'   # Simple, efficient background processing for Ruby
