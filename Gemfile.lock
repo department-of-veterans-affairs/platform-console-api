@@ -174,7 +174,7 @@ GEM
       minitest (>= 5.0.6)
     msgpack (1.6.0)
     multi_xml (0.6.0)
-    net-http (0.2.2)
+    net-http (0.3.0)
       uri
     net-imap (0.2.3)
       digest
@@ -429,7 +429,7 @@ DEPENDENCIES
   jsonapi-serializer (~> 2.2)
   jwt (~> 2.5)
   minitest-ci
-  net-http (~> 0.2)
+  net-http (~> 0.3)
   octokit (~> 6.0)
   omniauth-keycloak (~> 1.4)
   omniauth-rails_csrf_protection (~> 1.0.1)
