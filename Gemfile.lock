@@ -285,6 +285,8 @@ GEM
       hashie (>= 3.4)
     redcarpet (3.5.1)
     redis (4.8.0)
+    redis-client (0.10.0)
+      connection_pool
     regexp_parser (2.6.0)
     request_store (1.5.1)
       rack (>= 1.4)
@@ -347,10 +349,11 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sidekiq (6.5.7)
-      connection_pool (>= 2.2.5)
-      rack (~> 2.0)
-      redis (>= 4.5.0, < 5)
+    sidekiq (7.0.0)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.9.0)
     simplecov (0.21.2)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -453,7 +456,7 @@ DEPENDENCIES
   rubocop-rails
   rubyzip (~> 2.3)
   selenium-webdriver
-  sidekiq (~> 6.5)
+  sidekiq (~> 7.0)
   simplecov
   sprockets-rails (~> 3.4)
   stimulus-rails (~> 1.1)
