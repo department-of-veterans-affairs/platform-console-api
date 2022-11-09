@@ -373,13 +373,13 @@ GEM
     strong_migrations (1.4.0)
       activerecord (>= 5.2)
     strscan (3.0.4)
-    tailwindcss-rails (2.0.18)
+    tailwindcss-rails (2.0.19)
       railties (>= 6.0.0)
-    tailwindcss-rails (2.0.18-arm64-darwin)
+    tailwindcss-rails (2.0.19-arm64-darwin)
       railties (>= 6.0.0)
-    tailwindcss-rails (2.0.18-x86_64-darwin)
+    tailwindcss-rails (2.0.19-x86_64-darwin)
       railties (>= 6.0.0)
-    tailwindcss-rails (2.0.18-x86_64-linux)
+    tailwindcss-rails (2.0.19-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.3.0)
@@ -407,7 +407,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.5)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   arm64-darwin-20
