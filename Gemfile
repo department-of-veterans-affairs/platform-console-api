@@ -29,7 +29,7 @@ gem 'redis',              '~> 5.0'   # Use Redis adapter to run Action Cable in 
 gem 'rolify',             '~> 6.0'   # Simple Roles library
 gem 'rouge',              '~> 4.0'   # Pure Ruby syntax highlighter
 gem 'rswag-api',          '~> 2.8.0' # Swagger library to help generate open API documentation
-gem 'rswag-ui',           '~> 2.7.0' # UI for rswag documentation
+gem 'rswag-ui',           '~> 2.8.0' # UI for rswag documentation
 gem 'rubyzip',            '~> 2.3'   # Ruby library for reading and writing zip files.
 gem 'sidekiq',            '~> 7.0'   # Simple, efficient background processing for Ruby
 gem 'strong_migrations',  '~> 1.4'   # Catch potentially dangerous operations in migrations
