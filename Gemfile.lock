@@ -369,7 +369,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    stimulus-rails (1.1.1)
+    stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     strong_migrations (1.4.0)
       activerecord (>= 5.2)
@@ -461,7 +461,7 @@ DEPENDENCIES
   sidekiq (~> 7.0)
   simplecov
   sprockets-rails (~> 3.4)
-  stimulus-rails (~> 1.1)
+  stimulus-rails (~> 1.2)
   strong_migrations (~> 1.4)
   tailwindcss-rails (~> 2.0)
   turbo-rails (~> 1.3)
