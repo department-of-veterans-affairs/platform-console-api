@@ -293,7 +293,7 @@ GEM
       rack (>= 1.4)
     rexml (3.2.5)
     rolify (6.0.0)
-    rouge (4.0.0)
+    rouge (4.0.1)
     rspec-core (3.11.0)
       rspec-support (~> 3.11.0)
     rspec-expectations (3.11.1)
