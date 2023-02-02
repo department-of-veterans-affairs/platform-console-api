@@ -284,9 +284,9 @@ GEM
     rash_alt (0.4.12)
       hashie (>= 3.4)
     redcarpet (3.5.1)
-    redis (5.0.5)
+    redis (5.0.6)
       redis-client (>= 0.9.0)
-    redis-client (0.11.2)
+    redis-client (0.12.1)
       connection_pool
     regexp_parser (2.6.1)
     request_store (1.5.1)
