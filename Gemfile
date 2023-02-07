@@ -36,7 +36,7 @@ gem 'strong_migrations',  '~> 1.4'   # Catch potentially dangerous operations in
 
 # Assets
 gem 'importmap-rails',    '~> 1.1' # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem 'redcarpet',          '~> 3.5' # For Markdown processing [https://github.com/vmg/redcarpet]
+gem 'redcarpet',          '~> 3.6' # For Markdown processing [https://github.com/vmg/redcarpet]
 gem 'sprockets-rails',    '~> 3.4' # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'stimulus-rails',     '~> 1.2' # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'tailwindcss-rails',  '~> 2.0' # Integrate Tailwind CSS with the asset pipeline
