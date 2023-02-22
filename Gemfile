@@ -21,7 +21,7 @@ gem 'net-http',           '~> 0.3' # HTTP client api for Ruby
 gem 'octokit',            '~> 6.0'   # Ruby toolkit for the GitHub API.
 gem 'omniauth-keycloak',  '~> 1.4'   # Keycloack SSO Oauth Strategy
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1' # Mitigates against CSRF in oauth flow
-gem 'pagy',               '~> 5.10'  # Agnostic pagination in plain ruby
+gem 'pagy',               '~> 6.0'   # Agnostic pagination in plain ruby
 gem 'paper_trail',        '~> 14.0'  # Track changes to your models, for auditing or versioning
 gem 'pg',                 '~> 1.4'   # Use postgresql as the database for Active Record
 gem 'puma',               '>= 5.6.4' # Use the Puma web server [https://github.com/puma/puma]
