@@ -19,7 +19,7 @@ gem 'jsonapi-serializer', '~> 2.2'  # A fast JSON:API serializer for Ruby Object
 gem 'jwt',                '~> 2.5'  # Ruby implementation of the JWT standard
 gem 'net-http',           '~> 0.3' # HTTP client api for Ruby
 gem 'octokit',            '~> 6.0'   # Ruby toolkit for the GitHub API.
-gem 'omniauth-keycloak',  '~> 1.4'   # Keycloack SSO Oauth Strategy
+gem 'omniauth-keycloak',  '~> 1.5'   # Keycloack SSO Oauth Strategy
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1' # Mitigates against CSRF in oauth flow
 gem 'pagy',               '~> 5.10'  # Agnostic pagination in plain ruby
 gem 'paper_trail',        '~> 14.0'  # Track changes to your models, for auditing or versioning
