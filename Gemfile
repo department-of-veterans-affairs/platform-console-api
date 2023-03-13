@@ -18,7 +18,7 @@ gem 'jbuilder',           '~> 2.11' # Build JSON APIs with ease [https://github.
 gem 'jsonapi-serializer', '~> 2.2'  # A fast JSON:API serializer for Ruby Objects.
 gem 'jwt',                '~> 2.5'  # Ruby implementation of the JWT standard
 gem 'net-http',           '~> 0.3' # HTTP client api for Ruby
-gem 'octokit',            '~> 6.0'   # Ruby toolkit for the GitHub API.
+gem 'octokit',            '~> 6.1'   # Ruby toolkit for the GitHub API.
 gem 'omniauth-keycloak',  '~> 1.4'   # Keycloack SSO Oauth Strategy
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1' # Mitigates against CSRF in oauth flow
 gem 'pagy',               '~> 5.10'  # Agnostic pagination in plain ruby
